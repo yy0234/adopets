@@ -8,17 +8,23 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
-//app.set('views', __dirname + '/views');
-//app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 
 app.get('/', function(request, response) {
-  response.sendFile('index')
+  response.render('index');
 });
 
 
 app.get('/login', function(request, response) {
-  response.sendFile('login')
+  response.render('login');
+  console.log(response.render('login'));
+  console.log(response.sendFile('login'));
+  console.log(response.sendFile('login.html'));
+  console.log(response.sendFile('../public/login'));
+  console.log(response.sendFile('../public/login.html'));
+  console.log(response.sendFile('./public/login.html'));
 });
 
 app.get('/cool', function(request, response) {
