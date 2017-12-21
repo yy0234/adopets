@@ -68,13 +68,12 @@ app.get("/signIn", function (request, response) {
 
 app.get("/getUserData", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'SELECT * FROM user_table'; 
-	  client.query(sql, function(err, result) {
+	   client.query('SELECT * FROM user_table', function(err, result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return res.send(result);   }
+        { return response.send(result);   }
       });
   });
 });
