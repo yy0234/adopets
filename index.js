@@ -9,14 +9,14 @@ app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index')
+  response.render('pages/index.ejs')
 });
 
 app.get('/', function(request, response) {
-  response.render('pages/login')
+  response.render('pages/login.html')
 });
 
 app.get('/cool', function(request, response) {
@@ -39,7 +39,7 @@ app.get('/db', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('pages/db', {results: result.rows} ); }
+       { response.render('pages/db.ejs', {results: result.rows} ); }
     });
   });
 });
