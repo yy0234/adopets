@@ -35,7 +35,7 @@ app.get('/db', function (request, response) {
 });
 
 
-app.get('/regist', function (request, response) { 
+/*app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO user_table(username,password,nickname) VALUES($1, $2, $3)'; 
 	  var sqlValue = [request.query.username,request.query.password,request.query.nickname]; 
@@ -77,7 +77,7 @@ app.get("/getUserData", function (request, response) {
         { return res.send(result);   }
       });
   });
-});
+});*/
 
 
 app.listen(app.get('port'), function() {
