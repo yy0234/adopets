@@ -56,10 +56,23 @@ app.get("/signIn", function (request, response) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
-	   if (result.length == 0) {
+	   else if (result.length == 0) {
 			console.log(result);
 			return response.send("cannot find user"); 
 	   }
+       else
+        { return res.send(result);   }
+      });
+  });
+});
+
+app.get("/getUserData", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = "select * from user_table"; 
+	  client.query(sql, function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
        else
         { return res.send(result);   }
       });

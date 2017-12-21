@@ -2,7 +2,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title></title>
 </head>
 <body>
@@ -24,7 +23,14 @@
         </div>
         <button id="userLogin">登陆</button>
     </div>
+    <div class="trygetdata">
+        <button id="getdata">getdata</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
+
         $("#register").click(function () {
             $.ajax({
                 url: "/regist",
@@ -50,14 +56,37 @@
                     username: $("#email-one").val(),
                     password: $("#password-one").val()
                 },
-                success: function (data) {    //    alert后台返回的参数
-                    alert(data);
+                success: function (data) {//    alert后台返回的参数
+                    alert(data[0].username);
+                    console.log(data[0].username);
                 },
                 error: function () {
                     alert('访问失败');
                 }
             });
         });
+        $("#getdata").click(function () {
+            $.ajax({
+                url: "/getUserData",
+                type: "GET",
+                data: {
+
+                },
+                success: function (data) {
+                    var string = "";
+                    for (var i = 0; i < data.length; i++) {
+                        var d = JSON.stringify(data[i]);
+                        string += d;
+                    }
+                    alert(string);
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        });
+
+
     </script>
 </body>
 </html>
