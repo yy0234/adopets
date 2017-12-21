@@ -3,6 +3,14 @@ var express = require('express');
 var app = express();
 var pg = require('pg');
 
+var static = require('node-static');
+var file = new static.Server();
+require('http').createServer(function(request, response) {
+  request.addListener('end', function() {
+    file.serve(request, response);
+  }).resume();
+}).listen(process.env.PORT || 5000);
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -18,13 +26,7 @@ app.get('/', function(request, response) {
 
 
 app.get('/login', function(request, response) {
-  response.render('login');
-  console.log(response.render('login'));
-  console.log(response.sendFile('login'));
-  console.log(response.sendFile('login.html'));
-  console.log(response.sendFile('../public/login'));
-  console.log(response.sendFile('../public/login.html'));
-  console.log(response.sendFile('./public/login.html'));
+  response.render('login.html');
 });
 
 app.get('/cool', function(request, response) {
