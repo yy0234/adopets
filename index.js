@@ -18,7 +18,7 @@ app.get('/', function(request, response) {
 
 
 app.get('/login', function(request, response) {
-  response.sendFile('login')
+  response.sendFile('./login.html')
 });
 
 app.get('/cool', function(request, response) {
