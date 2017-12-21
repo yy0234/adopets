@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 
 // views is directory for all template files
-app.set('views', __dirname + '/views');
+//app.set('views', __dirname + '/views');
 //app.set('view engine', 'ejs');
 
 
@@ -18,8 +18,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/login', function(request, response) {
-  response.sendFile('views/pages/login.html');
-  console.log(request,response);
+  response.sendFile('pages/login.html');
 });
 
 /*app.get('/login', function(request, response) {
