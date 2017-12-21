@@ -13,7 +13,7 @@ app.set('views', __dirname + '/views');
 
 
 app.get('/', function(request, response) {
-  response.render('pages/index.ejs')
+  response.sendFile('pages/index.html')
 });
 
 app.get('/login', function(request, response) {
