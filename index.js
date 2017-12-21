@@ -8,15 +8,18 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
-app.set('views', __dirname + '/views');
+//app.set('views', __dirname + '/views');
 //app.set('view engine', 'ejs');
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.get('/', function(request, response) {
-  response.render('pages/index.ejs')
+  response.render('pages/index')
 });
 
 app.get('/', function(request, response) {
-  response.render('pages/login.html')
+  response.render('pages/login')
 });
 
 app.get('/cool', function(request, response) {
@@ -39,7 +42,7 @@ app.get('/db', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('pages/db.ejs', {results: result.rows} ); }
+       { response.render('pages/db', {results: result.rows} ); }
     });
   });
 });
