@@ -1,40 +1,24 @@
-process.env.PWD = process.cwd();
-app.use(express.static(process.env.PWD + '/public'));
-var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
 var pg = require('pg');
 
 app.set('port', (process.env.PORT || 5000));
 
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
-app.listen(process.env.PORT || 3000);
 
 // views is directory for all template files
-//app.set('views', __dirname + '/views');
-//app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 
 app.get('/', function(request, response) {
-  response.render('index');
+  response.render('pages/index');
 });
 
 
 app.get('/login', function(request, response) {
-  response.sendFile('login');
-});
-
-app.get('/cool', function(request, response) {
-  response.send(cool());
-});
-
-app.get('/times', function(request, response) {
-    var result = ''
-    var times = process.env.TIMES || 5
-    for (i=0; i < times; i++)
-      result += i + ' ';
-  response.send(result);
+  response.render('pages/login');
 });
 
 
