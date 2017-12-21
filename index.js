@@ -13,11 +13,11 @@ app.set('views', __dirname + '/views');
 
 
 app.get('/', function(request, response) {
-  response.sendFile('pages/index.ejs')
+  response.render('pages/index.ejs')
 });
 
 app.get('/login', function(request, response) {
-  response.render('pages/login.html')
+  response.sendFile('pages/login.html')
 });
 
 app.get('/cool', function(request, response) {
