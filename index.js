@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var pg = require('pg');
 
-app.set('port', (process.env.PORT || 5000));
+//app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
@@ -18,7 +18,8 @@ app.get('/', function(request, response) {
 });
 
 app.get('/login', function(request, response) {
-  response.sendFile('pages/login.html');
+  response.sendFile('pages/index.ejs');
+  console.log(response.sendFile('pages/login.html'));
 });
 
 /*app.get('/login', function(request, response) {
