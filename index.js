@@ -18,8 +18,13 @@ app.get('/', function(request, response) {
 });
 
 app.get('/login', function(request, response) {
-  response.sendFile('pages/login.html')
+  response.sendFile('views/pages/login.html');
+  console.log(request,response);
 });
+
+/*app.get('/login', function(request, response) {
+  response.sendFile('pages/login.html')
+});*/
 
 app.get('/cool', function(request, response) {
   response.send(cool());
