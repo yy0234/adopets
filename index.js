@@ -37,7 +37,7 @@ app.get('/db', function (request, response) {
 
 app.get("/regist", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "insert into user_table(username,password,nickname) values(?,?,?)"; 
+	  var sql = "INSERT into user_table(username,password,nickname) values(?,?,?)"; 
 	  var sqlValue = [request.query.username, request.query.password, request.query.nickname]; 
 	  client.query(sql, sqlValue, function(err, result) {
        done();
@@ -49,9 +49,9 @@ app.get("/regist", function (request, response) {
   });
 });
 
-/*app.get("/signIn", function (request, response) { 
+app.get("/signIn", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "select * from user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
+	  var sql = "SELECT * from user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
 	  client.query(sql, function(err, result) {
        done();
        if (err)
@@ -68,7 +68,7 @@ app.get("/regist", function (request, response) {
 
 app.get("/getUserData", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "select * from user_table"; 
+	  var sql = "SELECT * from user_table"; 
 	  client.query(sql, function(err, result) {
        done();
        if (err)
@@ -77,7 +77,7 @@ app.get("/getUserData", function (request, response) {
         { return res.send(result);   }
       });
   });
-});*/
+});
 
 
 app.listen(app.get('port'), function() {
