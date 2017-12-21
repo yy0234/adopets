@@ -15,6 +15,8 @@ app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
+app.use('/login', require('.pages/login'));
+
 app.get('/cool', function(request, response) {
   response.send(cool());
 });
