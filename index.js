@@ -1,3 +1,5 @@
+process.env.PWD = process.cwd();
+app.use(express.static(process.env.PWD + '/public'));
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
@@ -5,7 +7,7 @@ var pg = require('pg');
 
 //app.set('port', (process.env.PORT || 5000));
 
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 
 app.listen(process.env.PORT || 3000);
 
@@ -20,7 +22,7 @@ app.get('/', function(request, response) {
 
 
 app.get('/login', function(request, response) {
-  response.render('login');
+  response.sendFile('login');
 });
 
 app.get('/cool', function(request, response) {
