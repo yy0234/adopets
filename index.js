@@ -34,6 +34,39 @@ app.get('/db', function (request, response) {
   });
 });
 
+
+app.get("/regist", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = "insert into user_table(username,password,nickname) values(?,?,?)"; 
+	  var sqlValue = [request.query.username, request.query.password, request.query.nickname]; 
+	  client.query(sql, sqlValue, function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
+});
+
+app.get("/signIn", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = "select * from user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
+	  client.query(sql, function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+	   if (result.length == 0) {
+			console.log(result);
+			return response.send("cannot find user"); 
+	   }
+       else
+        { return res.send(result);   }
+      });
+  });
+});
+
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

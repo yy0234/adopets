@@ -1,0 +1,1 @@
+set PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin\
