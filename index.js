@@ -17,7 +17,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/login', function(request, response) {
-  response.render('pages/login.html')
+  response.render('pages/login.ejs')
 });
 
 app.get('/cool', function(request, response) {
