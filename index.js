@@ -49,7 +49,7 @@ app.get("/regist", function (request, response) {
   });
 });
 
-app.get("/signIn", function (request, response) { 
+/*app.get("/signIn", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = "select * from user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
 	  client.query(sql, function(err, result) {
@@ -77,7 +77,7 @@ app.get("/getUserData", function (request, response) {
         { return res.send(result);   }
       });
   });
-});
+});*/
 
 
 app.listen(app.get('port'), function() {
