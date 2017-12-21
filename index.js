@@ -14,13 +14,20 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.get('/', function(request, response) {
+
+var index = require('./pages/index');
+var users = require('./pages/login');
+
+app.use('/', index);
+app.use('/users', users);
+
+/*app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
-app.get('/', function(request, response) {
+app.get('/login', function(request, response) {
   response.render('pages/login')
-});
+});*/
 
 app.get('/cool', function(request, response) {
   response.send(cool());
