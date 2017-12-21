@@ -68,7 +68,7 @@ app.get("/signIn", function (request, response) {
 
 app.get("/getUserData", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "SELECT * FROM user_table"; 
+	  var sql = 'SELECT * FROM user_table'; 
 	  client.query(sql, function(err, result) {
        done();
        if (err)
