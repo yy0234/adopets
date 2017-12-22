@@ -18,13 +18,11 @@ app.get('/', function(request, response) {
 
 
 app.get('/login', function(request, response) {
-  response.render('pages/login');
-  response.send("login");
+  response.render('pages/login',{results:"login"});
 });
 
 app.get('/register', function(request, response) {
-  response.render('pages/login');
-  response.send("register");
+  response.render('pages/login',{results:"register"});
 });
 
 
