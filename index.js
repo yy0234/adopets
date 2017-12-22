@@ -59,7 +59,7 @@ app.get("/signin", function (request, response) {
 			return response.send("cannot find user"); 
 	   }
        else
-        { return response.send("hi");}
+        { return response.send(data.rows);}
       });
   });
 });
