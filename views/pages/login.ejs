@@ -45,7 +45,7 @@ $("#register").click(function () {
 			password: $("#register_password").val()
 		},
 		success: function (data) { 
-			console.log(data);
+			alert(data);
 		},
 		error: function (err) {
 			alert(err);
@@ -62,7 +62,7 @@ $("#user_login").click(function () {
 			password: $("#login_password").val()
 		},
 		success: function (data) {
-			console.log(data.username);
+			alert(data.username);
 		},
 		error: function (err) {
 			alert(err);
