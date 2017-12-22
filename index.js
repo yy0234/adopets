@@ -18,11 +18,11 @@ app.get('/', function(request, response) {
 
 
 app.get('/login', function(request, response) {
-  response.render('pages/login',{results:"login"});
+  response.render('pages/login');
 });
 
 app.get('/register', function(request, response) {
-  response.render('pages/login',{results:"register"});
+  response.render('pages/login');
 });
 
 
