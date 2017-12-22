@@ -35,7 +35,7 @@ app.get('/db', function (request, response) {
 });
 
 
-app.get('/regist', function (request, response) { 
+/*app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO user_table(username,password,nickname) VALUES($1, $2, $3)'; 
 	  var sqlValue = [request.query.username,request.query.password,request.query.nickname]; 
@@ -47,9 +47,23 @@ app.get('/regist', function (request, response) {
         { return response.send("success");   }
       });
   });
+});*/
+
+app.get('/regist', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	   var sql = "SELECT * FROM user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
+	  client.query(sql, function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
 });
 
-app.get("/signIn", function (request, response) { 
+
+app.get("/signin", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = "SELECT * FROM user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
 	  client.query(sql, function(err, result) {
@@ -57,7 +71,6 @@ app.get("/signIn", function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
 	   else if (result.length == 0) {
-			console.log(result);
 			return response.send("cannot find user"); 
 	   }
        else
