@@ -36,7 +36,6 @@
 <script>
 //register and login form
 $("#register").click(function () {
-	alert('hi');
 	$.ajax({
 		url: "/regist",
 		type: "GET",
@@ -46,7 +45,7 @@ $("#register").click(function () {
 			password: $("#register_password").val()
 		},
 		success: function (data) { 
-			alert(data[0].username);
+			alert(data);
 		},
 		error: function (err) {
 			alert(err);
