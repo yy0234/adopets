@@ -42,7 +42,7 @@ app.get('/regist', function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send("success");   }
+        { return response.send(result.rows);   }
       });
   });
 });
