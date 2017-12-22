@@ -51,6 +51,7 @@ $("#register").click(function () {
 			alert(err);
 		}
 	});
+	return false;
 });
 $("#user_login").click(function () {
 	$.ajax({
@@ -61,12 +62,13 @@ $("#user_login").click(function () {
 			password: $("#login_password").val()
 		},
 		success: function (data) {
-			console.log(data);
+			console.log(data.username);
 		},
 		error: function (err) {
 			alert(err);
 		}
 	});
+	return false;
 });
 $("#getdata").click(function () {
 	$.ajax({
@@ -87,6 +89,7 @@ $("#getdata").click(function () {
 			alert(err);
 		}
 	});
+	return false;
 });
 </script>
 
