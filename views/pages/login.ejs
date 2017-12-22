@@ -36,7 +36,11 @@
 <script src="/javascript/main.js"></script>
 <script>
 $( window ).load(function() {
-  console.log($(location).attr('pathname'));
+	console.log($(location).attr('pathname')=="/register");
+  if($(location).attr('pathname')=="/register"){
+		$('.toggle').toggle();
+		$('.form').toggle();
+	}
 });
 
 //register and login form
