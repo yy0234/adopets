@@ -43,6 +43,10 @@ body {
   font-weight:bold;
 }
 
+.form-module .toggle:hover{
+  text-decoration: underline;
+}
+
 .form-module .form {
   display: none;
   padding: 40px;

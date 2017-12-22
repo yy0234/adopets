@@ -19,6 +19,12 @@ app.get('/', function(request, response) {
 
 app.get('/login', function(request, response) {
   response.render('pages/login');
+  response.send("login");
+});
+
+app.get('/register', function(request, response) {
+  response.render('pages/login');
+  response.send("register");
 });
 
 
