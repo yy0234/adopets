@@ -46,7 +46,7 @@ $("#register").click(function () {
 			password: $("#register_password").val()
 		},
 		success: function (data) { 
-			alert(data);
+			alert(data[0].username);
 		},
 		error: function (err) {
 			alert(err);
