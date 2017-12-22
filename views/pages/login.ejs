@@ -61,7 +61,7 @@ $("#user_login").click(function () {
 			password: $("#login_password").val()
 		},
 		success: function (data) {
-			alert(data[0].username);
+			alert(data);
 		},
 		error: function (err) {
 			alert(err);
