@@ -1,7 +1,7 @@
 // Toggle Function
 $('.toggle').click(function(){
   //Switch text
-  $('.toggle').toggle();
+  //$('.toggle').toggle();
   // Switches the forms  
 $('.form').animate({
      height: "toggle",
