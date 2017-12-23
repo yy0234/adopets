@@ -5,18 +5,6 @@ body {
   font-size: 14px;
 }
 
-/* Login Title */
-.login-title {
-  padding: 50px 0;
-  text-align: center;
-  letter-spacing: 2px;
-}
-.login-title h2 {
-  margin: 0 0 20px;
-  font-size: 48px;
-  font-weight: 300;
-}
-
 /* Form Module */
 .form-module {
   position: relative;

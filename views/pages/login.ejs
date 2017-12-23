@@ -1,15 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Login</title>
-	<link rel='stylesheet prefetch' type="text/css" href="/stylesheets/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+	<% include ../partials/header.ejs %>
 </head>
 
 <body>
-<div class="login-title">
-</div>
+<% include ../partials/nav.ejs %>
 <!-- Form Module-->
 <div class="module form-module">
 	<div class="toggle" style="display:block;">Sign Up Now</div>
@@ -32,8 +28,7 @@
     </form>
   </div>
 </div>
-<script src="/javascript/jquery.min.js"></script>
-<script src="/javascript/main.js"></script>
+<% include ../partials/script.ejs %>
 <script>
 $( window ).load(function() {
 	console.log($(location).attr('pathname')=="/register");
@@ -79,27 +74,6 @@ $("#user_login").click(function () {
 	});
 	return false;
 });
-/*$("#getdata").click(function () {
-	$.ajax({
-		url: "/getUserData",
-		type: "GET",
-		data: {
-
-		},
-		success: function (data) {
-			var string = "";
-			for (var i = 0; i < data.length; i++) {
-				var d = JSON.stringify(data[i]);
-				string += d;
-			}
-			alert(string);
-		},
-		error: function (err) {
-			alert(err);
-		}
-	});
-	return false;
-});*/
 </script>
 
 
