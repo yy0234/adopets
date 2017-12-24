@@ -79,10 +79,7 @@ body {
   background: #178ab4;
 }
 
-.row.header{
-  margin: 40px;
-}
-
 .headline{
   background-color:white; 
+  margin: 10px;
 }
