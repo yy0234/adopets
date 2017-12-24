@@ -79,6 +79,10 @@ body {
   background: #178ab4;
 }
 
-.row.headline{
+.row{
   margin: 40px;
+}
+
+.headline{
+  background-color:gray; 
 }
