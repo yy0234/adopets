@@ -79,7 +79,7 @@ body {
   background: #178ab4;
 }
 
-.row{
+.row.header{
   margin: 40px;
 }
 
