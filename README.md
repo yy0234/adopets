@@ -13,7 +13,20 @@ $ npm install
 $ npm start
 ```
 
-## Download the latest version from Github</h4>
+## The full step of upload your changes
+**pls follow
+```
+$ git checkout "branch_name"  //to make sure you are in the correct branch
+$ git fetch
+$ git pull    // to make sure you have the latest version from Github  ** 
+$ git add .
+$ git commit -m "your message here"
+$ git push    // push to Github
+$ git push heroku master    //push to heroku master (not so sure, may be need to merge before deploy git push heroku master)
+$ heroku open     //optional, open the browser   
+``` 
+
+## Download the latest version from Github
 ```
 $ git checkout "branch_name"  //eg. git checkout master
 $ git fetch
@@ -50,15 +63,3 @@ $ git commit -m "your message here"
 ```
 $ git push
 ```
-## the full step of upload your changes
-**pls follow
-```
-$ git checkout "branch_name"  //to make sure you are in the correct branch
-$ git fetch
-$ git pull    // to make sure you have the latest version from Github  ** 
-$ git add .
-$ git commit -m "your message here"
-$ git push    // push to Github
-$ git push heroku master    //push to heroku master (not so sure, may be need to merge before deploy git push heroku master)
-$ heroku open     //optional, open the browser   
-``` 
