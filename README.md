@@ -31,6 +31,7 @@ $ heroku open     //optional, open the browser
 $ git checkout "branch_name"  //eg. git checkout master
 $ git fetch
 $ git pull
+$ npm install    //sometime need to install the new library after git pull
 ```
 
 ## Branch off a new branch</h4> 
