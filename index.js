@@ -81,7 +81,7 @@ app.get("/getUserData", function (request, response) {
 });
 
 app.get('*', function(request, response) {
-  response.render('pages/index');
+  response.redirect('/');
 });
 
 
