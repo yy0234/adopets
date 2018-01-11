@@ -80,9 +80,9 @@ app.get("/getUserData", function (request, response) {
   });
 });
 
-app.get('*', function(request, response) {
+/*app.get('*', function(request, response) {
   response.redirect('/');
-});
+});*/
 
 
 app.listen(app.get('port'), function() {
