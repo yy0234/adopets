@@ -83,7 +83,6 @@ body {
 }
 .headline{
   background-color:powderblue;
-  padding: 30px;
 }
 
 .banner-text{
@@ -97,6 +96,7 @@ body {
 
 .banner-small-text{
   font-size: 1.5vw;
-  line-height: 8em;
+  line-height: 5em;
   font-weight: normal;
+  color: cornflowerblue;
 }
