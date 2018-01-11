@@ -92,10 +92,11 @@ body {
   font-size: 7.0vw;
   font-weight: bold;
   -webkit-margin-before: 1.5em;
-  -webkit-margin-after: 1.5em;
   text-align: center;
 }
 
 .banner-small-text{
   font-size: 1.5vw;
+  line-height: 8em;
+  font-weight: normal;
 }
