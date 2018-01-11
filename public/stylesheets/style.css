@@ -84,3 +84,14 @@ body {
 .headline{
   background-color:powderblue;
 }
+
+.banner-text{
+  font-family: 'Kaushan Script', cursive;
+  font-size: 6.0vw;
+  font-weight: bold;
+  -webkit-margin-start: 0px;
+  -webkit-border-end: 0px;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  text-align: center;
+}
