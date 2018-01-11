@@ -96,7 +96,7 @@ body {
 
 .banner-small-text{
   font-size: 1.5vw;
-  line-height: calc(10px + 0.6vw);
+  line-height: 7em;
   font-weight: normal;
   color: cornflowerblue;
 }
