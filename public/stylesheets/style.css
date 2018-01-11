@@ -90,9 +90,7 @@ body {
   color:white;
   font-size: 6.0vw;
   font-weight: bold;
-  -webkit-margin-start: 0px;
-  -webkit-border-end: 0px;
-  -webkit-margin-before: 0.83em;
-  -webkit-margin-after: 0.83em;
+  -webkit-margin-before: 1.5em;
+  -webkit-margin-after: 1.5em;
   text-align: center;
 }
