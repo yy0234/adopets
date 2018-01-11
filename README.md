@@ -18,10 +18,9 @@ $ npm start
 ```
 $ git checkout "branch_name"  //to make sure you are in the correct branch
 $ git fetch
-$ git pull    // to make sure you have the latest version from Github  ** 
+$ git pull heroku master   // to make sure you have the latest version from Github  ** 
 $ git add .
 $ git commit -m "your message here"
-$ git push    // push to Github
 $ git push heroku master    //push to heroku master (not so sure, may be need to merge before deploy git push heroku master)
 $ heroku open     //optional, open the browser   
 ``` 
@@ -30,7 +29,7 @@ $ heroku open     //optional, open the browser
 ```
 $ git checkout "branch_name"  //eg. git checkout master
 $ git fetch
-$ git pull
+$ git pull heroku master 
 $ npm install    //sometime need to install the new library after git pull
 ```
 
