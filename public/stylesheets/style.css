@@ -89,9 +89,13 @@ body {
 .banner-text{
   font-family: 'Kaushan Script', cursive;
   color:white;
-  font-size: 6.0vw;
+  font-size: 7.0vw;
   font-weight: bold;
   -webkit-margin-before: 1.5em;
   -webkit-margin-after: 1.5em;
   text-align: center;
+}
+
+.banner-small-text{
+  font-size: 5.0vw;
 }
