@@ -10,36 +10,30 @@
 <% include ../partials/headline.ejs %>
 
 <div class="container">
-	<ul class="nav nav-tabs" id="myTab" role="tablist">
-		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Home</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">Settings</a>
-		</li>
-	</ul>
-		  
-	<div class="tab-content">
-		<div class="tab-pane active" id="home" role="tabpanel">
-				<input id="search"><i class="material-icons">search</i>
-				<div class="search-results"></div>
+	<div class="searchBox">
+		<ul class="nav nav-tabs" id="serachTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced">Advanced Search</a>
+			</li>
+		</ul>
+			
+		<div class="tab-content">
+			<div class="tab-pane active" id="direct" role="tabpanel">
+					<input id="search"><i class="material-icons">search</i>
+					<div class="search-results"></div>
+			</div>
+			<div class="tab-pane" id="advanced" role="tabpanel">...</div>
 		</div>
-		<div class="tab-pane" id="profile" role="tabpanel">...</div>
-		<div class="tab-pane" id="messages" role="tabpanel">...</div>
-		<div class="tab-pane" id="settings" role="tabpanel">...</div>
 	</div>
 </div>
 	
 <% include ../partials/script.ejs %>
 <script>
 	$(function () {
-		$('#myTab a:first').tab('show')
+		$('#searchTab a:first').tab('show')
 	})
 </script>
 </body>
