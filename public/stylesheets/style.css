@@ -3,6 +3,7 @@ body {
   color: #666666;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 14px;
+  line-height:20px;
 }
 
 .headline{
@@ -23,6 +24,15 @@ body {
   line-height: 7em;
   font-weight: normal;
   color: cornflowerblue;
+}
+
+.header{
+  width:100%;
+}
+
+img{
+  height:auto;
+  max-width:100%;
 }
 
 @font-face {
