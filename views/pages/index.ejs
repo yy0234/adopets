@@ -11,65 +11,81 @@
 <% include ../partials/headline.ejs %>
 
 <div class="container">
-	<div class="searchBox col-md-5">
-		<ul class="nav nav-tabs" id="searchTab" role="tablist">
-			<li class="nav-item active">
-				<a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced">Advanced Search</a>
-			</li>
-		</ul>
-			
-		<div class="tab-content">
-			<div class="tab-pane active" id="direct" role="tabpanel">
-					<div class="input-group">
-						<input type="text"  class="form-control" placeholder="What pets are you looking for?"/>
-						<span class="input-group-addon">
-							<i class="glyphicon glyphicon-camera" title="Search by photo"></i>
-							<i class="glyphicon glyphicon-search"></i>
-						</span>
+	<div class="row">
+		<div class="searchBox col-md-5">
+			<ul class="nav nav-tabs" id="searchTab" role="tablist">
+				<li class="nav-item active">
+					<a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced">Advanced Search</a>
+				</li>
+			</ul>
+				
+			<div class="tab-content">
+				<div class="tab-pane active" id="direct" role="tabpanel">
+						<div class="input-group">
+							<input type="text"  class="form-control" placeholder="What pets are you looking for?"/>
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-camera" title="Search by photo"></i>
+								<i class="glyphicon glyphicon-search"></i>
+							</span>
+						</div>
+				</div>
+				<div class="tab-pane" id="advanced" role="tabpanel">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="petTypes">Select Pet Types:</label>
+							<select id="petTypes" multiple="multiple">
+								<option value="birds">Birds</option>
+								<option value="cat">Cat</option>
+								<option value="dog">Dog</option>
+								<option value="fish">Fish</option>
+								<option value="reptiles">Reptiles</option>
+								<option value="rodents">Rodents</option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label for="petBreeds">Select Pet Breeds:</label>
+							<select id="petBreeds" multiple="multiple">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+							</select>
+						</div>
 					</div>
-			</div>
-			<div class="tab-pane" id="advanced" role="tabpanel">
-				<label for="petTypes">Select Pet Types:</label>
-				<select id="petTypes" multiple="multiple">
-					<option value="birds">Birds</option>
-					<option value="cat">Cat</option>
-					<option value="dog">Dog</option>
-					<option value="fish">Fish</option>
-					<option value="reptiles">Reptiles</option>
-					<option value="rodents">Rodents</option>
-				</select>
-				<label for="petBreeds">Select Pet Breeds:</label>
-				<select id="petBreeds" multiple="multiple">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-				</select>
-				<label for="petGender">Select Pet Gender:</label>
-				<select id="petGender" multiple="multiple">
-					<option value="m">Male</option>
-					<option value="f">Female</option>
-				</select>
-				<label for="petAge">Select Pet Age:</label>
-				<select id="petAge" multiple="multiple">
-					<option value="baby">Baby</option>
-					<option value="young">Young</option>
-					<option value="adult">Adult</option>
-					<option value="senior">Senior</option>
-				</select>
-				<label for="petSize">Select Pet Size:</label>
-				<select id="petSize" multiple="multiple">
-					<option value="s">Small</option>
-					<option value="m">Medium</option>
-					<option value="l">Large</option>
-					<option value="xl">X-Large</option>
-				</select>
+					<div class="row">
+						<div class="col-md-4">
+							<label for="petGender">Select Pet Gender:</label>
+							<select id="petGender" multiple="multiple">
+								<option value="m">Male</option>
+								<option value="f">Female</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="petAge">Select Pet Age:</label>
+							<select id="petAge" multiple="multiple">
+								<option value="baby">Baby</option>
+								<option value="young">Young</option>
+								<option value="adult">Adult</option>
+								<option value="senior">Senior</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="petSize">Select Pet Size:</label>
+							<select id="petSize" multiple="multiple">
+								<option value="s">Small</option>
+								<option value="m">Medium</option>
+								<option value="l">Large</option>
+								<option value="xl">X-Large</option>
+							</select>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
