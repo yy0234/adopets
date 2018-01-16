@@ -35,4 +35,6 @@
     border: 2px solid lightblue;
     border-bottom-color: transparent;
     background-color: powderblue;
+    color:white;
+    text-shadow: cornflowerblue 0.1em 0.1em 0.2em;
 }
