@@ -7,9 +7,14 @@
 } 
 
 .input-group .glyphicon{
-    font-size: 120%;
-    margin-right: 5px;
-    margin-left: 5px;
+    font-size: 110%;
+    margin-right: 4px;
+    margin-left: 4px;
+    color: gray;
+}
+
+.input-group .glyphicon:hover{
+    color: blue;
 }
 
 .searchBox .nav-tabs{
