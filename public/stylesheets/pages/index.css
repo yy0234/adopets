@@ -5,3 +5,21 @@
 .input-group .input-group-addon{
     background-color: white;
 } 
+
+.input-group .glyphicon{
+    font-size: 130%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.searchBox .nav-tabs{
+    border-bottom: 0px;
+}
+
+.searchBox .tab-content{
+    border:1px solid lightblue;
+}
+
+.searchBox .tab-content .tab-pane{
+    margin:20px;
+} 
