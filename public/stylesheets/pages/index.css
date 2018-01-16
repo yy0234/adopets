@@ -11,7 +11,6 @@
     margin-right: 4px;
     margin-left: 4px;
     color: gray;
-    font-weight: bold;
 }
 
 .input-group .glyphicon:hover{
@@ -23,9 +22,14 @@
 }
 
 .searchBox .tab-content{
-    border:1px solid lightblue;
+    border:2px solid lightblue;
+    border-radius: 0px 0px 5px 5px;
 }
 
 .searchBox .tab-content .tab-pane{
     margin:20px;
 } 
+
+.searchBox .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    border: 2px solid lightblue;
+}
