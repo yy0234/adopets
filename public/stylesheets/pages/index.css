@@ -24,6 +24,7 @@
 .searchBox .tab-content{
     border:2px solid lightblue;
     border-radius: 0px 0px 5px 5px;
+    background-color: powderblue;
 }
 
 .searchBox .tab-content .tab-pane{
@@ -32,5 +33,6 @@
 
 .searchBox .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
     border: 2px solid lightblue;
-    border-bottom: white;
+    border-bottom-color: transparent;
+    background-color: powderblue;
 }
