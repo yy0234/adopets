@@ -32,4 +32,5 @@
 
 .searchBox .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
     border: 2px solid lightblue;
+    border-bottom: white;
 }
