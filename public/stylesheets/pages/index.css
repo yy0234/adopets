@@ -1,9 +1,10 @@
 .input-group input{
     border-right:none;
+    background-color: #f0f4f5;
 }
 
 .input-group .input-group-addon{
-    background-color: white;
+    background-color: #f0f4f5;
 } 
 
 .input-group .glyphicon{
@@ -24,7 +25,6 @@
 .searchBox .tab-content{
     border:2px solid lightblue;
     border-radius: 0px 0px 5px 5px;
-    background-color: powderblue;
 }
 
 .searchBox .tab-content .tab-pane{
@@ -34,7 +34,6 @@
 .searchBox .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
     border: 2px solid lightblue;
     border-bottom-color: transparent;
-    background-color: powderblue;
-    color:white;
-    text-shadow: cornflowerblue 0.1em 0.1em 0.2em;
+    font-weight: bold;
+    color: cornflowerblue;
 }
