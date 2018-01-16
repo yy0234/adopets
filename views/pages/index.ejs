@@ -50,7 +50,10 @@
 <script>
     $(document).ready(function() {
 		$('#searchTab a:first').tab('show');
-        $('#example-getting-started').multiselect();
+        $('#example-getting-started').multiselect({
+			buttonWidth: '100px',
+            dropRight: true
+		});
     });
 
 </script>
