@@ -3,6 +3,7 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/index.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
 	<title>Adopets Web</title>
 </head>
 
@@ -30,16 +31,28 @@
 						</span>
 					</div>
 			</div>
-			<div class="tab-pane" id="advanced" role="tabpanel">...</div>
+			<div class="tab-pane" id="advanced" role="tabpanel">
+				<select id="example-getting-started" multiple="multiple">
+					<option value="cheese">Cheese</option>
+					<option value="tomatoes">Tomatoes</option>
+					<option value="mozarella">Mozzarella</option>
+					<option value="mushrooms">Mushrooms</option>
+					<option value="pepperoni">Pepperoni</option>
+					<option value="onions">Onions</option>
+				</select>
+			</div>
 		</div>
 	</div>
 </div>
 	
 <% include ../partials/script.ejs %>
+<script src="/javascript/bootstrap-multiselect.js"></script>
 <script>
-	$(function () {
-		$('#searchTab a:first').tab('show')
-	})
+    $(document).ready(function() {
+		$('#searchTab a:first').tab('show');
+        $('#example-getting-started').multiselect();
+    });
+
 </script>
 </body>
 </html>
