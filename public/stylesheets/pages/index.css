@@ -11,10 +11,11 @@
     margin-right: 4px;
     margin-left: 4px;
     color: gray;
+    font-weight: bold;
 }
 
 .input-group .glyphicon:hover{
-    color: blue;
+    color: dodgerblue;
 }
 
 .searchBox .nav-tabs{
