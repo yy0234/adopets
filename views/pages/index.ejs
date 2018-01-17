@@ -185,7 +185,9 @@
 			allSelectedText: 'All Size'
 		});
 		
-		noUiSlider.create(document.getElementById('petAge'), {
+		var nonLinearSlider = document.getElementById('petAge');
+
+		noUiSlider.create(nonLinearSlider, {
 			connect: true,
 			behaviour: 'tap',
 			start: [ 0, 30 ],
