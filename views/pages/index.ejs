@@ -69,7 +69,8 @@
 							<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Pet Age<span class="caret"></span></button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<div id="petAge"></div>
+									<div><span>0</span><div id="petAge"></div><span>30</span></div>
+									<div>From <span id='lower-value'></span> to <span id='upper-value'></span> years-old</div>
 								</div>
 							</div>
 						</div>
@@ -185,12 +186,25 @@
 		});
 		
 		noUiSlider.create(document.getElementById('petAge'), {
-			start: [0, 30],
 			connect: true,
+			behaviour: 'tap',
+			start: [ 0, 30 ],
 			range: {
-				'min': 0,
-				'max': 30
+				'min': [ 0 ],
+				'0%': [ 0, 1 ],
+				'max': [ 30 ]
 			}
+		});
+
+		var nodes = [
+			document.getElementById('lower-value'), // 0
+			document.getElementById('upper-value')  // 1
+		];
+
+		// Display the slider value and how far the handle moved
+		// from the left edge of the slider.
+		nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
+			nodes[handle].innerHTML = values[handle];
 		});
     });
 
