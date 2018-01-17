@@ -18,7 +18,7 @@
 					<a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced">Advanced Search</a>
+					<a class="nav-link" data-toggle="tab" href="#basic" role="tab" aria-controls="basic">Basic Search</a>
 				</li>
 			</ul>
 				
@@ -32,8 +32,8 @@
 							</span>
 						</div>
 				</div>
-				<div class="tab-pane" id="advanced" role="tabpanel">
-					<div>
+				<div class="tab-pane" id="basic" role="tabpanel">
+					<div class="row">
 						<div class="col-md-6">
 							<label for="petTypes">Select Pet Types:</label>
 							<select id="petTypes" multiple="multiple">
@@ -58,15 +58,15 @@
 							</select>
 						</div>
 					</div>
-					<div>
-						<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-6">
 							<label for="petGender">Select Pet Gender:</label>
 							<select id="petGender" multiple="multiple">
 								<option value="m">Male</option>
 								<option value="f">Female</option>
 							</select>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<label for="petAge">Select Pet Age:</label>
 							<select id="petAge" multiple="multiple">
 								<option value="baby">Baby</option>
@@ -75,7 +75,9 @@
 								<option value="senior">Senior</option>
 							</select>
 						</div>
-						<div class="col-md-4">
+					</div>
+					<div class="row">
+						<div class="col-md-6">
 							<label for="petSize">Select Pet Size:</label>
 							<select id="petSize" multiple="multiple">
 								<option value="s">Small</option>
