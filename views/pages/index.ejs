@@ -12,7 +12,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="searchBox col-md-5">
+		<!--search Box-->
+		<div class="searchBox col-md-6">
 			<ul class="nav nav-tabs" id="searchTab" role="tablist">
 				<li class="nav-item active">
 					<a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
@@ -57,12 +58,23 @@
 							</select>
 						</div>
 						<div class="col-md-4">
-							<select id="petAge" multiple="multiple">
+							
+							<!--<select id="petAge" multiple="multiple">
 								<option value="baby">Baby</option>
 								<option value="young">Young</option>
 								<option value="adult">Adult</option>
 								<option value="senior">Senior</option>
-							</select>
+							</select>-->
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Pet Age
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<span>0</span>
+									<input id="petAge" type="text" class="span2" value="" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="[0,30]"/>
+									<span>>30 (years old)</span>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-4">
 							<select id="petSize" multiple="multiple">
@@ -79,12 +91,49 @@
 				</div>
 			</div>
 		</div>
+		
+		<!--flexslider-->
+		<div class="flexslider col-md-6">
+			<ul class="slides">
+				<li>
+					<img src="/images/dog1.jpg" />
+				</li>
+				<li>
+					<img src="/images/dog2.jpg" />
+				</li>
+				<li>
+					<img src="/images/dog3.jpg" />
+				</li>
+				<li>
+					<img src="/images/cat1.jpg" />
+				</li>
+				<li>
+					<img src="/images/cat2.png" />
+				</li>
+				<li>
+					<img src="/images/cat3.jpg" />
+				</li>
+				<li>
+					<img src="/images/cat4.jpg" />
+				</li>
+			</ul>
+		</div>
+
 	</div>
 </div>
 	
 <% include ../partials/script.ejs %>
 <script src="/javascript/bootstrap-multiselect.js"></script>
+<script src="/javascript/bootstrap-slider.min.js"></script>
 <script>
+	$(window).load(function() {
+		$('.flexslider').flexslider({
+			animation: "slide",
+			animationLoop: false,
+			itemWidth: 210,
+			itemMargin: 5
+		});
+	});
     $(document).ready(function() {
 		$('#searchTab a:first').tab('show');
         $('#petTypes').multiselect({
@@ -118,7 +167,7 @@
             selectAllValue: 'select-all-value',
 			allSelectedText: 'Both'
 		});
-		$('#petAge').multiselect({
+		/*$('#petAge').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
 			maxHeight: 150,
@@ -126,7 +175,7 @@
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Age'
-		});
+		});*/
 		$('#petSize').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
@@ -136,6 +185,7 @@
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Size'
 		});
+		$("#petAge").slider({});
     });
 
 </script>
