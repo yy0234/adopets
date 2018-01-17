@@ -3,7 +3,8 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/index.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css">
 	<title>Adopets Web</title>
 </head>
 
@@ -65,10 +66,14 @@
 								<option value="adult">Adult</option>
 								<option value="senior">Senior</option>
 							</select>-->
-
-									<span>0</span>
-									<input id="petAge" type="text" class="span2" value="" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="[0,30]"/>
-									<span>>30 (years old)</span>
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Pet Age
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<input id="petAge"/>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-4">
 							<select id="petSize" multiple="multiple">
@@ -118,7 +123,8 @@
 	
 <% include ../partials/script.ejs %>
 <script src="/javascript/bootstrap-multiselect.js"></script>
-<script src="/javascript/bootstrap-slider.js"></script>
+<script src="/javascript/nouislider.min.js"></script>
+
 <script>
 	$(window).load(function() {
 		$('.flexslider').flexslider({
@@ -179,8 +185,15 @@
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Size'
 		});
-
-		$("#petAge").slider();
+		
+		noUiSlider.create(document.getElementById('petAge'), {
+			start: [0, 30],
+			connect: true,
+			range: {
+				'min': 0,
+				'max': 30
+			}
+		});
     });
 
 </script>
