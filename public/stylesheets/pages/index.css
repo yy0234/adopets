@@ -47,7 +47,7 @@
     margin-bottom:5px;
 }
 
-.searchBox>.tab-content>.tab-pane>.row>.col-md-6{
+.searchBox>.tab-content>.tab-pane>.row>.col-md-6,.searchBox>.tab-content>.tab-pane>.row>.col-md-4{
     padding-right: 5px;
     padding-left:5px;
 }
