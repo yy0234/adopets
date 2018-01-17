@@ -69,7 +69,7 @@
 							<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Pet Age<span class="caret"></span></button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<div><span>0</span><div id="petAge"></div><span>30</span></div>
+									<div id="petAge"></div>
 									<div>From <span id='lower-value'></span> to <span id='upper-value'></span> years-old</div>
 								</div>
 							</div>
@@ -193,7 +193,7 @@
 			start: [ 0, 30 ],
 			range: {
 				'min': [ 0 ],
-				'0%': [ 0, 1 ],
+				'1%': [ 1, 1 ],
 				'max': [ 30 ]
 			}
 		});
