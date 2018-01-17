@@ -35,7 +35,7 @@
 				<div class="tab-pane" id="basic" role="tabpanel">
 					<div class="row">
 						<div class="col-md-6">
-							<label for="petTypes">Select Pet Types:</label>
+							<label for="petTypes">Pet Types:</label>
 							<select id="petTypes" multiple="multiple">
 								<option value="birds">Birds</option>
 								<option value="cat">Cat</option>
@@ -46,7 +46,7 @@
 							</select>
 						</div>
 						<div class="col-md-6">
-							<label for="petBreeds">Select Pet Breeds:</label>
+							<label for="petBreeds">Pet Breeds:</label>
 							<select id="petBreeds" multiple="multiple">
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -60,14 +60,14 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label for="petGender">Select Pet Gender:</label>
+							<label for="petGender">Pet Gender:</label>
 							<select id="petGender" multiple="multiple">
 								<option value="m">Male</option>
 								<option value="f">Female</option>
 							</select>
 						</div>
 						<div class="col-md-6">
-							<label for="petAge">Select Pet Age:</label>
+							<label for="petAge">Pet Age:</label>
 							<select id="petAge" multiple="multiple">
 								<option value="baby">Baby</option>
 								<option value="young">Young</option>
@@ -78,7 +78,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label for="petSize">Select Pet Size:</label>
+							<label for="petSize">Pet Size:</label>
 							<select id="petSize" multiple="multiple">
 								<option value="s">Small</option>
 								<option value="m">Medium</option>
@@ -101,40 +101,41 @@
         $('#petTypes').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
-			maxHeight: 200,
-			nonSelectedText: 'Pet Types',
+			maxHeight: 150,
+			nonSelectedText: 'All Pet Types',
 			includeSelectAllOption: true,
-            selectAllValue: 'select-all-value'
+            selectAllValue: 'select-all-value',
+			allSelectedText: 'hi,'
 		});
 		$('#petBreeds').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
-			maxHeight: 200,
-			nonSelectedText: 'Breeds',
+			maxHeight: 150,
+			nonSelectedText: 'Any Breed',
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value'
 		});
 		$('#petGender').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
-			maxHeight: 200,
-			nonSelectedText: 'Gender',
+			maxHeight: 150,
+			nonSelectedText: 'Both',
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value'
 		});
 		$('#petAge').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
-			maxHeight: 200,
-			nonSelectedText: 'Age',
+			maxHeight: 150,
+			nonSelectedText: 'All Age Range',
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value'
 		});
 		$('#petSize').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
-			maxHeight: 200,
-			nonSelectedText: 'Size',
+			maxHeight: 150,
+			nonSelectedText: 'All Size',
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value'
 		});

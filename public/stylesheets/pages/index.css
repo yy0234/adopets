@@ -38,6 +38,10 @@
     color: cornflowerblue;
 }
 
-.searchBox>.tab-content>.tab-pane .row{
+.searchBox>.tab-content>.tab-pane>.row{
     margin-left:-15px;
+}
+
+.searchBox>.tab-content>.tab-pane>.row label{
+    margin-top:20px;
 }
