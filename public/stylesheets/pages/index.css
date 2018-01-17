@@ -42,6 +42,6 @@
     margin-left:-15px;
 }
 
-.searchBox>.tab-content>.tab-pane>.row label{
+.searchBox>.tab-content>.tab-pane>.row select{
     margin-top:20px;
 }
