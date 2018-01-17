@@ -42,9 +42,10 @@
     margin-left:-15px;
 }
 
-.searchBox>.tab-content>.tab-pane>.row .btn-group{
+.searchBox>.tab-content>.tab-pane>.row{
     margin-top:5px;
     margin-bottom:5px;
+    text-align: center;
 }
 
 .searchBox>.tab-content>.tab-pane>.row>.col-md-6,.searchBox>.tab-content>.tab-pane>.row>.col-md-4{
