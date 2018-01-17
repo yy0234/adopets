@@ -334,7 +334,7 @@
           });
         },
         update: function() {
-          var disabledClass = namespace + 'disabled';
+          /*var disabledClass = namespace + 'disabled';
           if (slider.pagingCount === 1) {
             slider.directionNav.addClass(disabledClass).attr('tabindex', '-1');
           } else if (!slider.vars.animationLoop) {
@@ -347,7 +347,7 @@
             }
           } else {
             slider.directionNav.removeClass(disabledClass).removeAttr('tabindex');
-          }
+          }*/
         }
       },
       pausePlay: {
