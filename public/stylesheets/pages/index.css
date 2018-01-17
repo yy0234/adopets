@@ -47,7 +47,7 @@
     text-align: center;
 }
 
-.searchBox>.tab-content>.tab-pane>.row>.col-md-6,.searchBox>.tab-content>.tab-pane>.row>.col-md-4,.searchBox>.tab-content>.tab-pane>.row>button{
+.searchBox>.tab-content>.tab-pane>.row>.col-md-6,.searchBox>.tab-content>.tab-pane>.row>.col-md-4,.searchBox>.tab-content>.tab-pane>.row:last-child{
     padding-right: 5px;
     padding-left:5px;
 }
