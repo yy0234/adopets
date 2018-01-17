@@ -65,16 +65,10 @@
 								<option value="adult">Adult</option>
 								<option value="senior">Senior</option>
 							</select>-->
-							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Pet Age
-								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
 									<span>0</span>
 									<input id="petAge" type="text" class="span2" value="" data-slider-min="0" data-slider-max="30" data-slider-step="1" data-slider-value="[0,30]"/>
 									<span>>30 (years old)</span>
-								</div>
-							</div>
 						</div>
 						<div class="col-md-4">
 							<select id="petSize" multiple="multiple">
@@ -185,7 +179,8 @@
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Size'
 		});
-		$("#petAge").slider({});
+
+		$("#petAge").slider();
     });
 
 </script>
