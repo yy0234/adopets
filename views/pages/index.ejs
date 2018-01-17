@@ -46,13 +46,6 @@
 						</div>
 						<div class="col-md-6">
 							<select id="petBreeds" multiple="multiple">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
 							</select>
 						</div>
 					</div>
@@ -101,7 +94,8 @@
 			nonSelectedText: 'Pet Types',
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value',
-			allSelectedText: 'All Pet Types'
+			allSelectedText: 'All Pet Types',
+			nSelectedText: ' Pet Types selected'
 		});
 		$('#petBreeds').multiselect({
 			buttonWidth: '100%',
@@ -110,7 +104,9 @@
 			nonSelectedText: 'Breeds',
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value',
-			allSelectedText: 'All Breeds'
+			allSelectedText: 'All Breeds',
+			nSelectedText: ' Breeds selected',
+			disableIfEmpty: true
 		});
 		$('#petGender').multiselect({
 			buttonWidth: '100%',

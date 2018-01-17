@@ -28,7 +28,7 @@
 }
 
 .searchBox .tab-content .tab-pane{
-    margin:20px;
+    margin:25px;
 } 
 
 .searchBox .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
@@ -55,3 +55,8 @@
 .searchBox>.tab-content>.tab-pane>.row>button{
     width:100%;
 }
+
+.searchBox>.tab-content>.tab-pane>.row .btn-group>.btn-default{
+    color:#555;
+}
+
