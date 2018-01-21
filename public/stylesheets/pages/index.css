@@ -49,7 +49,6 @@
 .searchBox>.tab-content>.tab-pane>.row>.col-md-6,.searchBox>.tab-content>.tab-pane>.row>.col-md-4,.searchBox>.tab-content>.tab-pane>.row:last-child{
     padding-right: 5px;
     padding-left:5px;
-    margin-bottom:10px;
 }
 
 .searchBox>.tab-content>.tab-pane>.row>button{
@@ -61,6 +60,37 @@
 }
 
 .dropdown-menu{
-    width:100%;
+  	width:100%;
 }
 
+.flex-caption {
+    width: 100%;
+    padding: 2%;
+    left: 0;
+    bottom: 0;
+    background: white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    font-size: 14px;
+    line-height: 18px;
+  	padding-top: 6px;
+}
+
+.btn-default{
+ 	 margin-bottom:10px;
+}
+
+.flex-caption .captionName{
+ 	font-size:18px;
+  	font-weight:bold;
+}
+
+.flex-caption .captionDescription{
+ 	font-size:12px;
+  	color:#444343;
+}
+
+.flex-caption .captionBreeds{
+ 	font-size:12px;
+  	color:#777;
+    font-style: italic;
+}
