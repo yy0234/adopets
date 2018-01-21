@@ -32,7 +32,8 @@ img{
   max-width:100%;
 }
 
-.container-fluid{
+.main-content .container-fluid{
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
