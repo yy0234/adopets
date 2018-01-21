@@ -161,7 +161,7 @@
             selectAllValue: 'select-all-value',
 			allSelectedText: 'Both'
 		});
-		$('#petAge').multiselect({
+		/*$('#petAge').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
 			maxHeight: 150,
@@ -169,7 +169,7 @@
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Age'
-		});
+		});*/
 		$('#petSize').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
@@ -178,6 +178,39 @@
 			includeSelectAllOption: true,
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Size'
+		});
+        
+        var nonLinearSlider = document.getElementById('petAge');
+
+		noUiSlider.create(nonLinearSlider, {
+			connect: true,
+			behaviour: 'tap',
+			start: [ 0, 30 ],
+			range: {
+				'min': [ 0 ],
+				'1%': [ 1, 1 ],
+				'max': [ 30 ]
+			},
+			format: {
+				from: function(value) {
+						return parseInt(value);
+					},
+				to: function(value) {
+						return parseInt(value);
+					}
+			}
+
+		});
+
+		var nodes = [
+			document.getElementById('lower-value'), // 0
+			document.getElementById('upper-value')  // 1
+		];
+
+		// Display the slider value and how far the handle moved
+		// from the left edge of the slider.
+		nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
+			nodes[handle].innerHTML = values[handle];
 		});
     });
 
