@@ -12,61 +12,63 @@
 <% include ../partials/headline.ejs %>
 
 <section class="main-content">
-  <div class="container-fluid">
-      <div class="row" style="margin-left:0;margin-right:0">
-          <div class="searchBox col-md-5">
-              <ul class="nav nav-tabs" id="searchTab" role="tablist">
-                  <li class="nav-item active">
-                      <a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#basic" role="tab" aria-controls="basic">Basic Search</a>
-                  </li>
-              </ul>
-
-              <div class="tab-content">
-                  <div class="tab-pane active" id="direct" role="tabpanel">
-                          <div class="input-group">
-                              <input type="text"  class="form-control" placeholder="What pets are you looking for?"/>
-                              <span class="input-group-addon">
-                                  <i class="glyphicon glyphicon-camera" title="Search by photo"></i>
-                                  <i class="glyphicon glyphicon-search"></i>
-                              </span>
-                          </div>
-                  </div>
-                  <div class="tab-pane" id="basic" role="tabpanel">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <select id="petTypes" multiple="multiple">
-                                  <option value="birds">Birds</option>
-                                  <option value="cat">Cat</option>
-                                  <option value="dog">Dog</option>
-                                  <option value="fish">Fish</option>
-                                  <option value="reptiles">Reptiles</option>
-                                  <option value="rodents">Rodents</option>
-                              </select>
-                          </div>
-                          <div class="col-md-6">
-                              <select id="petBreeds" multiple="multiple">
-                              </select>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-4">
-                              <select id="petGender" multiple="multiple">
-                                  <option value="m">Male</option>
-                                  <option value="f">Female</option>
-                              </select>
-                          </div>
-
-                          <div class="col-md-4">
-                              <!--<select id="petAge" multiple="multiple">
-                                  <option value="baby">Baby</option>
-                                  <option value="young">Young</option>
-                                  <option value="adult">Adult</option>
-                                  <option value="senior">Senior</option>
-                              </select>-->
-                              	<div class="dropdown">
+<div class="container-fluid">
+	<div class="row">
+		<!--search Box-->
+		<div class="col-md-5">
+			<div class="searchBox">
+				<ul class="nav nav-tabs" id="searchTab" role="tablist">
+					<li class="nav-item active">
+						<a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Direct Search</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#basic" role="tab" aria-controls="basic">Basic Search</a>
+					</li>
+				</ul>
+					
+				<div class="tab-content">
+					<div class="tab-pane active" id="direct" role="tabpanel">
+							<div class="input-group">
+								<input type="text"  class="form-control" placeholder="What pets are you looking for?"/>
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-camera" title="Search by photo"></i>
+									<i class="glyphicon glyphicon-search"></i>
+								</span>
+							</div>
+					</div>
+					<div class="tab-pane" id="basic" role="tabpanel">
+						<div class="row">
+							<div class="col-md-6">
+								<select id="petTypes" multiple="multiple">
+									<option value="birds">Birds</option>
+									<option value="cat">Cat</option>
+									<option value="dog">Dog</option>
+									<option value="fish">Fish</option>
+									<option value="reptiles">Reptiles</option>
+									<option value="rodents">Rodents</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<select id="petBreeds" multiple="multiple">
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<select id="petGender" multiple="multiple">
+									<option value="m">Male</option>
+									<option value="f">Female</option>
+								</select>
+							</div>
+							<div class="col-md-4">
+								
+								<!--<select id="petAge" multiple="multiple">
+									<option value="baby">Baby</option>
+									<option value="young">Young</option>
+									<option value="adult">Adult</option>
+									<option value="senior">Senior</option>
+								</select>-->
+								<div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Age<span class="caret"></span></button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 										<div class="ageRange" style="text-align: center;">
@@ -75,24 +77,25 @@
 										</div>
 									</div>
 								</div>
-                          </div>
-                          <div class="col-md-4">
-                              <select id="petSize" multiple="multiple">
-                                  <option value="s">Small</option>
-                                  <option value="m">Medium</option>
-                                  <option value="l">Large</option>
-                                  <option value="xl">X-Large</option>
-                              </select>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <button type="button" class="btn btn-info">Find Pets</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!--flexslider-->
+							</div>
+							<div class="col-md-4">
+								<select id="petSize" multiple="multiple">
+									<option value="s">Small</option>
+									<option value="m">Medium</option>
+									<option value="l">Large</option>
+									<option value="xl">X-Large</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<button type="button" class="btn btn-info">Find Pets</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--flexslider-->
 		<div class="col-md-7">
 			<div class="innerBox">
 				<div class="flexslider">
@@ -122,7 +125,8 @@
 				</div>
 			</div>
 		</div>
-  </div>
+	</div>
+</div>
 </section>
 <% include ../partials/script.ejs %>
 <script src="/javascript/bootstrap-multiselect.js"></script>
