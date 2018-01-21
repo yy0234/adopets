@@ -132,6 +132,14 @@
 <script src="/javascript/bootstrap-multiselect.js"></script>
 <script src="/javascript/nouislider.min.js"></script>
 <script>
+	$(window).load(function() {
+		$('.flexslider').flexslider({
+			animation: "slide",
+			animationLoop: false,
+			itemWidth: 210,
+			itemMargin: 5
+		});
+	});
     $(document).ready(function() {
 		$('#searchTab a:first').tab('show');
         $('#petTypes').multiselect({
