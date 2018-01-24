@@ -112,11 +112,10 @@
 .lineOnSlide {
     border-collapse: separate;
     border-spacing: 16px 0;
-    border-spacing: 1rem 0;
     color: #123;
     display: table;
     font-family: Merriweather;
-    font-size: 5em;
+    font-size: 20px;
     line-height: .25;
     margin: 1em 0 .5em;
     table-layout: auto;
@@ -127,7 +126,7 @@
 }
 
 .lineOnSlide:before,.lineOnSlide:after{
-	border-top: 3px double #123;
+	border-top: 3px double lightblue;
   	content: '';
   	display: table-cell;
   	width: 50%;
