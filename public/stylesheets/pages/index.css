@@ -106,7 +106,9 @@
 }
 
 .container-fluid .innerBox{
-    padding: 15px;
+    padding-left: 15px;
+  	padding-right: 15px;
+  	padding-bottom: 15px;
 }
 
 .lineOnSlide {
@@ -131,5 +133,4 @@
   	display: table-cell;
   	width: 50%;
   	border-top-color: CornflowerBlue;
-  	border-top-style: groove;
 }
