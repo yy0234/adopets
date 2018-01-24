@@ -130,5 +130,6 @@
   	content: '';
   	display: table-cell;
   	width: 50%;
-  	border-top-width: 6px;
+  	border-top-color: CornflowerBlue;
+  	border-top-style: groove;
 }
