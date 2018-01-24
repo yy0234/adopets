@@ -100,3 +100,7 @@
     padding: 5px;
     border-radius: 5px;
 }
+
+.container-fluid .searchBox, .container-fluid .innerBox{
+	margin-top:20px;
+}
