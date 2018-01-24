@@ -106,7 +106,5 @@
 }
 
 .container-fluid .innerBox{
-  	border: 2px dashed lightblue;
     padding: 15px;
-    border-radius: 10px;
 }
