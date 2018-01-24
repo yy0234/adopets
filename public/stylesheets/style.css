@@ -10,7 +10,7 @@ body {
 .banner-text{
   font-family: 'Kaushan Script', cursive;
   color:white;
-  font-size: calc(14px + 6.0vw);
+  font-size: calc(14px + 6.0vw)!important;
   font-weight: bold;
   -webkit-margin-before: 1.5em;
   text-align: center;
