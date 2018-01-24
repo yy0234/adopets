@@ -123,7 +123,7 @@
 }
 
 .lineOnSlide:before,.lineOnSlide:after{
-	border-top: 3px double lightblue;
+	border-top: 3px double CornflowerBlue;
   	content: '';
   	display: table-cell;
   	width: 50%;
