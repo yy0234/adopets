@@ -104,3 +104,9 @@
 .container-fluid .searchBox, .container-fluid .innerBox{
 	margin-top:20px;
 }
+
+.container-fluid .innerBox{
+  	border: 2px dashed lightblue;
+    padding: 20px;
+    border-radius: 10px;
+}
