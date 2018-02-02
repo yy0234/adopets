@@ -145,3 +145,11 @@
 .multiselect-container li a{
     color:#3c3b3b;
 }
+
+.directButton>div{
+    width:100%;
+}
+
+.directButton button{
+    width:95%;
+}
