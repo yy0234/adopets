@@ -291,15 +291,22 @@
 <script src="/javascript/bootstrap-multiselect.js"></script>
 <script src="/javascript/nouislider.min.js"></script>
 <script>
-	$(window).load(function() {
+	/*$(window).load(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
 			animationLoop: false,
             itemWidth: 170,
 			itemMargin: 10
 		});
-	});
+	});*/
     $(document).ready(function() {
+		$('.flexslider').flexslider({
+			animation: "slide",
+			animationLoop: false,
+            itemWidth: 170,
+			itemMargin: 10
+		});
+		
 		$('#searchTab a:first').tab('show');
         $('#petTypes').multiselect({
 			buttonWidth: '100%',
