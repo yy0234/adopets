@@ -5,16 +5,22 @@
 
 .input-group .input-group-addon{
     background-color: #f0f4f5;
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-radius: .25rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 10px;
 } 
 
-.input-group .glyphicon{
+.input-group .fas{
     font-size: 110%;
     margin-right: 4px;
     margin-left: 4px;
     color: gray;
 }
 
-.input-group .glyphicon:hover{
+.input-group .fas:hover{
     color: dodgerblue;
 }
 
@@ -134,4 +140,29 @@
   	border: 2px dashed cornflowerblue;
     border-radius: 10px;
     padding: 10px;
+}
+
+.multiselect-container li a{
+    color:#3c3b3b;
+}
+
+.directButton>div{
+    width:100%;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.directButton>div>div>div{
+    width:34%;
+}
+
+.directButton>div>div{
+    margin:5px;
+}
+
+
+.directButton button{
+    width:95%;
+    margin-top: 8px;
+    border-radius: 2px;
 }
