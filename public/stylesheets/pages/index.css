@@ -111,30 +111,35 @@
 	margin-top:20px;
 }
 
-.lineOnSlide {
-    border-collapse: separate;
-    border-spacing: 16px 0;
-    color: darkslateblue;
-    display: table;
-    font-family: Merriweather;
-    font-size: 20px;
-    line-height: .25;
-    margin: 1em 0 .5em;
-    table-layout: auto;
+h2 {
+    font: 33px sans-serif;
+    margin-top: 30px;
     text-align: center;
-    text-shadow: .0625em .0625em 0 rgba(0, 0, 0, .2);
-    white-space: nowrap;
-    width: 100%;
-  	margin-bottom: 15px;
-  	font-family: 'Macondo', cursive;
+    text-transform: uppercase;
 }
 
-.lineOnSlide:before,.lineOnSlide:after{
-	border-top: 3px double CornflowerBlue;
-  	content: '';
-  	display: table-cell;
-  	width: 50%;
+h2.lineOnSide {
+    position: relative;
+    z-index: 1;
 }
+    
+h2.lineOnSide:before {
+    border-top: 2px solid #dfdfdf;
+    content:"";
+    margin: 0 auto; /* this centers the line to the full width specified */
+    position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    top: 50%; left: 0; right: 0; bottom: 0;
+    width: 95%;
+    z-index: -1;
+}
+
+h2.lineOnSide span { 
+    /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
+    background: #fff; 
+    padding: 0 15px; 
+}
+
+
 
 .container-fluid .innerBox .flexslider {
   	/*border: 2px dashed cornflowerblue;*/
