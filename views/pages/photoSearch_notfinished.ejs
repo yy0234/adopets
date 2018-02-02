@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<title>You own title</title>
+</head>
+
+<body>
+<% include ../partials/headline.ejs %>
+
+
+<div class="container">
+    <form id="frmUploader" enctype="multipart/form-data" action="api/Upload/" method="post"> 
+		<input type="file" name="imgUploader" accept="image/*" onchange="loadFile(event)"> 
+		<img id="output"/>
+		<input type="submit" name="submit" id="btnSubmit" value="Upload" /> 
+    </form>
+</div>
+
+
+
+<% include ../partials/script.ejs %>
+
+<script src="/javascript/jquery.form.min.js"></script> 
+
+<script>
+	    //preview the photo
+		  var loadFile = function(event) {
+			var output = document.getElementById('output');
+			output.src = URL.createObjectURL(event.target.files[0]);
+		  };
+		  
+		  //after clicking upload
+        $(document).ready(function () { 
+            var options = { 
+                beforeSubmit: showRequest,  // pre-submit callback 
+                success: showResponse  // post-submit callback 
+            }; 
+          
+            $('#frmUploader').submit(function () { 
+                $(this).ajaxSubmit(options); 
+                // always return false to prevent standard browser submit and page navigation
+                return false; 
+            }); 
+			
+        }); 
+  
+        // pre-submit callback 
+        function showRequest(formData, jqForm, options) { 
+            alert('Uploading is starting.'); 
+            return true; 
+        } 
+  
+        // post-submit callback 
+        function showResponse(responseText, statusText, xhr, $form) { 
+            alert('status: ' + statusText + '\n\nresponseText: \n' + responseText );
+			
+			//var fs = require('fs');
+			//var imageFile = fs.readFileSync(output.src);
+			//var encoded = new Buffer(imageFile).toString('base64');
+			
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"source": { "imageUri": "http://attach.getjetso.com/forum/attachments/month_1403/20140321_1b11924d44334052bba1u0U5Wm.jpg"}}}]}));
+			//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
+			xhr.onload = function() {
+				alert(xhr.responseText);
+			}
+		}
+		
+		/*function detectLabels(fileName) {
+
+		  const vision = require('@google-cloud/vision');
+		  const client = new vision.ImageAnnotatorClient();
+		  var result = 'testing';
+		  
+		  client
+			.labelDetection(fileName)
+			.then(results => {
+			  const labels = results[0].labelAnnotations;
+			  //console.log('Labels:');
+			  labels.forEach(label => result = result + label.description);
+			  return result;
+			})
+			.catch(err => {
+			  console.error('ERROR:', err);
+			});
+
+		}*/
+</script>
+
+</body>
+</html>

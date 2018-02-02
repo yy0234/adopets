@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 var pg = require('pg');
 
+var multer = require('multer');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -84,6 +88,31 @@ app.get("/getUserData", function (request, response) {
   response.redirect('/');
 });*/
 
+//upload & search photo
+var Storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, "./public/images");
+    },
+    filename: function (req, file, callback) {
+        callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    }
+});
+
+var upload = multer({ storage: Storage }).single("imgUploader");
+
+app.post("/api/Upload", function (req, res) { 
+    upload(req, res, function (err) { 
+        if (err) { 
+            return res.end("Something went wrong!"); 
+        }
+		
+		//var fs = require('fs');
+		//var imageFile = fs.readFileSync(output.src);
+		//var encoded = new Buffer(imageFile).toString('base64');
+		res.send(res.req.file.filename);
+    }); 
+});
+//upload &search photo done
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
