@@ -5,6 +5,12 @@
 
 .input-group .input-group-addon{
     background-color: #f0f4f5;
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-radius: .25rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 10px;
 } 
 
 .input-group .fas{
