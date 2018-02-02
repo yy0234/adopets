@@ -7,14 +7,14 @@
     background-color: #f0f4f5;
 } 
 
-.input-group .glyphicon{
+.input-group .fas{
     font-size: 110%;
     margin-right: 4px;
     margin-left: 4px;
     color: gray;
 }
 
-.input-group .glyphicon:hover{
+.input-group .fas:hover{
     color: dodgerblue;
 }
 
