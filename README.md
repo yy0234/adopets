@@ -13,6 +13,9 @@ $ npm install
 $ npm start
 ```
 
+## Please add the remote server
+git remote add heroku https://git.heroku.com/adopets.git
+
 ## The full step of upload your changes
 **pls follow
 ```
