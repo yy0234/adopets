@@ -304,7 +304,8 @@
 			animation: "slide",
 			animationLoop: false,
             itemWidth: 158,
-			itemMargin: 10
+			itemMargin: 10,
+			start: function(){ $(".flexslider li").css("width", "158"); }
 		});
 
 		$('#searchTab a:first').tab('show');
