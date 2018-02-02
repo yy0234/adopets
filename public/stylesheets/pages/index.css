@@ -137,9 +137,9 @@
 }
 
 .container-fluid .innerBox .flexslider {
-  	border: 2px dashed cornflowerblue;
-    border-radius: 10px;
-    padding: 10px;
+  	/*border: 2px dashed cornflowerblue;*/
+    /*border-radius: 10px;*/
+    /*padding: 10px;*/
 }
 
 .multiselect-container li a{
