@@ -148,6 +148,8 @@
 
 .directButton>div{
     width:100%;
+    padding-top: 15px;
+    text-align: center;
 }
 
 .directButton>div>div>div{
@@ -161,4 +163,6 @@
 
 .directButton button{
     width:95%;
+    margin-top: 8px;
+    border-radius: 2px;
 }
