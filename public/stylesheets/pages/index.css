@@ -150,6 +150,15 @@
     width:100%;
 }
 
+.directButton>div>div>div{
+    width:34%;
+}
+
+.directButton>div>div{
+    margin:5px;
+}
+
+
 .directButton button{
     width:95%;
 }
