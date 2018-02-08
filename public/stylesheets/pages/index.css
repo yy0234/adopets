@@ -162,11 +162,13 @@
 }
 
 .container-fluid .newArrival{
-    margin:40px;
+    margin:30px;
 }
 
 .container-fluid .newArrival .card-deck .card{
     margin-top:35px;
+    margin-right: 8px !important;
+    margin-left: 8px !important;
 }
 
 .container-fluid .newArrival .card-deck .card img{
