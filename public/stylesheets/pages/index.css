@@ -136,12 +136,6 @@
   	width: 50%;
 }
 
-.container-fluid .innerBox .flexslider {
-  	/*border: 2px dashed cornflowerblue;*/
-    /*border-radius: 10px;*/
-    /*padding: 10px;*/
-}
-
 .multiselect-container li a{
     color:#3c3b3b;
 }
@@ -165,4 +159,12 @@
     width:95%;
     margin-top: 8px;
     border-radius: 2px;
+}
+
+.container-fluid .newArrival{
+    margin:15px;
+}
+
+.container-fluid .newArrival .card-deck{
+    margin-top:5px;
 }
