@@ -162,9 +162,14 @@
 }
 
 .container-fluid .newArrival{
-    margin:60px;
+    margin:50px;
 }
 
 .container-fluid .newArrival .card-deck .card{
-    margin-top:30px;
+    margin-top:35px;
+}
+
+.container-fluid .newArrival .card-deck .card img{
+padding: 10px;
+padding-bottom: 0;
 }
