@@ -283,7 +283,7 @@
             }
             
             // if large move animate in FF, safari and opera for smoother transition
-            if ( !$.browser.msie && ( Math.abs( oldMoveIt - moveIt ) > 100 || Math.abs( oldMoveItX - moveItX ) > 100 ) ) $box.animate(theCss, 30);
+            if ( ( Math.abs( oldMoveIt - moveIt ) > 100 || Math.abs( oldMoveItX - moveItX ) > 100 ) ) $box.animate(theCss, 30);
             else $box.css(theCss);
             
             oldMoveIt = moveIt;
