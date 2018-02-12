@@ -176,10 +176,34 @@ padding: 8px;
 padding-bottom: 0;
 }
 
-.missionSection i{
+.missionSection .fa-searchengin{
+    color: gold;
+}
+
+.missionSection .fa-shopping-cart{
+    color: greenyellow;
+}
+
+.missionSection .fa-comments{
+    color: chocolate;
+}
+
+.missionSection .fa-language{
     color: cornflowerblue;
 }
 
-.missionSection i:hover{
+.missionSection .fa-searchengin:hover{
+    color: #ffd7008a;
+}
+
+.missionSection .fa-shopping-cart:hover{
+    color: #adff2fa3;
+}
+
+.missionSection .fa-comments:hover{
+    color: #d2691e82;
+}
+
+.missionSection .fa-language:hover{
     color: #6495ed78;
 }
