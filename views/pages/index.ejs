@@ -389,6 +389,7 @@
 <% include ../partials/script.ejs %>
 <script src="/javascript/bootstrap-multiselect.js"></script>
 <script src="/javascript/nouislider.min.js"></script>
+<script src="/javascript/jquery.scrolling-parallax.js"></script>
 <script>
 	/*$(window).load(function() {
 		$('.flexslider').flexslider({
@@ -399,6 +400,7 @@
 		});
 	});*/
     $(document).ready(function() {
+		$(body).scrollingParallax('/images/background.png');
 		$('.flexslider').flexslider({
 			animation: "slide",
 			animationLoop: false,
