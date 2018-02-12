@@ -205,3 +205,12 @@ padding-bottom: 0;
 .missionSection .fa-language:hover{
     color: #6495ed78;
 }
+
+body{
+    background: url(/images/background.png);
+    background-size: 40%;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
+}
