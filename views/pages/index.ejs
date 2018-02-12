@@ -149,7 +149,7 @@
 	<div class="row" style="margin-top: 20px;">
 		<div class="innerBox">
 			<div class="lineOnSlide">You May Also Interested</div>
-			<div class="flexslider">
+			<div class="flexslider" style="overflow:hidden">
 				<ul class="slides">
 					<li>
 						<img src="/images/dog1.jpg" />
@@ -546,9 +546,9 @@
 		$('.flexslider').flexslider({
 			animation: "slide",
 			animationLoop: false,
-            itemWidth: 200,
+            itemWidth: 230,
 			itemMargin: 10,
-			start: function(){ $(".flexslider li").css("width", "200"); }
+			start: function(){ $(".flexslider li").css("width", "230"); }
 		});
 
 		$('#searchTab a:first').tab('show');
