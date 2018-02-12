@@ -114,26 +114,24 @@
 .lineOnSlide {
     border-collapse: separate;
     border-spacing: 16px 0;
-    color: darkslateblue;
+    color: #475a7b;
     display: table;
-    font-family: Merriweather;
-    font-size: 20px;
+    font-family: 'Amaranth', sans-serif;
+    font-size: 22px;
     line-height: .25;
     margin: 1em 0 .5em;
     table-layout: auto;
     text-align: center;
-    text-shadow: .0625em .0625em 0 rgba(0, 0, 0, .2);
     white-space: nowrap;
     width: 100%;
-  	margin-bottom: 15px;
-  	font-family: 'Macondo', cursive;
+    margin-bottom: 30px;
 }
 
 .lineOnSlide:before,.lineOnSlide:after{
-	border-top: 3px double CornflowerBlue;
+	border-top: 3px solid #e0dede;
   	content: '';
   	display: table-cell;
-  	width: 50%;
+  	width: 38%;
 }
 
 .multiselect-container li a{
