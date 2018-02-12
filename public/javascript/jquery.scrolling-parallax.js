@@ -83,7 +83,7 @@
         options.parallaxWidth = options.parallaxWidth || false;
         
                 
-        var isIE6 = $.browser.msie && $.browser.version < 7 ? true : false;
+        var isIE6 = false;
         
         if ( options.disableIE6 && isIE6 ) return false;
         
