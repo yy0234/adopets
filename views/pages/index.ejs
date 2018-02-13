@@ -97,7 +97,7 @@
 									<option value="senior">Senior</option>
 								</select>-->
 								<div class="dropdown">
-									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Age<span class="caret"></span></button>
+									<button id="petAgeTextHolder" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Age<span class="caret"></span></button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 										<div class="ageRange" style="text-align: center;">
 											<div id="petAge" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;"></div>
@@ -492,6 +492,7 @@
 		// from the left edge of the slider.
 		nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
 			nodes[handle].innerHTML = values[handle];
+			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value')+" to "+ document.getElementById('upper-value');
 		});
     });
 
