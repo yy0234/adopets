@@ -71,14 +71,14 @@
 
 .flex-caption {
     width: 100%;
-    padding: 2%;
+    padding: 3%;
     left: 0;
     bottom: 0;
     background: white;
     text-shadow: 0 -1px 0 rgba(0,0,0,.3);
     font-size: 14px;
-    line-height: 18px;
-  	padding-top: 6px;
+    line-height: 20px;
+  	padding-top: 8px;
 }
 
 .btn-default{
@@ -91,12 +91,12 @@
 }
 
 .flex-caption .captionDescription{
- 	font-size:12px;
+ 	font-size:13px;
   	color:#444343;
 }
 
 .flex-caption .captionBreeds{
- 	font-size:12px;
+ 	font-size:13px;
   	color:#777;
     font-style: italic;
 }
@@ -114,32 +114,24 @@
 .lineOnSlide {
     border-collapse: separate;
     border-spacing: 16px 0;
-    color: darkslateblue;
+    color: #475a7b;
     display: table;
-    font-family: Merriweather;
-    font-size: 20px;
+    font-family: 'Amaranth', sans-serif;
+    font-size: 22px;
     line-height: .25;
     margin: 1em 0 .5em;
     table-layout: auto;
     text-align: center;
-    text-shadow: .0625em .0625em 0 rgba(0, 0, 0, .2);
     white-space: nowrap;
     width: 100%;
-  	margin-bottom: 15px;
-  	font-family: 'Macondo', cursive;
+    margin-bottom: 30px;
 }
 
 .lineOnSlide:before,.lineOnSlide:after{
-	border-top: 3px double CornflowerBlue;
+	border-top: 3px solid #e0dede;
   	content: '';
   	display: table-cell;
-  	width: 50%;
-}
-
-.container-fluid .innerBox .flexslider {
-  	/*border: 2px dashed cornflowerblue;*/
-    /*border-radius: 10px;*/
-    /*padding: 10px;*/
+  	width: 38%;
 }
 
 .multiselect-container li a{
@@ -165,4 +157,60 @@
     width:95%;
     margin-top: 8px;
     border-radius: 2px;
+}
+
+.container-fluid .newArrival{
+    margin:30px;
+}
+
+.container-fluid .newArrival .card-deck .card{
+    margin-top:35px;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+}
+
+.container-fluid .newArrival .card-deck .card img{
+padding: 8px;
+padding-bottom: 0;
+}
+
+.missionSection .fa-searchengin{
+    color: gold;
+}
+
+.missionSection .fa-shopping-cart{
+    color: greenyellow;
+}
+
+.missionSection .fa-comments{
+    color: chocolate;
+}
+
+.missionSection .fa-language{
+    color: cornflowerblue;
+}
+
+.missionSection .fa-searchengin:hover{
+    color: #ffd7008a;
+}
+
+.missionSection .fa-shopping-cart:hover{
+    color: #adff2fa3;
+}
+
+.missionSection .fa-comments:hover{
+    color: #d2691e82;
+}
+
+.missionSection .fa-language:hover{
+    color: #6495ed78;
+}
+
+body{
+    background: url(/images/background.png);
+    background-size: 40%;
+    background-position: 25% 25%;
+    background-attachment: fixed;
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
 }

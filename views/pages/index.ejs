@@ -6,14 +6,14 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Macondo|Philosopher|Amaranth" rel="stylesheet">
 	<title>Adopets Web</title>
 </head>
 
 <body>
 <% include ../partials/headline.ejs %>
 
-<section class="main-content">
+<section class="main-content" style="background-color: white;">
 <div class="container-fluid">
 	<div class="row" style="margin-left:10px;margin-right:10px;">
 		<!--search Box-->
@@ -97,7 +97,7 @@
 									<option value="senior">Senior</option>
 								</select>-->
 								<div class="dropdown">
-									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Age<span class="caret"></span></button>
+									<button id="petAgeTextHolder" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Age<span class="caret"></span></button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 										<div class="ageRange" style="text-align: center;">
 											<div id="petAge" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;"></div>
@@ -122,169 +122,268 @@
 				</div>
 			</div>
 		</div>
-		
-		<!--flexslider-->
-		<div class="col-md-7">
-			<div class="innerBox">
-            	<div class="lineOnSlide">You May Also Interested</div>
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<img src="/images/dog1.jpg" />
-                            <div class="flex-caption">
-                                <div style="display:table">
-                                    <div style="display:table-row">
-                                        <div class="captionName" style="display:table-cell">Name</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">Female</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-                                    </div>
-                                </div>
-                            </div>
-						</li>
-						<li>
-							<img src="/images/dog2.jpg" />
-                            <div class="flex-caption">
-                                <div style="display:table">
-                                    <div style="display:table-row">
-                                        <div class="captionName" style="display:table-cell">Name</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">Female</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-                                    </div>
-                                </div>
-                            </div>
-						</li>
-						<li>
-							<img src="/images/dog3.jpg" />
-                            <div class="flex-caption">
-                                <div style="display:table">
-                                    <div style="display:table-row">
-                                        <div class="captionName" style="display:table-cell">Name</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">Female</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-                                    </div>
-                                </div>
-                            </div>
-						</li>
-						<li>
-							<img src="/images/cat1.jpg" />
-                            <div class="flex-caption">
-                                <div style="display:table">
-                                    <div style="display:table-row">
-                                        <div class="captionName" style="display:table-cell">Name</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">Female</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-                                    </div>
-                                </div>
-                            </div>
-						</li>
-						<li>
-							<img src="/images/cat2.png" />
-                            <div class="flex-caption">
-                                <div style="display:table">
-                                    <div style="display:table-row">
-                                        <div class="captionName" style="display:table-cell">Name</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">Female</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-                                    </div>
-                                </div>
-                            </div>
-						</li>
-						<li>
-							<img src="/images/cat3.jpg" />
-                            <div class="flex-caption">
-                                <div style="display:table">
-                                    <div style="display:table-row">
-                                        <div class="captionName" style="display:table-cell">Name</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-                                    </div>
-                                     <div style="display:table-row">
-                                        <div class="captionDescription" style="display:table-cell">Female</div>
-                                    </div>
-                                    <div style="display:table-row">
-                                        <div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-                                    </div>
-                                </div>
-                            </div>
-						</li>
-					</ul>
+
+		<div class="col-md-7" style="margin-top: 30px; text-align:center;">
+			<div class="missionSection">
+				<div>
+					<h4 style="font-family: 'Amaranth', sans-serif;"> -  Our Mission  - </h4>
+					<div>
+						<div style="padding:25px; padding-top:10px;">Adopet Web aims to provide pet adoption service
+								with comprehensive features that is convenient for all the
+								individuals that intend to adopt pets. It's include:</div>
+
+						<div class="row" style="justify-content: center;">
+							<div class="col-md-2" style="padding-top: 10px;"><i class="fab fa-searchengin" style="font-size:55px;"></i><p style="font-size:15px;color: gray;font-family: 'Amaranth', sans-serif;padding-top: 10px;">Adoption</p></div>
+							<div class="col-md-2" style="padding-top: 10px;"><i class="fas fa-shopping-cart" style="font-size:55px;"></i><p style="font-size:15px;color: gray;font-family: 'Amaranth', sans-serif;padding-top: 10px;">Transaction</p></div>
+							<div class="col-md-2" style="padding-top: 10px;"><i class="fas fa-comments" style="font-size:55px;"></i><p style="font-size:15px;color: gray;font-family: 'Amaranth', sans-serif;padding-top: 10px;">Forum</p></div>
+							<div class="col-md-2" style="padding-top: 10px;"><i class="fas fa-language" style="font-size:55px;"></i><p style="font-size:15px;color: gray;font-family: 'Amaranth', sans-serif;padding-top: 10px;">Message</p></div>
+						</div>	
+					
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-	<!--test-->
-	<div class="card-deck">
-			<div class="card">
-			  <img class="card-img-top" src="..." alt="Card image cap">
-			  <div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			  </div>
-			  <div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
-			  </div>
+	<!--flexslider-->
+	<div class="suggestion" style="margin-top: 30px;">
+		<div class="innerBox" style="padding: 30px;">
+			<div class="lineOnSlide">You May Also Interested</div>
+			<div class="flexslider carousel" style="overflow:hidden">
+				<ul class="slides">
+					<li>
+						<img src="/images/dog1.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/dog2.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/dog3.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/cat1.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/cat2.png" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/cat3.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/dog1.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/dog2.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/dog3.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/cat1.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/cat2.png" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<img src="/images/cat3.jpg" />
+						<div class="flex-caption">
+							<div style="display:table">
+								<div style="display:table-row">
+									<div class="captionName" style="display:table-cell">Name</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+								</div>
+									<div style="display:table-row">
+									<div class="captionDescription" style="display:table-cell">Female</div>
+								</div>
+								<div style="display:table-row">
+									<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<div class="card">
-			  <img class="card-img-top" src="..." alt="Card image cap">
-			  <div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-			  </div>
-			  <div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
-			  </div>
-			</div>
-			<div class="card">
-			  <img class="card-img-top" src="..." alt="Card image cap">
-			  <div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-			  </div>
-			  <div class="card-footer">
-				<small class="text-muted">Last updated 3 mins ago</small>
-			  </div>
-			</div>
-		  </div>
-
-
+			<div style="float:right;"><a href="/search">more >></a></div>
+		</div>
+	</div>
 </div>
 </section>
 <% include ../partials/script.ejs %>
@@ -299,13 +398,16 @@
 			itemMargin: 10
 		});
 	});*/
+	$(window).bind("resize", function(){
+    	$('.flexslider').flexslider(0);
+	});
     $(document).ready(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
 			animationLoop: false,
-            itemWidth: 158,
-			itemMargin: 10,
-			start: function(){ $(".flexslider li").css("width", "158"); }
+            itemWidth: 200,
+			itemMargin: 15,
+			start: function(){ $(".flexslider li").css("width", "200"); }
 		});
 
 		$('#searchTab a:first').tab('show');
@@ -391,6 +493,12 @@
 		nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
 			nodes[handle].innerHTML = values[handle];
 		});
+
+		nonLinearSlider.noUiSlider.on('end', function () {
+			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
+		});
+
+		
     });
 
 </script>
