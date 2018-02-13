@@ -214,3 +214,20 @@ body{
     background-repeat-x: repeat;
     background-repeat-y: no-repeat;
 }
+
+.slides .overlay{
+    display: block;
+    content: " ";
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(//i.imgur.com/xMS5K4O.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60px;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+}
+
+.slides li:hover img,.slides li:hover .flex-caption{
+        opacity:0.5;
+}
