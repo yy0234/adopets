@@ -1,64 +1,9 @@
-#map {
-    height: 100%;
-  }
-  /* Optional: Makes the sample page fill the window. */
-  html, body {
-    height: 100%;
+html, body, #map {
+    width: 100%;
+    height: 80%;
     margin: 0;
     padding: 0;
-  }
-
-
-.searchBox .nav-tabs{
-    border-bottom: 0px;
 }
-
-.searchBox .tab-content{
-    border:2px solid lightblue;
-    border-radius: 0px 0px 5px 5px;
+#map {
+    position: relative;
 }
-
-.searchBox .tab-content .tab-pane{
-    margin:25px;
-} 
-
-.searchBox .nav-tabs>li>a.active {
-    border: 2px solid lightblue;
-    border-bottom-color: transparent;
-    font-weight: bold;
-    color: cornflowerblue;
-}
-
-.searchBox>.tab-content>.tab-pane>.row{
-    margin-left:-15px;
-}
-
-.searchBox>.tab-content>.tab-pane>.row{
-    text-align: center;
-}
-
-.searchBox>.tab-content>.tab-pane>.row>.col-md-6,.searchBox>.tab-content>.tab-pane>.row>.col-md-4,.searchBox>.tab-content>.tab-pane>.row:last-child{
-    padding-right: 5px;
-    padding-left:5px;
-}
-
-.searchBox>.tab-content>.tab-pane>.row>button{
-    width:100%;
-}
-
-
-.dropdown-menu{
-  	width:100%;
-}
-
-
-.container-fluid .searchBox, .container-fluid .innerBox{
-	margin-top:20px;
-}
-
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-

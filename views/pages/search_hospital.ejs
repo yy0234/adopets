@@ -3,97 +3,88 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/search_hospital.css" />
-	<title>You own title</title>
+	<title>Pet Service</title>
 </head>
 
 <body>
 <% include ../partials/headline.ejs %>
-<div class="container-fluid">
-    <div class="row" style="margin-left:10px;margin-right:10px;">
-      <!--search Box-->
-      <div class="col-md-5">
-        <div class="searchBox">
-          <ul class="nav nav-tabs" id="searchTab" role="tablist">
-            <li class="nav-item active">
-              <a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Pet Service</a>
-            </li>
-          </ul>
-            
-          <div class="tab-content">
-            <div class="tab-pane active" id="direct" role="tabpanel">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h6>Service:</h6>
-                      </div>
-                    <div class="col-md-4 text-left">
-                      <input type="radio" name="petService" id="grooming" value="grooming" checked="checked" />Grooming
-                    </div>
-                    <div class="col-md-5 text-left">
-                      <input type="radio" name="petService" id="hospital" value="hospital" />Hospital
-                    </div>
-                </div>
-              <div class="row">
-                <div class="col-md-3">
-                  <h6>District:</h6>
-                </div>
-                <div class="col-md-9 text-left" >
-                  <select id="district">
-                    <option value="none">Choose the district</option>
-                    <optgroup label="Hong Kong Island">
-                      <option value="cw">Central and Western</option>
-                      <option value="eastern">Eastern</option>
-                      <option value="southern">Southern</option>
-                      <option value="wc">Wan Chai</option>
-                    </optgroup>
-                    <optgroup label="Kowloon">
-                      <option value="ssp">Sham Shui Po</option>
-                      <option value="kc">Kowloon City</option>
-                      <option value="ktong">Kwun Tong</option>
-                      <option value="wts">Wong Tai Sin</option>
-                      <option value="ytm">Yau Tsim Mong</option>
-                    </optgroup>
-                    <optgroup label="New Territories">
-                      <option value="islands">Islands</option>
-                      <option value="ktsing">Kwai Tsing</option>
-                      <option value="north">North</option>
-                      <option value="sk">Sai Kung</option>
-                      <option value="st">Sha Tin</option>
-                      <option value="tp">Tai Po</option>
-                      <option value="tw">Tsuen Wan</option>
-                      <option value="tm">Tuen Mun</option>
-                      <option value="yl">Yuen Long</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </div>
 
-                <div class="col-md-12 text-right">
-                    <button type="button" class="btn btn-info" id="submit">Find now!</button>
-                </div>
-              </div>
+    
+<div id="map"></div>
 
-            
-            </div>
-          </div>
-        </div>
+<br>
 
-        <div class="col-md-7"><div id="map" style="width:400px;height:400px;"></div>
+<div class="container">
+  <div class="row">
 
+    <div class="col-md-3 bg-primary text-white" >
+      <h6>Search for Pet Service:</h6>
+    </div>
+
+    <div class="col-md-3 bg-primary text-white" >
+      <div class="search_service">
+          <input type="radio" name="petService" id="grooming" value="grooming" checked="checked" />Grooming
+          <input type="radio" name="petService" id="hospital" value="hospital" />Hospital
+      </div>
+     </div>
+
+     <div class="col-md-3 bg-primary text-white" >
+      <div class="search_location">
+        <select id="district">
+            <option value="none">Location</option>
+            <optgroup label="Hong Kong Island">
+              <option value="cw">Central and Western</option>
+              <option value="eastern">Eastern</option>
+              <option value="southern">Southern</option>
+              <option value="wc">Wan Chai</option>
+            </optgroup>
+            <optgroup label="Kowloon">
+              <option value="ssp">Sham Shui Po</option>
+              <option value="kc">Kowloon City</option>
+              <option value="ktong">Kwun Tong</option>
+              <option value="wts">Wong Tai Sin</option>
+              <option value="ytm">Yau Tsim Mong</option>
+            </optgroup>
+            <optgroup label="New Territories">
+              <option value="islands">Islands</option>
+              <option value="ktsing">Kwai Tsing</option>
+              <option value="north">North</option>
+              <option value="sk">Sai Kung</option>
+              <option value="st">Sha Tin</option>
+              <option value="tp">Tai Po</option>
+              <option value="tw">Tsuen Wan</option>
+              <option value="tm">Tuen Mun</option>
+              <option value="yl">Yuen Long</option>
+            </optgroup>
+          </select>
       </div>
     </div>
-    <div class="row" style="margin-left:10px;margin-right:10px;overflow-x:auto;">
-        <table id="serviceTable" border="1">
-        </table>
+
+    <div class="col-md-3" >
+      <div class="search_submit">
+          <button type="button" class="btn btn-default btn-block bg-success text-white" id="submit">Find now!</button>
+     </div>
     </div>
-</div>    
+  </div>
 
-
-
-
+  <div class="row">
+    <table id="serviceTable" class="table order-list">
+        <thead>
+            <tr>
+                <td>Organization</td>
+                <td>Address</td>
+                <td>Phone</td>
+                <td>Website</td>
+            </tr>
+        </thead>
+    </table>
+  </div>
+</div>
 
 <% include ../partials/script.ejs %>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4&libraries=places" async defer></script>
+<script defer src = "https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script>
 
 var map;
@@ -147,7 +138,7 @@ function initMap() {
   //When user click 'find now'
   document.getElementById('submit').addEventListener('click', function() {
     //clear the table
-    deleteRow(markers.length+1);
+    deleteRow(markers.length);
 
     //clear the previous marker 
     for (var i = 0; i < markers.length; i++) {
@@ -163,8 +154,6 @@ function initMap() {
 //action to create marker
 function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //create a row for the company info
-      createRow(-1,'Company name','Address','Telephone','Website');
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
     }
@@ -201,7 +190,7 @@ function createMarker(place) {
       markers.push(marker);
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent('<div><strong>Company name: ' + place.name + '</strong><br>' +
+        infowindow.setContent('<div><strong>Organization: ' + place.name + '</strong><br>' +
           '<b>Address: </b> ' +  place.formatted_address + '<br>' +
           '<b>Telephone: </b> ' + place.formatted_phone_number + '<br>' +
           '<b>Website: </b> ' + place.website + '<br>' +
@@ -258,20 +247,20 @@ function createRow(size,name,address,number,website) {
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     cell1.innerHTML = name;
-    cell2.innerHTML = address;
+    cell2.innerHTML = "<i class='fas fa-map-marker-alt'></i>" +address;
     cell3.innerHTML = number + '   ';
     cell4.innerHTML = website;
-    if (size==-1)
-    {
-      row.bgColor="4CAF50";
-      row.style.color="white";
-    }
+
+    cell1.onclick = function() {google.maps.event.trigger(markers[size], 'click')};
+    cell2.onclick = function() {google.maps.event.trigger(markers[size], 'click')};
+    cell4.onclick = function() {window.open(website)};
 }
+
 
 //clear all rows in the table
 function deleteRow(size) {
   for (var i = 0; i < size; i++) {
-    document.getElementById("serviceTable").deleteRow(0);
+    document.getElementById("serviceTable").deleteRow(1);
   }
 }
 
