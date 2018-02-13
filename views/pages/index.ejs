@@ -103,7 +103,6 @@
 											<div id="petAge" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;"></div>
 											<div style="font-size: 14px;">From <span id='lower-value'></span> to <span id='upper-value'></span> years-old</div>
 										</div>
-										<div style="float:right"><button type="button" class="btn btn-primary" onclick="petAgeTextHolderChange()">Confirm</button></div>
 									</div>
 								</div>
 							</div>
@@ -399,11 +398,6 @@
 			itemMargin: 10
 		});
 	});*/
-
-	function petAgeTextHolderChange() {
-    	document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
-	}
-
 	$(window).bind("resize", function(){
     	$('.flexslider').flexslider(0);
 	});
@@ -499,6 +493,11 @@
 		nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
 			nodes[handle].innerHTML = values[handle];
 		});
+
+		nonLinearSlider.noUiSlider.on('end', function () {
+			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
+		});
+
 		
     });
 
