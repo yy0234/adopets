@@ -10,31 +10,74 @@
 <% include ../partials/headline.ejs %>
 <!-- Form Module-->
 <section class="main-content">
-	<div class="container-fluid">
-		<div class="module form-module">
-			<div class="toggle" style="display:block;">Sign Up Now</div>
-			<div class="toggle" style="display:none;">Sign In Now</div>
-			<div class="form">
-				<h2>Login to your account</h2>
-				<form id="login_form">
-					<input type="text" placeholder="Username"  id="login_username"/>
-					<input type="password" placeholder="Password" id="login_password"/>
-					<button id="user_login">Login</button>
-				</form>
-			</div>
-			<div class="form">
-				<h2>Create an account</h2>
-				<form id="register_form">
-					<input type="text" placeholder="Username" id="register_username"/>
-					<input type="password" placeholder="Password" id="register_password"/>
-					<input type="email" placeholder="Email Address" id="register_email"/>
-					<button id="register">Register</button>
-				</form>
-			</div>
+<div class="container-fluid">
+	<div class="module form-module">
+		<div class="toggle" style="display:block;">Sign Up Now</div>
+		<div class="toggle" style="display:none;">Sign In Now</div>
+		<div class="form">
+			<h2>Login to your account</h2>
+			<form id="login_form">
+				<input type="text" placeholder="Username"  id="login_username"/>
+				<input type="password" placeholder="Password" id="login_password"/>
+				<button id="user_login">Login</button>
+			</form>
+		</div>
+		<div class="form">
+			<h2>Create an account</h2>
+			<form id="register_form">
+				<p>Personal Information</p>
+				<input type="text" placeholder="First Name" name="register_firstname" id="register_firstname"/>
+				<input type="text" placeholder="Last Name" name="register_lastname" id="register_lastname"/>
+				<input type="text" placeholder="Birth Date" name="birthdate" id="birthdate"/>
+				<p>Contact Information</p>
+				<input type="email" placeholder="E-mail Address" name="register_email" id="register_email" />
+				<input type="text" placeholder="Mobile Number" name="register_mobilenumber" id="register_mobilenumber" />
+				<p>Address</p>
+				<input type="text" placeholder="Address 1" name="register_address1" id="register_address1" />
+				<input type="text" placeholder="Address 2" name="register_address2" id="register_address2"/>
+				<select name="district" id="district" >
+					<option value="none">Choose A District</option>
+					<optgroup label="Hong Kong Island">
+						<option value="Central and Western">Central and Western</option>
+						<option value="Eastern">Eastern</option>
+						<option value="Southern">Southern</option>
+						<option value="Wan Chai">Wan Chai</option>
+					</optgroup>
+					<optgroup label="Kowloon">
+						<option value="Sham Shui Po">Sham Shui Po</option>
+						<option value="Kowloon City">Kowloon City</option>
+						<option value="Kwun Tong">Kwun Tong</option>
+						<option value="Wong Tai Sin">Wong Tai Sin</option>
+						<option value="Yau Tsim Mong">Yau Tsim Mong</option>
+					</optgroup>
+					<optgroup label="New Territories">
+						<option value="Islands">Islands</option>
+						<option value="Kwai Tsing">Kwai Tsing</option>
+						<option value="North">North</option>
+						<option value="Sai Kung">Sai Kung</option>
+						<option value="Sha Tin">Sha Tin</option>
+						<option value="Tai Po">Tai Po</option>
+						<option value="Tsuen Wan">Tsuen Wan</option>
+						<option value="Tuen Mun">Tuen Mun</option>
+						<option value="Yuen Long">Yuen Long</option>
+					</optgroup>
+				</select>
+				<br>
+				<br>
+				<p>Account Information</p>				
+				<input type="text" placeholder="Username" name="register_username"id="register_username"/>
+				<input type="password" placeholder="Password" name="register_password" id="register_password"/>
+				<input type="password" placeholder="Confirmed Password" name="register_confirmpassword" id="register_confirmpassword"/>
+				<button id="register">Register</button>
+			</form>
 		</div>
 	</div>
 </section>
 <% include ../partials/script.ejs %>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script>
 $( window ).load(function() {
 	console.log($(location).attr('pathname')=="/register");
@@ -79,6 +122,93 @@ $("#user_login").click(function () {
 		}
 	});
 	return false;
+});
+
+jQuery.validator.addMethod("notEqual", function(value, element, param) {
+  return this.optional(element) || value != param;
+}, "Please choose a district");
+
+$().ready(function() {
+    $("#register_form").validate({
+		rules: {
+			register_firstname: {
+				required: true,
+				minlength: 2
+			},
+			register_lastname: {
+				required: true,
+				minlength: 2
+			},
+			birthdate: {
+				required: true,
+				dateISO: true
+			},
+			register_email: {
+				required: true,
+				email: true
+			},
+			register_mobilenumber: {
+				required: true, 
+				rangelength: [8,8] 
+			},
+			register_address1: {
+				required: true
+			},
+			district: { 
+				notEqual: "Choose A District"
+			},
+			register_username: {
+				minlength: 4,
+				required: true
+			},
+			register_password: {
+				minlength: 8,
+				required: true
+			},
+			register_confirmpassword: { 
+				equalTo: "#register_password"
+			}
+		},
+		messages: {
+			register_firstname: {
+				required: "Please enter your first name",
+				minlength: "Please enter a valid first name"
+			},
+			register_lastname: {
+				required: "Please enter your last name",
+				minlength: "Please enter a valid last name"
+			},
+			birthdate: {
+				required: "Please choose your birth date",
+				dateISO: "Please enter a valid date"
+			},
+			register_email: {
+				required: "Please enter your E-mail"
+			},
+			register_mobilenumber: {
+				required: "Please enter your mobile number", 
+				rangelength: "Please enter a valid phone number" 
+			},
+			register_address1: {
+				required: "Please enter your address"
+			},
+			register_username: {
+				minlength: "Username must be at least 4 characters long",
+				required: "Please enter your username"
+			},
+			register_password: {
+				minlength: "Password must be at least 8 characters long",
+				required: "Please enter your password"
+			}
+		}
+	});
+	$("#birthdate").datepicker({
+		maxDate: 0,
+		changeMonth: true,
+      	changeYear: true,
+		yearRange: "-100:+0",
+		showAnim: "slideDown"
+	});
 });
 </script>
 
