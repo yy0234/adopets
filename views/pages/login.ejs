@@ -3,6 +3,7 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/login.css" />
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
 	<title>Login</title>
 </head>
 
@@ -10,73 +11,73 @@
 <% include ../partials/headline.ejs %>
 <!-- Form Module-->
 <section class="main-content">
-<div class="container-fluid">
-	<div class="module form-module">
-		<div class="toggle" style="display:block;">Sign Up Now</div>
-		<div class="toggle" style="display:none;">Sign In Now</div>
-		<div class="form">
-			<h2>Login to your account</h2>
-			<form id="login_form">
-				<input type="text" placeholder="Username"  id="login_username"/>
-				<input type="password" placeholder="Password" id="login_password"/>
-				<button id="user_login">Login</button>
-			</form>
-		</div>
-		<div class="form">
-			<h2>Create an account</h2>
-			<form id="register_form">
-				<p>Personal Information</p>
-				<input type="text" placeholder="First Name" name="register_firstname" id="register_firstname"/>
-				<input type="text" placeholder="Last Name" name="register_lastname" id="register_lastname"/>
-				<input type="text" placeholder="Birth Date" name="birthdate" id="birthdate"/>
-				<p>Contact Information</p>
-				<input type="email" placeholder="E-mail Address" name="register_email" id="register_email" />
-				<input type="text" placeholder="Mobile Number" name="register_mobilenumber" id="register_mobilenumber" />
-				<p>Address</p>
-				<input type="text" placeholder="Address 1" name="register_address1" id="register_address1" />
-				<input type="text" placeholder="Address 2" name="register_address2" id="register_address2"/>
-				<select name="district" id="district" >
-					<option value="none">Choose A District</option>
-					<optgroup label="Hong Kong Island">
-						<option value="Central and Western">Central and Western</option>
-						<option value="Eastern">Eastern</option>
-						<option value="Southern">Southern</option>
-						<option value="Wan Chai">Wan Chai</option>
-					</optgroup>
-					<optgroup label="Kowloon">
-						<option value="Sham Shui Po">Sham Shui Po</option>
-						<option value="Kowloon City">Kowloon City</option>
-						<option value="Kwun Tong">Kwun Tong</option>
-						<option value="Wong Tai Sin">Wong Tai Sin</option>
-						<option value="Yau Tsim Mong">Yau Tsim Mong</option>
-					</optgroup>
-					<optgroup label="New Territories">
-						<option value="Islands">Islands</option>
-						<option value="Kwai Tsing">Kwai Tsing</option>
-						<option value="North">North</option>
-						<option value="Sai Kung">Sai Kung</option>
-						<option value="Sha Tin">Sha Tin</option>
-						<option value="Tai Po">Tai Po</option>
-						<option value="Tsuen Wan">Tsuen Wan</option>
-						<option value="Tuen Mun">Tuen Mun</option>
-						<option value="Yuen Long">Yuen Long</option>
-					</optgroup>
-				</select>
-				<br>
-				<br>
-				<p>Account Information</p>				
-				<input type="text" placeholder="Username" name="register_username"id="register_username"/>
-				<input type="password" placeholder="Password" name="register_password" id="register_password"/>
-				<input type="password" placeholder="Confirmed Password" name="register_confirmpassword" id="register_confirmpassword"/>
-				<button id="register">Register</button>
-			</form>
+	<div class="container-fluid">
+		<div class="module form-module">
+			<div class="toggle" style="display:block;">Sign Up Now</div>
+			<div class="toggle" style="display:none;">Sign In Now</div>
+			<div class="form">
+				<h2>Login to your account</h2>
+				<form id="login_form">
+					<input type="text" placeholder="Username"  id="login_username"/>
+					<input type="password" placeholder="Password" id="login_password"/>
+					<button id="user_login">Login</button>
+				</form>
+			</div>
+			<div class="form">
+				<h2>Create an account</h2>
+				<form id="register_form">
+					<p>Personal Information</p>
+					<input type="text" placeholder="First Name" name="register_firstname" id="register_firstname"/>
+					<input type="text" placeholder="Last Name" name="register_lastname" id="register_lastname"/>
+					<input type="text" placeholder="Birth Date" name="birthdate" id="birthdate"/>
+					<p>Contact Information</p>
+					<input type="email" placeholder="E-mail Address" name="register_email" id="register_email" />
+					<input type="text" placeholder="Mobile Number" name="register_mobilenumber" id="register_mobilenumber" />
+					<p>Address</p>
+					<input type="text" placeholder="Address 1" name="register_address1" id="register_address1" />
+					<input type="text" placeholder="Address 2" name="register_address2" id="register_address2"/>
+					<select name="district" id="district" >
+						<option value="none">Choose A District</option>
+						<optgroup label="Hong Kong Island">
+							<option value="Central and Western">Central and Western</option>
+							<option value="Eastern">Eastern</option>
+							<option value="Southern">Southern</option>
+							<option value="Wan Chai">Wan Chai</option>
+						</optgroup>
+						<optgroup label="Kowloon">
+							<option value="Sham Shui Po">Sham Shui Po</option>
+							<option value="Kowloon City">Kowloon City</option>
+							<option value="Kwun Tong">Kwun Tong</option>
+							<option value="Wong Tai Sin">Wong Tai Sin</option>
+							<option value="Yau Tsim Mong">Yau Tsim Mong</option>
+						</optgroup>
+						<optgroup label="New Territories">
+							<option value="Islands">Islands</option>
+							<option value="Kwai Tsing">Kwai Tsing</option>
+							<option value="North">North</option>
+							<option value="Sai Kung">Sai Kung</option>
+							<option value="Sha Tin">Sha Tin</option>
+							<option value="Tai Po">Tai Po</option>
+							<option value="Tsuen Wan">Tsuen Wan</option>
+							<option value="Tuen Mun">Tuen Mun</option>
+							<option value="Yuen Long">Yuen Long</option>
+						</optgroup>
+					</select>
+					<br>
+					<br>
+					<p>Account Information</p>				
+					<input type="text" placeholder="Username" name="register_username"id="register_username"/>
+					<input type="password" placeholder="Password" name="register_password" id="register_password"/>
+					<input type="password" placeholder="Confirmed Password" name="register_confirmpassword" id="register_confirmpassword"/>
+					<button id="register">Register</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </section>
 <% include ../partials/script.ejs %>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script>
 $( window ).load(function() {
