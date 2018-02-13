@@ -3,7 +3,6 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/login.css" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css"/>
 	<title>Login</title>
 </head>
 
@@ -89,7 +88,7 @@ $( window ).load(function() {
 });
 
 //register and login form
-$("#register").click(function () {
+/*$("#register").click(function () {
 	$.ajax({
 		url: "/regist",
 		type: "GET",
@@ -106,7 +105,7 @@ $("#register").click(function () {
 		}
 	});
 	return false;
-});
+});*/
 $("#user_login").click(function () {
 	$.ajax({
 		url: "/signin",
@@ -202,13 +201,6 @@ $().ready(function() {
 				required: "Please enter your password"
 			}
 		}
-	});
-	$("#birthdate").datepicker({
-		maxDate: 0,
-		changeMonth: true,
-      	changeYear: true,
-		yearRange: "-100:+0",
-		showAnim: "slideDown"
 	});
 });
 </script>
