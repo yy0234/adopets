@@ -494,7 +494,7 @@
 			nodes[handle].innerHTML = values[handle];
 		});
 
-		nonLinearSlider.noUiSlider.on('change', function () {
+		nonLinearSlider.noUiSlider.on('end', function () {
 			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 		});
 
