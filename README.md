@@ -20,11 +20,10 @@ git remote add heroku https://git.heroku.com/adopets.git
 **pls follow
 ```
 $ git checkout "branch_name"  //to make sure you are in the correct branch
-$ git fetch
-$ git pull heroku master   // to make sure you have the latest version from Github  ** 
+$ git pull  // to make sure you have the latest version from Github  ** 
 $ git add .
 $ git commit -m "your message here"
-$ git push heroku master    //push to heroku master (not so sure, may be need to merge before deploy git push heroku master)
+$ git push    //push to heroku master (not so sure, may be need to merge before deploy git push heroku master)
 $ heroku open     //optional, open the browser   
 ``` 
 
@@ -32,7 +31,7 @@ $ heroku open     //optional, open the browser
 ```
 $ git checkout "branch_name"  //eg. git checkout master
 $ git fetch
-$ git pull heroku master 
+$ git pull
 $ npm install    //sometime need to install the new library after git pull
 ```
 
