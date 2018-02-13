@@ -398,6 +398,9 @@
 			itemMargin: 10
 		});
 	});*/
+	$(window).bind("resize", function(){
+    	$('#flexslider').flexslider(0);
+	});
     $(document).ready(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
