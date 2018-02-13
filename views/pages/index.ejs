@@ -492,7 +492,7 @@
 		// from the left edge of the slider.
 		nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
 			nodes[handle].innerHTML = values[handle];
-			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value')+" to "+ document.getElementById('upper-value');
+			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 		});
     });
 
