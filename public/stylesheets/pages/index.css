@@ -226,8 +226,9 @@ body{
     background-size: 60px;
     z-index: 1;
     transition: all 0.3s ease-out;
+    cursor: pointer;
 }
 
 .slides li:hover img,.slides li:hover .flex-caption{
-        opacity:0.5;
+    opacity:0.5;
 }
