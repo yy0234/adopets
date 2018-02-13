@@ -2,21 +2,279 @@
 <html>
 <head>
 	<% include ../partials/header.ejs %>
-	<!--Your own css file-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/search_hospital.css" />
 	<title>You own title</title>
 </head>
 
 <body>
 <% include ../partials/headline.ejs %>
+<div class="container-fluid">
+    <div class="row" style="margin-left:10px;margin-right:10px;">
+      <!--search Box-->
+      <div class="col-md-5">
+        <div class="searchBox">
+          <ul class="nav nav-tabs" id="searchTab" role="tablist">
+            <li class="nav-item active">
+              <a class="nav-link active" data-toggle="tab" href="#direct" role="tab" aria-controls="direct">Pet Service</a>
+            </li>
+          </ul>
+            
+          <div class="tab-content">
+            <div class="tab-pane active" id="direct" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h6>Service:</h6>
+                      </div>
+                    <div class="col-md-4 text-left">
+                      <input type="radio" name="petService" id="grooming" value="grooming" checked="checked" />Grooming
+                    </div>
+                    <div class="col-md-5 text-left">
+                      <input type="radio" name="petService" id="hospital" value="hospital" />Hospital
+                    </div>
+                </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <h6>District:</h6>
+                </div>
+                <div class="col-md-9 text-left" >
+                  <select id="district">
+                    <option value="none">Choose the district</option>
+                    <optgroup label="Hong Kong Island">
+                      <option value="cw">Central and Western</option>
+                      <option value="eastern">Eastern</option>
+                      <option value="southern">Southern</option>
+                      <option value="wc">Wan Chai</option>
+                    </optgroup>
+                    <optgroup label="Kowloon">
+                      <option value="ssp">Sham Shui Po</option>
+                      <option value="kc">Kowloon City</option>
+                      <option value="ktong">Kwun Tong</option>
+                      <option value="wts">Wong Tai Sin</option>
+                      <option value="ytm">Yau Tsim Mong</option>
+                    </optgroup>
+                    <optgroup label="New Territories">
+                      <option value="islands">Islands</option>
+                      <option value="ktsing">Kwai Tsing</option>
+                      <option value="north">North</option>
+                      <option value="sk">Sai Kung</option>
+                      <option value="st">Sha Tin</option>
+                      <option value="tp">Tai Po</option>
+                      <option value="tw">Tsuen Wan</option>
+                      <option value="tm">Tuen Mun</option>
+                      <option value="yl">Yuen Long</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
 
-<div class="container">
-<!--Your own content-->
-<div>
+                <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-info" id="submit">Find now!</button>
+                </div>
+              </div>
+
+            
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7"><div id="map" style="width:400px;height:400px;"></div>
+
+      </div>
+    </div>
+    <div class="row" style="margin-left:10px;margin-right:10px;overflow-x:auto;">
+        <table id="serviceTable" border="1">
+        </table>
+    </div>
+</div>    
+
+
+
 
 
 <% include ../partials/script.ejs %>
 
-<!--Your own script-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4&libraries=places" async defer></script>
+<script>
 
+var map;
+var markers = [];
+var infowindow;
+var temp_lat = '';
+var temp_lng = '';
+
+//init the map when the page is loaded
+getLocation();
+
+//get the current location
+function getLocation() {
+if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+            temp_lat = 0.0; 
+            temp_lng = 0.0; 
+  }
+}
+
+function showPosition(position) {
+    temp_lat = position.coords.latitude;
+    temp_lng = position.coords.longitude;
+    initMap();
+}
+
+
+function initMap() {
+
+  var current_location = {lat: temp_lat, lng: temp_lng};
+  //var ust = {lat: 22.3304653, lng: 114.2592411};
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: current_location,
+    zoom: 13
+  });
+
+  var geocoder = new google.maps.Geocoder();
+
+  infowindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
+
+  //default will search the hospital around the current location
+  service.nearbySearch({
+    location: current_location,
+    radius: 2000,
+    keyword: '寵物診所'
+  }, callback);
+
+  //When user click 'find now'
+  document.getElementById('submit').addEventListener('click', function() {
+    //clear the table
+    deleteRow(markers.length+1);
+
+    //clear the previous marker 
+    for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+    markers = [];
+
+    geocodeAddress(geocoder, map);
+  });
+
+ }
+
+//action to create marker
+function callback(results, status) {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+      //create a row for the company info
+      createRow(-1,'Company name','Address','Telephone','Website');
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
+
+// create the marker in the google map
+function createMarker(place) {
+ 
+  var image = {
+    url: 'https://img.eservice-hk.net/upload/2018/02/13/011728_8210bb1549bb9a713260bc411f14c5f7.png',
+    // This marker is 20 pixels wide by 32 pixels high.
+    size: new google.maps.Size(20, 32),
+    // The origin for this image is (0, 0).
+    origin: new google.maps.Point(0, 0),
+    // The anchor for this image is the base of the flagpole at (0, 32).
+    anchor: new google.maps.Point(0, 32)
+  };
+
+  service = new google.maps.places.PlacesService(map);
+
+  service.getDetails({
+    placeId: place.place_id
+  }, function(place, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      var marker = new google.maps.Marker({
+        icon: image,
+        map: map,
+        position: place.geometry.location
+      });
+
+      //create a row for the company data
+      createRow(markers.length,place.name,place.formatted_address,place.formatted_phone_number,place.website);
+      markers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div><strong>Company name: ' + place.name + '</strong><br>' +
+          '<b>Address: </b> ' +  place.formatted_address + '<br>' +
+          '<b>Telephone: </b> ' + place.formatted_phone_number + '<br>' +
+          '<b>Website: </b> ' + place.website + '<br>' +
+          '</div>');
+        infowindow.open(map, this);
+      });
+    }
+  });
+}
+
+//get the district which the user selected
+function getDistrict() {
+  var districtSelect = document.getElementById("district");
+  var selectedText = districtSelect.options[districtSelect.selectedIndex].text;
+  return selectedText;
+}
+
+//search the requested action
+function geocodeAddress(geocoder, resultsMap) {
+
+  //initial value for the action and location
+  if(document.getElementById('grooming').checked) {
+    var action = '寵物美容';
+  }else if(document.getElementById('hospital').checked) {
+    var action = '寵物診所';
+  }
+  var address = 'Hong Kong ' + getDistrict() + ' district';
+
+
+  geocoder.geocode({address}, function(results, status) {
+    if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        resultsMap.setZoom(13);
+
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+        location: results[0].geometry.location,
+        radius: 2000,
+        keyword: action
+        }, callback);
+
+    } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+    }
+   });
+  }
+
+//create a row for the table
+function createRow(size,name,address,number,website) {
+    var table = document.getElementById("serviceTable");
+    var row = table.insertRow(size+1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = name;
+    cell2.innerHTML = address;
+    cell3.innerHTML = number + '   ';
+    cell4.innerHTML = website;
+    if (size==-1)
+    {
+      row.bgColor="4CAF50";
+      row.style.color="white";
+    }
+}
+
+//clear all rows in the table
+function deleteRow(size) {
+  for (var i = 0; i < size; i++) {
+    document.getElementById("serviceTable").deleteRow(0);
+  }
+}
+
+</script>
 </body>
 </html>
