@@ -3,7 +3,7 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/login.css" />
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/jquery-ui.css"/>
 	<title>Login</title>
 </head>
 
@@ -76,9 +76,9 @@
 	</div>
 </section>
 <% include ../partials/script.ejs %>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/javascript/jquery.js"></script>
+<script src="/javascript/jquery.validate.min.js"></script>
+<script src="/javascript/jquery-ui.min.js"></script>
 <script>
 $( window ).load(function() {
 	console.log($(location).attr('pathname')=="/register");
