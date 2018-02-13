@@ -6,6 +6,11 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+var googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4'
+});
+
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -29,6 +34,13 @@ app.get('/register', function(request, response) {
   response.render('pages/login');
 });
 
+app.get('/search_hospital', function(request, response) {
+  response.render('pages/search_hospital');
+});
+
+app.get('/photoSearch_notfinished', function(request, response) {
+  response.render('pages/photoSearch_notfinished');
+});
 
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
