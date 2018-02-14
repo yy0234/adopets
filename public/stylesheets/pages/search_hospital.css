@@ -116,3 +116,9 @@ html, body, #map {
     cursor: pointer;
     color: red;
 }
+
+.searchBar{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
