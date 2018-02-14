@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% include ../partials/header.ejs %>
+	<% include ../partials/header.ejs %>
+	<!--Your own css file-->
+	<title>You own title</title>
 </head>
 
 <body>
+<% include ../partials/headline.ejs %>
 
-<% include ../partials/nav.ejs %>
+<section class="main-content">
+	<div class="container-fluid">
+    <!--Your own content-->
+        <h2>Database Results</h2>
+        
+        <ul>
+            <% results.forEach(function(r) { %>
+                <li><%= r.userid %> - <%= r.password %></li>
+            <% }); %>
+        </ul>
+	<div>
+</section>
 
-<div class="container">
-<h2>Database Results</h2>
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.userid %> - <%= r.password %></li>
-    <% }); %>
-</ul>
+<% include ../partials/script.ejs %>
 
-</div>
+<!--Your own script-->
 
 </body>
 </html>
