@@ -45,6 +45,11 @@ html, body, #map {
     margin:10px;
 }
 
+.radio-inline{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .search-inner-box label{
     margin-bottom: 0;
 }
