@@ -128,8 +128,8 @@ $("#user_login").click(function () {
 			username: $("#login_username").val(),
 			password: $("#login_password").val()
 		},
-		success: function (data) {
-			alert(data[0].username);
+		success: function (mes) {
+			alert(mes);
 		},
 		error: function (err) {
 			alert(err);
@@ -142,7 +142,22 @@ jQuery.validator.addMethod("notEqual", function(value, element, param) {
   return this.optional(element) || value != param;
 }, "Please choose a district");
 
-$().ready(function() {
+$(function() {
+    $("#birthdate").datepicker({
+		maxDate: 0,
+		changeMonth: true,
+      	changeYear: true,
+		yearRange: "-100:+0",
+		showAnim: "slideDown",
+		dateFormat: "yy/mm/dd",
+		disableTouchKeyboard: true
+	});
+	$('.fa-calendar').click(function() {
+		$("#birthdate").focus();
+	});
+});
+
+$("#register").click(function () {
     $("#register_form").validate({
 		rules: {
 			register_firstname: {
@@ -214,19 +229,41 @@ $().ready(function() {
 				minlength: "Password must be at least 8 characters long",
 				required: "Please enter your password"
 			}
+		},
+		submitHandler: function () {
+			var register_firstname = $("#register_firstname").val() || "";
+			var register_lastname = $("#register_lastname").val() || "";
+			var birthdate = $("#birthdate").val() || "";
+			var register_email = $("#register_email").val() || "";
+			var register_mobilenumber = $("#register_mobilenumber").val() || "";
+			var register_address = $("#register_address1").val()+" "+$("#register_address2").val()+" "+$("#district").val() || "";
+			var register_username = $("#register_username").val() || "";
+			var register_password = $("#register_password").val() || "";
+
+			$.ajax({
+				url: "/regist",
+				type: "GET",
+				contentType: "application/json",
+				data: {
+					userid: register_username,
+					lastname: register_lastname,
+					firstname:register_firstname,
+					email: register_email,
+					telnum: register_mobilenumber,
+					address: register_address,
+					birthday: birthdate,
+					password:register_password
+				},
+				complete: function complete() {
+				},
+				error: function error(err) {
+					alert(err);
+				},
+				success: function success(mes) {
+					alert(mes);
+				}
+			})
 		}
-	});
-	$("#birthdate").datepicker({
-		maxDate: 0,
-		changeMonth: true,
-      	changeYear: true,
-		yearRange: "-100:+0",
-		showAnim: "slideDown",
-		dateFormat: "yy/mm/dd",
-		disableTouchKeyboard: true
-	});
-	$('.fa-calendar').click(function() {
-		$("#birthdate").focus();
 	});
 });
 </script>

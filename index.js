@@ -6,6 +6,7 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -29,10 +30,17 @@ app.get('/register', function(request, response) {
   response.render('pages/login');
 });
 
+app.get('/search_hospital', function(request, response) {
+  response.render('pages/search_hospital');
+});
+
+app.get('/photoSearch_notfinished', function(request, response) {
+  response.render('pages/photoSearch_notfinished');
+});
 
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM user_table', function(err, result) {
+    client.query('SELECT * FROM users', function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
@@ -44,21 +52,21 @@ app.get('/db', function (request, response) {
 
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO user_table(username,password,nickname) VALUES($1, $2, $3)'; 
-	  var sqlValue = [request.query.username,request.query.password,request.query.nickname]; 
+	  var sql = 'INSERT INTO users(userid,lastname,firstname,email,telnum,address,birthday,havepet,typeofpet,userurl,password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'; 
+	  var sqlValue = [request.query.userid,request.query.lastname,request.query.firstname,request.query.email,request.query.telnum,request.query.address,request.query.birthday,false,"","",request.query.password]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send("success");   }
+        { return response.send("register success");   }
       });
   });
 });
 
 app.get("/signin", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "SELECT * FROM user_table where username='" + request.query.username + "' and password='" + request.query.password + "'"; 
+	  var sql = "SELECT * FROM users where userid='" + request.query.username + "' and password='" + request.query.password + "'"; 
 	  client.query(sql, function(err, result) {
        done();
        if (err)
@@ -67,7 +75,7 @@ app.get("/signin", function (request, response) {
 			return response.send("cannot find user"); 
 	   }
        else
-        { return response.send(result.rows);}
+        { return response.send("login success");}
       });
   });
 });
