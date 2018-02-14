@@ -52,8 +52,8 @@ app.get('/db', function (request, response) {
 
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO user_table(username,password,nickname) VALUES($1, $2, $3)'; 
-	  var sqlValue = [request.query.username,request.query.password,request.query.nickname]; 
+	  var sql = 'INSERT INTO users(userid,lastname,firstname,email,telnum,address,birthday,password) VALUES($1, $2, $3, $4, $5, $6, $7, $8)'; 
+	  var sqlValue = [request.query.userid,request.query.firstname,request.query.email,request.query.telnum,request.query.address,request.query.birthday,request.query.password]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
