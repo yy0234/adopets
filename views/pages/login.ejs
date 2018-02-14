@@ -27,9 +27,22 @@
 				<h2>Create an account</h2>
 				<form id="register_form">
 					<p>Personal Information</p>
-					<input type="text" placeholder="First Name" name="register_firstname" id="register_firstname"/>
-					<input type="text" placeholder="Last Name" name="register_lastname" id="register_lastname"/>
-					<input type="text" placeholder="Birth Date" name="birthdate" id="birthdate"/>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" placeholder="First Name" name="register_firstname" id="register_firstname"/>
+						</div>
+						<div class="form-group col-md-6">
+							<input type="text" placeholder="Last Name" name="register_lastname" id="register_lastname"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div id="datepicker" class="input-group date">
+							<input type="text" placeholder="Birth Date" class="form-control" name="birthdate" id="birthdate"/>
+							<span class="input-group-addon btn" for="date">
+								<span class="fa fa-calendar open-datetimepicker"></span>
+							</span>
+						</div>
+					</div>
 					<p>Contact Information</p>
 					<input type="email" placeholder="E-mail Address" name="register_email" id="register_email" />
 					<input type="text" placeholder="Mobile Number" name="register_mobilenumber" id="register_mobilenumber" />
@@ -135,7 +148,12 @@ $(function() {
 		changeMonth: true,
       	changeYear: true,
 		yearRange: "-100:+0",
-		showAnim: "slideDown"
+		showAnim: "slideDown",
+		dateFormat: "yy/mm/dd",
+		disableTouchKeyboard: true
+	});
+	$('.fa-calendar').click(function() {
+		$("#birthdate").focus();
 	});
 });
 
