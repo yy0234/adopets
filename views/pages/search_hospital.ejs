@@ -246,7 +246,7 @@ function createRow(size,name,address,number,website) {
     var cell3 = row.insertCell(2);
     cell1.innerHTML = "<i class='fas fa-map-marker-alt'></i>";
     cell2.innerHTML = "<a href='"+website+"' target='_blank'>" +name+"</a>";
-    cell3.innerHTML = "<div class='address' style='display:table'><div style='display:table-row'><div style='display:table-cell'>Address</div><div style='display:table-cell'>"+address+"</div></div></div><div class='telephone' style='display:table'><div style='display:table-row'><div style='display:table-cell'>Tel</div><div style='display:table-cell'>"+number+"</div></div></div>";
+    cell3.innerHTML = "<div class='address'>Address:&emsp;"+address+"</div><div class='telephone'>Tel:&emsp;"+number+"</div>";
 
     cell1.onclick = function() {google.maps.event.trigger(markers[size], 'click')};
     cell3.onclick = function() {google.maps.event.trigger(markers[size], 'click')};
