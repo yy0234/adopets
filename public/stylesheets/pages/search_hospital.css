@@ -127,3 +127,7 @@ html, body, #map {
 ::-webkit-scrollbar-thumb {
     background: cornflowerblue; 
 }
+
+::-webkit-scrollbar {
+    background: cornflowerblue; 
+}
