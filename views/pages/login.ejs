@@ -129,7 +129,7 @@ jQuery.validator.addMethod("notEqual", function(value, element, param) {
   return this.optional(element) || value != param;
 }, "Please choose a district");
 
-$().ready(function() {
+$("#register").click(function () {
     $("#register_form").validate({
 		rules: {
 			register_firstname: {
@@ -201,6 +201,45 @@ $().ready(function() {
 				minlength: "Password must be at least 8 characters long",
 				required: "Please enter your password"
 			}
+		},
+		errorPlacement: function (error, element) {
+			error.insertAfter(element.parent());
+		},
+		submitHandler: function () {
+			var register_firstname = $("#register_firstname").val() || "";
+			var register_lastname = $("#register_lastname").val() || "";
+			var birthdate = $("#birthdate").val() || "";
+			var register_email = $("#register_email").val() || "";
+			var register_mobilenumber = $("#register_mobilenumber").val() || "";
+			var register_address = $("#register_address1").val()+" "+$("#register_address2").val()+" "+$("#district").val() || "";
+			var register_username = $("#register_username").val() || "";
+			var register_password = $("#register_password").val() || "";
+
+			var params = {
+				userid: register_username,
+				lastname: register_lastname,
+				firstname:register_firstname,
+				email: register_email,
+				telnum: register_mobilenumber,
+				address: register_address,
+				birthday: birthdate,
+				password:register_password
+			};
+
+			$.ajax({
+				url: "/signin",
+				type: "GET",
+				contentType: "application/json",
+				data: JSON.stringify(params),
+				complete: function complete() {
+				},
+				error: function error(err) {
+					alert(res.d);
+				},
+				success: function success(res) {
+					alert(res.d);
+				}
+			})
 		}
 	});
 	$("#birthdate").datepicker({
