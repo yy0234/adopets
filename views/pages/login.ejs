@@ -233,6 +233,8 @@ $("#register").click(function () {
 				password:register_password
 			};
 
+			console.log(params);
+
 			$.ajax({
 				url: "/regist",
 				type: "GET",
