@@ -246,7 +246,7 @@ function createRow(size,name,address,number,website) {
     var cell3 = row.insertCell(2);
     cell1.innerHTML = "<i class='fas fa-map-marker-alt'></i>";
     cell2.innerHTML = "<a href='"+website+"' target='_blank'>" +name+"</a>";
-    cell3.innerHTML = "<div class='address' style='display:table;font-size:14px;width:100%;text-align:left;'><div style='display:table-row'><div style='display:table-cell'>Address</div><div style='display:table-cell'>"+address+"</div></div></div><div class='telephone' style='display:table;font-size:14px;width:100%;text-align:left;><div style='display:table-row'><div style='display:table-cell'>Telephone</div><div style='display:table-cell'>"+number+"</div></div></div>";
+    cell3.innerHTML = "<div class='address' style='display:table;font-size:14px;width:100%;text-align:left;'><div style='display:table-row'><div style='display:table-cell'>Address</div><div style='display:table-cell'>"+address+"</div></div></div><div class='telephone' style='display:table;font-size:14px;width:100%;text-align:left;'><div style='display:table-row'><div style='display:table-cell'>Telephone</div><div style='display:table-cell'>"+number+"</div></div></div>";
 
     cell1.onclick = function() {google.maps.event.trigger(markers[size], 'click')};
     cell3.onclick = function() {google.maps.event.trigger(markers[size], 'click')};
