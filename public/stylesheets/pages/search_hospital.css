@@ -111,3 +111,8 @@ html, body, #map {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
+.fa-map-marker-alt{
+    cursor: pointer;
+    color: red;
+}
