@@ -32,11 +32,15 @@ html, body, #map {
 
 .search-inner-box{
     position: relative;
-    padding: .75rem 1.25rem;
+    padding: 0.5rem 1.2rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem;
     color: #004085;
     background-color: #cce5ff;
     border-color: #b8daff;
+}
+
+.radio-inline input{
+    margin:10px;
 }
