@@ -48,7 +48,8 @@ html, body, #map {
 .search-inner-box p{
     margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 0 !important;
+    margin-bottom: 10px !important;
+    margin-top:10px;
 }
 
 .search-inner-box label{
