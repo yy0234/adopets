@@ -8,8 +8,7 @@ html, body, #map {
     position: relative;
 }
 
-
-.search-inner-box >div{
+.central{
     /* Internet Explorer 10 */
     display:-ms-flexbox;
     -ms-flex-pack:center;
@@ -29,4 +28,15 @@ html, body, #map {
     display:box;
     box-pack:center;
     box-align:center;
+}
+
+.search-inner-box{
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
 }
