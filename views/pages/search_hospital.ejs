@@ -14,72 +14,71 @@
 
 <br>
 
-<div class="container">
-  <div class="row">
-
-    <div class="col-md-3 bg-primary text-white" >
-      <h6>Search for Pet Service:</h6>
+<section class="main-content">
+	<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3" >
+        <h6>Search for Pet Service:</h6>
+      </div>
+      <div class="col-md-3" >
+        <div class="search_service">
+            <input type="radio" name="petService" id="grooming" value="grooming" checked="checked" />Grooming
+            <input type="radio" name="petService" id="hospital" value="hospital" />Hospital
+        </div>
+      </div>
+      <div class="col-md-3" >
+        <div class="search_location">
+          <select id="district">
+              <option value="none">Location</option>
+              <optgroup label="Hong Kong Island">
+                <option value="cw">Central and Western</option>
+                <option value="eastern">Eastern</option>
+                <option value="southern">Southern</option>
+                <option value="wc">Wan Chai</option>
+              </optgroup>
+              <optgroup label="Kowloon">
+                <option value="ssp">Sham Shui Po</option>
+                <option value="kc">Kowloon City</option>
+                <option value="ktong">Kwun Tong</option>
+                <option value="wts">Wong Tai Sin</option>
+                <option value="ytm">Yau Tsim Mong</option>
+              </optgroup>
+              <optgroup label="New Territories">
+                <option value="islands">Islands</option>
+                <option value="ktsing">Kwai Tsing</option>
+                <option value="north">North</option>
+                <option value="sk">Sai Kung</option>
+                <option value="st">Sha Tin</option>
+                <option value="tp">Tai Po</option>
+                <option value="tw">Tsuen Wan</option>
+                <option value="tm">Tuen Mun</option>
+                <option value="yl">Yuen Long</option>
+              </optgroup>
+            </select>
+        </div>
+      </div>
+      <div class="col-md-3" >
+        <div class="search_submit">
+            <button type="button" class="btn btn-default btn-block bg-success text-white" id="submit">Find now!</button>
+       </div>
+      </div>
     </div>
 
-    <div class="col-md-3 bg-primary text-white" >
-      <div class="search_service">
-          <input type="radio" name="petService" id="grooming" value="grooming" checked="checked" />Grooming
-          <input type="radio" name="petService" id="hospital" value="hospital" />Hospital
-      </div>
-     </div>
 
-     <div class="col-md-3 bg-primary text-white" >
-      <div class="search_location">
-        <select id="district">
-            <option value="none">Location</option>
-            <optgroup label="Hong Kong Island">
-              <option value="cw">Central and Western</option>
-              <option value="eastern">Eastern</option>
-              <option value="southern">Southern</option>
-              <option value="wc">Wan Chai</option>
-            </optgroup>
-            <optgroup label="Kowloon">
-              <option value="ssp">Sham Shui Po</option>
-              <option value="kc">Kowloon City</option>
-              <option value="ktong">Kwun Tong</option>
-              <option value="wts">Wong Tai Sin</option>
-              <option value="ytm">Yau Tsim Mong</option>
-            </optgroup>
-            <optgroup label="New Territories">
-              <option value="islands">Islands</option>
-              <option value="ktsing">Kwai Tsing</option>
-              <option value="north">North</option>
-              <option value="sk">Sai Kung</option>
-              <option value="st">Sha Tin</option>
-              <option value="tp">Tai Po</option>
-              <option value="tw">Tsuen Wan</option>
-              <option value="tm">Tuen Mun</option>
-              <option value="yl">Yuen Long</option>
-            </optgroup>
-          </select>
-      </div>
-    </div>
-
-    <div class="col-md-3" >
-      <div class="search_submit">
-          <button type="button" class="btn btn-default btn-block bg-success text-white" id="submit">Find now!</button>
-     </div>
+    <div class="row">
+      <table id="serviceTable" class="table order-list">
+          <thead>
+              <tr>
+                  <td>Organization</td>
+                  <td>Address</td>
+                  <td>Phone</td>
+                  <td>Website</td>
+              </tr>
+          </thead>
+      </table>
     </div>
   </div>
-
-  <div class="row">
-    <table id="serviceTable" class="table order-list">
-        <thead>
-            <tr>
-                <td>Organization</td>
-                <td>Address</td>
-                <td>Phone</td>
-                <td>Website</td>
-            </tr>
-        </thead>
-    </table>
-  </div>
-</div>
+</section>
 
 <% include ../partials/script.ejs %>
 
