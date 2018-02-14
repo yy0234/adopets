@@ -129,6 +129,16 @@ jQuery.validator.addMethod("notEqual", function(value, element, param) {
   return this.optional(element) || value != param;
 }, "Please choose a district");
 
+$(function() {
+    $("#birthdate").datepicker({
+		maxDate: 0,
+		changeMonth: true,
+      	changeYear: true,
+		yearRange: "-100:+0",
+		showAnim: "slideDown"
+	});
+});
+
 $("#register").click(function () {
     $("#register_form").validate({
 		rules: {
@@ -241,13 +251,6 @@ $("#register").click(function () {
 				}
 			})
 		}
-	});
-	$("#birthdate").datepicker({
-		maxDate: 0,
-		changeMonth: true,
-      	changeYear: true,
-		yearRange: "-100:+0",
-		showAnim: "slideDown"
 	});
 });
 </script>
