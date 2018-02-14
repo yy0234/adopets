@@ -59,7 +59,7 @@ app.get('/regist', function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send("success");   }
+        { return response.send("register success");   }
       });
   });
 });
@@ -75,7 +75,7 @@ app.get("/signin", function (request, response) {
 			return response.send("cannot find user"); 
 	   }
        else
-        { return response.send(result.rows);}
+        { return response.send("login success");}
       });
   });
 });
