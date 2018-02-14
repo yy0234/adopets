@@ -115,8 +115,8 @@ $("#user_login").click(function () {
 			username: $("#login_username").val(),
 			password: $("#login_password").val()
 		},
-		success: function (data) {
-			alert(data[0].userid);
+		success: function (mes) {
+			alert(mes);
 		},
 		error: function (err) {
 			alert(err);
@@ -241,8 +241,8 @@ $("#register").click(function () {
 				error: function error(err) {
 					alert(err);
 				},
-				success: function success(res) {
-					alert(res);
+				success: function success(mes) {
+					alert(mes);
 				}
 			})
 		}
