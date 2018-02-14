@@ -29,3 +29,8 @@ input[type=checkbox], input[type=radio] {
     margin-top: 1px\9;
     line-height: normal;
 }
+
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline {
+    margin-top: 0;
+    margin-left: 10px;
+}
