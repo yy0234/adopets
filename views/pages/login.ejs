@@ -222,24 +222,20 @@ $("#register").click(function () {
 			var register_username = $("#register_username").val() || "";
 			var register_password = $("#register_password").val() || "";
 
-			var params = {
-				userid: register_username,
-				lastname: register_lastname,
-				firstname:register_firstname,
-				email: register_email,
-				telnum: register_mobilenumber,
-				address: register_address,
-				birthday: birthdate,
-				password:register_password
-			};
-
-			console.log(params);
-
 			$.ajax({
 				url: "/regist",
 				type: "GET",
 				contentType: "application/json",
-				data: JSON.stringify(params),
+				data: {
+					userid: register_username,
+					lastname: register_lastname,
+					firstname:register_firstname,
+					email: register_email,
+					telnum: register_mobilenumber,
+					address: register_address,
+					birthday: birthdate,
+					password:register_password
+				},
 				complete: function complete() {
 				},
 				error: function error(err) {
