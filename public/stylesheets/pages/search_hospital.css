@@ -10,7 +10,7 @@ html, body {
 }
 
 
-.searchBar >div{
+.search-inner-box >div{
     /* Internet Explorer 10 */
     display:-ms-flexbox;
     -ms-flex-pack:center;
