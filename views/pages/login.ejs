@@ -212,9 +212,6 @@ $("#register").click(function () {
 				required: "Please enter your password"
 			}
 		},
-		errorPlacement: function (error, element) {
-			error.insertAfter(element.parent());
-		},
 		submitHandler: function () {
 			var register_firstname = $("#register_firstname").val() || "";
 			var register_lastname = $("#register_lastname").val() || "";
