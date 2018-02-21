@@ -234,13 +234,13 @@ body{
 }
 
 @media (min-width: 992px){
-    .modal-lg {
-        max-width: 1000px !important;
+    .modal .modal-lg {
+        max-width: 1000px;
     }
 }
 
 @media (min-width: 576px){
-    .modal-dialog {
-        max-width: 700px!important;
+    .modal .modal-dialog {
+        max-width: 700px;
     }
 }
