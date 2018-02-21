@@ -1,0 +1,5 @@
+<option>Type</option>
+<option>Lizards</option>
+<option>Snakes</option>
+<option>Turtles</option>
+<option>Other</option>

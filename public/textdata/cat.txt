@@ -1,0 +1,42 @@
+<option>Breeds</option>
+<option>Abyssinian</option>
+<option>American Bobtail</option>
+<option>American Curl</option>
+<option>American Shorthair</option>
+<option>American Wirehair</option>
+<option>Balinese</option>
+<option>Birman</option>
+<option>Bombay</option>
+<option>British Shorthair</option>
+<option>Burmese</option>
+<option>Chartreux</option>
+<option>Colorpoint Shorthair</option>
+<option>Cornish Rex</option>
+<option>Devon Rex</option>
+<option>Egyptian Mau</option>
+<option>European Burmese</option>
+<option>Exotic</option>
+<option>Havana Brown</option>
+<option>Japanese Bobtail</option>
+<option>Javanese</option>
+<option>Korat</option>
+<option>LaPerm</option>
+<option>Maine Coon</option>
+<option>Manx</option>
+<option>Norwegian Forest Cat</option>
+<option>Ocicat</option>
+<option>Oriental</option>
+<option>Persian</option>
+<option>RagaMuffin</option>
+<option>Ragdoll</option>
+<option>Russian Blue</option>
+<option>Scottish Fold</option>
+<option>Selkirk Rex</option>
+<option>Siamese</option>
+<option>Siberian</option>
+<option>Singapura</option>
+<option>Somali</option>
+<option>Sphynx</option>
+<option>Tonkinese</option>
+<option>Turkish Angora</option>
+<option>Turkish Van</option>

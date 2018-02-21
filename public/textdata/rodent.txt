@@ -1,0 +1,6 @@
+<option>Type</option>
+<option>Chinchilla</option>
+<option>Guinea Pigs</option>
+<option>Rabbits</option>
+<option>Hamsters</option>
+<option>Other</option>
