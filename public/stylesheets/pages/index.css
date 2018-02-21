@@ -232,3 +232,13 @@ body{
 .slides li:hover img,.slides li:hover .flex-caption{
     opacity:0.5;
 }
+
+@media (min-width: 992px)
+.modal-lg {
+    max-width: 1000px !important;
+}
+
+@media (min-width: 576px)
+.modal-dialog {
+    max-width: 700px!important;
+}
