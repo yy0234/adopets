@@ -681,7 +681,7 @@
 			//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 			xhr.onload = function() {
 				console.log(JSON.parse(xhr.response).responses[0].labelAnnotations[0].description);
-				alert(xhr.responseText);
+				alert(JSON.parse(xhr.response).responses[0].labelAnnotations[0].description);
 			}
 		}
 		fileReader.readAsDataURL(fileToLoad);
