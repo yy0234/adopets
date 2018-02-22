@@ -684,11 +684,7 @@
 				var resultList=JSON.parse(xhr.response);
 				for (var i=0;i<resultList.length;i++){
 					console.log(resultList.responses[0].labelAnnotations[i].description);
-					stringStorage+=resultList.responses[0].labelAnnotations[i].description+"<br/>"
-					console.log(stringStorage);
 				}
-				console.log(resultList);
-				alert(stringStorage);
 			}
 		}
 		fileReader.readAsDataURL(fileToLoad);
