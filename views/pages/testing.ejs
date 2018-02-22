@@ -12,7 +12,6 @@
 <section class="main-content">
 	<div class="container-fluid">
 		<input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
-		<div id="imgTest"></div>
 	<div>
 </section>
 
@@ -22,6 +21,7 @@
 <!--Your own script-->
 <script type='text/javascript'>
 	function encodeImageFileAsURL() {
+	  var base64Image;
   
 	  var filesSelected = document.getElementById("inputFileToLoad").files;
 	  if (filesSelected.length > 0) {
@@ -35,9 +35,9 @@
 		  var newImage = document.createElement('img');
 		  newImage.src = srcData;
   
-		  document.getElementById("imgTest").innerHTML = newImage.outerHTML;
-		  alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
-		  console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+		  base64Image = newImage.outerHTML;
+		  alert("Converted Base64 version is " + base64Image);
+		  console.log("Converted Base64 version is " + base64Image);
 		}
 		fileReader.readAsDataURL(fileToLoad);
 	  }
