@@ -68,12 +68,12 @@
 						<div class="row">
 							<div class="col-md-6">
 								<select id="petTypes" multiple="multiple">
-									<option value="birds">Birds</option>
+									<option value="bird">Birds</option>
 									<option value="cat">Cat</option>
 									<option value="dog">Dog</option>
 									<option value="fish">Fish</option>
-									<option value="reptiles">Reptiles</option>
-									<option value="rodents">Rodents</option>
+									<option value="reptile">Reptiles</option>
+									<option value="rodent">Rodents</option>
 								</select>
 							</div>
 							<div class="col-md-6">
@@ -698,7 +698,9 @@
 	}
 
 	$("#petTypes").change(function() {
-   		 console.log($(this).val());
+		for(var i=0; i<$(this).val().length;i++){
+			$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+		}
 	});
 
 </script>
