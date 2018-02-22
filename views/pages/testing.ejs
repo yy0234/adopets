@@ -32,19 +32,18 @@
   
 		fileReader.onload = function(fileLoadedEvent) {
 		var srcData = fileLoadedEvent.target.result; // <--- data: base64
-
-		console.log(fileLoadedEvent);
 		var newImage = document.createElement('img');
 		newImage.src = srcData;
 
 		rootImage = newImage.outerHTML;
-		base64Image=rootImage.replace("data:image/png;base64,", "");
-		alert("Converted Base64 version is " + rootImage);
+		base64Image="&quot;"+rootImage.substring(rootImage.indexOf(",")+1);
+		alert("Converted Base64 version is " + base64Image);
+		console.log(base64Image)
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
 		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.send(JSON.stringify({"requests":[{"image":{"content":"'"+base64Image+"'"},"features": [{"type":"LABEL_DETECTION","maxResults":1}]}]}));
+		xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":1}]}]}));
 		//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 		xhr.onload = function() {
 			alert(xhr.responseText);
