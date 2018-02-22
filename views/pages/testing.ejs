@@ -35,6 +35,7 @@
 			//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 			xhr.onload = function() {
 				alert(xhr.responseText);
+				console.log(xhr.responseText);
 			}	
 		},
 		error: function (err) {
