@@ -559,19 +559,19 @@
 	});
 
 	$("#petTypes").change(function() {
-		$("#petBreeds").empty();
+		/*$("#petBreeds").empty();
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".ejs");
 			}
 		}
-		$("#petBreeds").multiselect('rebuild');
-		/*$('#petBreeds').append($('<option>', {
+		$("#petBreeds").multiselect('rebuild');*/
+		$('#petBreeds').append($('<option>', {
 			value: '1',
 			text : 'one'
 		}));
 		
-		$('#petBreeds').multiselect('rebuild');*/
+		$('#petBreeds').multiselect('rebuild');
 		/*if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
