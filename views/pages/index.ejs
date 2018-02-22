@@ -598,7 +598,8 @@
 				})
 			}
 		}
-		string.replace(/,$/,"]");
+		string= string.substring(0,string.length-1);
+		string+="]";
 		console.log(string);
 		var data= JSON.parse(string);
 		$('#petBreeds').multiselect('dataprovider', data);
