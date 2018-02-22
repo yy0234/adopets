@@ -596,6 +596,7 @@
 			}
 		}
 		string.replace(/,$/,"]");
+		console.log(string);
 		var data= JSON.parse(string);
 		$('#petBreeds').multiselect('dataprovider', data);
 	})
