@@ -586,7 +586,7 @@
 				});
 			}
 		}*/ 
-		var string="[";
+		var string=;
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
@@ -599,7 +599,7 @@
 			}
 		}
 		string= string.substring(0,string.length-2);
-		string+="]";
+		string="["+string+"]";
 		console.log(string);
 		var data= JSON.parse(string);
 		$('#petBreeds').multiselect('dataprovider', data);
