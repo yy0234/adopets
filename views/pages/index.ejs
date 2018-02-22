@@ -681,11 +681,12 @@
 			//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 			xhr.onload = function() {
 				var resultList=JSON.parse(xhr.response);
+				var stringStorage="";
 				for (var i=0;i<resultList.length;i++){
-					console.log(JSON.parse(xhr.response).responses[i].labelAnnotations[0].description);
+					console.log(resultList.responses[0].labelAnnotations[i].description);
+					stringStorage=stringStorage+resultList.responses[0].labelAnnotations[i].description+"</br>"
 				}
-				alert(JSON.parse(xhr.response));
-				console.log(JSON.parse(xhr.response));
+				alert(stringStorage);
 			}
 		}
 		fileReader.readAsDataURL(fileToLoad);
