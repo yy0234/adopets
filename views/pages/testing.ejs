@@ -42,7 +42,7 @@
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
 		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION","maxResults":1}], "image": {"content":"/9j/7QBEUGhvdG9zaG9...image contents...fXNWzvDEeYxxxzj/Coa6Bax//Z"}}]}));
+		xhr.send(JSON.stringify({"requests":[{"image":{"content": base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":1}]}]}));
 		//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 		xhr.onload = function() {
 			alert(xhr.responseText);
