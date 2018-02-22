@@ -557,7 +557,7 @@
 	$(window).bind("resize", function(){
     	$('.flexslider').flexslider(0);
 	});
-	var string="[";
+	
 	$("#petTypes").change(function() {
 		var optionElement;
 		/*$("#petBreeds").empty();
@@ -586,12 +586,15 @@
 				});
 			}
 		}*/ 
+		var string="[";
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
 					optionElement=data.split("\n");
-					string += "{label:"+optionElement[i]+",value:"+optionElement[i]+"},"
-					console.log(string);
+					for (var i=0;i<optionElement.length;i++){
+						string += "{label:"+optionElement[i]+",value:"+optionElement[i]+"},"
+						console.log(string);
+					}
 				})
 			}
 		}
