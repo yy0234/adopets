@@ -587,7 +587,7 @@
 			}
 		}*/
 		if (($(this).val())){
-			jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data){
+			jQuery.get("textdata/" + $(this).val() + ".txt", function(data){
 				for(var i=0; i<10;i++){
 						
 					$('#petBreeds').append($('<option>', {
