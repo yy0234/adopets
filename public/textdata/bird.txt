@@ -1,2 +1,27 @@
-<option value="African Greys">African Greys</option>
-<option value="Amazons">Amazons</option>
+Bird Species
+African Greys
+Amazons
+Caiques
+Canaries
+Cockatiels
+Crows
+Doves & Pigeons
+Eclectus
+Finches
+Hawk Headed Parrots
+Large Cockatoos
+Large Conures
+Large Parakeets
+Lories & Lorikeets
+Lovebirds
+Macaws
+Mini-Macaws
+Mynah Birds
+Parrotlets
+Pionus Parrots
+Poicephalus
+Small Cockatoos
+Small Conures
+Small Parakeets
+Toucans
+Other

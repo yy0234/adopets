@@ -1,3 +1,2 @@
-<optgroup label="Fish Species">
-<option selected>All</option>
-</optgroup>
+Fish Species
+All

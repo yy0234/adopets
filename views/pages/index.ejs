@@ -573,14 +573,21 @@
 		}));
 		
 		$('#petBreeds').multiselect('rebuild');*/
+		$("#petBreeds").empty();
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
 					optionElement=data.split("\n");
-					console.log(optionElement);
+					for (var i=0;i<optionElement.length;i++){
+						$('#petBreeds').append($('<option>', {
+							value: optionElement[i],
+							text : optionElement[i]
+						}));
+					};
 				});
 			}
 		}
+		$('#petBreeds').multiselect('rebuild');
 	});
 
     $(document).ready(function() {

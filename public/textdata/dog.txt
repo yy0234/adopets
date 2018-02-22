@@ -1,150 +1,149 @@
-<optgroup label="Dog Breeds">
-<option>Affenpinscher</option>
-<option>Afghan Hound</option>
-<option>Airedale Terrier</option>
-<option>Alaskan Malamute</option>
-<option>American Staffordshire Bull Terrier</option>
-<option>Anatolian Shepherd Dog</option>
-<option>Australian Cattle Dog</option>
-<option>Australian Kelpie</option>
-<option>Australian Shepherd Dog</option>
-<option>Australian Silky Terrier</option>
-<option>Australian Terrier</option>
-<option>Basenji</option>
-<option>Basset Fauve de Bretagne</option>
-<option>Basset Hound</option>
-<option>Beagle</option>
-<option>Bearded Collie</option>
-<option>Bedlington Terrier</option>
-<option>Belgian Shepherd Dog Groenendael</option>
-<option>Belgian Shepherd Dog Laekenois</option>
-<option>Belgian Shepherd Dog Malinois</option>
-<option>Belgian Shepherd Dog Tervueren</option>
-<option>Bernese Mountain Dog</option>
-<option>Bichon Frise</option>
-<option>Bloodhound</option>
-<option>Border Collie</option>
-<option>Border Terrier</option>
-<option>Borzoi</option>
-<option>Boston Terrier</option>
-<option>Bouvier des Flandres</option>
-<option>Boxer</option>
-<option>Bracco Italiano</option>
-<option>Briard</option>
-<option>Brittany</option>
-<option>Bull Terrier</option>
-<option>Bull Terrier Miniature</option>
-<option>Bulldog</option>
-<option>Bullmastiff</option>
-<option>Cairn Terrier</option>
-<option>Cavalier King Charles Spaniel</option>
-<option>Cesky Terrier</option>
-<option>Chesapeake Bay Retriever</option>
-<option>Chihuahua (Smooth Coat)</option>
-<option>Chinese Crested</option>
-<option>Chow Chow (Smooth)</option>
-<option>Clumber Spaniel</option>
-<option>Collie (Rough)</option>
-<option>Collie (Smooth)</option>
-<option>Curly-Coated Retriever</option>
-<option>Dachshund (Miniature Long Haired)</option>
-<option>Dachshund (Miniature Smooth Haired)</option>
-<option>Dachshund (Miniature Wire Haired)</option>
-<option>Dachshund (Smooth Haired)</option>
-<option>Dachshund (Wire Haired)</option>
-<option>Dalmatian</option>
-<option>Dandie Dinmont Terrier</option>
-<option>Deerhound</option>
-<option>Dobermann</option>
-<option>Dogue de Bordeaux</option>
-<option>English Setter</option>
-<option>English Springer Spaniel</option>
-<option>English Toy Terrier (Black & Tan)</option>
-<option>Field Spaniel</option>
-<option>Finnish Lapphund</option>
-<option>Finnish Spitz</option>
-<option>Flat-Coated Retriever</option>
-<option>Fox Terrier Smooth Coat</option>
-<option>Fox Terrier Wire Coat</option>
-<option>Foxhound</option>
-<option>French Bulldog</option>
-<option>German Shepherd Dog</option>
-<option>German Short-Haired Pointer</option>
-<option>German Spitz Klein</option>
-<option>German Wire-Haired Pointer</option>
-<option>Golden Retriever</option>
-<option>Gordon Setter</option>
-<option>Great Dane</option>
-<option>Greyhound</option>
-<option>Harrier Hound</option>
-<option>Hungarian Vizsla</option>
-<option>Hungarian Wire-Haired Vizsla</option>
-<option>Ibizan Hound</option>
-<option>Irish Setter</option>
-<option>Irish Terrier</option>
-<option>Irish Water Spaniel</option>
-<option>Irish Wolfhound</option>
-<option>Italian Greyhound</option>
-<option>Japanese Akita</option>
-<option>Japanese Chin</option>
-<option>Japanese Spitzv</option>
-<option>Keeshond</option>
-<option>Kerry Blue Terrier</option>
-<option>King Charles Spaniel</option>
-<option>Labrador Retriever</option>
-<option>Lakeland Terrier</option>
-<option>Leonberger</option>
-<option>Lhaso Apso</option>
-<option>Lowchen</option>
-<option>Maltese</option>
-<option>Manchester Terrier</option>
-<option>Maremma Sheepdog</option>
-<option>Mastiff</option>
-<option>Newfoundland</option>
-<option>Norfolk Terrier</option>
-<option>Norwich Terrier</option>
-<option>Nova Scotia Duck Tolling Retriever</option>
-<option>Old English Sheepdog</option>
-<option>Papillon</option>
-<option>Parson Jack Russell Terrier</option>
-<option>Pharaoh Hound</option>
-<option>Pointer</option>
-<option>Pomeranian</option>
-<option>Poodle Miniature</option>
-<option>Poodle Standard</option>
-<option>Poodle Toy</option>
-<option>Portuguese Water Dog</option>
-<option>Pug</option>
-<option>Pyrenean Mountain Dog</option>
-<option>Rhodesian Ridgeback</option>
-<option>Rottweiler</option>
-<option>Saluki</option>
-<option>Samoyed</option>
-<option>Schipperke</option>
-<option>Schnauzer Giant</option>
-<option>Schnauzer Miniature</option>
-<option>Schnauzer Standard</option>
-<option>Scottish Terrier</option>
-<option>Shar Pei</option>
-<option>Shetland Sheepdog</option>
-<option>Shih Tzu</option>
-<option>Siberian Husky</option>
-<option>Skye Terrier</option>
-<option>Sloughi</option>
-<option>Soft Coated Wheaten Terrier</option>
-<option>St Bernard</option>
-<option>Sussex Spaniel</option>
-<option>Swedish Vallhund</option>
-<option>Tenterfield Terrier</option>
-<option>Tibetan Mastiff</option>
-<option>Tibetan Spaniel</option>
-<option>Tibetan Terrier</option>
-<option>Weimaraner</option>
-<option>Welsh Corgi (Cardigan)</option>
-<option>Welsh Corgi (Pembroke)</option>
-<option>Welsh Springer Spaniel</option>
-<option>Welsh Terrier</option>
-<option>West Highland White Terrier</option>
-<option>Whippet</option>
-<option>Yorkshire Terrier</option>
-</optgroup>
+Dog Breeds
+Affenpinscher
+Afghan Hound
+Airedale Terrier
+Alaskan Malamute
+American Staffordshire Bull Terrier
+Anatolian Shepherd Dog
+Australian Cattle Dog
+Australian Kelpie
+Australian Shepherd Dog
+Australian Silky Terrier
+Australian Terrier
+Basenji
+Basset Fauve de Bretagne
+Basset Hound
+Beagle
+Bearded Collie
+Bedlington Terrier
+Belgian Shepherd Dog Groenendael
+Belgian Shepherd Dog Laekenois
+Belgian Shepherd Dog Malinois
+Belgian Shepherd Dog Tervueren
+Bernese Mountain Dog
+Bichon Frise
+Bloodhound
+Border Collie
+Border Terrier
+Borzoi
+Boston Terrier
+Bouvier des Flandres
+Boxer
+Bracco Italiano
+Briard
+Brittany
+Bull Terrier
+Bull Terrier Miniature
+Bulldog
+Bullmastiff
+Cairn Terrier
+Cavalier King Charles Spaniel
+Cesky Terrier
+Chesapeake Bay Retriever
+Chihuahua (Smooth Coat)
+Chinese Crested
+Chow Chow (Smooth)
+Clumber Spaniel
+Collie (Rough)
+Collie (Smooth)
+Curly-Coated Retriever
+Dachshund (Miniature Long Haired)
+Dachshund (Miniature Smooth Haired)
+Dachshund (Miniature Wire Haired)
+Dachshund (Smooth Haired)
+Dachshund (Wire Haired)
+Dalmatian
+Dandie Dinmont Terrier
+Deerhound
+Dobermann
+Dogue de Bordeaux
+English Setter
+English Springer Spaniel
+English Toy Terrier (Black & Tan)
+Field Spaniel
+Finnish Lapphund
+Finnish Spitz
+Flat-Coated Retriever
+Fox Terrier Smooth Coat
+Fox Terrier Wire Coat
+Foxhound
+French Bulldog
+German Shepherd Dog
+German Short-Haired Pointer
+German Spitz Klein
+German Wire-Haired Pointer
+Golden Retriever
+Gordon Setter
+Great Dane
+Greyhound
+Harrier Hound
+Hungarian Vizsla
+Hungarian Wire-Haired Vizsla
+Ibizan Hound
+Irish Setter
+Irish Terrier
+Irish Water Spaniel
+Irish Wolfhound
+Italian Greyhound
+Japanese Akita
+Japanese Chin
+Japanese Spitzv
+Keeshond
+Kerry Blue Terrier
+King Charles Spaniel
+Labrador Retriever
+Lakeland Terrier
+Leonberger
+Lhaso Apso
+Lowchen
+Maltese
+Manchester Terrier
+Maremma Sheepdog
+Mastiff
+Newfoundland
+Norfolk Terrier
+Norwich Terrier
+Nova Scotia Duck Tolling Retriever
+Old English Sheepdog
+Papillon
+Parson Jack Russell Terrier
+Pharaoh Hound
+Pointer
+Pomeranian
+Poodle Miniature
+Poodle Standard
+Poodle Toy
+Portuguese Water Dog
+Pug
+Pyrenean Mountain Dog
+Rhodesian Ridgeback
+Rottweiler
+Saluki
+Samoyed
+Schipperke
+Schnauzer Giant
+Schnauzer Miniature
+Schnauzer Standard
+Scottish Terrier
+Shar Pei
+Shetland Sheepdog
+Shih Tzu
+Siberian Husky
+Skye Terrier
+Sloughi
+Soft Coated Wheaten Terrier
+St Bernard
+Sussex Spaniel
+Swedish Vallhund
+Tenterfield Terrier
+Tibetan Mastiff
+Tibetan Spaniel
+Tibetan Terrier
+Weimaraner
+Welsh Corgi (Cardigan)
+Welsh Corgi (Pembroke)
+Welsh Springer Spaniel
+Welsh Terrier
+West Highland White Terrier
+Whippet
+Yorkshire Terrier
