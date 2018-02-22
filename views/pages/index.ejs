@@ -558,36 +558,6 @@
     	$('.flexslider').flexslider(0);
 	});
 
-	$("#petTypes").change(function() {
-		var optionElement;
-		/*$("#petBreeds").empty();
-		if (($(this).val())){
-			for(var i=0; i<$(this).val().length;i++){
-				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
-			}
-		}
-		$("#petBreeds").multiselect('rebuild');*/
-		/*$('#petBreeds').append($('<option>', {
-			value: '1',
-			text : 'one'
-		}));
-		
-		$('#petBreeds').multiselect('rebuild');*/
-		if (($(this).val())){
-			for(var i=0; i<$(this).val().length;i++){
-				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
-					optionElement=data.split("\n");
-					for (var i=0;i<optionElement.length;i++){
-						$('#petBreeds').append($('<option>', {
-							value: optionElement[i],
-							text : optionElement[i]
-						}));
-					};
-				});
-			}
-		}
-	});
-
     $(document).ready(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
@@ -721,6 +691,36 @@
 		fileReader.readAsDataURL(fileToLoad);
 	  }
 	}
+
+	$("#petTypes").change(function() {
+		var optionElement;
+		/*$("#petBreeds").empty();
+		if (($(this).val())){
+			for(var i=0; i<$(this).val().length;i++){
+				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+			}
+		}
+		$("#petBreeds").multiselect('rebuild');*/
+		/*$('#petBreeds').append($('<option>', {
+			value: '1',
+			text : 'one'
+		}));
+		
+		$('#petBreeds').multiselect('rebuild');*/
+		if (($(this).val())){
+			for(var i=0; i<$(this).val().length;i++){
+				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
+					optionElement=data.split("\n");
+					for (var i=0;i<optionElement.length;i++){
+						$('#petBreeds').append($('<option>', {
+							value: optionElement[i],
+							text : optionElement[i]
+						}));
+					};
+				});
+			}
+		}
+	}).then(function (){$('#petBreeds').multiselect('rebuild');})
 
 	function fileUpload(){
 		$("#inputFile").click();
