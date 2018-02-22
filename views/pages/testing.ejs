@@ -36,7 +36,7 @@
 		newImage.src = srcData;
 
 		rootImage = newImage.outerHTML;
-		base64Image="\""+rootImage.substring(rootImage.indexOf(",")+1,rootImage.length-1);
+		base64Image="\""+rootImage.substring(rootImage.indexOf(",")+1);
 		alert("Converted Base64 version is " + base64Image);
 		console.log(base64Image)
 
