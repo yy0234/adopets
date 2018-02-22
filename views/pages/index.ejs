@@ -597,9 +597,12 @@
 				}
 			});	
 		}
-		
-		$('#petBreeds').multiselect('rebuild');
+		rebuild();
 	});
+
+	function rebuild(){
+		$('#petBreeds').multiselect('rebuild');
+	}
 
     $(document).ready(function() {
 		$('.flexslider').flexslider({
