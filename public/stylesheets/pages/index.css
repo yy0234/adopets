@@ -206,15 +206,6 @@ padding-bottom: 0;
     color: #6495ed78;
 }
 
-body{
-    background: url(/images/background.png);
-    background-size: 40%;
-    background-position: 50% 25%;
-    background-attachment: fixed;
-    background-repeat-x: no-repeat;
-    background-repeat-y: no-repeat;
-}
-
 .slides .overlay{
     display: block;
     content: " ";
