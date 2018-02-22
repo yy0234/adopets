@@ -563,9 +563,9 @@
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+				$("#multiselect").multiselect('dataprovider', i);
 			}
 		}
-		$("#petBreeds").multiselect('refresh');
 	});
 
     $(document).ready(function() {
