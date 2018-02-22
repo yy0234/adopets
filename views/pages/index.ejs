@@ -558,7 +558,7 @@
     	$('.flexslider').flexslider(0);
 	});
 
-	$.when($("#petTypes").change(function() {
+	$("#petTypes").change(function() {
 		var optionElement;
 		/*$("#petBreeds").empty();
 		if (($(this).val())){
@@ -586,7 +586,7 @@
 				});
 			}
 		}
-	})).then(function (){$('#petBreeds').multiselect('rebuild');});
+	}).done(function (){$('#petBreeds').multiselect('rebuild');});
 
     $(document).ready(function() {
 		$('.flexslider').flexslider({
