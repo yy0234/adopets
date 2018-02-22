@@ -557,6 +557,15 @@
 	$(window).bind("resize", function(){
     	$('.flexslider').flexslider(0);
 	});
+
+	$("#petTypes").change(function() {
+		$("#petBreeds").empty();
+		for(var i=0; i<$(this).val().length;i++){
+			$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+		}
+		$('#petBreeds').multiselect("refresh");
+	});
+
     $(document).ready(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
@@ -696,14 +705,6 @@
 	function fileUpload(){
 		$("#inputFile").click();
 	}
-
-	$("#petTypes").change(function() {
-		$("#petBreeds").empty();
-		for(var i=0; i<$(this).val().length;i++){
-			$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
-		}
-		$('#petBreeds').multiselect("refresh");
-	});
 
 </script>
 </body>
