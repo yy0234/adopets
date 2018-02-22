@@ -563,29 +563,10 @@
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+				$("#petBreeds").multiselect('rebuild');
 			}
 		}
-		$('#petBreeds').multiselect({
-			buttonWidth: '100%',
-			dropRight: true,
-			maxHeight: 150,
-			nonSelectedText: 'Breeds',
-			includeSelectAllOption: true,
-            selectAllValue: 'select-all-value',
-			allSelectedText: 'All Breeds',
-			nSelectedText: ' Breeds selected',
-		});
 		$("#petBreeds").multiselect('rebuild');
-		$('#petBreeds').multiselect({
-			buttonWidth: '100%',
-			dropRight: true,
-			maxHeight: 150,
-			nonSelectedText: 'Breeds',
-			includeSelectAllOption: true,
-            selectAllValue: 'select-all-value',
-			allSelectedText: 'All Breeds',
-			nSelectedText: ' Breeds selected',
-		});
 	});
 
     $(document).ready(function() {
