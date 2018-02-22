@@ -1,4 +1,4 @@
-<option>Breeds</option>
+<optgroup label="Cat Breeds">
 <option>Abyssinian</option>
 <option>American Bobtail</option>
 <option>American Curl</option>
@@ -40,3 +40,4 @@
 <option>Tonkinese</option>
 <option>Turkish Angora</option>
 <option>Turkish Van</option>
+</optgroup>

@@ -1,5 +1,6 @@
-<option>Type</option>
+<optgroup label="Reptile Types">
 <option>Lizards</option>
 <option>Snakes</option>
 <option>Turtles</option>
 <option>Other</option>
+</optgroup>

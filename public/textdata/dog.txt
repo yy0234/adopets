@@ -1,4 +1,4 @@
-<option>Breeds</option>
+<optgroup label="Dog Breeds">
 <option>Affenpinscher</option>
 <option>Afghan Hound</option>
 <option>Airedale Terrier</option>
@@ -147,3 +147,4 @@
 <option>West Highland White Terrier</option>
 <option>Whippet</option>
 <option>Yorkshire Terrier</option>
+</optgroup>
