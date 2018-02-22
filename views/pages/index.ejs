@@ -559,26 +559,28 @@
 	});
 
 	$("#petTypes").change(function() {
-		$("#petBreeds").empty();
+		var optionElement;
+		/*$("#petBreeds").empty();
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
 			}
 		}
-		$("#petBreeds").multiselect('rebuild');
+		$("#petBreeds").multiselect('rebuild');*/
 		/*$('#petBreeds').append($('<option>', {
 			value: '1',
 			text : 'one'
 		}));
 		
 		$('#petBreeds').multiselect('rebuild');*/
-		/*if (($(this).val())){
+		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
-					console.log(data);
+					optionElement=data.split("/n");
+					console.log(optionElement);
 				});
 			}
-		}*/
+		}
 	});
 
     $(document).ready(function() {
