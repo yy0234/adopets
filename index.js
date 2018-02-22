@@ -38,6 +38,10 @@ app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');
 });
 
+app.get('/testing', function(request, response) {
+  response.render('pages/testing');
+});
+
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM users', function(err, result) {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<!--Your own css file-->
+	<title>You own title</title>
+</head>
+
+<body>
+<% include ../partials/headline.ejs %>
+
+<section class="main-content">
+	<div class="container-fluid">
+		<input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+		<div id="imgTest"></div>
+	<div>
+</section>
+
+
+<% include ../partials/script.ejs %>
+
+<!--Your own script-->
+<script type='text/javascript'>
+	function encodeImageFileAsURL() {
+  
+	  var filesSelected = document.getElementById("inputFileToLoad").files;
+	  if (filesSelected.length > 0) {
+		var fileToLoad = filesSelected[0];
+  
+		var fileReader = new FileReader();
+  
+		fileReader.onload = function(fileLoadedEvent) {
+		  var srcData = fileLoadedEvent.target.result; // <--- data: base64
+  
+		  var newImage = document.createElement('img');
+		  newImage.src = srcData;
+  
+		  document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+		  alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+		  console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+		}
+		fileReader.readAsDataURL(fileToLoad);
+	  }
+	}
+  </script>
+
+</body>
+</html>
