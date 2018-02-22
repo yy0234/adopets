@@ -722,6 +722,17 @@
 		}
 	}).then(function (){$('#petBreeds').multiselect('rebuild');});
 
+	$('#petBreeds').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Breeds',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Breeds',
+		nSelectedText: ' Breeds selected',
+	});
+
 	function fileUpload(){
 		$("#inputFile").click();
 	}
