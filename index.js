@@ -31,11 +31,11 @@ app.get('/register', function(request, response) {
 });
 
 app.get('/search_service', function(request, response) {
-  response.render('pages/search_hospital');
+  response.render('pages/searchService');
 });
 
 app.get('/image_search', function(request, response) {
-  response.render('pages/photoSearch_notfinished');
+  response.render('pages/imageSearch');
 });
 
 app.get('/db', function (request, response) {
@@ -97,7 +97,7 @@ app.get("/getUserData", function (request, response) {
 });*/
 
 //upload & search photo
-var Storage = multer.diskStorage({
+/*var Storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, "./public/images");
     },
@@ -120,7 +120,7 @@ app.post("/api/Upload", function (req, res) {
 		res.send(res.req.file.filename);
     }); 
 });
-//upload &search photo done
+//upload &search photo done*/
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
