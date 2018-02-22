@@ -32,9 +32,10 @@
   
 		fileReader.onload = function(fileLoadedEvent) {
 		var srcData = fileLoadedEvent.target.result; // <--- data: base64
-
+		console.log(srcData);
 		var newImage = document.createElement('img');
 		newImage.src = srcData;
+		console.log(newImage);
 
 		rootImage = newImage.outerHTML;
 		base64Image=rootImage.replace(/data:image/png;base64,|data:image/jpeg;base64,/g, "");
