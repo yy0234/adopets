@@ -560,12 +560,12 @@
 
 	$("#petTypes").change(function() {
 		$("#petBreeds").empty();
-		if ($(this).val().length!=null){
+		if (($(this).val().length)){
 			for(var i=0; i<$(this).val().length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
 			}
 		}
-		$('#petBreeds').multiselect("rebuild");
+		$("#petBreeds").multiselect('rebuild');
 	});
 
     $(document).ready(function() {
@@ -597,8 +597,6 @@
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Breeds',
 			nSelectedText: ' Breeds selected',
-			disableIfEmpty: true,
-			disabledText: 'None Breeds found'
 		});
 		$('#petGender').multiselect({
 			buttonWidth: '100%',
