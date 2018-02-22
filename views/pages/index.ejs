@@ -585,19 +585,19 @@
 					};
 				});
 			}
-		}*/
-
+		}*/ 
+		var string="[";
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
-					var data = [
-					{label: "ACNP", value: "ACNP"},
-					{label: "test", value: "test"}
-					];
-					$('#petBreeds').multiselect('dataprovider', data);
+					optionElement=data.split("\n");
+					string += "{label:"+optionElement[i]+",value:"+optionElement[i]+"},"
 				})
 			}
 		}
+		string.replace(/,$/,"]");
+		var data= JSON.parse(string);
+		$('#petBreeds').multiselect('dataprovider', data);
 	})
 
     $(document).ready(function() {
