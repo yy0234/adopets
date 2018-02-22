@@ -601,8 +601,7 @@
 		string= string.substring(0,string.length-2);
 		string="["+string+"]";
 		console.log(string);
-		var data= JSON.parse(string);
-		$('#petBreeds').multiselect('dataprovider', data);
+		$('#petBreeds').multiselect('dataprovider', string);
 	})
 
     $(document).ready(function() {
