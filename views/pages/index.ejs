@@ -558,6 +558,7 @@
     	$('.flexslider').flexslider(0);
 	});
 	
+	var string="";
 	$("#petTypes").change(function() {
 		var optionElement;
 		/*$("#petBreeds").empty();
@@ -586,7 +587,6 @@
 				});
 			}
 		}*/ 
-		var string="";
 		if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
@@ -598,6 +598,7 @@
 				})
 			}
 		}
+	}).done(function(){
 		string= string.substring(0,string.length-2);
 		string="["+string+"]";
 		console.log(string);
