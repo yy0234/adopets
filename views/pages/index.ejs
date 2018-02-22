@@ -573,7 +573,7 @@
 		}));
 		
 		$('#petBreeds').multiselect('rebuild');*/
-		if (($(this).val())){
+		/*if (($(this).val())){
 			for(var i=0; i<$(this).val().length;i++){
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
 					optionElement=data.split("\n");
@@ -585,7 +585,17 @@
 					};
 				});
 			}
+		}*/
+		if (($(this).val())){
+			for(var i=0; i<10;i++){
+					
+				$('#petBreeds').append($('<option>', {
+					value: i,
+					text : i
+				}));
+			};
 		}
+		
 		$('#petBreeds').multiselect('rebuild');
 	});
 
