@@ -684,8 +684,9 @@
 				var stringStorage="";
 				for (var i=0;i<resultList.length;i++){
 					console.log(resultList.responses[0].labelAnnotations[i].description);
-					stringStorage=stringStorage+resultList.responses[0].labelAnnotations[i].description+"</br>"
+					stringStorage+=resultList.responses[0].labelAnnotations[i].description+"</br>"
 				}
+				console.log(resultList);
 				alert(stringStorage);
 			}
 		}
