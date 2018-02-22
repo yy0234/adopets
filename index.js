@@ -30,11 +30,11 @@ app.get('/register', function(request, response) {
   response.render('pages/login');
 });
 
-app.get('/search_hospital', function(request, response) {
+app.get('/search_service', function(request, response) {
   response.render('pages/search_hospital');
 });
 
-app.get('/photoSearch_notfinished', function(request, response) {
+app.get('/image_search', function(request, response) {
   response.render('pages/photoSearch_notfinished');
 });
 
