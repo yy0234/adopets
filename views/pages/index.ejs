@@ -680,8 +680,8 @@
 			xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":1}]}]}));
 			//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 			xhr.onload = function() {
-				console.log(JSON.parse(xhr.response));
-				console.log(JSON.parse(xhr.responseText));
+				console.log(JSON.parse(xhr.response.responses));
+				console.log(JSON.parse(xhr.response.responses[0]));
 				alert(xhr.responseText);
 			}
 		}
