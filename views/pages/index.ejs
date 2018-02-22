@@ -33,7 +33,7 @@
 							<div class="input-group">
 								<input type="text"  class="form-control" placeholder="What pets are you looking for?"/>
 								<span class="input-group-addon">
-									<input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();"><i class="fas fa-camera" title="Search by photo"></i></input>
+									<input id="inputFile" type="file" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
 									<i class="fas fa-search"></i>
 								</span>
 							</div>
@@ -688,6 +688,10 @@
 		}
 		fileReader.readAsDataURL(fileToLoad);
 	  }
+	}
+
+	function fileUpload(){
+		$("#inputFile").click();
 	}
 
 </script>
