@@ -560,10 +560,12 @@
 
 	$("#petTypes").change(function() {
 		$("#petBreeds").empty();
-		for(var i=0; i<$(this).val().length;i++){
-			$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+		if ($(this).val().length!=null){
+			for(var i=0; i<$(this).val().length;i++){
+				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+			}
 		}
-		$('#petBreeds').multiselect("refresh");
+		$('#petBreeds').multiselect("rebuild");
 	});
 
     $(document).ready(function() {
