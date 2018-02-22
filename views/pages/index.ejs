@@ -592,6 +592,7 @@
 				jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data) {
 					optionElement=data.split("\n");
 					string += "{label:"+optionElement[i]+",value:"+optionElement[i]+"},"
+					console.log(string);
 				})
 			}
 		}
