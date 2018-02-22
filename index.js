@@ -42,17 +42,6 @@ app.get('/testing', function(request, response) {
   response.render('pages/testing');
 });
 
- // Read the file into memory.
- var fs = require('fs');
- var imageFile = fs.readFileSync('../public/images/cat1.jpg');
-
- // Covert the image data to a Buffer and base64 encode it.
- var encoded = new Buffer(imageFile).toString('base64');
-
-app.get('/testing_base64', function() {
-  return encoded;
-});
-
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM users', function(err, result) {
