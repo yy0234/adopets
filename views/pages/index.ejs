@@ -660,7 +660,7 @@
 	function encodeImageFileAsURL() {
 	  var base64Image="";
 	  var rootImage="";
-	  var stringStorage;
+	  var stringStorage="";
   
 	  var filesSelected = document.getElementById("inputFile").files;
 	  if (filesSelected.length > 0) {
@@ -684,7 +684,9 @@
 				var resultList=JSON.parse(xhr.response);
 				for (var i=0;i<resultList.responses[0].labelAnnotations.length;i++){
 					console.log(resultList.responses[0].labelAnnotations[i].description);
+					stringStorage+=resultList.responses[0].labelAnnotations[i].description+"<br/>";
 				}
+				alert(stringStorage);
 			}
 		}
 		fileReader.readAsDataURL(fileToLoad);
