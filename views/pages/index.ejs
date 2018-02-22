@@ -579,14 +579,15 @@
 					optionElement=data.split("\n");
 					for (var i=0;i<optionElement.length;i++){
 						$('#petBreeds').append($('<option>', {
-							value: i,
-							text : i
+							value: optionElement[i],
+							text : optionElement[i]
 						}));
 					};
 				});
 			}
 		}
-		$('#petBreeds').multiselect('refresh');
+	}).then(function() {
+		$('#petBreeds').multiselect('rebuild');
 	});
 
     $(document).ready(function() {
