@@ -602,10 +602,13 @@
 		string= string.substring(0,string.length-2);
 		string="["+string+"]";
 		console.log(string);
-		var data= JSON.parse(string);
-		$('#petBreeds').multiselect('dataprovider', data);
+		test();
 	})
 
+	function test(){
+		var data= JSON.parse(string);
+		$('#petBreeds').multiselect('dataprovider', data);
+	}
     $(document).ready(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
