@@ -587,13 +587,15 @@
 			}
 		}*/
 		if (($(this).val())){
-			for(var i=0; i<10;i++){
-					
-				$('#petBreeds').append($('<option>', {
-					value: i,
-					text : i
-				}));
-			};
+			jQuery.get("textdata/" + $(this).val()[i] + ".txt", function(data){
+				for(var i=0; i<10;i++){
+						
+					$('#petBreeds').append($('<option>', {
+						value: i,
+						text : i
+					}));
+				}
+			});	
 		}
 		
 		$('#petBreeds').multiselect('rebuild');
