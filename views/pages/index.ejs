@@ -562,13 +562,14 @@
 		$("#petBreeds").empty();
 		if ($(this).val()){
 			for (var i=0;i<($(this).val()).length;i++){
-				$("#petBreeds").load("textdata/" + $(this).val() + ".txt");
+				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
 				console.log("run first");
 			}
 			console.log("run second");
 		}
-		$("#petBreeds").multiselect("rebuild");
 		console.log("run third");
+		$("#petBreeds").multiselect("rebuild");
+		console.log("run forth");
 	});
 	
     $(document).ready(function() {
