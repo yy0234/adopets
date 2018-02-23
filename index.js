@@ -34,6 +34,11 @@ app.get('/search_service', function(request, response) {
   response.render('pages/searchService');
 });
 
+app.get('/post_adoption', function(request, response) {
+  response.render('pages/petForm');
+});
+
+
 /*app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');
 });*/
