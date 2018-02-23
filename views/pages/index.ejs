@@ -557,6 +557,16 @@
 	$(window).bind("resize", function(){
     	$('.flexslider').flexslider(0);
 	});
+
+	$("#petTypes").change(function() {
+		$("#petBreeds").empty();
+		if ($(this).value()){
+			for (var i=0;i<($(this).val()).length;i++){
+				$("#petBreeds").load("textdata/" + $(this).val() + ".txt");
+			}
+		}
+		$("#petBreeds").multiselect("rebuild");
+	});
 	
     $(document).ready(function() {
 		$('.flexslider').flexslider({
