@@ -807,9 +807,16 @@
 		$('#petBreeds').empty();
 		if ($(this).val()){
 				for (var i=0; i<$(this).val().length;i++){
-					$('#petBreeds').append($(this).val()[i]);
+					switch($(this).val()[i]){
+						case "bird":$('#petBreeds').append(bird);break;
+						case "cat":$('#petBreeds').append(cat);break;
+						case "dog":$('#petBreeds').append(dog);break;
+						case "fish":$('#petBreeds').append(fish);break;
+						case "reptile":$('#petBreeds').append(reptile);break;
+						case "rodent":$('#petBreeds').append(rodent);break;
+					}
 				}
-			}
+		}
 		$('#petBreeds').multiselect('rebuild');
 	});
 
