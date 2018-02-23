@@ -563,9 +563,12 @@
 		if ($(this).val()){
 			for (var i=0;i<($(this).val()).length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val() + ".txt");
+				console.log("run first");
 			}
+			console.log("run second");
 		}
 		$("#petBreeds").multiselect("rebuild");
+		console.log("run third");
 	});
 	
     $(document).ready(function() {
