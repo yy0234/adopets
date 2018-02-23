@@ -566,9 +566,10 @@
 				console.log("run first");
 			}
 			console.log("run second");
+			$("#petBreeds").multiselect("rebuild");
 		}
 		console.log("run third");
-		$("#petBreeds").multiselect("reload");
+		//$("#petBreeds").multiselect("rebuild");
 		console.log("run forth");
 	});
 	
