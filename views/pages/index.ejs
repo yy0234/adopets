@@ -559,18 +559,16 @@
 	});
 
 	$("#petTypes").change(function() {
+		var buildDrivers;
 		$("#petBreeds").empty();
 		if ($(this).val()){
 			for (var i=0;i<($(this).val()).length;i++){
-				$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
-				console.log("run first");
+				buildDrivers =$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
 			}
-			console.log("run second");
-			$("#petBreeds").multiselect("rebuild");
 		}
-		console.log("run third");
-		//$("#petBreeds").multiselect("rebuild");
-		console.log("run forth");
+		buildDrivers.complete(function() {
+			$("#petBreeds").multiselect("rebuild");
+		});
 	});
 	
     $(document).ready(function() {
