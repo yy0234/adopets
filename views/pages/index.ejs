@@ -563,12 +563,12 @@
 		$("#petBreeds").empty();
 		if ($(this).val()){
 			for (var i=0;i<($(this).val()).length;i++){
-				buildDrivers =$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+				var buildDrivers =$("#petBreeds").load("textdata/" + $(this).val()[i] + ".txt");
+				buildDrivers.complete(function() {
+					$("#petBreeds").multiselect("rebuild");
+				});
 			}
 		}
-		buildDrivers.complete(function() {
-			$("#petBreeds").multiselect("rebuild");
-		});
 	});
 	
     $(document).ready(function() {
