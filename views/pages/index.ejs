@@ -809,13 +809,11 @@
 		}).change();*/
 
 		var dataTypeBird="<optgroup label='Birds Species'><option>African Greys</option><option>Amazons</option><option>Caiques</option><option>Canaries</option><option>Cockatiels</option><option>Crows</option><option>Doves & Pigeons</option><option>Eclectus</option><option>Finches</option><option>Hawk Headed Parrots</option><option>Large Cockatoos</option><option>Large Conures</option><option>Large Parakeets</option><option>Lories & Lorikeets</option><option>Lovebirds</option><option>Macaws</option><option>Mini-Macaws</option><option>Mynah Birds</option><option>Parrotlets</option><option>Pionus Parrots</option><option>Poicephalus</option><option>Small Cockatoos</option><option>Small Conures</option><option>Small Parakeets</option><option>Toucans</option><option>Other</option></optgroup>";
-		$('#petTypes').change(function(){
-			$('#petBreeds').append(dataTypeBird);
-			$('#petBreeds').multiselect('rebuild');
-		}
+	$('#petTypes').change(function(){
+		$('#petBreeds').append(dataTypeBird);
+		$('#petBreeds').multiselect('rebuild');
+	});
 
-		
-	
     $(document).ready(function() {
 		$('.flexslider').flexslider({
 			animation: "slide",
