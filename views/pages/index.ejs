@@ -843,13 +843,15 @@
 		$('#petBreeds').multiselect({
 			buttonWidth: '100%',
 			dropRight: true,
-			maxHeight: 150,
+			maxHeight: 200,
 			nonSelectedText: 'Breeds',
 			includeSelectAllOption: false,
             selectAllValue: 'select-all-value',
 			allSelectedText: 'All Breeds',
 			nSelectedText: ' Breeds selected',
-			enableClickableOptGroups:true
+			enableClickableOptGroups:true,
+			disableIfEmpty: true,
+			disabledText: 'None Breeds found'
 		});
 		$('#petGender').multiselect({
 			buttonWidth: '100%',
