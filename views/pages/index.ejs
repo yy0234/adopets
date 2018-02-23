@@ -802,7 +802,7 @@
 			if ($(this).val()){
 				for (var i=0; i<$(this).val().length;i++){
 					//$('#petBreeds').html(select_clone_title.find('[data-type="' + this.value[i] + '"]').clone());
-					$('#petBreeds').html(select_clone.find('[data-type="' + this.value[i] + '"]').clone());
+					$('#petBreeds').html(select_clone.find('[data-type="' + $(this).value[i] + '"]').clone());
 				}
 			}
 			$('#petBreeds').multiselect('rebuild');
