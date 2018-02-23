@@ -34,13 +34,9 @@ app.get('/search_service', function(request, response) {
   response.render('pages/searchService');
 });
 
-app.get('/image_search', function(request, response) {
+/*app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');
-});
-
-app.get('/testing', function(request, response) {
-  response.render('pages/testing');
-});
+});*/
 
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -100,31 +96,6 @@ app.get("/getUserData", function (request, response) {
   response.redirect('/');
 });*/
 
-//upload & search photo
-var Storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, "./public/images");
-    },
-    filename: function (req, file, callback) {
-        callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
-    }
-});
-
-var upload = multer({ storage: Storage }).single("imgUploader");
-
-app.post("/api/Upload", function (req, res) { 
-    upload(req, res, function (err) { 
-        if (err) { 
-            return res.end("Something went wrong!"); 
-        }
-		
-		//var fs = require('fs');
-		//var imageFile = fs.readFileSync(output.src);
-		//var encoded = new Buffer(imageFile).toString('base64');
-		res.send(res.req.file.filename);
-    }); 
-});
-//upload &search photo done
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
