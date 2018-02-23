@@ -796,12 +796,12 @@
 	});
 
 	var select_clone = $('<select>').html($('#petBreeds option')).hide().insertAfter('#petBreeds');
-	//var select_clone_title = $('<select>').html($('#petBreeds optgroup')).hide().insertAfter('#petBreeds');
+	var select_clone_title = $('<select>').html($('#petBreeds optgroup')).hide().insertAfter('#petBreeds');
 		
 		$('#petTypes').change(function(){
 			if ($(this).val()){
 				for (var i=0; i<$(this).val().length;i++){
-					//$('#petBreeds').html(select_clone_title.find('[data-type="' + this.value[i] + '"]').clone());
+					$('#petBreeds').html(select_clone_title.find('[data-type="' + $(this).val()[i] + '"]').clone());
 					$('#petBreeds').html(select_clone.find('[data-type="' + $(this).val()[i] + '"]').clone());
 				}
 			}
