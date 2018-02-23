@@ -560,7 +560,7 @@
 
 	$("#petTypes").change(function() {
 		$("#petBreeds").empty();
-		if ($(this).value()){
+		if ($(this).val()){
 			for (var i=0;i<($(this).val()).length;i++){
 				$("#petBreeds").load("textdata/" + $(this).val() + ".txt");
 			}
