@@ -203,7 +203,7 @@
 	});
 
 	$('.custom-file-input').on('change',function(){
-		var fileName=($(this).val()).replace("C:\fakepath", "");
+		var fileName=($(this).val()).replace("fakepath", "");
 		console.log(fileName);
 		$(this).next('.custom-file-label').html(fileName);
 	})
