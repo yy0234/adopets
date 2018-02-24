@@ -88,7 +88,7 @@
 					<div class="col-md-6 mb-4">
 						<label for="breed"><span style="color:red">* </span>Pet Breed</label>
 						<select class="custom-select d-block w-100" id="breed" required>
-							<option value="">Choose Pet Breed...</option>
+							<option value="" disabled>Choose Pet Breed...</option>
 						</select>
 						<div class="invalid-feedback">
 							Please provide a valid pet breed.
@@ -170,12 +170,13 @@
 		}, false);
 	})();
 
-	var choosebreed="<option value=''>Choose Pet Breed...</option>";
+	var choosebreed="<option value='' disabled>Choose Pet Breed...</option>";
 
 	$('#type').change(function(){
 		$('#breed').empty();
 		if ($(this).val()){
 			switch($(this).val()){
+				case "":$('#breed').append(choosebreed);break;
 				case "bird":$('#breed').append(choosebreed+bird);break;
 				case "cat":$('#breed').append(choosebreed+cat);break;
 				case "dog":$('#breed').append(choosebreed+dog);break;
