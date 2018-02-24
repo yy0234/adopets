@@ -244,8 +244,7 @@ $("#register").click(function () {
 				url: "/regist",
 				type: "GET",
 				contentType: "application/json",
-				dataType: "json",
-				data: JSON.stringify({
+				data: {
 					userid: register_username,
 					lastname: register_lastname,
 					firstname:register_firstname,
@@ -254,7 +253,7 @@ $("#register").click(function () {
 					address: register_address,
 					birthday: birthdate,
 					password:register_password
-				}),
+				},
 				complete: function complete() {
 				},
 				error: function error(err) {
