@@ -85,8 +85,10 @@ app.get("/signin", function (request, response) {
   });
 });
 
-app.get('/addPets', function (request, response) { 
+app.post('/addPets', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    console.log(request);
+    console.log(request.query);
 	  var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)'; 
 	  var sqlValue = [request.query.name,request.query.type,request.query.breed,request.query.gender,request.query.age,request.query.postdate,request.query.lastupdate,request.query.status,request.query.remark,request.query.peturl,request.query.providerid,request.query.description,request.query.neutered,request.query.size,request.query.coat]; 
 	  client.query(sql,sqlValue,function(err,result) {
