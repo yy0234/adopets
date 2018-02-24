@@ -171,14 +171,13 @@
 		var filesSelected = document.getElementById("image").files;
 		var fileToLoad = filesSelected[0];
 		var fileReader = new FileReader();
-		var newImage = document.createElement('img');
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
 			newImage.src = srcData;
 			console.log(newImage.outerHTML);
+			callback();
 		}
 		fileReader.readAsDataURL(fileToLoad);
-		callback();
 	}
 
 	function updateDatabase(){
