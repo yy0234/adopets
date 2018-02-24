@@ -181,17 +181,53 @@
 	}
 
 	function updateDatabase(){
+		var description = $('#description').val() || "";
+		var remark = $('#remark').val() || "";
+		var neutered =($('#neutered').val()=="yes")?true:false;
+
 		console.log(newImage.outerHTML);
 		console.log($('#petname').val());
 		console.log($('#gender').val());
 		console.log($('#age').val());
-		console.log($('#neutered').val());
+		console.log(neutered);
 		console.log($('#type').val());
 		console.log($('#breed').val());
 		console.log($('#size').val());
 		console.log($('#coat').val());
-		console.log($('#description').val());
-		console.log($('#remark').val());
+		console.log($('#description'));
+		console.log($('#remark'));
+		console.log(newDate());
+
+		$.ajax({
+			url: "/addPets",
+			type: "GET",
+			contentType: "application/json",
+			data: {
+				name:$('#petname').val(),
+				type:$('#type').val(),
+				breed:$('#breed').val(),
+				gender:$('#gender').val(),
+				age:$('#age').val(),
+				postdate:newDate(),
+				lastupdate:newDate(),
+				status:"open",
+				remark:remark,
+				peturl:newImage.outerHTML,
+				providerid:"yy0234",
+				description:description,
+				neutered:neutered,
+				size:$('#size').val(),
+				coat:$('#coat').val()
+			},
+			complete: function complete() {
+			},
+			error: function error(err) {
+				alert(err);
+			},
+			success: function success(mes) {
+				alert(mes);
+			}
+		})
 	}
 
 	(function() {
