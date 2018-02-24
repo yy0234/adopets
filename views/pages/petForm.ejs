@@ -176,6 +176,7 @@
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
 			newImage = document.createElement('img');
 			newImage.src = srcData;
+			callback();
 		}
 		fileReader.readAsDataURL(fileToLoad);
 	}
@@ -209,10 +210,10 @@
 				event.stopPropagation();
 			}
 			else if (form.checkValidity() === true){
-				event.preventDefault();
 				encodeImageFileAsURL( function(){
 					updateDatabase();
 				});
+				event.preventDefault();
 			}
 			form.classList.add('was-validated');
 			}, false);
