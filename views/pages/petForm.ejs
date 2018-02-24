@@ -181,22 +181,13 @@
 				console.log("error");
 			}
 			form.classList.add('was-validated');
-			console.log("success");
-			console.log($('#image').val());
-			console.log($('#petname').val());
-			console.log($('#gender').val());
-			console.log($('#age').val());
-			console.log($('#neutered').val());
-			console.log($('#type').val());
-			console.log($('#breed').val());
-			console.log($('#size').val());
-			console.log($('#coat').val());
-			console.log($('#description').val());
-			console.log($('#remark').val());
 			}, false);
+			console.log("sucess1");
 		});
+		console.log("sucess2");
 		}, false);
-	})();
+		console.log("sucess3");
+	})(console.log("sucess4"));
 
 	var choosebreed="<option value='' disabled selected>Choose Pet Breed...</option>";
 
