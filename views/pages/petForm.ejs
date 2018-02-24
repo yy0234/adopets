@@ -175,11 +175,11 @@
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
 			newImage.src = srcData;
-			console(newImage.outerHTML);
+			console.log(newImage.outerHTML);
 		}
 		fileReader.readAsDataURL(fileToLoad);
+		console.log(newImage.outerHTML);
 		return(newImage.outerHTML);
-		console(newImage.outerHTML);
 	}
 	(function() {
 		'use strict';
