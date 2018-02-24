@@ -136,7 +136,7 @@
 					<textarea class="form-control" id="description" rows="3"></textarea>
 				</div>
 				<div style="text-align:center;">
-					<button class="btn btn-primary btn-md" type="submit">Submit</button>
+					<button class="btn btn-primary btn-md" type="submit" style="width: 200px;">Submit</button>
 				</div>
 			</form>
 			</div>
@@ -148,6 +148,7 @@
 <% include ../partials/script.ejs %>
 
 <!--Your own script-->
+<script src="/javascript/adoption.js"></script>
 <script>
 	(function() {
 		'use strict';
@@ -168,6 +169,20 @@
 		});
 		}, false);
 	})();
+
+	$('#type').change(function(){
+		$('#breed').empty();
+		if ($(this).val()){
+			switch($(this).val()){
+				case "bird":$('#breed').append(bird);break;
+				case "cat":$('#breed').append(cat);break;
+				case "dog":$('#breed').append(dog);break;
+				case "fish":$('#breed').append(fish);break;
+				case "reptile":$('#breed').append(reptile);break;
+				case "rodent":$('#breed').append(rodent);break;
+			}
+		}
+	});
 </script>
 
 </body>
