@@ -178,16 +178,12 @@
 			if (form.checkValidity() === false) {
 				event.preventDefault();
 				event.stopPropagation();
-				console.log("error");
 			}
 			form.classList.add('was-validated');
-			}, false);
-			console.log("sucess1");
+			}, console.log("success1"));
 		});
-		console.log("sucess2");
-		}, false);
-		console.log("sucess3");
-	})(console.log("sucess4"));
+		}, console.log("success2"));
+	})();
 
 	var choosebreed="<option value='' disabled selected>Choose Pet Breed...</option>";
 
@@ -208,7 +204,6 @@
 
 	$('.custom-file-input').on('change',function(){
 		var fileName=($(this).val()).replace("C:\\fakepath\\", "");
-		console.log(fileName);
 		$(this).next('.custom-file-label').html(fileName);
 	})
 </script>
