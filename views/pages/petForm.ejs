@@ -27,7 +27,7 @@
 					<div class="col-md-6 mb-3">
 						<label for="gender"><span style="color:red">* </span>Gender</label>
 						<select class="custom-select d-block w-100" id="gender" required>
-							<option value="">Choose...</option>
+							<option value="">Choose Gender...</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							<option value="bisexual">Bisexual</option>
@@ -44,19 +44,22 @@
 						<div class="row" style="margin-left: -15px;">
 							<div class="col-md-6 mb-3">
 								<input class="form-control" type="number" id="age" min="0" max="100" placeholder="Years" value="" required>
+								<div class="invalid-feedback">
+									Please provide a valid age-years.
+								</div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<input class="form-control" type="number" id="age" min="0" max="12" placeholder="Months" value="" required>
+								<div class="invalid-feedback">
+									Please provide a valid age-months.
+								</div>
 							</div>
-						</div>
-						<div class="invalid-feedback">
-							Please provide a valid age.
 						</div>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="neutered"><span style="color:red">* </span>Neutered</label>
 						<select class="custom-select d-block w-100" id="neutered" required>
-							<option value="">Choose...</option>
+							<option value="">Choose Neutered...</option>
 							<option value="yes">Yes</option>
 							<option value="no">No</option>
 						</select>
@@ -70,7 +73,7 @@
 					<div class="col-md-6 mb-3">
 						<label for="type"><span style="color:red">* </span>Pet Type</label>
 						<select class="custom-select d-block w-100" id="type" required>
-						<option value="">Choose...</option>
+						<option value="">Choose Pet Type...</option>
 							<option value="bird">Birds</option>
 							<option value="cat">Cat</option>
 							<option value="dog">Dog</option>
@@ -83,12 +86,12 @@
 						</div>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="breed"><span style="color:red">* </span>Breed</label>
+						<label for="breed"><span style="color:red">* </span>Pet Breed</label>
 						<select class="custom-select d-block w-100" id="breed" required>
-							<option value="">Choose...</option>
+							<option value="">Choose Pet Breed...</option>
 						</select>
 						<div class="invalid-feedback">
-							Please provide a valid breed.
+							Please provide a valid pet breed.
 						</div>
 					</div>
 				</div>
@@ -97,20 +100,20 @@
 					<div class="col-md-6 mb-3">
 						<label for="size"><span style="color:red">* </span>Pet size</label>
 						<select class="custom-select d-block w-100" id="size" required>
-						<option value="">Choose...</option>
+						<option value="">Choose Pet size...</option>
 							<option value="small">Small</option>
 							<option value="medium">Medium</option>
 							<option value="large">Large</option>
 							<option value="x-large">X-Large</option>
 						</select>
 						<div class="invalid-feedback">
-							Please select a valid size.
+							Please select a valid pet size.
 						</div>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="coat"><span style="color:red">* </span>Coat length</label>
 						<select class="custom-select d-block w-100" id="coat" required>
-							<option value="">Choose...</option>
+							<option value="">Choose Coat length...</option>
 							<option value="haireless">Hairless</option>
 							<option value="short">Short</option>
 							<option value="medium">Medium</option>
