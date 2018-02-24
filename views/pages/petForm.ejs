@@ -179,10 +179,13 @@
 				event.preventDefault();
 				event.stopPropagation();
 			}
+			else if (form.checkValidity() === true){
+				alert("hello");
+			}
 			form.classList.add('was-validated');
-			}, alert("success1"));
+			}, false);
 		});
-		}, alert("success2"));
+		}, false);
 	})();
 
 	var choosebreed="<option value='' disabled selected>Choose Pet Breed...</option>";
