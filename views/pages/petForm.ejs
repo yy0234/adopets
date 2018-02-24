@@ -176,7 +176,7 @@
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
 			newImage = document.createElement('img');
 			newImage.src = srcData;
-			callback();
+			if (newImage){callback()};
 		}
 		fileReader.readAsDataURL(fileToLoad);
 	}
