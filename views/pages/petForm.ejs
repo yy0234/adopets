@@ -165,19 +165,22 @@
 <!--Your own script-->
 <script src="/javascript/adoption.js"></script>
 <script>
-	function convertBase64(){
-		var image;
+	function encodeImageFileAsURL() {
 		var filesSelected = document.getElementById("image").files;
 		var fileToLoad = filesSelected[0];
+
 		var fileReader = new FileReader();
+		var newImage = document.createElement('img');
+
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
-			image = document.createElement('img');
-			image.src = srcData;
+			newImage.src = srcData;
+			console(newImage.outerHTML);
 		}
-		return image.outerHTML;
+		fileReader.readAsDataURL(fileToLoad);
+		return(newImage.outerHTML);
+		console(newImage.outerHTML);
 	}
-
 	(function() {
 		'use strict';
 
@@ -194,7 +197,7 @@
 			}
 			else if (form.checkValidity() === true){
 				event.preventDefault();
-				var newImage=convertBase64();
+				var newImage=encodeImageFileAsURL();
 				console.log(newImage);
 				console.log($('#petname').val());
 				console.log($('#gender').val());
