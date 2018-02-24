@@ -170,16 +170,18 @@
 		}, false);
 	})();
 
+	var choosebreed="<option value=''>Choose Pet Breed...</option>";
+
 	$('#type').change(function(){
 		$('#breed').empty();
 		if ($(this).val()){
 			switch($(this).val()){
-				case "bird":$('#breed').append(bird);break;
-				case "cat":$('#breed').append(cat);break;
-				case "dog":$('#breed').append(dog);break;
-				case "fish":$('#breed').append(fish);break;
-				case "reptile":$('#breed').append(reptile);break;
-				case "rodent":$('#breed').append(rodent);break;
+				case "bird":$('#breed').append(choosebreed+bird);break;
+				case "cat":$('#breed').append(choosebreed+cat);break;
+				case "dog":$('#breed').append(choosebreed+dog);break;
+				case "fish":$('#breed').append(choosebreed+fish);break;
+				case "reptile":$('#breed').append(choosebreed+reptile);break;
+				case "rodent":$('#breed').append(choosebreed+rodent);break;
 			}
 		}
 	});
