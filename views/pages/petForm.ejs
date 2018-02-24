@@ -165,7 +165,7 @@
 <!--Your own script-->
 <script src="/javascript/adoption.js"></script>
 <script>
-	var newImage;
+	var newImage = document.createElement('img');
 
 	function encodeImageFileAsURL(callback) {
 		var filesSelected = document.getElementById("image").files;
@@ -174,11 +174,11 @@
 		var newImage = document.createElement('img');
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
-			newImage = document.createElement('img');
 			newImage.src = srcData;
-			if (newImage){callback()};
+			console.log(newImage.outerHTML);
 		}
 		fileReader.readAsDataURL(fileToLoad);
+		callback();
 	}
 
 	function updateDatabase(){
