@@ -87,10 +87,8 @@ app.get("/signin", function (request, response) {
 
 app.post('/addPets', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    console.log(request);
-    console.log(request.query);
 	  var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)'; 
-	  var sqlValue = [request.query.name,request.query.type,request.query.breed,request.query.gender,request.query.age,request.query.postdate,request.query.lastupdate,request.query.status,request.query.remark,request.query.peturl,request.query.providerid,request.query.description,request.query.neutered,request.query.size,request.query.coat]; 
+	  var sqlValue = [request.body.name,request.body.type,request.body.breed,request.body.gender,request.body.age,request.body.postdate,request.body.lastupdate,request.body.status,request.body.remark,request.body.peturl,request.body.providerid,request.body.description,request.body.neutered,request.body.size,request.body.coat]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
