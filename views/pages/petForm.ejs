@@ -196,7 +196,7 @@
 		console.log($('#coat').val());
 		console.log($('#description'));
 		console.log($('#remark'));
-		console.log(newDate());
+		console.log(new Date());
 
 		$.ajax({
 			url: "/addPets",
@@ -208,8 +208,8 @@
 				breed:$('#breed').val(),
 				gender:$('#gender').val(),
 				age:$('#age').val(),
-				postdate:newDate(),
-				lastupdate:newDate(),
+				postdate:new Date(),
+				lastupdate:new Date(),
 				status:"open",
 				remark:remark,
 				peturl:newImage.outerHTML,
