@@ -180,7 +180,7 @@
 				event.stopPropagation();
 			}
 			else if (form.checkValidity() === true){
-				alert("hello");
+				event.preventDefault();
 			}
 			form.classList.add('was-validated');
 			}, false);
