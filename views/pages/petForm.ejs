@@ -176,7 +176,6 @@
 		$('#breed').empty();
 		if ($(this).val()){
 			switch($(this).val()){
-				case "":$('#breed').append(choosebreed);break;
 				case "bird":$('#breed').append(choosebreed+bird);break;
 				case "cat":$('#breed').append(choosebreed+cat);break;
 				case "dog":$('#breed').append(choosebreed+dog);break;
@@ -185,6 +184,7 @@
 				case "rodent":$('#breed').append(choosebreed+rodent);break;
 			}
 		}
+		else $('#breed').append(choosebreed);
 	});
 </script>
 
