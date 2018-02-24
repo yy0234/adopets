@@ -167,7 +167,7 @@
 <script>
 	var newImage;
 
-	function encodeImageFileAsURL() {
+	function encodeImageFileAsURL(callback) {
 		var filesSelected = document.getElementById("image").files;
 		var fileToLoad = filesSelected[0];
 		var fileReader = new FileReader();
@@ -178,6 +178,20 @@
 			newImage.src = srcData;
 		}
 		fileReader.readAsDataURL(fileToLoad);
+	}
+
+	function updateDatabase(){
+		console.log(newImage.outerHTML);
+		console.log($('#petname').val());
+		console.log($('#gender').val());
+		console.log($('#age').val());
+		console.log($('#neutered').val());
+		console.log($('#type').val());
+		console.log($('#breed').val());
+		console.log($('#size').val());
+		console.log($('#coat').val());
+		console.log($('#description').val());
+		console.log($('#remark').val());
 	}
 
 	(function() {
@@ -196,18 +210,9 @@
 			}
 			else if (form.checkValidity() === true){
 				event.preventDefault();
-				encodeImageFileAsURL();
-				console.log(newImage);
-				console.log($('#petname').val());
-				console.log($('#gender').val());
-				console.log($('#age').val());
-				console.log($('#neutered').val());
-				console.log($('#type').val());
-				console.log($('#breed').val());
-				console.log($('#size').val());
-				console.log($('#coat').val());
-				console.log($('#description').val());
-				console.log($('#remark').val());
+				encodeImageFileAsURL( function(){
+					updateDatabase();
+				});
 			}
 			form.classList.add('was-validated');
 			}, false);
