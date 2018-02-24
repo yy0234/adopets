@@ -16,6 +16,16 @@
 			<div class="col-md-12">
 			<h4 class="mb-4 text-info">Post New Adoption</h4>
 			<form class="needs-validation" novalidate>
+				<div class="md-4">
+					<label class="custom-file">
+						<label for="file">Password</label>
+						<input type="file" id="file" class="custom-file-input" accept=".png, .jpg, .jpeg" required>
+						<span class="custom-file-control"></span>
+					</label>
+					<div class="invalid-feedback">
+						Pet image is required.
+					</div>
+				</div>
 				<div class="row" style="margin-left: -15px;">
 					<div class="col-md-6 mb-4">
 						<label for="petname"><span style="color:red">* </span>Pet Name</label>
