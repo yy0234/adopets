@@ -165,6 +165,19 @@
 <!--Your own script-->
 <script src="/javascript/adoption.js"></script>
 <script>
+	function convertBase64(){
+		var image;
+		var filesSelected = document.getElementById("image").files;
+		var fileToLoad = filesSelected[0];
+		var fileReader = new FileReader();
+		fileReader.onload = function(fileLoadedEvent) {
+			var srcData = fileLoadedEvent.target.result; // <--- data: base64
+			image = document.createElement('img');
+			image.src = srcData;
+		}
+		return image.outerHTML;
+	}
+
 	(function() {
 		'use strict';
 
@@ -181,7 +194,8 @@
 			}
 			else if (form.checkValidity() === true){
 				event.preventDefault();
-				console.log($('#image').val());
+				var newImage=convertBase64();
+				console.log(newImage);
 				console.log($('#petname').val());
 				console.log($('#gender').val());
 				console.log($('#age').val());
