@@ -84,7 +84,7 @@
     width: 100%;
 }
 
-.btn-group{
+.btn-group,#petAgeTextHolder{
     margin-top: 5px;
     margin-bottom: 5px;
 }
