@@ -79,3 +79,12 @@
     border-right: none;
     background-color: #f0f4f5;
 }
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.btn-group{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
