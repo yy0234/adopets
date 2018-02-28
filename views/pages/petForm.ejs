@@ -58,13 +58,13 @@
 						<label for="age"><span style="color:red">* </span>Age<span class="text-muted"> (Example: 2 years and 11 months)</span></label>
 						<div class="row" style="margin-left: -15px;">
 							<div class="col-md-6 mb-4">
-								<input class="form-control" type="number" id="age" min="0" max="100" placeholder="Years" value="" required>
+								<input class="form-control" type="number" id="age1" min="0" max="100" placeholder="Years" value="" required>
 								<div class="invalid-feedback">
 									Please provide a valid years.
 								</div>
 							</div>
 							<div class="col-md-6 mb-4">
-								<input class="form-control" type="number" id="age" min="0" max="12" placeholder="Months" value="" required>
+								<input class="form-control" type="number" id="age2" min="0" max="12" placeholder="Months" value="" required>
 								<div class="invalid-feedback">
 									Please provide a valid months.
 								</div>
@@ -188,7 +188,8 @@
 		console.log(newImage.outerHTML);
 		console.log($('#petname').val());
 		console.log($('#gender').val());
-		console.log($('#age').val());
+		console.log($('#age1').val());
+		console.log($('#age2').val());
 		console.log(neutered);
 		console.log($('#type').val());
 		console.log($('#breed').val());
@@ -208,7 +209,7 @@
 				type:$('#type').val(),
 				breed:$('#breed').val(),
 				gender:$('#gender').val(),
-				age:$('#age').val(),
+				age:$('#age1').val()+"and"+$('#age2').val(),
 				postdate: new Date(),
 				lastupdate:new Date(),
 				status:"open",
