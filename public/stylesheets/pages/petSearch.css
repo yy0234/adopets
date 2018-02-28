@@ -84,7 +84,7 @@
     width: 100%;
 }
 
-.btn-group,#petAgeTextHolder{
+.btn-group,#petAgeTextHolder,filterSubmit{
     margin-top: 10px;
     margin-bottom: 10px;
 }
