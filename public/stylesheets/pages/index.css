@@ -211,7 +211,7 @@ padding-bottom: 0;
     content: " ";
     top: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    background-image: url(/images/view.png);
+    background-image: url("/images/view.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 60px;

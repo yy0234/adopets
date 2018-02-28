@@ -87,7 +87,7 @@
   color: #e2322f;
   margin: -15px 0px 30px 0px;
   padding-left: 30px;
-  background-image: url("../images/login-error-icon.png");
+  background-image: url("/images/login-error-icon.png");
   background-position: 0 0;
   background-repeat: no-repeat; 
 }
