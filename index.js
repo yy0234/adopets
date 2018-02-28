@@ -38,6 +38,10 @@ app.get('/post_adoption', function(request, response) {
   response.render('pages/petForm');
 });
 
+app.get('/pet_search', function(request, response) {
+  response.render('pages/petSearch');
+});
+
 
 /*app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');
@@ -92,9 +96,9 @@ app.post('/addPets', function (request, response) {
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
-        { console.error(err); return response.send("Error " + err); }
+        { console.error(err); return response.end("Error " + err); }
        else
-        { return response.send("success");   }
+        { return response.end("success");   }
       });
   });
 });

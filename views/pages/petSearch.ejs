@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<!--Your own css file-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/petSearch.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
+	<title>Pet Search Result</title>
+</head>
+
+<body>
+<% include ../partials/headline.ejs %>
+
+<section class="main-content">
+	<div class="container-fluid">
+		<div class="row" style="margin: 0 auto;">
+			
+			<div class="col-lg-3">
+	
+				<h5 class="my-3 text-info">Search & Filter</h5>
+				<div class="list-group">
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<label for="order">Order by:</label>
+						<select class="custom-select d-block w-100" id="order" required>
+							<option value="date" selected>Post Date</option>
+							<option value="name">Name</option>
+							<option value="age">Age</option>
+						</select>
+					</div>
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="input-group">
+							<input type="text"  class="form-control" placeholder="Search..."/>
+							<span class="input-group-addon">
+								<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
+								<i class="fas fa-search"></i>
+							</span>
+						</div>
+					</div>
+					<div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+						<div>
+							<select id="petTypes" multiple="multiple">
+								<option value="bird">Birds</option>
+								<option value="cat">Cat</option>
+								<option value="dog">Dog</option>
+								<option value="fish">Fish</option>
+								<option value="reptile">Reptiles</option>
+								<option value="rodent">Rodents</option>
+							</select>
+						</div>
+						<div>
+							<select id="petBreeds" multiple="multiple">
+							</select>
+						</div>
+						<div>
+							<select id="petGender" multiple="multiple">
+								<option value="m">Male</option>
+								<option value="f">Female</option>
+							</select>
+						</div>
+						<div class="dropdown">
+							<button id="petAgeTextHolder" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;">Age<span class="caret"></span></button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<div class="ageRange" style="text-align: center;">
+									<div id="petAge" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;"></div>
+									<div style="font-size: 14px;">From <span id='lower-value'></span> to <span id='upper-value'></span> years-old</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<select id="petSize" multiple="multiple">
+								<option value="s">Small</option>
+								<option value="m">Medium</option>
+								<option value="l">Large</option>
+								<option value="xl">X-Large</option>
+							</select>
+						</div>
+						<div>
+							<select id="neutered" multiple="multiple">
+								<option value="yes">Neutered</option>
+								<option value="no">Not neutered</option>
+							</select>
+						</div>
+						<div>
+							<select id="coat" multiple="multiple">
+								<option value="haireless">Hairless</option>
+								<option value="short">Short</option>
+								<option value="medium">Medium</option>
+								<option value="long">Long</option>
+								<option value="super-long">Super Long</option>
+							</select>
+						</div>
+						<button type="button" class="btn btn-primary btn-block filterSubmit">Search / Filter</button>
+					</div>
+				</div>
+	
+			</div>
+			<!-- /.col-lg-3 -->
+	
+			<div class="col-lg-9">
+	
+				<div class="row mt-4" style="margin: 0 auto;">
+	
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
+							<div class="card h-100">
+								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
+								<div class="card-body">
+									<div style="display:table">
+										<div style="display:table-row">
+											<div class="captionName" style="display:table-cell">Name</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
+										</div>
+											<div style="display:table-row">
+											<div class="captionDescription" style="display:table-cell">Female</div>
+										</div>
+										<div style="display:table-row">
+											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="pagination justify-content-center">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">«</span>
+						<span class="sr-only">Previous</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true">»</span>
+						<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</ul>
+				
+				<!--pet detail-->
+				<div class="modal fade" id="petDetailModal" tabindex="-1" role="dialog" aria-labelledby="petDetailModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header" style="border-bottom:none;">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" style="margin-bottom: 20px;">
+								<div class="row" style="margin-left:0;margin-right:0;">
+									<div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
+										<img src="/images/cat3.jpg" />
+										<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
+											<div class="col-md-12" style="margin-bottom:20px;">
+												<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+											</div>
+											<div class="col-md-12">
+												<button type="button" class="btn btn-primary" style="width:80%">Adopt Me</button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-7 col-lg-8" id="scrollbar" style="margin-bottom:10px; max-height: 500px; overflow-y: auto;">
+										<div class="row" style="margin-left:0;margin-right:0;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+											<div class="col-md-12 col-lg-6">
+												<div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
+													<div style="display:table-row;">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Pet ID
+														</div>
+														<div style="display:table-cell">
+															001
+														</div>
+													</div>
+													<div style="display:table-row;">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Name
+														</div>
+														<div style="display:table-cell">
+															Name
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Age
+														</div>
+														<div style="display:table-cell">
+															Age
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Size
+														</div>
+														<div style="display:table-cell">
+															Small
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Coat length
+														</div>
+														<div style="display:table-cell">
+															Medium
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-12 col-lg-6">
+												<div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Post date
+														</div>
+														<div style="display:table-cell">
+															2018/2/21
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Gender
+														</div>
+														<div style="display:table-cell">
+															Male
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Breed type
+														</div>
+														<div style="display:table-cell">
+															Mixed
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Neutered
+														</div>
+														<div style="display:table-cell">
+															Yes
+														</div>
+													</div>
+													<div style="display:table-row">
+														<div style="display:table-cell; font-weight:bold;width:50%">
+															Provider
+														</div>
+														<div style="display:table-cell">
+															yy0234
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+											<div class="col-md-12" style="font-weight:bold;color:blue">
+												Description
+											</div>
+											<div class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+												Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
+												
+												I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
+												
+												My estimated birthdate is 10/1/2015.
+											</div>
+										</div>
+										<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;padding-bottom: 20px;">
+											<div class="col-md-12" style="font-weight:bold;color:grey">
+												Remark
+											</div>
+											<div class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+												None
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	<div>
+</section>
+
+
+<% include ../partials/script.ejs %>
+
+<!--Your own script-->
+<script src="/javascript/bootstrap-multiselect.js"></script>
+<script src="/javascript/nouislider.min.js"></script>
+<script src="/javascript/adoption.js"></script>
+
+<script>
+$('#petTypes').change(function(){
+	$('#petBreeds').empty();
+	if ($(this).val()){
+			for (var i=0; i<$(this).val().length;i++){
+				switch($(this).val()[i]){
+					case "bird":$('#petBreeds').append(bird);break;
+					case "cat":$('#petBreeds').append(cat);break;
+					case "dog":$('#petBreeds').append(dog);break;
+					case "fish":$('#petBreeds').append(fish);break;
+					case "reptile":$('#petBreeds').append(reptile);break;
+					case "rodent":$('#petBreeds').append(rodent);break;
+				}
+			}
+	}
+	$('#petBreeds').multiselect('rebuild');
+});
+
+$(document).ready(function() {
+	$('.flexslider').flexslider({
+		animation: "slide",
+		animationLoop: false,
+		itemWidth: 200,
+		itemMargin: 15,
+		start: function(){ $(".flexslider li").css("width", "200"); }
+	});
+
+	$('#searchTab a:first').tab('show');
+	$('#petTypes').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Pet Types',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Pet Types',
+		nSelectedText: ' Pet Types selected'
+	});
+	$('#petBreeds').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 200,
+		nonSelectedText: 'Breeds',
+		includeSelectAllOption: false,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Breeds',
+		nSelectedText: ' Breeds selected',
+		enableClickableOptGroups:true,
+		disableIfEmpty: true
+	});
+	$('#petGender').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Gender',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'Both'
+	});
+	/*$('#petAge').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Age',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Age'
+	});*/
+	$('#petSize').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Size',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Size'
+	});
+
+	$('#neutered').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Neutered',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'Both'
+	});
+
+	$('#coat').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Coat Length',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Coat Length',
+		nSelectedText: ' Coat Length selected',
+	});
+	
+	var nonLinearSlider = document.getElementById('petAge');
+
+	noUiSlider.create(nonLinearSlider, {
+		connect: true,
+		behaviour: 'tap',
+		start: [0,30],
+		range: {
+			'min': [0],
+			'1%': [1,1],
+			'max': [30]
+		},
+		format: {
+			from: function(value) {
+					return parseInt(value);
+				},
+			to: function(value) {
+					return parseInt(value);
+				}
+		}
+
+	});
+
+	var nodes = [
+		document.getElementById('lower-value'), // 0
+		document.getElementById('upper-value')  // 1
+	];
+
+	// Display the slider value and how far the handle moved
+	// from the left edge of the slider.
+	nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
+		nodes[handle].innerHTML = values[handle];
+	});
+
+	nonLinearSlider.noUiSlider.on('end', function () {
+		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
+	});
+
+	
+});
+
+function encodeImageFileAsURL() {
+	var base64Image="";
+	var rootImage="";
+	var stringStorage="";
+
+	var filesSelected = document.getElementById("inputFile").files;
+	if (filesSelected.length > 0) {
+	var fileToLoad = filesSelected[0];
+
+	var fileReader = new FileReader();
+
+	fileReader.onload = function(fileLoadedEvent) {
+		var srcData = fileLoadedEvent.target.result; // <--- data: base64
+		var newImage = document.createElement('img');
+		newImage.src = srcData;
+
+		rootImage = newImage.outerHTML;
+		base64Image=rootImage.substring(rootImage.indexOf(",")+1,rootImage.length-2);
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":10}]}]}));
+		//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
+		xhr.onload = function() {
+			var resultList=JSON.parse(xhr.response);
+			for (var i=0;i<resultList.responses[0].labelAnnotations.length;i++){
+				console.log(resultList.responses[0].labelAnnotations[i].description);
+				stringStorage+=resultList.responses[0].labelAnnotations[i].description+"\n";
+			}
+			alert(stringStorage);
+		}
+	}
+	fileReader.readAsDataURL(fileToLoad);
+	}
+}
+
+function fileUpload(){
+	$("#inputFile").click();
+}
+</script>
+
+</body>
+</html>
