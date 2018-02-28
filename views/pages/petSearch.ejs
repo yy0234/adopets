@@ -5,6 +5,8 @@
 	<!--Your own css file-->
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/petSearch.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
 	<title>Pet Search Result</title>
 </head>
 
@@ -17,31 +19,63 @@
 			
 			<div class="col-lg-3">
 	
-				<h4 class="my-4 text-info">Search filter</h4>
+				<h4 class="my-4 text-info">Search & Filter</h4>
 				<div class="list-group">
-					<div href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-						<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">List group item heading</h5>
-						<small>3 days ago</small>
+					<div class="list-group-item list-group-item-action flex-column align-items-start active">
+						<label for="order">Order by:</label>
+						<select class="custom-select d-block w-100" id="order" required>
+							<option value="date" selected>Post Date</option>
+							<option value="name">Name</option>
+							<option value="age">Age</option>
+						</select>
+					</div>
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="input-group">
+							<input type="text"  class="form-control" placeholder="Search..."/>
+							<span class="input-group-addon">
+								<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
+								<i class="fas fa-search"></i>
+							</span>
 						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small>Donec id elit non mi porta.</small>
 					</div>
 					<div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-						<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">List group item heading</h5>
-						<small class="text-muted">3 days ago</small>
+						<div>
+							<select id="petTypes" multiple="multiple">
+								<option value="bird">Birds</option>
+								<option value="cat">Cat</option>
+								<option value="dog">Dog</option>
+								<option value="fish">Fish</option>
+								<option value="reptile">Reptiles</option>
+								<option value="rodent">Rodents</option>
+							</select>
 						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.</small>
-					</div>
-					<div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-						<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">List group item heading</h5>
-						<small class="text-muted">3 days ago</small>
+						<div>
+							<select id="petBreeds" multiple="multiple">
+							</select>
 						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.</small>
+						<div>
+							<select id="petGender" multiple="multiple">
+								<option value="m">Male</option>
+								<option value="f">Female</option>
+							</select>
+						</div>
+						<div class="dropdown">
+							<button id="petAgeTextHolder" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%;color:#555">Age<span class="caret"></span></button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<div class="ageRange" style="text-align: center;">
+									<div id="petAge" style="margin-left: 20px;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;"></div>
+									<div style="font-size: 14px;">From <span id='lower-value'></span> to <span id='upper-value'></span> years-old</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<select id="petSize" multiple="multiple">
+								<option value="s">Small</option>
+								<option value="m">Medium</option>
+								<option value="l">Large</option>
+								<option value="xl">X-Large</option>
+							</select>
+						</div>
 					</div>
 				</div>
 	
@@ -513,6 +547,168 @@
 <% include ../partials/script.ejs %>
 
 <!--Your own script-->
+<script src="/javascript/bootstrap-multiselect.js"></script>
+<script src="/javascript/nouislider.min.js"></script>
+<script src="/javascript/adoption.js"></script>
+
+<script>
+$('#petTypes').change(function(){
+	$('#petBreeds').empty();
+	if ($(this).val()){
+			for (var i=0; i<$(this).val().length;i++){
+				switch($(this).val()[i]){
+					case "bird":$('#petBreeds').append(bird);break;
+					case "cat":$('#petBreeds').append(cat);break;
+					case "dog":$('#petBreeds').append(dog);break;
+					case "fish":$('#petBreeds').append(fish);break;
+					case "reptile":$('#petBreeds').append(reptile);break;
+					case "rodent":$('#petBreeds').append(rodent);break;
+				}
+			}
+	}
+	$('#petBreeds').multiselect('rebuild');
+});
+
+$(document).ready(function() {
+	$('.flexslider').flexslider({
+		animation: "slide",
+		animationLoop: false,
+		itemWidth: 200,
+		itemMargin: 15,
+		start: function(){ $(".flexslider li").css("width", "200"); }
+	});
+
+	$('#searchTab a:first').tab('show');
+	$('#petTypes').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Pet Types',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Pet Types',
+		nSelectedText: ' Pet Types selected'
+	});
+	$('#petBreeds').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 200,
+		nonSelectedText: 'Breeds',
+		includeSelectAllOption: false,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Breeds',
+		nSelectedText: ' Breeds selected',
+		enableClickableOptGroups:true,
+		disableIfEmpty: true
+	});
+	$('#petGender').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Gender',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'Both'
+	});
+	/*$('#petAge').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Age',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Age'
+	});*/
+	$('#petSize').multiselect({
+		buttonWidth: '100%',
+		dropRight: true,
+		maxHeight: 150,
+		nonSelectedText: 'Size',
+		includeSelectAllOption: true,
+		selectAllValue: 'select-all-value',
+		allSelectedText: 'All Size'
+	});
+	
+	var nonLinearSlider = document.getElementById('petAge');
+
+	noUiSlider.create(nonLinearSlider, {
+		connect: true,
+		behaviour: 'tap',
+		start: [0,30],
+		range: {
+			'min': [0],
+			'1%': [1,1],
+			'max': [30]
+		},
+		format: {
+			from: function(value) {
+					return parseInt(value);
+				},
+			to: function(value) {
+					return parseInt(value);
+				}
+		}
+
+	});
+
+	var nodes = [
+		document.getElementById('lower-value'), // 0
+		document.getElementById('upper-value')  // 1
+	];
+
+	// Display the slider value and how far the handle moved
+	// from the left edge of the slider.
+	nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
+		nodes[handle].innerHTML = values[handle];
+	});
+
+	nonLinearSlider.noUiSlider.on('end', function () {
+		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
+	});
+
+	
+});
+
+function encodeImageFileAsURL() {
+	var base64Image="";
+	var rootImage="";
+	var stringStorage="";
+
+	var filesSelected = document.getElementById("inputFile").files;
+	if (filesSelected.length > 0) {
+	var fileToLoad = filesSelected[0];
+
+	var fileReader = new FileReader();
+
+	fileReader.onload = function(fileLoadedEvent) {
+		var srcData = fileLoadedEvent.target.result; // <--- data: base64
+		var newImage = document.createElement('img');
+		newImage.src = srcData;
+
+		rootImage = newImage.outerHTML;
+		base64Image=rootImage.substring(rootImage.indexOf(",")+1,rootImage.length-2);
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":10}]}]}));
+		//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
+		xhr.onload = function() {
+			var resultList=JSON.parse(xhr.response);
+			for (var i=0;i<resultList.responses[0].labelAnnotations.length;i++){
+				console.log(resultList.responses[0].labelAnnotations[i].description);
+				stringStorage+=resultList.responses[0].labelAnnotations[i].description+"\n";
+			}
+			alert(stringStorage);
+		}
+	}
+	fileReader.readAsDataURL(fileToLoad);
+	}
+}
+
+function fileUpload(){
+	$("#inputFile").click();
+}
+</script>
 
 </body>
 </html>
