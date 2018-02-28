@@ -99,3 +99,7 @@
 .multiselect-item a{
     color:gray;
 }
+
+.list-group-item{
+    background-color: white!important;
+}
