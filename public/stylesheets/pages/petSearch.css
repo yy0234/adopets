@@ -1,0 +1,15 @@
+.captionName{
+    font-size:18px;
+     font-weight:bold;
+}
+
+.captionDescription{
+    font-size:13px;
+     color:#444343;
+}
+
+.captionBreeds{
+    font-size:13px;
+     color:#777;
+   font-style: italic;
+}
