@@ -28,6 +28,6 @@
     cursor: pointer;
 }
 
-.overlay .card:hover{
+.card:hover{
     opacity:0.5;
 }
