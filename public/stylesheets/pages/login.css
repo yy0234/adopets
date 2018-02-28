@@ -45,10 +45,11 @@
 /*
 .form-module input[type="text"], .form-module input[type="password"], .form-module input[type="datetime"], .form-module input[type="datetime-local"], .form-module input[type="date"],.form-module input[type="month"], .form-module input[type="time"], .form-module input[type="week"],.form-module input[type="number"], .form-module input[type="email"], .form-module input[type="url"], .form-module input[type="search"], .form-module input[type="tel"], .form-module input[type="color"] {
 */
-.form-module input:not(#birthdate){
+
+.form-module input:not(#birthdate) {
   outline: none;
   display: block;
-  width: 100%;
+  width: 89%;
   border: 1px solid #d9d9d9;
   margin: 0 0 20px;
   padding: 10px 15px;
@@ -59,9 +60,8 @@
   transition: 0.3s ease;
 }
 
-
 .form-module input:focus {
-  border: 1px solid #33b5e5;
+  border: 1px solid #33b5e5 !important;
   color: #333333;
 }
 .form-module button {
@@ -79,13 +79,23 @@
 }
 
 .form-module input.error {
-  border-color: red;
+  border: 3px solid red !important;
+  background-color: #f78b8b;
+}
+
+.form-module div.error {
+  color: #e2322f;
+  margin: -15px 0px 30px 0px;
+  padding-left: 30px;
+  background-image: url("images/login-error-icon.png");
+  background-position: 0 0;
+  background-repeat: no-repeat; 
 }
 
 .form-module input#birthdate {
   outline: none;
   display: block;
-  width: 80%;
+  width: 70%;
   border: 1px solid #d9d9d9;
   margin: 0 0 20px;
   padding: 10px 15px;
@@ -94,4 +104,23 @@
   font-weight: 400;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+}
+
+/*
+.form-module div.error {
+  color: #f33;
+  padding: 0;
+  margin: 2px 0 0 0;
+  font-size: 0.7em;
+  padding-left: 18px;
+  background-image: url('error.png');
+  background-position: 0 0;
+  background-repeat: no-repeat; 
+}
+*/
+
+.form-module div.input-group-addon {
+  padding-left: 5px;
+  padding-top: 5px;
+  font-size: 20px;
 }
