@@ -13,3 +13,21 @@
      color:#777;
    font-style: italic;
 }
+
+.overlay{
+    display: block;
+    content: " ";
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(/images/view.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60px;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.overlay .card:hover{
+    opacity:0.5;
+}
