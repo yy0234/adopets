@@ -16,8 +16,8 @@
 		<div class="row">
 			<div class="col-md-2" id="filter_button">
 				<a id="show_hide_button">
-					<span class="filter_hide_button"><i class="fa fa-caret-left"></i>&nbsp;Hide</span>
-					<span class="filter_show_button"><i class="fa fa-caret-right"></i>&nbsp;Show</span>
+					<div class="filter_hide_button"><i class="fa fa-caret-left"></i>&nbsp;Hide</div>
+					<div class="filter_show_button"><i class="fa fa-caret-right"></i>&nbsp;Show</div>
 					&nbsp;Filter
 				</a>
 			</div>
@@ -62,9 +62,14 @@
 <script>
 	$(function(){
 		$("#show_hide_button").click(function(){
-			$("#left_container").toggle();
-			$(".filter_hide_button").toggle();
-			$(".filter_show_button").toggle();
+			$("#left_container").hide();
+			$(".filter_hide_button").hide();
+			$(".filter_show_button").show();
+		});
+		$("#show_hide_button").click(function(){
+			$("#left_container").show();
+			$(".filter_hide_button").show();
+			$(".filter_show_button").hide();
 		});
 		$("#more_icon").click(function(){
 			$("#more_icon").css({
