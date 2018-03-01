@@ -42,6 +42,10 @@ app.get('/pet_search', function(request, response) {
   response.render('pages/petSearch');
 });
 
+app.get('/pet_shop', function(request, response) {
+  response.render('pages/petShop');
+});
+
 
 /*app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');

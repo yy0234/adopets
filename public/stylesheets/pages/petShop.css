@@ -1,0 +1,12 @@
+.filter_show_button {
+    visibility:hidden;
+}
+
+#more_icon {
+    opacity: 0.5;
+}
+
+#less_icon {
+    pointer-events: none;
+    cursor: default;
+}
