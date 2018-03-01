@@ -21,11 +21,11 @@
 					&nbsp;Filter
 				</a>
 			</div>
-			<div class="col-md-5" id="items_count">
+			<div class="col-md-4" id="items_count">
 				<!--SERVER-->
 				<div><span class="item_number" id="first_item_number">1</span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number">60</span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number">500</span>&nbsp;items</div>
 			</div>
-			<div class="col-md-1" id="display_size">
+			<div class="col-md-2" id="display_size">
 				<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a>&nbsp;&nbsp;<a class="fa fa-th" id="more_icon"></a></div>
 			</div>
 			<div class="col-md-4">
@@ -62,14 +62,9 @@
 <script>
 	$(function(){
 		$("#show_hide_button").click(function(){
-			$("#left_container").hide();
-			$(".filter_hide_button").hide();
-			$(".filter_show_button").show();
-		});
-		$("#show_hide_button").click(function(){
-			$("#left_container").show();
-			$(".filter_hide_button").show();
-			$(".filter_show_button").hide();
+			$("#left_container").toggle();
+			$(".filter_hide_button").toggle();
+			$(".filter_show_button").toggle();
 		});
 		$("#more_icon").click(function(){
 			$("#more_icon").css({

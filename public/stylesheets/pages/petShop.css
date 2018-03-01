@@ -1,5 +1,5 @@
 .filter_show_button {
-    visibility: hidden;
+    display: "none";
 }
 
 #more_icon {
