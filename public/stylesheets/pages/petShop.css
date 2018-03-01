@@ -1,12 +1,41 @@
+div.shop {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .filter_show_button {
-    display: "none";
+    display: none;
+}
+
+#show_hide_button {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+span.item_number {
+    font-weight:bold;
 }
 
 #more_icon {
     opacity: 0.5;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 #less_icon {
     pointer-events: none;
     cursor: default;
+}
+
+.fa:not(.fa-search) {
+    font-size: 25px;
+    color: #33b5e5;
+    position: relative;
+    top: 3px;
+}
+
+select#dropdownlist {
+    font-family: FontAwesome, sans-serif;
+    width: 300px;
+    height: 38px;
 }
