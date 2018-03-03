@@ -5,6 +5,20 @@
 	<!--Your own css file-->
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/petShop.css" />
 	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
+	<style>
+		.noUi-handle {
+			background: grey;
+			border: none;
+			border-radius: 50%;
+			height: 5px;
+			width: 5px;
+		}
+		
+		.noUi-connect {
+			background: #33b5e5;
+		}
+	</style>
 	<title>Pet Supplies Shop</title>
 </head>
 
@@ -41,21 +55,119 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-3" id="left_container">
+			<div class="col-md-2" id="left_container">
 				<div class="search-container">
 					<form id="searchBar">
-						<input type="text" placeholder="Search.." name="search"/><button type="submit"><i class="fa fa-search"></i></button>
+						<input type="text" id="search" placeholder="Search.." name="search"/><button type="submit"><i class="fa fa-search"></i></button>
 					</form>
 				</div>
+				<br>
+				<br>
 				<div class="filtering">
-					<div class="category">
-						<label class="category_text">CATEGORY</label>
-						<br>
-						<br>
-						<div class="filter_list">
-							<!--<div class=""-->
+					<form id="filter_form">
+						<div class="condition">
+							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.condition #collapse_condition">CONDITION<i class="fa fa-plus"></i></button>
+							<div id="collapse_condition" class="collapse">
+								<label class="container">New
+									<input type="radio" id="new" name="radio"/>
+									<span class="checkmark"></span>
+								</label>
+								<label class="container">Used
+									<input type="radio" id="used" name="radio"/>
+									<span class="checkmark"></span>
+								</label>
+							</div>
 						</div>
-					</div>
+						<br>
+						<div class="price">
+							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
+							<div id="collapse_price" class="collapse">
+								<br>
+								<div id="price_range"></div>
+								<br>
+								<div id="price_range_text">$<span id="min_price"></span> - $<span id="max_price"></span></div>
+							</div>
+						</div>
+						<br>
+						<div class="pet_types">
+							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
+							<div id="collapse_pet_types" class="collapse">
+								<label class="container">Dog
+									<input type="checkbox" id="dog"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Cat
+									<input type="checkbox" id="cat"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Bird
+									<input type="checkbox" id="bird"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Fish
+									<input type="checkbox" id="fish"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Reptile
+									<input type="checkbox" id="reptile"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Rodent
+									<input type="checkbox" id="rodent"/>
+									<span class="checkbox"></span>
+								</label>
+							</div>
+						</div>
+						<br>
+						<div class="category">
+							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
+							<div id="collapse_category" class="collapse">
+								<label class="container">Food
+									<input type="checkbox" id="food"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Beds &amp; Cages
+									<input type="checkbox" id="beds_cages"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Feeding Utensils
+									<input type="checkbox" id="feeding_utensils"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Health Products
+									<input type="checkbox" id="health_products"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Collars, Leads &amp; Harness
+									<input type="checkbox" id="clhm"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Grooming
+									<input type="checkbox" id="grooming"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Fashion
+									<input type="checkbox" id="fashion"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Waste Management
+									<input type="checkbox" id="waste_management"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Toys
+									<input type="checkbox" id="toys"/>
+									<span class="checkbox"></span>
+								</label>
+								<label class="container">Travelling Equipment
+									<input type="checkbox" id="travelling_equipment"/>
+									<span class="checkbox"></span>
+								</label>
+							</div>
+						</div>
+						<br>
+						<input class="btn btn-success" type="submit" value="Submit">
+						<input class="btn btn-danger" type="reset" value="Reset">
+					</form>
 				</div>
 			</div>
 		</div>
@@ -67,6 +179,7 @@
 
 <!--Your own script-->
 <script src="/javascript/jquery.js"></script>
+<script src="/javascript/nouislider.min.js"></script>
 <script>
 	$(function(){
 		$("#show_hide_button").click(function(){
@@ -98,6 +211,29 @@
 				'cursor': 'pointer'
 			});
 		});
+		$("div.filtering button").click(function(){
+			$("i", this).toggleClass("fa fa-minus fa fa-plus")
+		});
+
+		var nonLinearStepSlider = document.getElementById('price_range');
+
+		noUiSlider.create(nonLinearStepSlider, {
+			start: [0, 5000],
+			connect: true,
+			range: {
+				'min': [0, 10],
+				'40%': [1000, 100],
+				'max': [5000]
+			},
+			cssPrefix: 'noUi-'
+		})
+		var nodes = [
+			document.getElementById('min_price'), // 0
+			document.getElementById('max_price')  // 1
+		];
+		nonLinearStepSlider.noUiSlider.on('update', function(values, handle){
+			nodes[handle].innerHTML = values[handle];
+		})
 	});
 </script>
 
