@@ -19,8 +19,8 @@
 			
 			<div class="col-lg-3">
 	
-				<h5 class="my-3 text-info">Search & Filter</h5>
-				<div class="list-group">
+				<h5 class="my-3 text-info" onclick="listToggle()">Search & Filter<i id="chevron" class="fas fa-chevron-up" style="float:right"></i></h5>
+				<div class="list-group filter">
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
 						<label for="order">Order by:</label>
 						<select class="custom-select d-block w-100" id="order" required>
@@ -584,6 +584,11 @@ $('#petTypes').change(function(){
 	}
 	$('#petBreeds').multiselect('rebuild');
 });
+
+function listToggle(){
+	$("#chevron").toggleClass("fa-chevron-up","fa-chevron-down")
+	$(".filter").toggleClass("close")
+}
 
 $(document).ready(function() {
 	$('.flexslider').flexslider({
