@@ -122,12 +122,12 @@
 
 @media only screen and (max-width: 991px) {
     .filter{
-        height: 0px!important;
-        overflow: hidden!important;
+        height: 0px !important;
+        overflow: hidden !important;
     }
 
     .filter.open{
-        height: auto;
+        height: auto !important;
     }
 
     .lg{
