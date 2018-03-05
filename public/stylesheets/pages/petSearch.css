@@ -112,7 +112,29 @@
     height: auto;
 }
 
-.filter.close{
-    height: 0px;
-    overflow: hidden;
+.lg{
+    display:block;
+}
+
+.sm{
+    display:none;
+}
+
+@media only screen and (max-width: 991px) {
+    .filter{
+        height: 0px!important;
+        overflow: hidden!important;
+    }
+
+    .filter.open{
+        height: auto;
+    }
+
+    .lg{
+        display: none !important;
+    }
+
+    .sm{
+        display: block !important;
+    }
 }
