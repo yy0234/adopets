@@ -317,9 +317,7 @@ $('#petTypes').change(function(){
 
 
 $("#order").change(function(){
-	var orderList=petData;
-	console.log(orderList);
-	/*if (("#order").val()=="name"){
+	if (("#order").val()=="name"){
 		petData.responseJSON.sort(function(a, b){
 			var x = a.name.toLowerCase();
 			var y = b.name.toLowerCase();
@@ -327,8 +325,84 @@ $("#order").change(function(){
 			if (x > y) {return 1;}
 			return 0;
 		});
-	}*/
+	}
+	else if (("#order").val()=="age"){
+		petData.responseJSON.sort(function(a, b){
+			var x = a.age.toLowerCase();
+			var y = b.age.toLowerCase();
+			if (x < y) {return -1;}
+			if (x > y) {return 1;}
+			return 0;
+		});
+	}
 
+	else if (("#order").val()=="date"){
+		petData.responseJSON.sort(function(a, b){
+			return a.postdate - b.postdate;
+		});
+	}
+
+	$("#petSearchResult").html("");
+
+	if (petData.responseJSON.length>12){
+		for (var i=0; i<12;i++){
+			$("#petSearchResult").append("\
+				<div class=\"col-lg-4 col-md-6 mb-4\">\
+					<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+						<div class=\"card h-100\">\
+							<a>"+petData.responseJSON[i].peturl+"</a>\
+							<div class=\"card-body\">\
+								<div style=\"display:table\">\
+									<div style=\"display:table-row\">\
+										<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].age+"</div>\
+									</div>\
+										<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].gender+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionBreeds\" style=\"display:table-cell\">"+petData.responseJSON[i].breed+"</div>\
+									</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>")
+		}
+		$('#page'+current_page).css("background-color","white");
+		current_page=1;
+		$('#page'+current_page).css("background-color","gainsboro");
+	}
+	else{
+		petData.responseJSON.forEach(function(element,index) {
+			$("#petSearchResult").append("\
+				<div class=\"col-lg-4 col-md-6 mb-4\">\
+					<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+						<div class=\"card h-100\">\
+							<a>"+element.peturl+"</a>\
+							<div class=\"card-body\">\
+								<div style=\"display:table\">\
+									<div style=\"display:table-row\">\
+										<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+									</div>\
+										<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+									</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>")
+		});
+	}
 });
 
 function listToggle(){
