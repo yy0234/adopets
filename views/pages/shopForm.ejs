@@ -138,7 +138,6 @@
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
             newImage.src = srcData;
-            alert(newImage.outerHTML);
 			callback();
 		}
 		fileReader.readAsDataURL(fileToLoad);
@@ -150,6 +149,7 @@
         var supplyid = Math.floor(Math.random() * 99999999);
 
     //supplyurl:newImage.outerHTML,
+    //supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
 
 		$.ajax({
 			url: "/addSupply",
