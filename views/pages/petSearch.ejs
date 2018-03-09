@@ -329,7 +329,7 @@ function changeModal(elementNo){
 	$("#modal_petSize").html(petData_element.size);
 	$("#modal_petCoat").html(petData_element.coat);
 	var d=new Date(petData_element.postdate);
-	$("#modal_petPostDate").html(d.getDate+"-"+d.getMonth+"-"+d.getFullYear);
+	$("#modal_petPostDate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
 	$("#modal_petGender").html(petData_element.gender);
 	$("#modal_petBreed").html(petData_element.breed);
 	if (petData_element.neutered==true)
@@ -354,7 +354,7 @@ function pagePet(pageNo){
 		}
 		static_pageNo=current_page-1;
 	}
-	else if (pageNo==1){
+	else if (pageNo==-1){
 		if (current_page==total_page){
 			console.log("return");
 			return;
