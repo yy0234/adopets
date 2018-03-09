@@ -170,7 +170,54 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-10" id="supply"></div>
+			<div class="col-md-10" id="product_display">
+				<div class="row">
+					<div class="card-deck">
+						<div class="card">
+							<div class="thumbnail">
+								<img class="product_image" src="/images/cat1.jpg"/>
+								<a href="">
+									<div class="thumb-cover"></div>
+								</a>
+								<div class="details">
+									<a class="user" href="">
+										<div class="user-photo">
+											<img class="user_image" src="/images/user_image.jpg"/>
+										</div>
+									</a>
+								</div>
+								<div class="image_controller">
+									<div class="arrow">
+										<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
+										<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
+									</div>
+									<div class="product_grid_item">
+										<img class="product_image" src="/images/cat2.png"/>
+										<img class="product_image" src="/images/cat3.jpg"/>
+										<img class="product_image" src="/images/dog1.jpg"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product_card">
+							<a class="product_image_link">
+								<div class="image_controller">
+									<div class="arrow">
+										<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
+										<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
+									</div>
+									<div class="product_grid_item">
+										<img class="product_image" src="/images/cat1.jpg"/>
+										<img class="product_image" src="/images/cat2.png"/>
+										<img class="product_image" src="/images/cat3.jpg"/>
+										<img class="product_image" src="/images/dog1.jpg"/>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -183,6 +230,27 @@
 <script src="/javascript/nouislider.min.js"></script>
 <script>
 	$(function(){
+		var slideIndex = 1;
+		showDiv(slideIndex);
+		
+		function plusDiv(n) {
+			showDiv(slideIndex += n);
+		}
+
+		function showDiv(n) {
+			var images = document.getElementsByClassName("product_image");
+			if(n > images.length) { slideIndex = 1;}
+			if(n < 1) { slideIndex = images.length;}
+			for(var i = 0; i < images.length; i++) {
+				images[i].style.display = "none";
+			}
+			images[slideIndex-1].style.display = "block";
+		}
+		
+		$(".product_card").hover(function(event){
+			console.log(this);
+		});
+
 		$("#show_hide_button").click(function(){
 			$("#left_container").toggle();
 			$(".filter_hide_button").toggle();

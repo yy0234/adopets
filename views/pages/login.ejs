@@ -79,7 +79,7 @@
 					<div class="form-group">
 						<div id="datepicker" class="input-group date">
 							<div class="input-group-addon" for="date">
-								<i class="fa fa-calendar open-datetimepicker">&nbsp;&nbsp;&nbsp;</i>
+								<i class="fa fa-calendar open-datetimepicker">&nbsp;&nbsp;</i>
 							</div>
 							<input type="text" placeholder="Birth Date" class="form-control" name="birthdate" id="birthdate" autocomplete="on"/>
 						</div>
@@ -136,6 +136,13 @@
 					<br>
 				-->
 					<p>Account Information</p>
+					<img id="user_image_preview" src="/images/user_image.jpg"/>
+					<div class="input-group picture">
+						<div class="input-group-addon">
+							<i class="fa fa-camera-retro">&nbsp;&nbsp;</i>
+						</div>	
+						<input type="file" name="register_image" id="register_image" accept="image/*"/>
+					</div>
 					<div class="input-group username">
 						<div class="input-group-addon">
 							<i class="fa fa-user">&nbsp;&nbsp;&nbsp;</i>
@@ -228,6 +235,20 @@ $(function() {
 	});
 	$('.fa-calendar').click(function() {
 		$("#birthdate").focus();
+	});
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#user_image_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+	$("#register_image").change(function(){
+		readURL(this);
 	});
 	$("#register_form").validate({
 		rules: {

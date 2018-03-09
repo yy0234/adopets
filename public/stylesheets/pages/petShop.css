@@ -139,3 +139,24 @@ form#filter_form button{
     transform: rotate(45deg);
 }
 
+div.product_grid_item {
+    width: 100px;
+    height: 300px;
+    margin: 20px 40px;
+}
+
+div.left_arrow {
+    display:none;
+    font-family: FontAwesome, sans-serif;
+    border: 1px outset rgb(192, 191, 191);
+}
+
+div.right_arrow {
+    display:none;
+    font-family: FontAwesome, sans-serif;
+    border: 1px outset rgb(192, 191, 191);
+}
+
+img.product_image {
+    display:none;
+}
