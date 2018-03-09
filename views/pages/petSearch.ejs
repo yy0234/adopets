@@ -317,8 +317,7 @@ $('#petTypes').change(function(){
 
 
 $("#order").change(function(){
-	console.log(("#order").val());
-	if (("#order").val()=="name"){
+	if ($("#order").val()=="name"){
 		petData.responseJSON.sort(function(a, b){
 			var x = a.name.toLowerCase();
 			var y = b.name.toLowerCase();
@@ -327,7 +326,7 @@ $("#order").change(function(){
 			return 0;
 		});
 	}
-	else if (("#order").val()=="age"){
+	else if ($("#order").val()=="age"){
 		petData.responseJSON.sort(function(a, b){
 			var x = a.age.toLowerCase();
 			var y = b.age.toLowerCase();
@@ -337,7 +336,7 @@ $("#order").change(function(){
 		});
 	}
 
-	else if (("#order").val()=="date"){
+	else if ($("#order").val()=="date"){
 		petData.responseJSON.sort(function(a, b){
 			return a.postdate - b.postdate;
 		});
