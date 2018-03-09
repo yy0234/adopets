@@ -328,14 +328,12 @@ $("#order").change(function(){
 	}
 	else if ($("#order").val()=="age"){
 		petData.responseJSON.sort(function(a, b){
-			console.log(a.age.split(" "));
-			console.log(b.age.split(" "));
 			var x = parseInt(a.age.split(" ")[0]);
 			var y = parseInt(b.age.split(" ")[0]);
 			if (x < y) {return -1;}
 			if (x > y) {return 1;}
 			var a=parseInt(a.age.split(" ")[3]);
-			var b=parseInt(a.age.split(" ")[3]);
+			var b=parseInt(b.age.split(" ")[3]);
 			if (a < b) {return -1;}
 			if (a > b) {return 1;}
 			return 0;
