@@ -319,6 +319,39 @@ function listToggle(){
 	$(".filter").toggleClass("open")
 }
 
+function pagePet(pageNo){
+	console.log(petData);
+	console.log(petData.jsonObject);
+	$("#petSearchResult").html("");
+	var page_no=(pageNo-1)*12;
+	for (var i=page_no;i<page_no+12;i++){
+		$("#petSearchResult").append("\
+			<div class=\"col-lg-4 col-md-6 mb-4\">\
+				<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+					<div class=\"card h-100\">\
+						<a>"+petData.jsonObject[i].peturl+"</a>\
+						<div class=\"card-body\">\
+							<div style=\"display:table\">\
+								<div style=\"display:table-row\">\
+									<div class=\"captionName\" style=\"display:table-cell\">"+petData.jsonObject[i].name+"</div>\
+								</div>\
+								<div style=\"display:table-row\">\
+									<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.jsonObject[i].age+"</div>\
+								</div>\
+									<div style=\"display:table-row\">\
+									<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.jsonObject[i].gender+"</div>\
+								</div>\
+								<div style=\"display:table-row\">\
+									<div class=\"captionBreeds\" style=\"display:table-cell\">"+petData.jsonObject[i].breed+"</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>\
+			</div>")
+	}
+}
+
 $(document).ready(function() {
 	$('.flexslider').flexslider({
 		animation: "slide",
@@ -473,7 +506,7 @@ $(document).ready(function() {
 							$("#pagination").css('display','flex');
 							var total_page=Math.ceil(mes.length/12);
 							for (var i=total_page;i>0;i--)
-								$("<li class=\"page-item\"><a class=\"page-link\" >"+i+"</a></li>").insertAfter("#previous");
+								$("<li class=\"page-item\"><a class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
 						}
 						else{
 							mes.forEach(function(element) {
