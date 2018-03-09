@@ -47,6 +47,12 @@ app.get('/pet_shop', function(request, response) {
   response.render('pages/petShop');
 });
 
+app.get('/post_supply', function(request, response) {
+  response.render('pages/shopForm');
+});
+
+
+
 
 /*app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');
@@ -108,6 +114,7 @@ app.post('/addPets', function (request, response) {
   });
 });
 
+
 app.get("/listPet", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	   client.query('SELECT * FROM pets order by postdate', function(err, result) {
@@ -116,6 +123,20 @@ app.get("/listPet", function (request, response) {
         { console.error(err); return response.send("Error " + err); }
        else
         { return response.send(result.rows);   }
+    });
+  });
+});
+
+app.post('/addSupply', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO petsupply(supplyid,name,description,price,type,postdate,lastupdate,status,remark,supplyurl,providerid,quantity,pettype) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)'; 
+	  var sqlValue = [request.body.supplyid, request.body.name, request.body.description, request.body.price, request.body.type, request.body.postdate, request.body.lastupdate, request.body.status, request.body.remark, request.body.supplyurl, request.body.providerid, request.body.quantity, request.body.pettype]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { console.error(err); return response.end("Error " + err); }
+       else
+        { return response.send("success");   }
       });
   });
 });

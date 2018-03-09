@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<!--Your own css file-->
+	<title>Post new Supply</title>
+	<style>
+			
+	</style>
+</head>
+
+<body>
+<% include ../partials/headline.ejs %>
+
+<section class="main-content">
+	<div class="container-fluid">
+	<!--Your own content-->
+		<div class="row" style="padding:30px; max-width: 1000px;margin: 0 auto; border: 1px solid lightgray;">
+			<div class="col-md-12">
+			<h4 class="mb-4 text-info">Post New Supply</h4>
+			<form class="needs-validation" novalidate>
+				<div class="form-group mb-4">
+					<label for="inputPassword" class="col-form-label"><span style="color:red">* </span>Supply Image</label>
+					<div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="image" accept=".png, .jpg, .jpeg" required>
+							<label class="custom-file-label" for="image">Choose Image...</label>
+							<div class="invalid-feedback">
+								Supply Image is required.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-left: -15px;">
+					<div class="col-md-6 mb-4">
+						<label for="supplyname"><span style="color:red">* </span>Supply Name</label>
+						<input type="text" class="form-control" id="supplyname" placeholder="" value="" required>
+						<div class="invalid-feedback">
+							Supply name is required.
+						</div>
+					</div>
+					<div class="col-md-6 mb-4">
+						<label for="pettype"><span style="color:red">* </span>Pet Type</label>
+						<select class="custom-select d-block w-100" id="pettype" required>
+						<option value="">Choose Pet Type...</option>
+							<option value="bird">Birds</option>
+							<option value="cat">Cat</option>
+							<option value="dog">Dog</option>
+							<option value="fish">Fish</option>
+							<option value="reptile">Reptiles</option>
+							<option value="rodent">Rodents</option>
+						</select>
+						<div class="invalid-feedback">
+							Please select a valid pet Type.
+						</div>
+					</div>
+				</div>
+
+				<div class="row" style="margin-left: -15px;">
+					<div class="col-md-6 mb-4">
+						<label for="price"><span style="color:red">* </span>Price</label>
+						<input type="text" class="form-control" id="price" placeholder="" value="" required>
+						<div class="invalid-feedback">
+							Price is required.
+						</div>
+					</div>
+					<div class="col-md-6 mb-4">
+						<label for="quantity"><span style="color:red">* </span>Quantity</label>
+						<input type="text" class="form-control" id="quantity" placeholder="" value="" required>
+						<div class="invalid-feedback">
+							Quantity is required.
+						</div>
+					</div>
+				</div>
+
+				<div class="row" style="margin-left: -15px;">
+					<div class="col-md-6 mb-4">
+						<label for="type"><span style="color:red">* </span>Supply Type</label>
+						<select class="custom-select d-block w-100" id="type" required>
+						<option value="">Choose Supply Type...</option>
+							<option value="food">Food</option>
+							<option value="beds_cages">Beds &amp; Cages</option>
+							<option value="feeding_utensils">Feeding Utensils</option>
+							<option value="health_products">Health Products</option>
+							<option value="clhm">Collars, Leads &amp; Harness</option>
+                            <option value="grooming">Grooming</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="waste_management">Waste Management</option>
+                            <option value="toys">Toys</option>
+                            <option value="travelling_equipment">Travelling Equipment</option>
+						</select>
+						<div class="invalid-feedback">
+							Please select a valid supply Type.
+						</div>
+					</div>
+					<div class="col-md-6 mb-4">
+						<label for="neutered"><span style="color:red">* </span>Status</label>
+						<select class="custom-select d-block w-100" id="status" required>
+							<option value="">Choose Status...</option>
+							<option value="new">New</option>
+							<option value="used">Used</option>
+						</select>
+						<div class="invalid-feedback">
+							Please provide a valid selection.
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-4">
+					<label for="description">Description<span class="text-muted"> (Optional)</span></label>
+					<textarea class="form-control" id="description" rows="5"></textarea>
+				</div>
+
+				<div class="mb-5">
+					<label for="remark">Remark<span class="text-muted"> (Optional)</span></label>
+					<textarea class="form-control" id="remark" rows="3"></textarea>
+				</div>
+				<div style="text-align:center;">
+					<button class="btn btn-primary btn-md" type="submit" style="width: 200px;">Submit</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<% include ../partials/script.ejs %>
+
+<!--Your own script-->
+<script>
+	var newImage = document.createElement('img');
+
+	function encodeImageFileAsURL(callback) {
+		var filesSelected = document.getElementById("image").files;
+		var fileToLoad = filesSelected[0];
+		var fileReader = new FileReader();
+		fileReader.onload = function(fileLoadedEvent) {
+			var srcData = fileLoadedEvent.target.result; // <--- data: base64
+			newImage.src = srcData;
+			callback();
+		}
+		fileReader.readAsDataURL(fileToLoad);
+	}
+
+	function updateDatabase(){
+		var description = $('#description').val() || "";
+        var remark = $('#remark').val() || "";
+        var supplyid = Math.floor(Math.random() * 99999999);
+
+		$.ajax({
+			url: "/addSupply",
+			type: "POST",
+			dataType: 'json',
+			contentType: "application/json",
+			data: JSON.stringify({
+                supplyid:supplyid,
+                name:$('#supplyname').val(),
+                description:description,
+                price:$('#price').val(),
+                type:$('#type').val(),
+                postdate: new Date(),
+				lastupdate:new Date(),
+                status:$('#status').val(),
+                remark:remark,
+                supplyurl:newImage.outerHTML,
+                providerid:"testing",
+                quantity:$('#quantity').val(),
+                pettype:$('#pettype').val(),
+			}),
+			complete: function complete() {
+			},
+			error: function error(err) {
+                alert(err);
+                console.log(err);
+			},
+			success: function success(mes) {
+                alert(mes);
+                console.log(mes);
+			}
+		})
+	}
+
+	(function() {
+		'use strict';
+
+		window.addEventListener('load', function() {
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.getElementsByClassName('needs-validation');
+
+		// Loop over them and prevent submission
+		var validation = Array.prototype.filter.call(forms, function(form) {
+			form.addEventListener('submit', function(event) {
+			if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+			}
+			else if (form.checkValidity() === true){
+				encodeImageFileAsURL( function(){
+					updateDatabase();
+				});
+				event.preventDefault();
+			}
+			form.classList.add('was-validated');
+			}, false);
+		});
+		}, false);
+	})();
+
+
+	$('.custom-file-input').on('change',function(){
+		var fileName=($(this).val()).replace("C:\\fakepath\\", "");
+		$(this).next('.custom-file-label').html(fileName);
+	})
+</script>
+
+</body>
+</html>
