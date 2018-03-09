@@ -420,9 +420,9 @@ function pagePet(pageNo){
 				</div>")
 		}
 	}
-	$(this).css("background-color:","white");
 	current_page=static_pageNo;
-	$(this).css("background-color:","grey");
+	$('#page1').css("background-color:","grey");
+	console.log($('#page1').css("background-color:","grey"));
 }
 
 $(document).ready(function() {
@@ -580,7 +580,6 @@ $(document).ready(function() {
 							total_page=Math.ceil(mes.length/12);
 							for (var i=total_page;i>0;i--)
 								$("<li id=\"page"+i+"\"class=\"page-item\"><a class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
-							$('#page1').css("background-color:","grey");
 						}
 						else{
 							mes.forEach(function(element,index) {
