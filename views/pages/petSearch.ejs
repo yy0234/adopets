@@ -452,7 +452,7 @@ $(document).ready(function() {
 		data: {
 		},
 		success: function (mes) {
-			petData.concat(mes)
+			petData=Arrays.copyOf(mes, mes.length);;
 			console.log(mes);
 			console.log(petData);
 		},
