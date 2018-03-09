@@ -708,6 +708,19 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
+	$.ajax({
+		url: "/listPet",
+		type: "GET",
+		data: {
+		},
+		success: function (mes) {
+			console.log(mes);
+		},
+		error: function (err) {
+			console.log(err);
+		}
+	});
+
 	
 });
 
