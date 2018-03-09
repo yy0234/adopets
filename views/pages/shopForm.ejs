@@ -137,7 +137,8 @@
 		var fileReader = new FileReader();
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
-			newImage.src = srcData;
+            newImage.src = srcData;
+            alert(newImage.outerHTML);
 			callback();
 		}
 		fileReader.readAsDataURL(fileToLoad);
@@ -148,6 +149,8 @@
         var remark = $('#remark').val() || "";
         var supplyid = Math.floor(Math.random() * 99999999);
 
+    //supplyurl:newImage.outerHTML,
+    
 		$.ajax({
 			url: "/addSupply",
 			type: "POST",
@@ -163,7 +166,7 @@
 				lastupdate:new Date(),
                 status:$('#status').val(),
                 remark:remark,
-                supplyurl:newImage.outerHTML,
+                supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
                 providerid:"testing",
                 quantity:$('#quantity').val(),
                 pettype:$('#pettype').val(),
