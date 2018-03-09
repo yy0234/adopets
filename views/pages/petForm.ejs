@@ -187,7 +187,6 @@
 		$.ajax({
 			url: "/addPets",
 			type: "POST",
-			dataType: 'json',
 			contentType: "application/json",
 			data: JSON.stringify({
 				name:$('#petname').val(),
@@ -207,6 +206,10 @@
 				coat:$('#coat').val()
 			}),
 			complete: function complete() {
+			},
+			error: function error(err) {
+				alert("error "+err.response);
+				console.log(err);
 			},
 			success: function success(mes) {
 				alert(mes.responseText);
