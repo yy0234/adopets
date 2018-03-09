@@ -317,6 +317,7 @@ $('#petTypes').change(function(){
 
 
 $("#order").change(function(){
+	console.log(("#order").val());
 	if (("#order").val()=="name"){
 		petData.responseJSON.sort(function(a, b){
 			var x = a.name.toLowerCase();
