@@ -208,12 +208,8 @@
 			}),
 			complete: function complete() {
 			},
-			error: function error(err) {
-				alert("error");
-				console.log(err);
-			},
 			success: function success(mes) {
-				alert("success");
+				alert(mes.responseText);
 				console.log(mes.responseText);
 			}
 		})
