@@ -32,8 +32,8 @@
 		<div class="row">
 			<div class="col-md-3" id="filter_button">
 				<a id="show_hide_button">
-					<span class="filter_hide_button"><span class="fa fa-caret-left"></span>&nbsp;&nbsp;Hide</span>
-					<span class="filter_show_button"><span class="fa fa-caret-right"></span>&nbsp;&nbsp;Show</span>
+					<span class="filter_hide_button"><span class="fa fa-caret-left"></span>Hide</span>
+					<span class="filter_show_button"><span class="fa fa-caret-right"></span>Show</span>
 					Filter
 				</a>
 			</div>
@@ -42,7 +42,7 @@
 				<div><span class="item_number" id="first_item_number">1</span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number">60</span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number">500</span>&nbsp;items</div>
 			</div>
 			<div class="col-md-2" id="display_size">
-				<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a>&nbsp;&nbsp;<a class="fa fa-th" id="more_icon"></a></div>
+				<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
 			</div>
 			<div class="col-md-3" id="sort_dropdown">
 				<select id="dropdownlist">
@@ -58,7 +58,7 @@
 			<div class="col-md-2" id="left_container">
 				<div class="search-container">
 					<form id="searchBar">
-						<input type="text" id="search" placeholder="Search.." name="search"/><button type="submit"><i class="fa fa-search"></i></button>
+						<input type="text" id="search" placeholder="Search.." name="search"/><button class="search_button" type="submit">&#xf002;</button>
 					</form>
 				</div>
 				<br>
@@ -176,26 +176,32 @@
 						<div class="card">
 							<div class="thumbnail">
 								<img class="product_image" src="/images/cat1.jpg"/>
-								<a href="">
+								<!-- Redirect to product -->
+								<a href="" class="product_page">
 									<div class="thumb-cover"></div>
 								</a>
 								<div class="details">
+									<!-- Redirect to user info -->
 									<a class="user" href="">
 										<div class="user-photo">
 											<img class="user_image" src="/images/user_image.jpg"/>
 										</div>
+										<div class="username">User</div>
 									</a>
 								</div>
-								<div class="image_controller">
+								<div class="card-info">
 									<div class="arrow">
 										<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
 										<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
 									</div>
-									<div class="product_grid_item">
-										<img class="product_image" src="/images/cat2.png"/>
-										<img class="product_image" src="/images/cat3.jpg"/>
-										<img class="product_image" src="/images/dog1.jpg"/>
-									</div>
+									<!-- Redirect to product -->
+									<a href="" class="product_page">
+										<h4 class="product_title">
+											Cat
+										</h4>
+										<p class="item_price">HKD$500</p>
+										<p class="item_description">100% new cat food</p>
+									</a>
 								</div>
 							</div>
 						</div>
