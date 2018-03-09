@@ -141,18 +141,6 @@ app.post('/addSupply', function (request, response) {
   });
 });
 
-app.get("/getUserData", function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	   client.query('SELECT * FROM user_table', function(err, result) {
-       done();
-       if (err)
-        { console.error(err); return response.send("Error " + err); }
-       else
-        { return response.send(result.rows);   }
-      });
-  });
-});
-
 /*app.get('*', function(request, response) {
   response.redirect('/');
 });*/
