@@ -320,8 +320,6 @@ function listToggle(){
 }
 
 function pagePet(pageNo){
-	console.log(petData);
-	console.log(petData.responseJSON);
 	$("#petSearchResult").html("");
 	var page_no=(pageNo-1)*12;
 	if (petData.responseJSON.length>(page_no+12)){
