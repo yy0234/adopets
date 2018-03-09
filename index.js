@@ -103,7 +103,7 @@ app.post('/addPets', function (request, response) {
        if (err)
         { console.error(err); return response.end("Error " + err); }
        else
-        { return response.send(body);   }
+        { return response.send("success");   }
       });
   });
 });
