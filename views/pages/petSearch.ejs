@@ -315,6 +315,10 @@ $('#petTypes').change(function(){
 	$('#petBreeds').multiselect('rebuild');
 });
 
+$("#order").change(function(){
+	console.log($("#order").val());
+});
+
 function listToggle(){
 	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down")
 	$(".filter").toggleClass("open")
@@ -343,25 +347,18 @@ function changeModal(elementNo){
 
 function pagePet(pageNo){
 	var static_pageNo=pageNo;
-	console.log(pageNo);
-	console.log(static_pageNo);
-	console.log(current_page);
-	console.log(total_page);
 	if (pageNo==-2){
 		if (current_page==1){
-			console.log("return");
 			return;
 		}
 		static_pageNo=current_page-1;
 	}
 	else if (pageNo==-1){
 		if (current_page==total_page){
-			console.log("return");
 			return;
 		}
 		static_pageNo=current_page+1;
 	}
-	console.log("not return");
 	$("#petSearchResult").html("");
 	var page_no=(static_pageNo-1)*12;
 	if (petData.responseJSON.length>(page_no+12)){
@@ -645,7 +642,6 @@ function encodeImageFileAsURL() {
 		xhr.onload = function() {
 			var resultList=JSON.parse(xhr.response);
 			for (var i=0;i<resultList.responses[0].labelAnnotations.length;i++){
-				console.log(resultList.responses[0].labelAnnotations[i].description);
 				stringStorage+=resultList.responses[0].labelAnnotations[i].description+"\n";
 			}
 			alert(stringStorage);
