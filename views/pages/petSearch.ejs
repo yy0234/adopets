@@ -328,6 +328,8 @@ $("#order").change(function(){
 	}
 	else if ($("#order").val()=="age"){
 		petData.responseJSON.sort(function(a, b){
+			console.log(a.age.split(" "));
+			console.log(b.age.split(" "));
 			var x = parseInt(a.age.split(" ")[0]);
 			var y = parseInt(b.age.split(" ")[0]);
 			if (x < y) {return -1;}
