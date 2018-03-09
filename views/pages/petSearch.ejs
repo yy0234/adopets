@@ -324,31 +324,61 @@ function pagePet(pageNo){
 	console.log(petData.responseJSON);
 	$("#petSearchResult").html("");
 	var page_no=(pageNo-1)*12;
-	for (var i=page_no;i<page_no+12;i++){
-		$("#petSearchResult").append("\
-			<div class=\"col-lg-4 col-md-6 mb-4\">\
-				<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
-					<div class=\"card h-100\">\
-						<a>"+petData.responseJSON[i].peturl+"</a>\
-						<div class=\"card-body\">\
-							<div style=\"display:table\">\
-								<div style=\"display:table-row\">\
-									<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
-								</div>\
-								<div style=\"display:table-row\">\
-									<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].age+"</div>\
-								</div>\
+	if (petData.responseJSON.length>(page_no+12)){
+		for (var i=page_no;i<page_no+12;i++){
+			$("#petSearchResult").append("\
+				<div class=\"col-lg-4 col-md-6 mb-4\">\
+					<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+						<div class=\"card h-100\">\
+							<a>"+petData.responseJSON[i].peturl+"</a>\
+							<div class=\"card-body\">\
+								<div style=\"display:table\">\
 									<div style=\"display:table-row\">\
-									<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].gender+"</div>\
-								</div>\
-								<div style=\"display:table-row\">\
-									<div class=\"captionBreeds\" style=\"display:table-cell\">"+petData.responseJSON[i].breed+"</div>\
+										<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].age+"</div>\
+									</div>\
+										<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].gender+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionBreeds\" style=\"display:table-cell\">"+petData.responseJSON[i].breed+"</div>\
+									</div>\
 								</div>\
 							</div>\
 						</div>\
 					</div>\
-				</div>\
-			</div>")
+				</div>")
+		}
+	}
+	else{
+		for (var i=page_no;i<petData.responseJSON.length;i++){
+			$("#petSearchResult").append("\
+				<div class=\"col-lg-4 col-md-6 mb-4\">\
+					<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+						<div class=\"card h-100\">\
+							<a>"+petData.responseJSON[i].peturl+"</a>\
+							<div class=\"card-body\">\
+								<div style=\"display:table\">\
+									<div style=\"display:table-row\">\
+										<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].age+"</div>\
+									</div>\
+										<div style=\"display:table-row\">\
+										<div class=\"captionDescription\" style=\"display:table-cell\">"+petData.responseJSON[i].gender+"</div>\
+									</div>\
+									<div style=\"display:table-row\">\
+										<div class=\"captionBreeds\" style=\"display:table-cell\">"+petData.responseJSON[i].breed+"</div>\
+									</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>\
+				</div>")
+		}
 	}
 }
 
