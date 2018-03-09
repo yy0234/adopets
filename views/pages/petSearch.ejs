@@ -100,8 +100,8 @@
 	
 			<div class="col-lg-9">
 	
-				<div class="row mt-4" style="margin: 0 auto;">
-					<div class="col-lg-4 col-md-6 mb-4">
+				<div id="petSearchResult" class="row mt-4" style="margin: 0 auto;">
+					<!--<div class="col-lg-4 col-md-6 mb-4">
 						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
 							<div class="card h-100">
 								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
@@ -123,7 +123,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 				<ul class="pagination justify-content-center">
 					<li class="page-item">
@@ -451,7 +451,62 @@ $(document).ready(function() {
 					data: {
 					},
 					success: function (mes) {
-						alert(mes.length);
+						if (mes.length<=12){
+							for (var i=0; i<12;i++){
+								$("#petSearchResult").append("\
+								<div class=\"col-lg-4 col-md-6 mb-4\">\
+									<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+										<div class=\"card h-100\">\
+											<a><img class=\"card-img-top\" src="+mes[i].peturl+" alt=\"\"></a>\
+											<div class=\"card-body\">\
+												<div style=\"display:table\">\
+													<div style=\"display:table-row\">\
+														<div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
+													</div>\
+													<div style=\"display:table-row\">\
+														<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
+													</div>\
+														<div style=\"display:table-row\">\
+														<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
+													</div>\
+													<div style=\"display:table-row\">\
+														<div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>")
+							}
+						}
+						else{
+							mes.forEach(function(element) {
+								$("#petSearchResult").append("\
+									<div class=\"col-lg-4 col-md-6 mb-4\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+											<div class=\"card h-100\">\
+												<a><img class=\"card-img-top\" src="+element.peturl+" alt=\"\"></a>\
+												<div class=\"card-body\">\
+													<div style=\"display:table\">\
+														<div style=\"display:table-row\">\
+															<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+														</div>\
+														<div style=\"display:table-row\">\
+															<div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+														</div>\
+															<div style=\"display:table-row\">\
+															<div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+														</div>\
+														<div style=\"display:table-row\">\
+															<div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>")
+							});
+						}
 						return mes;
 					},
 					error: function (err) {
