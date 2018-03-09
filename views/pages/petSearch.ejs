@@ -420,9 +420,9 @@ function pagePet(pageNo){
 				</div>")
 		}
 	}
+	$('#page'+current_page).css("background-color:","white");
 	current_page=static_pageNo;
-	$('#page1').css("background-color:","grey");
-	console.log($('#page1').css("background-color:","grey"));
+	$("#page"+current_page).css("background-color:","grey");
 }
 
 $(document).ready(function() {
@@ -579,7 +579,8 @@ $(document).ready(function() {
 							$("#pagination").css('display','flex');
 							total_page=Math.ceil(mes.length/12);
 							for (var i=total_page;i>0;i--)
-								$("<li id=\"page"+i+"\"class=\"page-item\"><a class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+								$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+							$('#page'+current_page).css("background-color:","grey");
 						}
 						else{
 							mes.forEach(function(element,index) {
