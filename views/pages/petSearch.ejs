@@ -125,7 +125,7 @@
 						</div>
 					</div>-->
 				</div>
-				<ul id="pagination" class="pagination justify-content-center">
+				<ul id="pagination" class="pagination justify-content-center" style="display:none">
 					<li id="previous" class="page-item">
 						<a class="page-link" aria-label="Previous">
 						<span aria-hidden="true">«</span>
@@ -470,7 +470,7 @@ $(document).ready(function() {
 										</div>\
 									</div>")
 							}
-							//$("#pagination").css('display','block');
+							$("#pagination").css('display','flex');
 							var total_page=Math.ceil(mes.length/12);
 							for (var i=total_page;i>0;i--)
 								$("<li class=\"page-item\"><a class=\"page-link\" >"+i+"</a></li>").insertAfter("#previous");
