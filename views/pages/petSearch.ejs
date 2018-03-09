@@ -18,9 +18,9 @@
 		<div class="row" style="margin: 0 auto;">
 			
 			<div class="col-lg-3">
-	
-				<h5 class="my-3 text-info">Search & Filter</h5>
-				<div class="list-group">
+				<h5 class="my-3 text-info lg">Search & Filter</h5>
+				<h5 class="my-3 text-info sm" onclick="listToggle()">Search & Filter<i id="chevron" class="fas fa-chevron-down" style="float:right"></i></h5>
+				<div class="list-group filter">
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
 						<label for="order">Order by:</label>
 						<select class="custom-select d-block w-100" id="order" required>
@@ -101,271 +101,6 @@
 			<div class="col-lg-9">
 	
 				<div class="row mt-4" style="margin: 0 auto;">
-	
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-		
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-		
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-		
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-		
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>
-		
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
 							<div class="card h-100">
@@ -568,6 +303,9 @@
 <script src="/javascript/adoption.js"></script>
 
 <script>
+
+var petData=[];
+
 $('#petTypes').change(function(){
 	$('#petBreeds').empty();
 	if ($(this).val()){
@@ -584,6 +322,11 @@ $('#petTypes').change(function(){
 	}
 	$('#petBreeds').multiselect('rebuild');
 });
+
+function listToggle(){
+	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down")
+	$(".filter").toggleClass("open")
+}
 
 $(document).ready(function() {
 	$('.flexslider').flexslider({
@@ -701,6 +444,21 @@ $(document).ready(function() {
 
 	nonLinearSlider.noUiSlider.on('end', function () {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
+	});
+
+	$.ajax({
+		url: "/listPet",
+		type: "GET",
+		data: {
+		},
+		success: function (mes) {
+			petData.concat(mes)
+			console.log(mes);
+			console.log(petData);
+		},
+		error: function (err) {
+			console.log(err);
+		}
 	});
 
 	

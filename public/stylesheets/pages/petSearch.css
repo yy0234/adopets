@@ -107,3 +107,34 @@
 #order{
     text-align: center;
 }
+
+.filter{
+    height: auto;
+}
+
+.lg{
+    display:block;
+}
+
+.sm{
+    display:none;
+}
+
+@media only screen and (max-width: 991px) {
+    .filter{
+        height: 0px !important;
+        overflow: hidden !important;
+    }
+
+    .filter.open{
+        height: auto !important;
+    }
+
+    .lg{
+        display: none !important;
+    }
+
+    .sm{
+        display: block !important;
+    }
+}

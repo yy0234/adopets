@@ -54,6 +54,7 @@ var cat="\
 	<option>LaPerm</option>\
 	<option>Maine Coon</option>\
 	<option>Manx</option>\
+	<option>Mixed</option>\
 	<option>Norwegian Forest Cat</option>\
 	<option>Ocicat</option>\
 	<option>Oriental</option>\
@@ -175,6 +176,7 @@ var dog="\
 	<option>Manchester Terrier</option>\
 	<option>Maremma Sheepdog</option>\
 	<option>Mastiff</option>\
+	<option>Mixed</option>\
 	<option>Newfoundland</option>\
 	<option>Norfolk Terrier</option>\
 	<option>Norwich Terrier</option>\
@@ -235,6 +237,7 @@ var fish="\
 		<option>Koi Carp</option>\
 		<option>Rainbow Fish</option>\
 		<option>Tetras</option>\
+		<option>Other</option>\
 	</optgroup>"
 var reptile="\
 	<optgroup label='Reptile Type'>\

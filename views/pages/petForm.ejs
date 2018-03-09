@@ -174,7 +174,6 @@
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
 			newImage.src = srcData;
-			console.log(newImage.outerHTML);
 			callback();
 		}
 		fileReader.readAsDataURL(fileToLoad);
@@ -185,24 +184,9 @@
 		var remark = $('#remark').val() || "";
 		var neutered =($('#neutered').val()=="yes")?true:false;
 
-		console.log(newImage.outerHTML);
-		console.log($('#petname').val());
-		console.log($('#gender').val());
-		console.log($('#age1').val());
-		console.log($('#age2').val());
-		console.log(neutered);
-		console.log($('#type').val());
-		console.log($('#breed').val());
-		console.log($('#size').val());
-		console.log($('#coat').val());
-		console.log($('#description'));
-		console.log($('#remark'));
-		console.log(new Date());
-
 		$.ajax({
 			url: "/addPets",
 			type: "POST",
-			dataType: 'json',
 			contentType: "application/json",
 			data: JSON.stringify({
 				name:$('#petname').val(),
@@ -225,9 +209,11 @@
 			},
 			error: function error(err) {
 				alert(err);
+				console.log(err);
 			},
 			success: function success(mes) {
 				alert(mes);
+				console.log(mes);
 			}
 		})
 	}
