@@ -5,6 +5,7 @@ var pg = require('pg');
 var multer = require('multer');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(bodyParser({limit: '50mb'}));
 
 
 app.set('port', (process.env.PORT || 5000));
