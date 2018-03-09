@@ -304,8 +304,6 @@
 
 <script>
 
-var petData=[];
-
 $('#petTypes').change(function(){
 	$('#petBreeds').empty();
 	if ($(this).val()){
@@ -446,21 +444,19 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
-	$.ajax({
-		url: "/listPet",
-		type: "GET",
-		data: {
-		},
-		success: function (mes) {
-			petData=Arrays.copyOf(mes, mes.length);
-			console.log(mes);
-			console.log(petData);
-		},
-		error: function (err) {
-			console.log(err);
-		}
-	});
-});
+	var petData= $.ajax({
+					url: "/listPet",
+					type: "GET",
+					data: {
+					},
+					success: function (mes) {
+						return mes;
+					},
+					error: function (err) {
+						return err;
+					}
+				});
+			});
 
 function encodeImageFileAsURL() {
 	var base64Image="";
