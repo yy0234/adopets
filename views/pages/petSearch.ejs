@@ -303,6 +303,7 @@
 <script src="/javascript/adoption.js"></script>
 
 <script>
+var petData;
 
 $('#petTypes').change(function(){
 	$('#petBreeds').empty();
@@ -444,7 +445,7 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
-	var petData= $.ajax({
+	petData= $.ajax({
 					url: "/listPet",
 					type: "GET",
 					data: {
