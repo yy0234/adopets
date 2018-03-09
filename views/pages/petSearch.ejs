@@ -91,7 +91,7 @@
 								<option value="super-long">Super Long</option>
 							</select>
 						</div>
-						<button type="button" class="btn btn-primary btn-block filterSubmit">Search / Filter</button>
+						<button type="button" class="btn btn-primary btn-block filterSubmit" onclick="findPet()">Search / Filter</button>
 					</div>
 				</div>
 	
@@ -510,6 +510,16 @@ function pagePet(pageNo){
 	$('#page'+current_page).css("background-color","white");
 	current_page=static_pageNo;
 	$("#page"+current_page).css("background-color","gainsboro");
+}
+
+function findPet(){
+	console.log($("#petTypes").val());
+	console.log($("#petBreeds").val());
+	console.log($("#petGender").val());
+	console.log($("#petAgeTextHolder").val());
+	console.log($("#petSize").val());
+	console.log($("#neutered").val());
+	console.log($("#coat").val());
 }
 
 $(document).ready(function() {
