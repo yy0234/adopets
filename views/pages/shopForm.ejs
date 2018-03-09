@@ -138,7 +138,6 @@
 		fileReader.onload = function(fileLoadedEvent) {
 			var srcData = fileLoadedEvent.target.result; // <--- data: base64
 			newImage.src = srcData;
-			console.log(newImage.outerHTML);
 			callback();
 		}
 		fileReader.readAsDataURL(fileToLoad);
@@ -148,17 +147,6 @@
 		var description = $('#description').val() || "";
         var remark = $('#remark').val() || "";
         var supplyid = Math.floor(Math.random() * 99999999);
-
-		console.log(newImage.outerHTML);
-		console.log($('#supplyname').val());
-		console.log($('#pettype').val());
-		console.log($('#price').val());
-		console.log($('#quantity').val());
-		console.log($('#type').val());
-		console.log($('#status').val());
-		console.log($('#description'));
-		console.log($('#remark'));
-		console.log(new Date());
 
 		$.ajax({
 			url: "/addSupply",
@@ -183,10 +171,12 @@
 			complete: function complete() {
 			},
 			error: function error(err) {
-				alert(err);
+                alert(err);
+                console.log(err);
 			},
 			success: function success(mes) {
-				alert(mes);
+                alert(mes);
+                console.log(mes);
 			}
 		})
 	}
