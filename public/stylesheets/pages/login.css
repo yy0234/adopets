@@ -46,7 +46,7 @@
 .form-module input[type="text"], .form-module input[type="password"], .form-module input[type="datetime"], .form-module input[type="datetime-local"], .form-module input[type="date"],.form-module input[type="month"], .form-module input[type="time"], .form-module input[type="week"],.form-module input[type="number"], .form-module input[type="email"], .form-module input[type="url"], .form-module input[type="search"], .form-module input[type="tel"], .form-module input[type="color"] {
 */
 
-.form-module input:not(#birthdate) {
+.form-module input:not(#birthdate), .form-module input:not(#register_image) {
   outline: none;
   display: block;
   width: 89%;
@@ -124,4 +124,25 @@
   padding-left: 5px;
   padding-top: 5px;
   font-size: 20px;
+}
+
+#user_image_preview {
+  max-width: 100px;
+  max-height: 100px;
+  margin-left: 35px;
+  margin-bottom: 10px;
+}
+
+.form-module input#register_image {
+  outline: none;
+  display: block;
+  width: 89%;
+  border: 1px solid #d9d9d9;
+  margin: 0 0 20px;
+  padding: 5px 15px;
+  height: 35px;
+  box-sizing: border-box;
+  font-weight: 400;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
