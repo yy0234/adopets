@@ -451,10 +451,11 @@ $(document).ready(function() {
 					data: {
 					},
 					success: function (mes) {
-						return mes.responseJSON;
+						alert(mes.length);
+						return mes;
 					},
 					error: function (err) {
-						return "error";
+						return err;
 					}
 				});
 			});
