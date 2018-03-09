@@ -108,6 +108,18 @@ app.post('/addPets', function (request, response) {
   });
 });
 
+app.get("/listPet", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	   client.query('SELECT * FROM pets order by postdate', function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+       else
+        { return response.send(result.rows);   }
+      });
+  });
+});
+
 app.get("/getUserData", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	   client.query('SELECT * FROM user_table', function(err, result) {
