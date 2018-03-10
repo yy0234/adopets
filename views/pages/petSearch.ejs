@@ -418,6 +418,7 @@ function callAjax(Query){
 			query:Query,
 		},
 		success: function (mes) {
+			$("#petSearchResult").html("");
 			if (mes.length>12){
 				for (var i=0; i<12;i++){
 					$("#petSearchResult").append("\
@@ -600,18 +601,58 @@ function findPet(){
 	console.log($("#neutered").val());
 	console.log($("#coat").val());
 	var searchQuery="";
-	if ($("#petTypes").val()!=null)
-		searchQuery+=" AND type= IN("+$("#petTypes").val()+")";
-	if ($("#petBreeds").val()!=null)
-		searchQuery+=" AND breed= IN("+$("#petBreeds").val()+")";
-	if ($("#petGender").val()!=null)
-		searchQuery+=" AND breed= IN("+$("#petGender").val()+")";
-	if ($("#petSize").val()!=null)
-		searchQuery+=" AND breed= IN("+$("#petSize").val()+")";
+	var temp;
+	if ($("#petTypes").val()!=null){
+		temp="";
+		for (var i=0;i<$("#petTypes").val().length;i++){
+			temp+="'"+$("#petTypes").val()[i]+"',"
+		}
+		temp=temp.substring(0,temp-1);
+
+		searchQuery+=" AND type IN("+temp+")";
+	}
+	if ($("#petBreeds").val()!=null){
+		temp="";
+		for (var i=0;i<$("#petBreeds").val().length;i++){
+			temp+="'"+$("#petBreeds").val()[i]+"',"
+		}
+		temp=temp.substring(0,temp-1);
+
+		searchQuery+=" AND breed IN("+temp+")";
+	}
+
+	if ($("#petGender").val()!=null){
+		temp="";
+		for (var i=0;i<$("#petGender").val().length;i++){
+			temp+="'"+$("#petGender").val()[i]+"',"
+		}
+		temp=temp.substring(0,temp-1);
+
+		searchQuery+=" AND gender IN("+temp+")";
+	}
+
+	if ($("#petSize").val()!=null){
+		temp="";
+		for (var i=0;i<$("#petSize").val().length;i++){
+			temp+="'"+$("#petSize").val()[i]+"',"
+		}
+		temp=temp.substring(0,temp-1);
+
+		searchQuery+=" AND size IN("+temp+")";
+	}
+
 	if ($("#neutered").val()!=null)
-		searchQuery+=" AND breed= IN("+$("#neutered").val()+")";
-	if ($("#coat").val()!=null)
-		searchQuery+=" AND breed= IN("+$("#coat").val()+")";
+		searchQuery+=" AND neutered IN("+$("#neutered").val()+")";
+
+	if ($("#coat").val()!=null){
+		temp="";
+		for (var i=0;i<$("#coat").val().length;i++){
+			temp+="'"+$("#coat").val()[i]+"',"
+		}
+		temp=temp.substring(0,temp-1);
+
+		searchQuery+=" AND coat IN("+temp+")";
+	}
 	
 	console.log(searchQuery);
 	callAjax(searchQuery);
