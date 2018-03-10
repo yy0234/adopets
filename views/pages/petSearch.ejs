@@ -297,7 +297,7 @@
 <script>
 var petData;
 var current_page =1;
-var total_page=1;
+var total_page=0;
 
 $('#petTypes').change(function(){
 	$('#petBreeds').empty();
@@ -446,6 +446,9 @@ function callAjax(Query){
 							</div>\
 						</div>")
 				}
+				if (total_page!=0)
+					for (var i=1;i<=total_page;i++)
+						$("#page"+i).remove();
 				$("#pagination").css('display','flex');
 				total_page=Math.ceil(mes.length/12);
 				for (var i=total_page;i>0;i--)
@@ -480,6 +483,7 @@ function callAjax(Query){
 						</div>")
 				});
 				$("#pagination").css('display','none');
+				total_page=0;
 			}
 			return mes;
 		},
@@ -654,8 +658,6 @@ function findPet(){
 
 		searchQuery+=" AND coat IN("+temp+")";
 	}
-	
-	console.log(searchQuery);
 	callAjax(searchQuery);
 
 }
