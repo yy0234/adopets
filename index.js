@@ -52,11 +52,7 @@ app.get('/post_supply', function(request, response) {
 });
 
 app.get('/testing', function(request, response) {
-  response.render('pages/testing2');
-});
-
-app.get('/testing2', function(request, response) {
-  response.sendFile('../public/testing1.html', {root: __dirname});
+  response.render('pages/testing2',{action:'pages/testing1.ejs'});
 });
 
 

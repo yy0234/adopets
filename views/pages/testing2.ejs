@@ -12,7 +12,7 @@
 <section class="main-content">
 	<button type="button" class="btn" onclick="redirect()">Basic</button>
 	<div class="container-fluid">
-		<div>This is a testing</div>
+		<%- include(action) %>
 	<div>
 </section>
 
@@ -22,20 +22,6 @@
 <!--Your own script-->
 <script>
 
-function redirect(){
-	$.ajax({
-		url: "/testing2",
-		type: "GET",
-		data: {
-		},
-		success: function (mes) {
-			$(".container-fluid").load(mes);
-		},
-		error: function (err) {
-			alert(err);
-		}
-	});
-}
 </script>
 	
 </body>
