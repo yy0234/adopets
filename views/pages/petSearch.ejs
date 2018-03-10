@@ -676,9 +676,8 @@ function findPet(){
 }
 
 function searchByKey(){
-	console.log($("#auto_complete").val());
-	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+$("#auto_complete").val()+"%' ";
-	console.log(searchQuery);
+	var keyword=$("#auto_complete").val().toLowerCase();
+	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
 }
 

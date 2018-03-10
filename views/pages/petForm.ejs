@@ -183,6 +183,7 @@
 		var description = $('#description').val() || "";
 		var remark = $('#remark').val() || "";
 		var neutered =($('#neutered').val()=="yes")?true:false;
+		var breed=$('#breed').val().toLowerCase();
 
 		$.ajax({
 			url: "/addPets",
@@ -191,7 +192,7 @@
 			data: JSON.stringify({
 				name:$('#petname').val(),
 				type:$('#type').val(),
-				breed:$('#breed').val(),
+				breed:breed,
 				gender:$('#gender').val(),
 				age:$('#age1').val()+" years and "+$('#age2').val()+" months",
 				postdate: new Date(),
