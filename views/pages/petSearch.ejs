@@ -419,12 +419,12 @@ function callAjax(Query,age){
 		},
 		success: function (mes) {
 			if (age!=null){
-				var min_age=age.split(" ")[0];
-				var max_age=age.split(" ")[2];
+				var min_age=parseInt(age.split(" ")[0]);
+				var max_age=parseInt(age.split(" ")[2]);
 				console.log(min_age);
 				console.log(max_age);
 				for (var i=0;i<mes.length;i++){
-					var mes_age=mes[i].age.split(" ")[0];
+					var mes_age=parseInt(mes[i].age.split(" ")[0]);
 					console.log(min_age);
 					console.log(max_age);
 					console.log(mes_age)
