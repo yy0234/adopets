@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/autocomplete.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.autocomplete.css"/>
 	<title>Pet Search Result</title>
 </head>
 
@@ -297,7 +297,7 @@
 <script src="/javascript/adoption.js"></script>
 <script src="/javascript/bootstrap-multiselect.js"></script>
 <script src="/javascript/nouislider.min.js"></script>
-<script src="/javascript/autocomplete.min.js"></script>
+<script src="/javascript/jquery.autocomplete.js"></script>
 
 <script>
 var petData;
@@ -796,9 +796,9 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
-	$('#testing').autocomplete({
-		hints: pet_auto
-	});
+	$("#testing").autocomplete({
+    	source:[pet_auto]
+  	}); 
 
 	petData= $.ajax({
 					url: "/listPet",
