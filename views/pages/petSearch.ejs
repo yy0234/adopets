@@ -899,15 +899,17 @@ function encodeImageFileAsURL() {
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
 		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":10}]}]}));
+		xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":8}]}]}));
 		//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 		xhr.onload = function() {
 			var resultList=JSON.parse(xhr.response);
 			for (var i=0;i<resultList.responses[0].labelAnnotations.length;i++){
-				stringStorage+=resultList.responses[0].labelAnnotations[i].description+"\n";
+				stringStorage+="'"+resultList.responses[0].labelAnnotations[i].description+"',";
 			}
-			alert(stringStorage);
-			console.log(resultList);
+			stringStorage=stringStorage.substring(0,stringStorage.length-1);
+			var searchQuery=" AND breed in ("+stringStorage+")";
+			console.log(searchQuery);
+			callAjax(searchQuery,null);
 		}
 	}
 	fileReader.readAsDataURL(fileToLoad);
