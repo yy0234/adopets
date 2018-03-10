@@ -175,3 +175,11 @@
   #pet_image img{
     height: 200px;
   }
+
+  #modal_petImage{
+    margin: 0 auto;
+  }
+
+  #modal_petImage img{
+    max-height: 240px;
+  }
