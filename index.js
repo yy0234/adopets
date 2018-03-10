@@ -51,6 +51,14 @@ app.get('/post_supply', function(request, response) {
   response.render('pages/shopForm');
 });
 
+app.get('/testing', function(request, response) {
+  response.render('pages/testing2');
+});
+
+app.get('/testing', function(request, response) {
+  response.sendFile('pages/testing1');
+});
+
 
 
 

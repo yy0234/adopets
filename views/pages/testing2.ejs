@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<!--Your own css file-->
+	<title>You own title</title>
+</head>
+
+<body>
+<% include ../partials/headline.ejs %>
+
+<section class="main-content">
+	<button type="button" class="btn" onclick="redirect()">Basic</button>
+	<div class="container-fluid">
+		<div>This is a testing</div>
+	<div>
+</section>
+
+
+<% include ../partials/script.ejs %>
+
+<!--Your own script-->
+<script>
+	$.ajax({
+		url: "/testing2",
+		type: "GET",
+		data: {
+		},
+		success: function (mes) {
+			$(".container-fluid").load(mes);
+		},
+		error: function (err) {
+			alert(err);
+		}
+	});
+</script>
+	
+</body>
+</html>
