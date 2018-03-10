@@ -56,7 +56,7 @@ app.get('/testing', function(request, response) {
 });
 
 app.get('/testing2', function(request, response) {
-  response.sendFile('pages/testing1.html');
+  response.sendFile('../public/testing1.html', {root: __dirname});
 });
 
 
