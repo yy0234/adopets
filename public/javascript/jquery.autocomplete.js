@@ -955,7 +955,7 @@
 							marginLeft:style.marginLeft,
 							paddingRight:style.paddingRight,
 							marginRight:style.marginRight,
-							maxHeight:350px,
+							maxHeight:style.maxHeight,
 							minHeight:style.minHeight,
 							maxWidth:style.maxWidth,
 							minWidth:style.minWidth,
