@@ -646,8 +646,7 @@
 		
 		$box
 			.css({
-				'display':$input.css('display'),
-				'width':$input.css('width')
+				'display':$input.css('display')
 			});
 		
 		if( options.style )
@@ -958,7 +957,6 @@
 							minHeight:style.minHeight,
 							maxWidth:style.maxWidth,
 							minWidth:style.minWidth,
-							width:style.width,
 							letterSpacing:style.letterSpacing,
 							lineHeight:style.lineHeight,
 							outlineWidth:style.outlineWidth,
