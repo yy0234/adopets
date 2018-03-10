@@ -794,6 +794,10 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
+	$( "#auto_complete" ).autocomplete({
+		source: pet_auto
+	  });
+
 	petData= $.ajax({
 					url: "/listPet",
 					type: "GET",
