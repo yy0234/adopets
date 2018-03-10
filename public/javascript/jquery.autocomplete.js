@@ -955,7 +955,7 @@
 							marginLeft:style.marginLeft,
 							paddingRight:style.paddingRight,
 							marginRight:style.marginRight,
-							maxHeight:style.maxHeight,
+							maxHeight:350px,
 							minHeight:style.minHeight,
 							maxWidth:style.maxWidth,
 							minWidth:style.minWidth,
@@ -970,7 +970,7 @@
 							fontWeight:$input.css('fontWeight'),
 							flex:style.flex,
 							justifyContent:style.justifyContent,
-							borderRadius:style.borderRadius,
+							borderRadius:0,
 							'-webkit-box-shadow':'none',
 							'box-shadow':'none'
 						});

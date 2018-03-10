@@ -15,7 +15,6 @@
 <% include ../partials/headline.ejs %>
 
 <section class="main-content">
-	<input type="text" id="testing" placeholder="Search..."/>
 	<div class="container-fluid">
 		<div class="row" style="margin: 0 auto;">
 			
@@ -795,10 +794,6 @@ $(document).ready(function() {
 	nonLinearSlider.noUiSlider.on('end', function () {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
-
-	$("#testing").autocomplete({
-    	source:[pet_auto]
-	  }); 
 	  
 	$("#auto_complete").autocomplete({
 		source:[pet_auto]

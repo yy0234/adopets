@@ -69,10 +69,10 @@
     background-color: #f0f4f5;
     border: 1px solid #ced4da;
     border-left: none;
-    border-radius: .25rem;
+    border-radius: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    padding: 10px;
+    padding: 8px;
 }
 
 .input-group input {
@@ -137,4 +137,12 @@
     .sm{
         display: block !important;
     }
+}
+
+#auto_complete{
+    border-radius: 0 !important;
+}
+
+.xdsoft_autocomplete .xdsoft_autocomplete_dropdown{
+    font-size: 14px !important;
 }
