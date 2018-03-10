@@ -255,4 +255,102 @@ var rodent="\
 	<option>Other</option>\
 	</optgroup>"
 
+
+function autocomplete(inp, arr) {
+	/*the autocomplete function takes two arguments,
+	the text field element and an array of possible autocompleted values:*/
+	var currentFocus;
+	/*execute a function when someone writes in the text field:*/
+	inp.addEventListener("input", function(e) {
+		var a, b, i, val = this.value;
+		/*close any already open lists of autocompleted values*/
+		closeAllLists();
+		if (!val) { return false;}
+		currentFocus = -1;
+		/*create a DIV element that will contain the items (values):*/
+		a = document.createElement("DIV");
+		a.setAttribute("id", this.id + "autocomplete-list");
+		a.setAttribute("class", "autocomplete-items");
+		/*append the DIV element as a child of the autocomplete container:*/
+		this.parentNode.appendChild(a);
+		/*for each item in the array...*/
+		for (i = 0; i < arr.length; i++) {
+			/*check if the item starts with the same letters as the text field value:*/
+			if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+			/*create a DIV element for each matching element:*/
+			b = document.createElement("DIV");
+			/*make the matching letters bold:*/
+			b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+			b.innerHTML += arr[i].substr(val.length);
+			/*insert a input field that will hold the current array item's value:*/
+			b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+			/*execute a function when someone clicks on the item value (DIV element):*/
+			b.addEventListener("click", function(e) {
+				/*insert the value for the autocomplete text field:*/
+				inp.value = this.getElementsByTagName("input")[0].value;
+				/*close the list of autocompleted values,
+				(or any other open lists of autocompleted values:*/
+				closeAllLists();
+			});
+			a.appendChild(b);
+			}
+		}
+	});
+	/*execute a function presses a key on the keyboard:*/
+	inp.addEventListener("keydown", function(e) {
+		var x = document.getElementById(this.id + "autocomplete-list");
+		if (x) x = x.getElementsByTagName("div");
+		if (e.keyCode == 40) {
+			/*If the arrow DOWN key is pressed,
+			increase the currentFocus variable:*/
+			currentFocus++;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		} else if (e.keyCode == 38) { //up
+			/*If the arrow UP key is pressed,
+			decrease the currentFocus variable:*/
+			currentFocus--;
+			/*and and make the current item more visible:*/
+			addActive(x);
+		} else if (e.keyCode == 13) {
+			/*If the ENTER key is pressed, prevent the form from being submitted,*/
+			e.preventDefault();
+			if (currentFocus > -1) {
+			/*and simulate a click on the "active" item:*/
+			if (x) x[currentFocus].click();
+			}
+		}
+	});
+	function addActive(x) {
+		/*a function to classify an item as "active":*/
+		if (!x) return false;
+		/*start by removing the "active" class on all items:*/
+		removeActive(x);
+		if (currentFocus >= x.length) currentFocus = 0;
+		if (currentFocus < 0) currentFocus = (x.length - 1);
+		/*add class "autocomplete-active":*/
+		x[currentFocus].classList.add("autocomplete-active");
+	}
+	function removeActive(x) {
+		/*a function to remove the "active" class from all autocomplete items:*/
+		for (var i = 0; i < x.length; i++) {
+		x[i].classList.remove("autocomplete-active");
+		}
+	}
+	function closeAllLists(elmnt) {
+		/*close all autocomplete lists in the document,
+		except the one passed as an argument:*/
+		var x = document.getElementsByClassName("autocomplete-items");
+		for (var i = 0; i < x.length; i++) {
+		if (elmnt != x[i] && elmnt != inp) {
+			x[i].parentNode.removeChild(x[i]);
+		}
+		}
+	}
+	/*execute a function when someone clicks in the document:*/
+	document.addEventListener("click", function (e) {
+		closeAllLists(e.target);
+	});
+}
+
 var pet_auto =["abyssinian", "affenpinscher", "afghan hound", "african greys", "airedale terrier", "alaskan malamute", "amazons", "american bobtail", "american curl", "american shorthair", "american staffordshire bull terrier", "american wirehair", "anatolian shepherd dog", "angelfish", "australian cattle dog", "australian kelpie", "australian shepherd dog", "australian silky terrier", "australian terrier", "balinese", "barbs", "basenji", "basset fauve de bretagne", "basset hound", "beagle", "bearded collie", "bedlington terrier", "belgian shepherd dog groenendael", "belgian shepherd dog laekenois", "belgian shepherd dog malinois", "belgian shepherd dog tervueren", "bernese mountain dog", "bettas", "bichon frise", "bird", "birman", "bloodhound", "bombay", "border collie", "border terrier", "borzoi", "boston terrier", "bouvier des flandres", "boxer", "bracco italiano", "briard", "british shorthair", "brittany", "bull terrier", "bull terrier miniature", "bulldog", "bullmastiff", "burmese", "caiques", "cairn terrier", "canaries", "cat", "cavalier king charles spaniel", "cesky terrier", "chartreux", "chesapeake bay retriever", "chihuahua (smooth coat)", "chinchilla", "chinese crested", "chow chow (smooth)", "cichlids", "clumber spaniel", "cockatiels", "collie (rough)", "collie (smooth)", "colorpoint shorthair", "cornish rex", "crows", "curly-coated retriever", "dachshund (miniature long haired)", "dachshund (miniature smooth haired)", "dachshund (miniature wire haired)", "dachshund (smooth haired)", "dachshund (wire haired)", "dalmatian", "dandie dinmont terrier", "deerhound", "devon rex", "discus", "dobermann", "dog", "dogue de bordeaux", "doves & pigeons", "eclectus", "egyptian mau", "english setter", "english springer spaniel", "english toy terrier (black & tan)", "european burmese", "exotic", "field spaniel", "finches", "finnish lapphund", "finnish spitz", "fish", "flat-coated retriever", "fox terrier smooth coat", "fox terrier wire coat", "foxhound", "french bulldog", "german shepherd dog", "german short-haired pointer", "german spitz klein", "german wire-haired pointer", "golden retriever", "goldfish", "gordon setter", "gouramis", "great dane", "greyhound", "guinea pigs", "hamsters", "harrier hound", "havana brown", "hawk headed parrots", "hungarian vizsla", "hungarian wire-haired vizsla", "ibizan hound", "irish setter", "irish terrier", "irish water spaniel", "irish wolfhound", "italian greyhound", "japanese akita", "japanese bobtail", "japanese chin", "japanese spitzv", "javanese", "keeshond", "kerry blue terrier", "king charles spaniel", "koi carp", "korat", "labrador retriever", "lakeland terrier", "laperm", "large cockatoos", "large conures", "large parakeets", "leonberger", "lhaso apso", "lizards", "lories & lorikeets", "lovebirds", "lowchen", "macaws", "maine coon", "maltese", "manchester terrier", "manx", "maremma sheepdog", "mastiff", "mini-macaws", "mixed", "mynah birds", "newfoundland", "norfolk terrier", "norwegian forest cat", "norwich terrier", "nova scotia duck tolling retriever", "ocicat", "old english sheepdog", "oriental", "papillon", "parrotlets", "parson jack russell terrier", "persian", "pharaoh hound", "pionus parrots", "poicephalus", "pointer", "pomeranian", "poodle miniature", "poodle standard", "poodle toy", "portuguese water dog", "pug", "pyrenean mountain dog", "rabbits", "ragamuffin", "ragdoll", "rainbow fish", "reptile", "rhodesian ridgeback", "rodent", "rottweiler", "russian blue", "saluki", "samoyed", "schipperke", "schnauzer giant", "schnauzer miniature", "schnauzer standard", "scottish fold", "scottish terrier", "selkirk rex", "shar pei", "shetland sheepdog", "shih tzu", "siamese", "siberian", "siberian husky", "singapura", "skye terrier", "sloughi", "small cockatoos", "small conures", "small parakeets", "snakes", "soft coated wheaten terrier", "somali", "sphynx", "st bernard", "sussex spaniel", "swedish vallhund", "tenterfield terrier", "tetras", "tibetan mastiff", "tibetan spaniel", "tibetan terrier", "tonkinese", "toucans", "turkish angora", "turkish van", "turtles", "weimaraner", "welsh corgi (cardigan)", "welsh corgi (pembroke)", "welsh springer spaniel", "welsh terrier", "west highland white terrier", "whippet", "yorkshire terrier"];

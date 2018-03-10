@@ -7,7 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.autocomplete.css"/>
 	<title>Pet Search Result</title>
 </head>
 
@@ -31,7 +30,7 @@
 						</select>
 					</div>
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
-						<div class="input-group">
+						<div class="input-group autocomplete">
 							<input type="text" id="auto_complete" class="form-control" placeholder="Search..."/>
 							<span class="input-group-addon">
 								<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
@@ -296,7 +295,6 @@
 <script src="/javascript/adoption.js"></script>
 <script src="/javascript/bootstrap-multiselect.js"></script>
 <script src="/javascript/nouislider.min.js"></script>
-<script src="/javascript/jquery.autocomplete.js"></script>
 
 <script>
 var petData;
@@ -795,9 +793,7 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 	  
-	$("#auto_complete").autocomplete({
-		source:[pet_auto]
-  	}); 
+	autocomplete(document.getElementById("auto_complete"), pet_auto);
 
 	petData= $.ajax({
 					url: "/listPet",
