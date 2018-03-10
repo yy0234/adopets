@@ -55,8 +55,9 @@
 						</div>
 						<div>
 							<select id="petGender" multiple="multiple">
-								<option value="m">Male</option>
-								<option value="f">Female</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="bisexual">Bisexual</option>
 							</select>
 						</div>
 						<div class="dropdown">
@@ -70,16 +71,16 @@
 						</div>
 						<div>
 							<select id="petSize" multiple="multiple">
-								<option value="s">Small</option>
-								<option value="m">Medium</option>
-								<option value="l">Large</option>
-								<option value="xl">X-Large</option>
+								<option value="small">Small</option>
+								<option value="medium">Medium</option>
+								<option value="large">Large</option>
+								<option value="x-large">X-Large</option>
 							</select>
 						</div>
 						<div>
 							<select id="neutered" multiple="multiple">
-								<option value="yes">Neutered</option>
-								<option value="no">Not neutered</option>
+								<option value="true">Neutered</option>
+								<option value="false">Not neutered</option>
 							</select>
 						</div>
 						<div>
@@ -409,6 +410,84 @@ $("#order").change(function(){
 	}
 });
 
+function callAjax(Query){
+	petData= $.ajax({
+		url: "/listPet",
+		type: "GET",
+		data: {
+			query:Query,
+		},
+		success: function (mes) {
+			if (mes.length>12){
+				for (var i=0; i<12;i++){
+					$("#petSearchResult").append("\
+						<div class=\"col-lg-4 col-md-6 mb-4\">\
+							<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+								<div class=\"card h-100\">\
+									<a>"+mes[i].peturl+"</a>\
+									<div class=\"card-body\">\
+										<div style=\"display:table\">\
+											<div style=\"display:table-row\">\
+												<div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
+											</div>\
+											<div style=\"display:table-row\">\
+												<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
+											</div>\
+												<div style=\"display:table-row\">\
+												<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
+											</div>\
+											<div style=\"display:table-row\">\
+												<div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>\
+							</div>\
+						</div>")
+				}
+				$("#pagination").css('display','flex');
+				total_page=Math.ceil(mes.length/12);
+				for (var i=total_page;i>0;i--)
+					$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+				$('#page'+current_page).css("background-color","gainsboro");
+			}
+			else{
+				mes.forEach(function(element,index) {
+					$("#petSearchResult").append("\
+						<div class=\"col-lg-4 col-md-6 mb-4\">\
+							<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+								<div class=\"card h-100\">\
+									<a>"+element.peturl+"</a>\
+									<div class=\"card-body\">\
+										<div style=\"display:table\">\
+											<div style=\"display:table-row\">\
+												<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+											</div>\
+											<div style=\"display:table-row\">\
+												<div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+											</div>\
+												<div style=\"display:table-row\">\
+												<div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+											</div>\
+											<div style=\"display:table-row\">\
+												<div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>\
+							</div>\
+						</div>")
+				});
+				$("#pagination").css('display','none');
+			}
+			return mes;
+		},
+		error: function (err) {
+			return err;
+		}
+	});
+}
+
 function listToggle(){
 	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down")
 	$(".filter").toggleClass("open")
@@ -520,14 +599,23 @@ function findPet(){
 	console.log($("#petSize").val());
 	console.log($("#neutered").val());
 	console.log($("#coat").val());
-	//var searchQuery="";
-	/*if ($("#petTypes").val()!=null)
-		searchQuery+="type="+$("#petTypes").val();
+	var searchQuery="";
+	if ($("#petTypes").val()!=null)
+		searchQuery+=" AND type= ANY("+$("#petTypes").val()+")";
 	if ($("#petBreeds").val()!=null)
-		if (searchQuery!=""){
-			searchQuery+="AND breed="+$("#petBreeds").val();
-		}
-	searchQuery+="breed="+$("#petBreeds").val();*/
+		searchQuery+=" AND breed= ANY("+$("#petBreeds").val()+")";
+	if ($("#petGender").val()!=null)
+		searchQuery+=" AND breed= ANY("+$("#petGender").val()+")";
+	if ($("#petSize").val()!=null)
+		searchQuery+=" AND breed= ANY("+$("#petSize").val()+")";
+	if ($("#neutered").val()!=null)
+		searchQuery+=" AND breed= ANY("+$("#neutered").val()+")";
+	if ($("#coat").val()!=null)
+		searchQuery+=" AND breed= ANY("+$("#coat").val()+")";
+	
+	console.log(searchQuery);
+	callAjax(searchQuery);
+
 }
 
 $(document).ready(function() {
@@ -652,6 +740,7 @@ $(document).ready(function() {
 					url: "/listPet",
 					type: "GET",
 					data: {
+						query:"",
 					},
 					success: function (mes) {
 						if (mes.length>12){
