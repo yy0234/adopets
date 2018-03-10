@@ -167,3 +167,11 @@
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
+
+  #pet_image{
+    margin: 0 auto;
+  }
+
+  #pet_image img{
+    height: 250px;
+  }
