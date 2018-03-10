@@ -601,17 +601,17 @@ function findPet(){
 	console.log($("#coat").val());
 	var searchQuery="";
 	if ($("#petTypes").val()!=null)
-		searchQuery+=" AND type= ANY("+$("#petTypes").val()+")";
+		searchQuery+=" AND type= IN("+$("#petTypes").val()+")";
 	if ($("#petBreeds").val()!=null)
-		searchQuery+=" AND breed= ANY("+$("#petBreeds").val()+")";
+		searchQuery+=" AND breed= IN("+$("#petBreeds").val()+")";
 	if ($("#petGender").val()!=null)
-		searchQuery+=" AND breed= ANY("+$("#petGender").val()+")";
+		searchQuery+=" AND breed= IN("+$("#petGender").val()+")";
 	if ($("#petSize").val()!=null)
-		searchQuery+=" AND breed= ANY("+$("#petSize").val()+")";
+		searchQuery+=" AND breed= IN("+$("#petSize").val()+")";
 	if ($("#neutered").val()!=null)
-		searchQuery+=" AND breed= ANY("+$("#neutered").val()+")";
+		searchQuery+=" AND breed= IN("+$("#neutered").val()+")";
 	if ($("#coat").val()!=null)
-		searchQuery+=" AND breed= ANY("+$("#coat").val()+")";
+		searchQuery+=" AND breed= IN("+$("#coat").val()+")";
 	
 	console.log(searchQuery);
 	callAjax(searchQuery);
