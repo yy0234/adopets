@@ -352,7 +352,7 @@ $("#order").change(function(){
 	$("#petSearchResult").html("");
 
 	if (petData.responseJSON.length==0){
-		$("#petSearchResult").html("No record found");	
+		$("#petSearchResult").html("<div style=\"text-align: center;\">No record found</div>");	
 	}
 	else if (petData.responseJSON.length>12){
 		for (var i=0; i<12;i++){
@@ -436,7 +436,7 @@ function callAjax(Query,age){
 			}
 			$("#petSearchResult").html("");
 			if (mes.length==0){
-				$("#petSearchResult").html("No record found");	
+				$("#petSearchResult").html("<div style=\"text-align: center;\">No record found</div>");	
 			}
 			else if (mes.length>12){
 				for (var i=0; i<12;i++){
@@ -811,7 +811,7 @@ $(document).ready(function() {
 					},
 					success: function (mes) {
 						if (mes.length==0){
-							$("#petSearchResult").html("No record found");	
+							$("#petSearchResult").html("<div style=\"text-align: center;\">No record found</div>");	
 						}
 						else if (mes.length>12){
 							for (var i=0; i<12;i++){
