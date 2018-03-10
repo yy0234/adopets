@@ -606,10 +606,8 @@ function findPet(){
 		temp="";
 		for (var i=0;i<$("#petTypes").val().length;i++){
 			temp+="'"+$("#petTypes").val()[i]+"',"
-			console.log(temp);
 		}
-		console.log(temp);
-		temp=temp.substring(0,temp-1);
+		temp=temp.substring(0,temp.length-1);
 		console.log(temp);
 
 		searchQuery+=" AND type IN("+temp+")";
@@ -619,7 +617,7 @@ function findPet(){
 		for (var i=0;i<$("#petBreeds").val().length;i++){
 			temp+="'"+$("#petBreeds").val()[i]+"',"
 		}
-		temp=temp.substring(0,temp-1);
+		temp=temp.substring(0,temp.length-1);
 
 		searchQuery+=" AND breed IN("+temp+")";
 	}
@@ -629,7 +627,7 @@ function findPet(){
 		for (var i=0;i<$("#petGender").val().length;i++){
 			temp+="'"+$("#petGender").val()[i]+"',"
 		}
-		temp=temp.substring(0,temp-1);
+		temp=temp.substring(0,temp.length-1);
 
 		searchQuery+=" AND gender IN("+temp+")";
 	}
@@ -639,7 +637,7 @@ function findPet(){
 		for (var i=0;i<$("#petSize").val().length;i++){
 			temp+="'"+$("#petSize").val()[i]+"',"
 		}
-		temp=temp.substring(0,temp-1);
+		temp=temp.substring(0,temp.length-1);
 
 		searchQuery+=" AND size IN("+temp+")";
 	}
@@ -652,7 +650,7 @@ function findPet(){
 		for (var i=0;i<$("#coat").val().length;i++){
 			temp+="'"+$("#coat").val()[i]+"',"
 		}
-		temp=temp.substring(0,temp-1);
+		temp=temp.substring(0,temp.length-1);
 
 		searchQuery+=" AND coat IN("+temp+")";
 	}
