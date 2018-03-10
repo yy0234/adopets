@@ -929,7 +929,6 @@
 						top:$input.position().top + parseInt($input.css('marginTop'))+parseInt($input[0].offsetHeight),
 						marginLeft:$input.css('marginLeft'),
 						marginRight:$input.css('marginRight'),
-						width:options.dropdownWidth=='100%'?$input[0].offsetWidth:options.dropdownWidth
 					},options.dropdownStyle));
 					
 					if (options.showHint) {
