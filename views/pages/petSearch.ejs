@@ -421,6 +421,8 @@ function callAjax(Query,age){
 			if (age!=null){
 				var min_age=age.split()[0];
 				var max_age=age.split()[2];
+				console.log(min_age);
+				console.log(max_age);
 				for (var i=0;i<mes.length;i++){
 					var mes_age=mes[i].age.split()[0];
 					if ((mes_age<min_age)||(mes_age>max_age)){
@@ -611,13 +613,6 @@ function pagePet(pageNo){
 }
 
 function findPet(){
-	console.log($("#petTypes").val());
-	console.log($("#petBreeds").val());
-	console.log($("#petGender").val());
-	console.log($("#petAgeTextHolder").text());
-	console.log($("#petSize").val());
-	console.log($("#neutered").val());
-	console.log($("#coat").val());
 	var searchQuery="";
 	var temp="";
 	if ($("#petTypes").val()!=null){
