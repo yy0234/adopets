@@ -55,8 +55,8 @@ app.get('/testing', function(request, response) {
   response.render('pages/testing2');
 });
 
-app.get('/testing', function(request, response) {
-  response.sendFile('pages/testing1');
+app.get('/testing2', function(request, response) {
+  response.sendFile('pages/testing1.html');
 });
 
 
