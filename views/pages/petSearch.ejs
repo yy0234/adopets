@@ -352,7 +352,8 @@ $("#order").change(function(){
 	$("#petSearchResult").html("");
 
 	if (petData.responseJSON.length==0){
-		$("#petSearchResult").html("<div style=\"text-align: center;\">No record found</div>");	
+		$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
+		$("#pagination").css('display','none');
 	}
 	else if (petData.responseJSON.length>12){
 		for (var i=0; i<12;i++){
@@ -436,7 +437,8 @@ function callAjax(Query,age){
 			}
 			$("#petSearchResult").html("");
 			if (mes.length==0){
-				$("#petSearchResult").html("<div style=\"text-align: center;\">No record found</div>");	
+				$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
+				$("#pagination").css('display','none');	
 			}
 			else if (mes.length>12){
 				for (var i=0; i<12;i++){
@@ -501,7 +503,11 @@ function callAjax(Query,age){
 							</div>\
 						</div>")
 				});
+				if (total_page!=0)
+					for (var i=1;i<=total_page;i++)
+						$("#page"+i).remove();
 				$("#pagination").css('display','none');
+				total_page=0;
 			}
 			document.getElementById('order').value="date";
 			return mes;
@@ -811,7 +817,8 @@ $(document).ready(function() {
 					},
 					success: function (mes) {
 						if (mes.length==0){
-							$("#petSearchResult").html("<div style=\"text-align: center;\">No record found</div>");	
+							$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
+							$("#pagination").css('display','none');
 						}
 						else if (mes.length>12){
 							for (var i=0; i<12;i++){
