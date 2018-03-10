@@ -15,6 +15,7 @@
 <% include ../partials/headline.ejs %>
 
 <section class="main-content">
+	<input type="text" id="testing" placeholder="Search..."/>
 	<div class="container-fluid">
 		<div class="row" style="margin: 0 auto;">
 			
@@ -795,7 +796,7 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
-	$('#auto_complete').autocomplete({
+	$('#testing').autocomplete({
 		hints: pet_auto
 	});
 
