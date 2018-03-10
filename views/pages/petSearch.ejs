@@ -34,7 +34,7 @@
 							<input type="text" id="auto_complete" class="form-control" placeholder="Search..."/>
 							<span class="input-group-addon">
 								<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
-								<i class="fas fa-search"></i>
+								<i class="fas fa-search" style="cursor:pointer;" onclick="searchByKey()"></i>
 							</span>
 						</div>
 					</div>
@@ -673,6 +673,12 @@ function findPet(){
 		callAjax(searchQuery,$("#petAgeTextHolder").text());
 	else callAjax(searchQuery,null);
 
+}
+
+function searchByKey(){
+	console.log($("#auto_complete").val());
+	var searchQuery="AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+$("#auto_complete").val()+"%'";
+	callAjax(searchQuery,null);
 }
 
 $(document).ready(function() {
