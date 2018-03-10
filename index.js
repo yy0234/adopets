@@ -52,7 +52,7 @@ app.get('/post_supply', function(request, response) {
 });
 
 app.get('/testing', function(request, response) {
-  response.render('pages/testing2',{action:'../pages/testing1.html'});
+  response.render('pages/testing2',{action:'../pages/testing1.ejs'});
 });
 
 
