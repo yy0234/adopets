@@ -923,8 +923,7 @@
 				clearTimeout(timerUpdate);
 				timerUpdate = setTimeout(function(){
 					$box.css({
-						'display':$input.css('display'),
-						'width':$input.css('width')
+						'display':$input.css('display')
 					});
 					$dropdown.css($.extend(true,{
 						left:$input.position().left,
