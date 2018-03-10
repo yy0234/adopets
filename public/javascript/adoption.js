@@ -1,5 +1,3 @@
-var storedQuery="";
-
 var bird="\
 	<optgroup label='Birds Species'>\
 	<option>African Greys</option>\
