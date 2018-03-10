@@ -501,11 +501,7 @@ function callAjax(Query,age){
 							</div>\
 						</div>")
 				});
-				if (total_page!=0)
-					for (var i=1;i<=total_page;i++)
-						$("#page"+i).remove();
 				$("#pagination").css('display','none');
-				total_page=0;
 			}
 			document.getElementById('order').value="date";
 			return mes;
