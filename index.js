@@ -52,9 +52,13 @@ app.get('/post_supply', function(request, response) {
 });
 
 app.get('/testing', function(request, response) {
-  response.render('pages/testing2',{action:'../pages/testing1.ejs'});
+  //response.render('pages/testing2',{action:'../pages/testing1.ejs'});
+  response.render('pages/testing2');
 });
 
+app.get('/testing2', function(request, response) {
+  response.send({action:'../pages/testing1.ejs'});
+});
 
 
 

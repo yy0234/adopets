@@ -22,6 +22,20 @@
 <!--Your own script-->
 <script>
 
+function redirect(){
+	$.ajax({
+		url: "/testing2",
+		type: "GET",
+		data: {
+		},
+		success: function (mes) {
+			
+		},
+		error: function (err) {
+			alert(err);
+		}
+	});
+}
 </script>
 	
 </body>
