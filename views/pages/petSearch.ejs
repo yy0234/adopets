@@ -410,7 +410,7 @@ $("#order").change(function(){
 	}
 });
 
-function callAjax(Query){
+function callAjax(Query,age){
 	petData= $.ajax({
 		url: "/listPet",
 		type: "GET",
@@ -418,6 +418,17 @@ function callAjax(Query){
 			query:Query,
 		},
 		success: function (mes) {
+			if (age!=null){
+				var min_age=age.split()[0];
+				var max_age=age.split()[2];
+				for (var i=0;i<mes.length;i++){
+					var mes_age=mes[i].age.split()[0];
+					if ((mes_age<min_age)||(mes_age>max_age)){
+						mes.splice(i,1);
+						i--;
+					}
+				}
+			}
 			$("#petSearchResult").html("");
 			if (mes.length>12){
 				for (var i=0; i<12;i++){
@@ -661,7 +672,10 @@ function findPet(){
 
 		searchQuery+=" AND coat IN("+temp+")";
 	}
-	callAjax(searchQuery);
+
+	if ($("#petAgeTextHolder").text()!="Age")
+		callAjax(searchQuery,$("#petAgeTextHolder").text());
+	else callAjax(searchQuery,null);
 
 }
 
