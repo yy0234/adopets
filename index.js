@@ -57,7 +57,7 @@ app.get('/testing', function(request, response) {
 });
 
 app.get('/testing2', function(request, response) {
-  response.send('..public/webpage/testing1.ejs');
+  response.send('../webpage/testing1.ejs');
 });
 
 
