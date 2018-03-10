@@ -351,7 +351,10 @@ $("#order").change(function(){
 
 	$("#petSearchResult").html("");
 
-	if (petData.responseJSON.length>12){
+	if (petData.responseJSON.length==0){
+		$("#petSearchResult").html("No record found");	
+	}
+	else if (petData.responseJSON.length>12){
 		for (var i=0; i<12;i++){
 			$("#petSearchResult").append("\
 				<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -432,7 +435,10 @@ function callAjax(Query,age){
 				}
 			}
 			$("#petSearchResult").html("");
-			if (mes.length>12){
+			if (mes.length==0){
+				$("#petSearchResult").html("No record found");	
+			}
+			else if (mes.length>12){
 				for (var i=0; i<12;i++){
 					$("#petSearchResult").append("\
 						<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -808,7 +814,10 @@ $(document).ready(function() {
 						query:"",
 					},
 					success: function (mes) {
-						if (mes.length>12){
+						if (mes.length==0){
+							$("#petSearchResult").html("No record found");	
+						}
+						else if (mes.length>12){
 							for (var i=0; i<12;i++){
 								$("#petSearchResult").append("\
 									<div class=\"col-lg-4 col-md-6 mb-4\">\
