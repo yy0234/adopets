@@ -41,24 +41,24 @@
 								<div style="display:table">
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-secondary">Birds</button>
+											<button type="button" class="btn btn-secondary" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Birds</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-primary">Cat</button>
+											<button type="button" class="btn btn-primary" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Cat</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-success">Dog</button>
+											<button type="button" class="btn btn-success" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Dog</button>
 										</div>
 									</div>
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-info">Fish</button>
+											<button type="button" class="btn btn-info" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Fish</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning">Reptiles</button>
+											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Reptiles</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-danger">Rodents</button>
+											<button type="button" class="btn btn-danger" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Rodents</button>
 										</div>
 									</div>
 								</div>
@@ -577,6 +577,7 @@
 	});
 
     $(document).ready(function() {
+		storedQuery=1;
 		$('.flexslider').flexslider({
 			animation: "slide",
 			animationLoop: false,
