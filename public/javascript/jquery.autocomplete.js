@@ -1078,7 +1078,7 @@
 				}
 				
 				$dropdown
-					.css('maxHeight', hght+'px')
+					.css('maxHeight', 300+'px')
 			})
 			
 			.on('open.xdsoft',function(){
