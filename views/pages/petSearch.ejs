@@ -684,6 +684,7 @@ function findPet(){
 }
 
 function searchByKey(){
+	console.log(storedQuery);
 	var keyword=$("#auto_complete").val().toLowerCase();
 	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
@@ -691,8 +692,6 @@ function searchByKey(){
 
 $(document).ready(function() {
 
-	console.log(storedQuery);
-	
 	$('.flexslider').flexslider({
 		animation: "slide",
 		animationLoop: false,

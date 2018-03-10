@@ -41,13 +41,13 @@
 								<div style="display:table">
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-secondary" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Birds</button>
+											<button type="button" class="btn btn-secondary" onclick="storedQuery=1;location.href = 'https://adopets.herokuapp.com/pet_search';">Birds</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-primary" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Cat</button>
+											<button type="button" class="btn btn-primary" onclick="storedQuery=1;location.href = 'https://adopets.herokuapp.com/pet_search';">Cat</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-success" onclick="location.href = 'https://adopets.herokuapp.com/pet_search';">Dog</button>
+											<button type="button" class="btn btn-success" onclick="storedQuery=1;location.href = 'https://adopets.herokuapp.com/pet_search';">Dog</button>
 										</div>
 									</div>
 									<div style="display:table-row">
@@ -577,7 +577,6 @@
 	});
 
     $(document).ready(function() {
-		storedQuery=1;
 		$('.flexslider').flexslider({
 			animation: "slide",
 			animationLoop: false,
