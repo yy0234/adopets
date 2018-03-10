@@ -11,7 +11,7 @@
 
 <section class="main-content">
 	<button type="button" class="btn" onclick="redirect()">Basic</button>
-	<div class="container-fluid">
+	<div class="page_content container-fluid">
 		
 	<div>
 </section>
@@ -29,7 +29,7 @@ function redirect(){
 		data: {
 		},
 		success: function (mes) {
-			$(".container-fluid").load(mes);
+			$(".page_content").load(mes);
 		},
 		error: function (err) {
 			alert(err);
