@@ -141,6 +141,7 @@
 
 #auto_complete{
     border-radius: 0 !important;
+    padding-right: 0 !important;
 }
 
 .xdsoft_autocomplete .xdsoft_autocomplete_dropdown{
