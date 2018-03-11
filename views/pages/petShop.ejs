@@ -170,7 +170,8 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-10" >
+      
+					<div class="col-md-10" >
 				<div class="row" id="product_display">
 					<!--
 					<div class="card-deck">
@@ -216,6 +217,7 @@
 	<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
 </div>
 -->
+
 						<!--
 						<div class="col-md-4 product_card">
 							<a class="product_image_link">
@@ -244,8 +246,6 @@
 	var supplyData;
 
 	$(function(){
-
-
 		/*
 		var slideIndex = 1;
 		showDiv(slideIndex);
@@ -263,8 +263,8 @@
 			}
 			images[slideIndex-1].style.display = "block";
 		}
-		*/
-		
+    */
+
 		supplyData= $.ajax({
 					url: "/listSupply",
 					type: "GET",
@@ -333,6 +333,9 @@
 
 		$(".product_card").hover(function(event){
 			console.log(this);
+
+		$(".thumbnail").hover(function() {
+			$(".arrow").toggle();
 		});
 
 		$("#show_hide_button").click(function(){
