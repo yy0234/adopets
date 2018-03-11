@@ -170,7 +170,8 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-10" >
+      
+					<div class="col-md-10" >
 				<div class="row" id="product_display">
 						<div class="card-deck">
 						<!--
@@ -295,8 +296,7 @@
 <script>
 	var supplyData;
 
-	$(function(){
-		
+	$(function(){		
 		/*
 -		var slideIndex = 1;
 -		showDiv(slideIndex);
@@ -384,6 +384,9 @@
 
 		$(".product_card").hover(function(event){
 			console.log(this);
+
+		$(".thumbnail").hover(function() {
+			$(".arrow").toggle();
 		});
 
 		$(".thumbnail").hover(function() {
