@@ -175,10 +175,9 @@
 					<div class="card-deck">
 						<div class="card">
 							<div class="thumbnail">
-								<img class="product_image" src="/images/cat1.jpg"/>
 								<!-- Redirect to product -->
 								<a href="" class="product_page">
-									<div class="thumb-cover"></div>
+									<img class="product_image" src="/images/cat1.jpg"/>
 								</a>
 								<div class="details">
 									<!-- Redirect to user info -->
@@ -188,23 +187,37 @@
 										</div>
 										<div class="username">User</div>
 									</a>
-								</div>
-								<div class="card-info">
-									<div class="arrow">
-										<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
-										<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
+									<!-- Number of heart -->
+									<div class="heart_info">
+										<div class="heart_no"><i class="fab fa-gratipay"></i>100</div>
 									</div>
+								</div>
+								<div class="arrow">
+									<div class="left_arrow">&#xf104;</div>
+									<div class="right_arrow">&#xf105;</div>
+								</div>	
+							</div>
+							<div class="card-info">
+								<div class="product_info">
 									<!-- Redirect to product -->
 									<a href="" class="product_page">
-										<h4 class="product_title">
-											Cat
-										</h4>
+										<p class="product_title">Cat</p>
 										<p class="item_price">HKD$500</p>
 										<p class="item_description">100% new cat food</p>
 									</a>
 								</div>
+								<div class="product_buttons">
+									<div class="shopping_cart">
+										<i class="fa fa-cart-plus"></i>
+									</div>
+									<div class="heart">
+										<i class="far fa-heart"></i>
+										<i class="fas fa-heart"></i>
+									</div>
+								</div>
 							</div>
 						</div>
+						<!--
 						<div class="col-md-4 product_card">
 							<a class="product_image_link">
 								<div class="image_controller">
@@ -221,6 +234,7 @@
 								</div>
 							</a>
 						</div>
+					-->
 					</div>
 				</div>
 			</div>
@@ -236,6 +250,7 @@
 <script src="/javascript/nouislider.min.js"></script>
 <script>
 	$(function(){
+		/*
 		var slideIndex = 1;
 		showDiv(slideIndex);
 		
@@ -252,9 +267,11 @@
 			}
 			images[slideIndex-1].style.display = "block";
 		}
-		
-		$(".product_card").hover(function(event){
-			console.log(this);
+
+		*/
+
+		$(".thumbnail").hover(function() {
+			$(".arrow").toggle();
 		});
 
 		$("#show_hide_button").click(function(){
