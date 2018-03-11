@@ -335,6 +335,10 @@
 			console.log(this);
 		});
 
+		$(".thumbnail").hover(function() {
+			$(".arrow").toggle();
+ 		});
+
 		$("#show_hide_button").click(function(){
 			$("#left_container").toggle();
 			$(".filter_hide_button").toggle();
