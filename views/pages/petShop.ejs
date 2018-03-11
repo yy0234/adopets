@@ -172,16 +172,17 @@
 			</div>
 			<div class="col-md-10" id="product_display">
 				<div class="row">
+					<!--
 					<div class="card-deck">
 						<div class="card">
 							<div class="thumbnail">
 								<img class="product_image" src="/images/cat1.jpg"/>
-								<!-- Redirect to product -->
+								
 								<a href="" class="product_page">
 									<div class="thumb-cover"></div>
 								</a>
 								<div class="details">
-									<!-- Redirect to user info -->
+									
 									<a class="user" href="">
 										<div class="user-photo">
 											<img class="user_image" src="/images/user_image.jpg"/>
@@ -190,11 +191,7 @@
 									</a>
 								</div>
 								<div class="card-info">
-									<div class="arrow">
-										<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
-										<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
-									</div>
-									<!-- Redirect to product -->
+									
 									<a href="" class="product_page">
 										<h4 class="product_title">
 											Cat
@@ -205,6 +202,21 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				-->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--
+<div class="arrow">
+	<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
+	<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
+</div>
+-->
+						<!--
 						<div class="col-md-4 product_card">
 							<a class="product_image_link">
 								<div class="image_controller">
@@ -221,13 +233,7 @@
 								</div>
 							</a>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
+						-->
 
 <% include ../partials/script.ejs %>
 
@@ -235,7 +241,12 @@
 <script src="/javascript/jquery.js"></script>
 <script src="/javascript/nouislider.min.js"></script>
 <script>
+	var supplyData;
+
 	$(function(){
+
+
+		/*
 		var slideIndex = 1;
 		showDiv(slideIndex);
 		
@@ -252,7 +263,56 @@
 			}
 			images[slideIndex-1].style.display = "block";
 		}
+		*/
 		
+		SupplyData= $.ajax({
+					url: "/listSupply",
+					type: "GET",
+					data: {
+						query:"",
+					},
+					success: function (mes) {
+						if (mes.length==0){
+							$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
+						}
+						else{
+							mes.forEach(function(element,index) {
+								$("#product_display").append("\
+									<div class=\"col-lg-4 col-md-6 mb-4\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<img class=\"product_image\" src=\"" + element.supplyurl + "\"/>\
+													<a href=\"\" class=\"product_page\">\
+														<div class=\"thumb-cover\"></div>\
+													</a>\
+													<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													</div>\
+													<div class=\"card-info\">\
+													<a href=\"\" class=\"product_page\">\
+														<h4 class=\"product_title\">" + element.name +"</h4>\
+														<p class=\"item_price\">HKD$" + element.price + "</p>\
+														<p class=\"item_quantity\">Quantity: " + element.quantity +"</p>\
+													</a>\
+													</div>\
+												</div>\
+											</div>\
+									</div>")
+							});
+						}
+						return mes;
+					},
+					error: function (err) {
+						return err;
+					}
+				});
+
+
 		$(".product_card").hover(function(event){
 			console.log(this);
 		});
@@ -311,8 +371,69 @@
 		})
 	});
 
-	
 
+function findSupply(){
+	var searchQuery="";
+	var temp="";
+	if ($("#condition").val()!=null){
+		temp="";
+		if (document.getElementById("new").checked = true)
+			temp+="'new'";
+		else
+			temp+="'used'";
+
+		temp=temp.substring(0,temp.length-1);
+		searchQuery+=" AND status IN("+temp+")";
+	}
+
+
+	if ($("#pet_types").val()!=null){
+		temp="";
+		if (document.getElementById("dog").checked = true)
+			temp+="'dog',";
+		if (document.getElementById("cat").checked = true)
+			temp+="'cat',";
+		if (document.getElementById("bird").checked = true)
+			temp+="'bird',";
+		if (document.getElementById("fish").checked = true)
+			temp+="'fish',";
+		if (document.getElementById("reptile").checked = true)
+			temp+="'reptile',";
+		if (document.getElementById("rodent").checked = true)
+			temp+="'rodent',";	
+
+		temp=temp.substring(0,temp.length-1);
+
+		searchQuery+=" AND pettype IN("+temp+")";
+	}
+
+	if ($("#category").val()!=null){
+		temp="";
+		if (document.getElementById("food").checked = true)
+			temp+="'food',";
+		if (document.getElementById("beds_cages").checked = true)
+			temp+="'beds_cages',";	
+		if (document.getElementById("feeding_utensils").checked = true)
+			temp+="'feeding_utensils',";	
+		if (document.getElementById("health_products").checked = true)
+			temp+="'health_products',";	
+		if (document.getElementById("clhm").checked = true)
+			temp+="'clhm',";	
+		if (document.getElementById("grooming").checked = true)
+			temp+="'grooming',";	
+		if (document.getElementById("fashion").checked = true)
+			temp+="'fashion',";	
+		if (document.getElementById("waste_management").checked = true)
+			temp+="'waste_management',";	
+		if (document.getElementById("toys").checked = true)
+			temp+="'toys',";	
+		if (document.getElementById("travelling_equipment").checked = true)
+			temp+="'travelling_equipment',";	
+
+		temp=temp.substring(0,temp.length-1);
+		searchQuery+=" AND type IN("+temp+")";
+	}
+}
 
 </script>
 
