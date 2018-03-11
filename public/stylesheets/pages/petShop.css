@@ -179,7 +179,8 @@ div.right_arrow {
     margin-right: 30px;
 }
 
-img.product_image {
+
+#product_image {
     height: 230px;
     width: 250px;
 }
