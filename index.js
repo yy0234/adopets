@@ -51,12 +51,12 @@ app.get('/post_supply', function(request, response) {
   response.render('pages/shopForm');
 });
 
-app.get('/index', function(request, response) {
-  response.render('pages/base',{action:'../public/webpage/homepage.ejs'});
-});
+//app.get('/index', function(request, response) {
+  //response.render('pages/base',{action:'../pages/testing1.ejs'});
+//});
 
-app.get('/toPetSearch', function(request, response) {
-  response.send('../public/webpage/petSearch.ejs');
+app.get('/testing2', function(request, response) {
+  response.send('../webpage/petSearch.ejs');
 });
 
 
