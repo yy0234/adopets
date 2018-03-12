@@ -276,6 +276,7 @@ a.product_page p {
 .product_info {
     float: left;
     max-width: 200px;
+    text-overflow: ellipsis;
 }
 
 .product_title {
