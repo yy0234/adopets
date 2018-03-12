@@ -52,11 +52,11 @@ app.get('/post_supply', function(request, response) {
 });
 
 app.get('/index', function(request, response) {
-  response.render('pages/base',{action:'../webpage/homepage.ejs'});
+  response.render('pages/base',{action:'/webpage/homepage.ejs'});
 });
 
 app.get('/toPetSearch', function(request, response) {
-  response.send('../webpage/petSearch.ejs');
+  response.send('/webpage/petSearch.ejs');
 });
 
 
