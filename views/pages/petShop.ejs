@@ -316,6 +316,12 @@
 -		}
 -		*/
 		
+		$(".product_image").hover(function() {
+			$(event.target).parent().find(".details").animate({opacity: "0.0"});
+		}, function(){
+			$(event.target).parent().find(".details").animate({opacity: "1.0"});
+		})
+
 		supplyData= $.ajax({
 					url: "/listSupply",
 					type: "GET",
@@ -380,14 +386,6 @@
 						return err;
 					}
 				});
-
-
-		$(".product_card").hover(function(event){
-			console.log(this);
-
-		$(".thumbnail").hover(function() {
-			$(".arrow").toggle();
-		});
 
 		$(".thumbnail").hover(function() {
 			$(".arrow").toggle();
