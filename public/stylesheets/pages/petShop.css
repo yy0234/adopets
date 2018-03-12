@@ -181,6 +181,8 @@ div.right_arrow {
 
 
 .product_image {
+    max-height: 230px;
+    max-width: 250px;
     height: 230px;
     width: 250px;
 }
