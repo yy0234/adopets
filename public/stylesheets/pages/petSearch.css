@@ -183,3 +183,15 @@
   #modal_petImage img{
     max-height: 240px;
   }
+
+  #petTable{
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .captionName, .captionDescription, .captionBreeds{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
