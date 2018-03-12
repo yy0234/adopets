@@ -35,7 +35,7 @@
 							<div class="input-group">
 								<input type="text" id="auto_complete" class="form-control" placeholder="What pets are you looking for?"/>
 								<span class="input-group-addon">
-									<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();dynamic('/toPetSearch');" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
+									<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
 									<i class="fas fa-search" style="cursor:pointer;" onclick="changeASQByKey();dynamic('/toPetSearch');"></i>
 								</span>
 							</div>
@@ -707,6 +707,7 @@
 				}
 				stringStorage=stringStorage.substring(0,stringStorage.length-1);
 				adoption_search_query=" AND breed in ("+stringStorage+")";
+				dynamic('/toPetSearch');
 			}
 		}
 		fileReader.readAsDataURL(fileToLoad);
