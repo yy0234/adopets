@@ -15,7 +15,11 @@
 
 <!--Your own script-->
 <script>
-	var adoption_search_query=null;
+	var adoption_search_query="";
+
+	function changeASQ(query){
+		adoption_search_query=query;
+	}
 
 	function dynamic(link){
 	$.ajax({

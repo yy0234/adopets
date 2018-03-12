@@ -673,7 +673,7 @@ function searchByKey(){
 }
 
 $(document).ready(function() {
-	window.history.pushState('page2', 'Title', '/page2.php');
+	window.history.pushState('Pet Search', 'Pet_Search', '/pet_search');
 
 	$('.flexslider').flexslider({
 		animation: "slide",
@@ -798,7 +798,7 @@ $(document).ready(function() {
 					url: "/listPet",
 					type: "GET",
 					data: {
-						query:"",
+						query:adoption_search_query,
 					},
 					success: function (mes) {
 						if (mes.length==0){
