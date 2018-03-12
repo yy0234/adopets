@@ -317,9 +317,9 @@
 -		*/
 		
 		$(".product_image").hover(function() {
-			$(event.target).parent().find(".details").animate({opacity: "0.0"});
+			$(this).parent().find(".details").animate({opacity: "0.0"});
 		}, function(){
-			$(event.target).parent().find(".details").animate({opacity: "1.0"});
+			$(this).parent().find(".details").animate({opacity: "1.0"});
 		})
 
 		supplyData= $.ajax({
@@ -339,9 +339,6 @@
 											<div class=\"card\">\
 												<div class=\"thumbnail\">\
 													<a class=\"product_image\">"+element.supplyurl+"</a>\
-													<a href=\"\" class=\"product_page\">\
-														<div class=\"thumb-cover\"></div>\
-													</a>\
 													<div class=\"details\">\
 														<a class=\"user\" href=\"\">\
 															<div class=\"user-photo\">\
