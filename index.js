@@ -52,7 +52,7 @@ app.get('/post_supply', function(request, response) {
 });
 
 app.get('/index', function(request, response) {
-  response.render('pages/base',{action:'https://adopets.herokuapp.com/webpage/homepage.ejs'});
+  response.render('pages/base',{action:'../pages/homepage.ejs'});
 });
 
 app.get('/testing2', function(request, response) {
