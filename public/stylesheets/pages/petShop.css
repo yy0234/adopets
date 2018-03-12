@@ -179,7 +179,8 @@ div.right_arrow {
     margin-right: 30px;
 }
 
-#product_image {
+
+.product_image img {
     height: 230px;
     width: 250px;
 }
@@ -274,24 +275,28 @@ a.product_page p {
 
 .product_info {
     float: left;
+    max-width: 200px;
 }
 
 .product_title {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: #000000;
 }
 
 .item_price {
     color: #000000;
+    font-size: 14px;
 }
 
 .item_description {
     color: grey;
+    font-size: 14px;
 }
 
 .product_buttons {
     float: right;
+    width: 50px;
 }
 
 .shopping_cart {

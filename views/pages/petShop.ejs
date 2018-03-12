@@ -170,8 +170,9 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-10" >
-				<div class="row" id="product_display">
+      
+				<div class="col-md-10" >
+					<div class="row" id="product_display">
 						<div class="card-deck">
 						<!--
 								<div class="card">
@@ -295,8 +296,7 @@
 <script>
 	var supplyData;
 
-	$(function(){
-		
+	$(function(){		
 		/*
 -		var slideIndex = 1;
 -		showDiv(slideIndex);
@@ -316,6 +316,12 @@
 -		}
 -		*/
 		
+		$(".product_image img").hover(function() {
+			$(this).parent().find(".details").animate({opacity: "0.0"});
+		}, function(){
+			$(this).parent().find(".details").animate({opacity: "1.0"});
+		})
+
 		supplyData= $.ajax({
 					url: "/listSupply",
 					type: "GET",
@@ -329,13 +335,9 @@
 						else{
 							mes.forEach(function(element,index) {
 								$("#product_display").append("\
-									<div class=\"col-lg-4 col-md-6 mb-4\">\
 											<div class=\"card\">\
 												<div class=\"thumbnail\">\
-													<a id=\"product_image\">"+element.supplyurl+"</a>\
-													<a href=\"\" class=\"product_page\">\
-														<div class=\"thumb-cover\"></div>\
-													</a>\
+													<a class=\"product_image\">"+element.supplyurl+"</a>\
 													<div class=\"details\">\
 														<a class=\"user\" href=\"\">\
 															<div class=\"user-photo\">\
@@ -370,8 +372,7 @@
 														</div>\
 													</div>\
 												</div>\
-											</div>\
-									</div>")
+											</div>")
 							});
 						}
 						return mes;
@@ -380,11 +381,6 @@
 						return err;
 					}
 				});
-
-
-		$(".product_card").hover(function(event){
-			console.log(this);
-		});
 
 		$(".thumbnail").hover(function() {
 			$(".arrow").toggle();
