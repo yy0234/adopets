@@ -55,7 +55,7 @@ app.get('/index', function(request, response) {
   response.render('pages/base',{action:'../pages/homepage.ejs'});
 });
 
-app.get('/testing2', function(request, response) {
+app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
