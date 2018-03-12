@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<% include ../partials/script.ejs %>
+	<title>Adopets Web</title>
+</head>
+
+<body>
+<section id="dynamic" class="main-content">
+	<%- include(action) %>
+</section>
+
+
+
+<!--Your own script-->
+<script>
+	var adoption_search_query=null;
+
+	function dynamic(link){
+	$.ajax({
+		url: link,
+		type: "GET",
+		data: {
+		},
+		success: function (mes) {
+			$("#dynamic").load(mes);
+		},
+		error: function (err) {
+			alert(err);
+		}
+	});
+</script>
+</body>
+</html>

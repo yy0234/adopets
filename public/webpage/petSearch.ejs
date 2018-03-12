@@ -1,12 +1,8 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/pages/petSearch.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
 
-	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/petSearch.css"/>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-multiselect.css"/>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/nouislider.min.css"/>
-
-<% include ../partials/headline.ejs %>
-
-<section class="main-content">
 	<div class="container-fluid">
 		<div class="row" style="margin: 0 auto;">
 			
@@ -100,7 +96,7 @@
 							<div class="card h-100">
 								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
 								<div class="card-body">
-									<div style="display:table">
+									<div id="petTable" style="display:table">
 										<div style="display:table-row">
 											<div class="captionName" style="display:table-cell">Name</div>
 										</div>
@@ -277,12 +273,6 @@
 			</div>
 		</div>
 	<div>
-</section>
-
-
-
-
-<% include ../partials/script.ejs %>
 
 <!--Your own script-->
 <script src="/javascript/adoption.js"></script>
@@ -356,7 +346,7 @@ $("#order").change(function(){
 						<div class=\"card h-100\">\
 							<a id=\"pet_image\">"+petData.responseJSON[i].peturl+"</a>\
 							<div class=\"card-body\">\
-								<div style=\"display:table\">\
+								<div id=\"petTable\" style=\"display:table\">\
 									<div style=\"display:table-row\">\
 										<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
 									</div>\
@@ -387,7 +377,7 @@ $("#order").change(function(){
 						<div class=\"card h-100\">\
 							<a id=\"pet_image\">"+element.peturl+"</a>\
 							<div class=\"card-body\">\
-								<div style=\"display:table\">\
+								<div id=\"petTable\" style=\"display:table\">\
 									<div style=\"display:table-row\">\
 										<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
 									</div>\
@@ -441,7 +431,7 @@ function callAjax(Query,age){
 								<div class=\"card h-100\">\
 									<a id=\"pet_image\">"+mes[i].peturl+"</a>\
 									<div class=\"card-body\">\
-										<div style=\"display:table\">\
+										<div id=\"petTable\" style=\"display:table\">\
 											<div style=\"display:table-row\">\
 												<div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
 											</div>\
@@ -477,7 +467,7 @@ function callAjax(Query,age){
 								<div class=\"card h-100\">\
 									<a id=\"pet_image\">"+element.peturl+"</a>\
 									<div class=\"card-body\">\
-										<div style=\"display:table\">\
+										<div id=\"petTable\" style=\"display:table\">\
 											<div style=\"display:table-row\">\
 												<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
 											</div>\
@@ -561,7 +551,7 @@ function pagePet(pageNo){
 						<div class=\"card h-100\">\
 							<a id=\"pet_image\">"+petData.responseJSON[i].peturl+"</a>\
 							<div class=\"card-body\">\
-								<div style=\"display:table\">\
+								<div id=\"petTable\" style=\"display:table\">\
 									<div style=\"display:table-row\">\
 										<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
 									</div>\
@@ -589,7 +579,7 @@ function pagePet(pageNo){
 						<div class=\"card h-100\">\
 							<a id=\"pet_image\">"+petData.responseJSON[i].peturl+"</a>\
 							<div class=\"card-body\">\
-								<div style=\"display:table\">\
+								<div id=\"petTable\"style=\"display:table\">\
 									<div style=\"display:table-row\">\
 										<div class=\"captionName\" style=\"display:table-cell\">"+petData.responseJSON[i].name+"</div>\
 									</div>\
@@ -822,7 +812,7 @@ $(document).ready(function() {
 											<div class=\"card h-100\">\
 												<a id=\"pet_image\">"+mes[i].peturl+"</a>\
 												<div class=\"card-body\">\
-													<div style=\"display:table\">\
+													<div id=\"petTable\" style=\"display:table\">\
 														<div style=\"display:table-row\">\
 															<div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
 														</div>\
@@ -855,7 +845,7 @@ $(document).ready(function() {
 											<div class=\"card h-100\">\
 												<a id=\"pet_image\">"+element.peturl+"</a>\
 												<div class=\"card-body\">\
-													<div style=\"display:table\">\
+													<div id=\"petTable\" style=\"display:table\">\
 														<div style=\"display:table-row\">\
 															<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
 														</div>\

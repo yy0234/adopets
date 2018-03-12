@@ -51,13 +51,12 @@ app.get('/post_supply', function(request, response) {
   response.render('pages/shopForm');
 });
 
-app.get('/testing', function(request, response) {
-  //response.render('pages/testing2',{action:'../pages/testing1.ejs'});
-  response.render('pages/testing2');
+app.get('/index', function(request, response) {
+  response.render('pages/base',{action:'../webpage/homepage.ejs'});
 });
 
-app.get('/testing2', function(request, response) {
-  response.send('../webpage/testing1.ejs');
+app.get('/toPetSearch', function(request, response) {
+  response.send('../webpage/petSearch.ejs');
 });
 
 
