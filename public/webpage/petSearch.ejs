@@ -673,7 +673,8 @@ function searchByKey(){
 }
 
 $(document).ready(function() {
-	window.history.pushState('Pet Search', 'Pet_Search', '/pet_search');
+	window.history.replaceState('Pet Search', 'Pet_Search', '/pet_search');
+	//window.history.pushState('Pet Search', 'Pet_Search', '/pet_search');
 
 	$('.flexslider').flexslider({
 		animation: "slide",
