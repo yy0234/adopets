@@ -279,16 +279,18 @@ a.product_page p {
 
 .product_title {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: #000000;
 }
 
 .item_price {
     color: #000000;
+    font-size: 14px;
 }
 
 .item_description {
     color: grey;
+    font-size: 14px;
 }
 
 .product_buttons {
