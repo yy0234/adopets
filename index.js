@@ -52,7 +52,7 @@ app.get('/post_supply', function(request, response) {
 });
 
 app.get('/index', function(request, response) {
-  response.render('pages/base',{action:'../pages/homepage.ejs'});
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
 });
 
 app.get('/toPetSearch', function(request, response) {
