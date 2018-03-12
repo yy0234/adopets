@@ -792,8 +792,6 @@ $(document).ready(function() {
 	nonLinearSlider.noUiSlider.on('end', function () {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
-	  
-	autocomplete(document.getElementById("auto_complete"), pet_auto);
 
 	petData= $.ajax({
 					url: "/listPet",
@@ -906,7 +904,6 @@ function encodeImageFileAsURL() {
 			}
 			stringStorage=stringStorage.substring(0,stringStorage.length-1);
 			var searchQuery=" AND breed in ("+stringStorage+")";
-			console.log(searchQuery);
 			callAjax(searchQuery,null);
 		}
 	}

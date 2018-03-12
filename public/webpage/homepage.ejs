@@ -33,10 +33,10 @@
 				<div class="tab-content">
 					<div class="tab-pane active" id="direct" role="tabpanel">
 							<div class="input-group">
-								<input type="text"  class="form-control" placeholder="What pets are you looking for?"/>
+								<input type="text" id="auto_complete" class="form-control" placeholder="What pets are you looking for?"/>
 								<span class="input-group-addon">
-									<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
-									<i class="fas fa-search"></i>
+									<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();dynamic('/toPetSearch');" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
+									<i class="fas fa-search" style="cursor:pointer;" onclick="changeASQByKey();dynamic('/toPetSearch');"></i>
 								</span>
 							</div>
 							<div class="directButton">
@@ -118,7 +118,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<button type="button" class="btn btn-info">Find Pets</button>
+							<button type="button" class="btn btn-info" onclick="changeASQBySelect()">Find Pets</button>
 						</div>
 					</div>
 				</div>
@@ -698,15 +698,15 @@
 			var xhr = new XMLHttpRequest();
 			xhr.open("POST", "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4");
 			xhr.setRequestHeader("Content-Type", "application/json");
-			xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":10}]}]}));
+			xhr.send(JSON.stringify({"requests":[{"image":{"content":base64Image},"features": [{"type":"LABEL_DETECTION","maxResults":8}]}]}));
 			//xhr.send(JSON.stringify({"requests":  [{ "features":  [ {"type": "LABEL_DETECTION"}], "image": {"content": encoded}}]}));
 			xhr.onload = function() {
 				var resultList=JSON.parse(xhr.response);
 				for (var i=0;i<resultList.responses[0].labelAnnotations.length;i++){
-					console.log(resultList.responses[0].labelAnnotations[i].description);
-					stringStorage+=resultList.responses[0].labelAnnotations[i].description+"\n";
+					stringStorage+="'"+resultList.responses[0].labelAnnotations[i].description+"',";
 				}
-				alert(stringStorage);
+				stringStorage=stringStorage.substring(0,stringStorage.length-1);
+				adoption_search_query=" AND breed in ("+stringStorage+")";
 			}
 		}
 		fileReader.readAsDataURL(fileToLoad);
@@ -715,6 +715,19 @@
 
 	function fileUpload(){
 		$("#inputFile").click();
+	}
+
+	function changeASQ(query){
+		adoption_search_query=query;
+	}
+
+	function changeASQByKey(){
+		var keyword=$("#auto_complete").val().toLowerCase();
+		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
+	}
+
+	function changeASQBySelect(){
+		console.log("No finish");
 	}
 
 </script>
