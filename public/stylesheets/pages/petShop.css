@@ -275,6 +275,7 @@ a.product_page p {
 
 .product_info {
     float: left;
+    max-width: 200px;
 }
 
 .product_title {
@@ -295,6 +296,7 @@ a.product_page p {
 
 .product_buttons {
     float: right;
+    width: 50px;
 }
 
 .shopping_cart {
