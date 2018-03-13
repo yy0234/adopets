@@ -22,8 +22,8 @@
 						<div class="input-group autocomplete">
 							<input type="text" id="auto_complete" class="form-control" placeholder="Search..."/>
 							<span class="input-group-addon">
-								<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
-								<i class="fas fa-search" style="cursor:pointer;" onclick="searchByKey()"></i>
+								<input id="inputFile" type="file" accept=".png, .jpg, .jpeg" onchange="spinner();encodeImageFileAsURL();" style="display:none"/><i class="fas fa-camera" title="Search by photo" style="cursor:pointer;" onclick="fileUpload()"></i>
+								<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
 							</span>
 						</div>
 					</div>
@@ -81,7 +81,7 @@
 								<option value="super-long">Super Long</option>
 							</select>
 						</div>
-						<button type="button" class="btn btn-primary btn-block filterSubmit" onclick="findPet()">Search / Filter</button>
+						<button type="button" class="btn btn-primary btn-block filterSubmit" onclick="spinner();findPet()">Search / Filter</button>
 					</div>
 				</div>
 	
@@ -91,29 +91,20 @@
 			<div class="col-lg-9">
 	
 				<div id="petSearchResult" class="row mt-4" style="margin: 0 auto;">
-					<!--<div class="col-lg-4 col-md-6 mb-4">
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<div class="card h-100">
-								<a><img class="card-img-top" src="/images/cat3.jpg" alt=""></a>
-								<div class="card-body">
-									<div id="petTable" style="display:table">
-										<div style="display:table-row">
-											<div class="captionName" style="display:table-cell">Name</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-										</div>
-											<div style="display:table-row">
-											<div class="captionDescription" style="display:table-cell">Female</div>
-										</div>
-										<div style="display:table-row">
-											<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-										</div>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>-->
+					<div class="sk-fading-circle">
+						<div class="sk-circle1 sk-circle"></div>
+						<div class="sk-circle2 sk-circle"></div>
+						<div class="sk-circle3 sk-circle"></div>
+						<div class="sk-circle4 sk-circle"></div>
+						<div class="sk-circle5 sk-circle"></div>
+						<div class="sk-circle6 sk-circle"></div>
+						<div class="sk-circle7 sk-circle"></div>
+						<div class="sk-circle8 sk-circle"></div>
+						<div class="sk-circle9 sk-circle"></div>
+						<div class="sk-circle10 sk-circle"></div>
+						<div class="sk-circle11 sk-circle"></div>
+						<div class="sk-circle12 sk-circle"></div>
+					</div>
 				</div>
 				<ul id="pagination" class="pagination justify-content-center" style="display:none">
 					<li id="previous" class="page-item">
@@ -398,6 +389,24 @@ $("#order").change(function(){
 		});
 	}
 });
+
+function spinner(){
+	$("#petSearchResult").html("\
+	<div class='sk-fading-circle'>\
+  	<div class='sk-circle1 sk-circle'></div>\
+  	<div class='sk-circle2 sk-circle'></div>\
+  	<div class='sk-circle3 sk-circle></div>\
+  	<div class='sk-circle4 sk-circle'></div>\
+ 	<div class='sk-circle5 sk-circle'></div>\
+  	<div class='sk-circle6 sk-circle'></div>\
+  	<div class='sk-circle7 sk-circle'></div>\
+ 	<div class='sk-circle8 sk-circle'></div>\
+  	<div class='sk-circle9 sk-circle'></div>\
+  	<div class='sk-circle10 sk-circle'></div>\
+  	<div class='sk-circle11 sk-circle'></div>\
+ 	<div class='sk-circle12 sk-circle'></div>\
+	</div>");
+}
 
 function callAjax(Query,age){
 	petData= $.ajax({
@@ -800,6 +809,7 @@ $(document).ready(function() {
 						query:adoption_search_query,
 					},
 					success: function (mes) {
+						$("#petSearchResult").html("");
 						if (adopton_query_age!=null){
 							var min_age=parseInt(adopton_query_age.split(" ")[0]);
 							var max_age=parseInt(adopton_query_age.split(" ")[2]);

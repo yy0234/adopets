@@ -18,10 +18,13 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
-app.get('/', function(request, response) {
+/*app.get('/', function(request, response) {
   response.render('pages/index');
-});
+});*/
 
+app.get('/', function(request, response) {
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
+});
 
 app.get('/login', function(request, response) {
   response.render('pages/login');
@@ -40,7 +43,7 @@ app.get('/post_adoption', function(request, response) {
 });
 
 app.get('/pet_search', function(request, response) {
-  response.render('pages/petSearch');
+  response.render('pages/base',{action:'../../public/webpage/petSearch.ejs'});
 });
 
 app.get('/pet_shop', function(request, response) {
@@ -51,13 +54,11 @@ app.get('/post_supply', function(request, response) {
   response.render('pages/shopForm');
 });
 
-app.get('/index', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
-});
-
 app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
+
+
 
 
 
