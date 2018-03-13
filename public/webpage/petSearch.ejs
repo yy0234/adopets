@@ -800,6 +800,17 @@ $(document).ready(function() {
 						query:adoption_search_query,
 					},
 					success: function (mes) {
+						if (adopton_query_age!=null){
+							var min_age=parseInt(adopton_query_age.split(" ")[0]);
+							var max_age=parseInt(adopton_query_age.split(" ")[2]);
+							for (var i=0;i<mes.length;i++){
+								var mes_age=parseInt(mes[i].age.split(" ")[0]);
+								if ((mes_age<min_age)||(mes_age>max_age)){
+									mes.splice(i,1);
+									i--;
+								}
+							}
+						}
 						if (mes.length==0){
 							$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
 							$("#pagination").css('display','none');

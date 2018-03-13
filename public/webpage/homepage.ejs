@@ -86,8 +86,9 @@
 						<div class="row">
 							<div class="col-md-4">
 								<select id="petGender" multiple="multiple">
-									<option value="m">Male</option>
-									<option value="f">Female</option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+									<option value="bisexual">Bisexual</option>
 								</select>
 							</div>
 							<div class="col-md-4">
@@ -110,10 +111,10 @@
 							</div>
 							<div class="col-md-4">
 								<select id="petSize" multiple="multiple">
-									<option value="s">Small</option>
-									<option value="m">Medium</option>
-									<option value="l">Large</option>
-									<option value="xl">X-Large</option>
+									<option value="small">Small</option>
+									<option value="medium">Medium</option>
+									<option value="large">Large</option>
+									<option value="x-large">X-Large</option>
 								</select>
 							</div>
 						</div>
@@ -728,7 +729,54 @@
 	}
 
 	function changeASQBySelect(){
-		console.log("No finish");
+		var searchQuery="";
+		var temp="";
+		if ($("#petTypes").val()!=null){
+			temp="";
+			for (var i=0;i<$("#petTypes").val().length;i++){
+				temp+="'"+$("#petTypes").val()[i]+"',"
+			}
+			temp=temp.substring(0,temp.length-1);
+			console.log(temp);
+
+			searchQuery+=" AND type IN("+temp+")";
+		}
+		if ($("#petBreeds").val()!=null){
+			temp="";
+			for (var i=0;i<$("#petBreeds").val().length;i++){
+				temp+="'"+$("#petBreeds").val()[i]+"',"
+			}
+			temp=temp.substring(0,temp.length-1);
+
+			searchQuery+=" AND breed IN("+temp+")";
+		}
+
+		if ($("#petGender").val()!=null){
+			temp="";
+			for (var i=0;i<$("#petGender").val().length;i++){
+				temp+="'"+$("#petGender").val()[i]+"',"
+			}
+			temp=temp.substring(0,temp.length-1);
+
+			searchQuery+=" AND gender IN("+temp+")";
+		}
+
+		if ($("#petSize").val()!=null){
+			temp="";
+			for (var i=0;i<$("#petSize").val().length;i++){
+				temp+="'"+$("#petSize").val()[i]+"',"
+			}
+			temp=temp.substring(0,temp.length-1);
+
+			searchQuery+=" AND size IN("+temp+")";
+		}
+
+		if ($("#petAgeTextHolder").text()!="Age")
+			adopton_query_age=$("#petAgeTextHolder").text();
+		
+		adoption_search_query=searchQuery;
+		dynamic('/toPetSearch');
+
 	}
 
 </script>
