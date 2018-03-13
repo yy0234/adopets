@@ -39,7 +39,7 @@ app.get('/search_service', function(request, response) {
 });
 
 app.get('/post_adoption', function(request, response) {
-  response.render('pages/petForm');
+  response.render('pages/base',{action:'../../public/webpage/petForm.ejs'});
 });
 
 app.get('/pet_search', function(request, response) {
