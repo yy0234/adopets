@@ -748,8 +748,10 @@ function changeModal(elementNo){
 	$("#modal_supplyDescription").html(supplyData_element.description);
 	$("#modal_supplyPrice").html(supplyData_element.price);
 	$("#modal_supplyType").html(supplyData_element.type);
-	$("#modal_supplyPostDate").html(supplyData_element.postdate);
-	$("#modal_supplyLastupdate").html(supplyData_element.lastupdate);
+	var d=new Date(supplyData_element.postdate);
+	$("#modal_supplyPostDate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
+	var e=new Date(supplyData_element.lastupdate);
+	$("#modal_supplyLastupdate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
 	$("#modal_supplyStatus").html(supplyData_element.status)
 	$("#modal_supplyRemark").html(supplyData_element.remark);
 	$("#modal_supplyImage").html(supplyData_element.supplyurl);
