@@ -165,7 +165,7 @@
 							</div>
 						</div>
 						<br>
-						<input class="btn btn-success" type="submit" value="Submit">
+						<button type="button" class="btn btn-success" onclick="spinner();findSupply()">Submit</button>
 						<input class="btn btn-danger" type="reset" value="Reset">
 					</form>
 				</div>
@@ -763,7 +763,7 @@ function changeModal(elementNo){
 }*/
 
 
-function pagePet(pageNo){
+function pageSupply(pageNo){
 	var static_pageNo=pageNo;
 	if (pageNo==-2){
 		if (current_page==1){
