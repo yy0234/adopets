@@ -617,7 +617,7 @@ function callAjax(Query,age){
 			else if (mes.length>12){
 				for (var i=0; i<12;i++){
 					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
 												<div class=\"thumbnail\">\
 													<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
