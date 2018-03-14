@@ -934,6 +934,9 @@ function findSupply(){
 		temp=temp.substring(0,temp.length-1);
 		searchQuery+=" AND type IN("+temp+")";
 	}
+
+	callAjax(searchQuery,null);
+	
 }
 
 
