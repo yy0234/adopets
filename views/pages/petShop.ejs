@@ -606,7 +606,7 @@ function callAjax(Query,age){
 		url: "/listSupply",
 		type: "GET",
 		data: {
-			query:Query,
+			query: "WHERE" + Query,
 		},
 		success: function (mes) {
 			$("#product_display").html("");
@@ -899,10 +899,7 @@ function findSupply(){
 		if (document.getElementById("food").checked = true)
 			temp+="'food',";
 		if (document.getElementById("beds_cages").checked = true)
-		{
 			temp+="'beds_cages',";	
-			alert("bed is clicked");
-		}
 		if (document.getElementById("feeding_utensils").checked = true)
 			temp+="'feeding_utensils',";	
 		if (document.getElementById("health_products").checked = true)
