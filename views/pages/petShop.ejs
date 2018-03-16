@@ -603,7 +603,6 @@ function spinner(){
 
 function callAjax(Query){
 	Query = "WHERE " + Query ;
-	alert(Query);
 	supplyData= $.ajax({
 		url: "/listSupply",
 		type: "GET",
@@ -876,8 +875,8 @@ function findSupply(){
 	}
 	temp=temp.substring(0,temp.length-1);
 	if (temp.length>1)
-	{
-		if (searchQuery.length>25)
+	{}
+		if (searchQuery.length>5)
 			searchQuery += " AND ";
 		searchQuery+="status IN("+temp+")";
 	}
@@ -894,7 +893,7 @@ function findSupply(){
 	temp=temp.substring(0,temp.length-1);
 	if (temp.length>1)
 	{
-		if (searchQuery.length>25)
+		if (searchQuery.length>5)
 			searchQuery += " AND ";
 		searchQuery+="pettype IN("+temp+")";
 	}
@@ -910,7 +909,7 @@ function findSupply(){
 	temp=temp.substring(0,temp.length-1);
 	if (temp.length>1)
 	{
-		if (searchQuery.length>25)
+		if (searchQuery.length>5)
 			searchQuery += " AND ";
 		searchQuery+="type IN("+temp+")";
 	}
