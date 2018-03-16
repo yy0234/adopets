@@ -48,8 +48,8 @@
 				<select id="dropdownlist">
 					<option value="popular" selected="selected">&#xf06d; Popular</option>
 					<option value="newest">&#xf017; Newest</option>
-					<option value="price" data-order="asc">&#xf160; Price - Low to High</option>
-					<option value="price" data-order="desc">&#xf161; Price - High to Low</option>
+					<option value="price_asc">&#xf160; Price - Low to High</option>
+					<option value="price_desc">&#xf161; Price - High to Low</option>
 				</select>
 			</div>
 		</div>
@@ -93,27 +93,27 @@
 							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
 							<div id="collapse_pet_types" class="collapse">
 								<label class="container">Dog
-									<input type="checkbox" id="dog"/>
+									<input type="checkbox" id="dog" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Cat
-									<input type="checkbox" id="cat"/>
+									<input type="checkbox" id="cat" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Bird
-									<input type="checkbox" id="bird"/>
+									<input type="checkbox" id="bird" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Fish
-									<input type="checkbox" id="fish"/>
+									<input type="checkbox" id="fish" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Reptile
-									<input type="checkbox" id="reptile"/>
+									<input type="checkbox" id="reptile" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Rodent
-									<input type="checkbox" id="rodent"/>
+									<input type="checkbox" id="rodent" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 							</div>
@@ -123,49 +123,49 @@
 							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
 							<div id="collapse_category" class="collapse">
 								<label class="container">Food
-									<input type="checkbox" id="food"/>
+									<input type="checkbox" id="food" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Beds &amp; Cages
-									<input type="checkbox" id="beds_cages"/>
+									<input type="checkbox" id="beds_cages" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Feeding Utensils
-									<input type="checkbox" id="feeding_utensils"/>
+									<input type="checkbox" id="feeding_utensils" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Health Products
-									<input type="checkbox" id="health_products"/>
+									<input type="checkbox" id="health_products" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Collars, Leads &amp; Harness
-									<input type="checkbox" id="clhm"/>
+									<input type="checkbox" id="clhm" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Grooming
-									<input type="checkbox" id="grooming"/>
+									<input type="checkbox" id="grooming" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Fashion
-									<input type="checkbox" id="fashion"/>
+									<input type="checkbox" id="fashion" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Waste Management
-									<input type="checkbox" id="waste_management"/>
+									<input type="checkbox" id="waste_management" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Toys
-									<input type="checkbox" id="toys"/>
+									<input type="checkbox" id="toys" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Travelling Equipment
-									<input type="checkbox" id="travelling_equipment"/>
+									<input type="checkbox" id="travelling_equipment" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 							</div>
 						</div>
 						<br>
-						<input class="btn btn-success" type="submit" value="Submit">
+						<input class="btn btn-success" type="button" value="Submit" onclick="spinner();findSupply()">
 						<input class="btn btn-danger" type="reset" value="Reset">
 					</form>
 				</div>
@@ -283,6 +283,163 @@
 							-->
 							</div> 
 						</div>
+
+						<ul id="pagination" class="pagination justify-content-center" style="display:none">
+								<li id="previous" class="page-item">
+									<a class="page-link" aria-label="Previous" onclick="pageSupply(-2)">
+									<span aria-hidden="true">«</span>
+									<span class="sr-only">Previous</span>
+									</a>
+								</li>
+								<li class="page-item">
+									<a class="page-link" aria-label="Next" onclick="pageSupply(-1)">
+									<span aria-hidden="true">»</span>
+									<span class="sr-only">Next</span>
+									</a>
+								</li>
+						</ul>
+
+
+					<!--supply detail-->
+				<div class="modal fade" id="supplyDetailModal" tabindex="-1" role="dialog" aria-labelledby="supplyDetailModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header" style="border-bottom:none;">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body" style="margin-bottom: 20px;">
+									<div class="row" style="margin-left:0;margin-right:0;">
+										<div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
+											<a id="modal_supplyImage"><img src="/images/cat3.jpg" /></a>
+											<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
+												<div class="col-md-12" style="margin-bottom:20px;">
+													<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+												</div>
+												<div class="col-md-12">
+													<button type="button" class="btn btn-primary" style="width:80%">Adopt Me</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-7 col-lg-8" id="scrollbar" style="margin-bottom:10px; max-height: 500px; overflow-y: auto;">
+											<div class="row" style="margin-left:0;margin-right:0;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+												<div class="col-md-12 col-lg-6">
+													<div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
+														<div style="display:table-row;">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Supply ID
+															</div>
+															<div id="modal_supplyId" style="display:table-cell">
+																001
+															</div>
+														</div>
+														<div style="display:table-row;">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Name
+															</div>
+															<div id="modal_supplyName" style="display:table-cell">
+																Name
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Type
+															</div>
+															<div id="modal_supplyType" style="display:table-cell">
+																Type
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Provider
+															</div>
+															<div id="modal_supplyProvider" style="display:table-cell">
+																Provider
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Post date
+															</div>
+															<div id="modal_supplyPostDate" style="display:table-cell">
+																Post date
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12 col-lg-6">
+													<div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Condition
+															</div>
+															<div id="modal_supplyStatus" style="display:table-cell">
+																	Condition
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Price
+															</div>
+															<div id="modal_supplyPrice" style="display:table-cell">
+																Price
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Pet type
+															</div>
+															<div id="modal_supplyPettype" style="display:table-cell">
+																Pet type
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Quantity
+															</div>
+															<div id="modal_supplyQuantity" style="display:table-cell">
+																Quantity
+															</div>
+														</div>
+														<div style="display:table-row">
+															<div style="display:table-cell; font-weight:bold;width:40%">
+																Last Update
+															</div>
+															<div id="modal_supplyLastupdate" style="display:table-cell">
+																Last Update
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+												<div class="col-md-12" style="font-weight:bold;color:blue">
+													Description
+												</div>
+												<div id="modal_supplyDescription" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+													Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
+													
+													I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
+													
+													My estimated birthdate is 10/1/2015.
+												</div>
+											</div>
+											<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;padding-bottom: 20px;">
+												<div class="col-md-12" style="font-weight:bold;color:grey">
+													Remark
+												</div>
+												<div id="modal_supplyRemark" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+													None
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+						
 					</div>
 				</div>
 			</div>
@@ -295,46 +452,92 @@
 <script src="/javascript/nouislider.min.js"></script>
 <script>
 	var supplyData;
+	var current_page =1;
+	var total_page=0;
 
-	$(function(){		
-		/*
--		var slideIndex = 1;
--		showDiv(slideIndex);
--		
--		function plusDiv(n) {
--			showDiv(slideIndex += n);
--		}
--
--		function showDiv(n) {
--			var images = document.getElementsByClassName("product_image");
--			if(n > images.length) { slideIndex = 1;}
--			if(n < 1) { slideIndex = images.length;}
--			for(var i = 0; i < images.length; i++) {
--				images[i].style.display = "none";
--			}
--			images[slideIndex-1].style.display = "block";
--		}
--		*/
-		
-		$(".product_image img").hover(function() {
-			$(this).parent().find(".details").animate({opacity: "0.0"});
-		}, function(){
-			$(this).parent().find(".details").animate({opacity: "1.0"});
-		})
 
-		supplyData= $.ajax({
-					url: "/listSupply",
-					type: "GET",
-					data: {
-						query:"",
-					},
-					success: function (mes) {
-						if (mes.length==0){
-							$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
-						}
-						else{
-							mes.forEach(function(element,index) {
-								$("#product_display").append("\
+$("#dropdownlist").change(function(){
+	if ($("#dropdownlist").val()=="popular"){
+		supplyData.responseJSON.sort(function(a, b){
+			//do it later
+			return 0;
+		});
+	}
+	else if ($("#dropdownlist").val()=="newest"){
+		supplyData.responseJSON.sort(function(a, b){
+			return -(new Date(a.postdate) - new Date(b.postdate));
+		});
+	}
+
+	else if ($("#dropdownlist").val()=="price_desc"){
+		supplyData.responseJSON.sort(function(a, b){
+			return -(new Date(a.price) - new Date(b.price));
+		});
+	}
+
+	else if ($("#dropdownlist").val()=="price_asc"){
+		supplyData.responseJSON.sort(function(a, b){
+			return new Date(a.price) - new Date(b.price);
+		});
+	}
+	$("#product_display").html("");
+	
+	if (supplyData.responseJSON.length==0){
+		$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
+		$("#pagination").css('display','none');
+	}
+	else if (supplyData.responseJSON.length>12){
+		for (var i=0; i<12;i++){
+			$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + supplyData.responseJSON[i].name +"</h4>\
+																<p class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</p>\
+																<p class=\"item_description\">" + supplyData.responseJSON[i].description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
+		}
+		$('#page'+current_page).css("background-color","white");
+		current_page=1;
+		$('#page'+current_page).css("background-color","gainsboro");
+	}
+	else{
+		supplyData.responseJSON.forEach(function(element,index) {
+			$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
 												<div class=\"thumbnail\">\
 													<a class=\"product_image\">"+element.supplyurl+"</a>\
@@ -372,8 +575,483 @@
 														</div>\
 													</div>\
 												</div>\
-											</div>")
+											</div>\
+										</div>")
+		});
+	}
+});
+
+function spinner(){
+	$("#pagination").css('display','none');
+	$("#product_display").html("\
+	<div class='sk-fading-circle'>\
+  	<div class='sk-circle1 sk-circle'></div>\
+  	<div class='sk-circle2 sk-circle'></div>\
+  	<div class='sk-circle3 sk-circle></div>\
+  	<div class='sk-circle4 sk-circle'></div>\
+ 	<div class='sk-circle5 sk-circle'></div>\
+  	<div class='sk-circle6 sk-circle'></div>\
+  	<div class='sk-circle7 sk-circle'></div>\
+ 	<div class='sk-circle8 sk-circle'></div>\
+  	<div class='sk-circle9 sk-circle'></div>\
+  	<div class='sk-circle10 sk-circle'></div>\
+  	<div class='sk-circle11 sk-circle'></div>\
+ 	<div class='sk-circle12 sk-circle'></div>\
+	</div>");
+}
+
+
+function callAjax(Query){
+	Query = "WHERE " + Query ;
+	supplyData= $.ajax({
+		url: "/listSupply",
+		type: "GET",
+		data: {
+			query: Query,
+		},
+		success: function (mes) {
+			$("#product_display").html("");
+			if (mes.length==0){
+				$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
+				$("#pagination").css('display','none');	
+			}
+			else if (mes.length>12){
+				for (var i=0; i<12;i++){
+					$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + mes[i].name +"</h4>\
+																<p class=\"item_price\">HKD" + mes[i].price + "</p>\
+																<p class=\"item_description\">" + mes[i].description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
+				}
+				if (total_page!=0)
+					for (var i=1;i<=total_page;i++)
+						$("#page"+i).remove();
+				$("#pagination").css('display','flex');
+				total_page=Math.ceil(mes.length/12);
+				for (var i=total_page;i>0;i--)
+					$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pageSupply("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+				$('#page'+current_page).css("background-color","gainsboro");
+			}
+			else{
+				mes.forEach(function(element,index) {
+					$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+element.supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + element.name +"</h4>\
+																<p class=\"item_price\">HKD" + element.price + "</p>\
+																<p class=\"item_description\">" + element.description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
+				});
+				if (total_page!=0)
+					for (var i=1;i<=total_page;i++)
+						$("#page"+i).remove();
+				$("#pagination").css('display','none');
+				total_page=0;
+			}
+			document.getElementById('dropdownlist').value="newest";
+			return mes;
+		},
+		error: function (err) {
+			return err;
+		}
+	});
+}
+
+
+function changeModal(elementNo){
+	var supplyData_element=supplyData.responseJSON[elementNo];
+	$("#modal_supplyId").html(supplyData_element.supplyid);
+	$("#modal_supplyName").html(supplyData_element.name);
+	$("#modal_supplyDescription").html(supplyData_element.description);
+	$("#modal_supplyPrice").html(supplyData_element.price);
+	$("#modal_supplyType").html(supplyData_element.type);
+	var d=new Date(supplyData_element.postdate);
+	$("#modal_supplyPostDate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
+	var e=new Date(supplyData_element.lastupdate);
+	$("#modal_supplyLastupdate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
+	$("#modal_supplyStatus").html(supplyData_element.status)
+	$("#modal_supplyRemark").html(supplyData_element.remark);
+	$("#modal_supplyImage").html(supplyData_element.supplyurl);
+	$("#modal_supplyProvider").html(supplyData_element.providerid);
+	$("#modal_supplyQuantity").html(supplyData_element.quantity);
+	$("#modal_supplyPettype").html(supplyData_element.pettype);
+
+}
+
+
+function pageSupply(pageNo){
+	var static_pageNo=pageNo;
+	if (pageNo==-2){
+		if (current_page==1){
+			return;
+		}
+		static_pageNo=current_page-1;
+	}
+	else if (pageNo==-1){
+		if (current_page==total_page){
+			return;
+		}
+		static_pageNo=current_page+1;
+	}
+	$("#product_display").html("");
+	var page_no=(static_pageNo-1)*12;
+	if (supplyData.responseJSON.length>(page_no+12)){
+		for (var i=page_no;i<page_no+12;i++){
+			$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + supplyData.responseJSON[i].name +"</h4>\
+																<p class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</p>\
+																<p class=\"item_description\">" + supplyData.responseJSON[i].description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
+		}
+	}
+	else{
+		for (var i=page_no;i<supplyData.responseJSON.length;i++){
+			$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + supplyData.responseJSON[i].name +"</h4>\
+																<p class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</p>\
+																<p class=\"item_description\">" + supplyData.responseJSON[i].description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
+		}
+	}
+	$('#page'+current_page).css("background-color","white");
+	current_page=static_pageNo;
+	$("#page"+current_page).css("background-color","gainsboro");
+}
+
+function findSupply(){
+	var searchQuery="";
+	var temp="";
+	var checkboxes;
+
+	temp="";
+	checkboxes = document.getElementsByName('radio');
+	temp="";
+	for (var i=0; i<checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			temp+="'" + checkboxes[i].id + "',";
+		}
+	}
+	temp=temp.substring(0,temp.length-1);
+	if (temp.length>1)
+	{
+		if (searchQuery.length>5)
+			searchQuery += " AND ";
+		searchQuery+="status IN("+temp+")";
+	}
+	
+
+
+	temp="";
+	checkboxes = document.getElementsByName('pet_types');
+	for (var i=0; i<checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			temp+="'" + checkboxes[i].id + "',";
+		}
+	}
+	temp=temp.substring(0,temp.length-1);
+	if (temp.length>1)
+	{
+		if (searchQuery.length>5)
+			searchQuery += " AND ";
+		searchQuery+="pettype IN("+temp+")";
+	}
+	
+
+	temp="";
+	checkboxes = document.getElementsByName('category');
+	for (var i=0; i<checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			temp+="'" + checkboxes[i].id + "',";
+		}
+	}
+	temp=temp.substring(0,temp.length-1);
+	if (temp.length>1)
+	{
+		if (searchQuery.length>5)
+			searchQuery += " AND ";
+		searchQuery+="type IN("+temp+")";
+	}
+
+
+	callAjax(searchQuery);
+
+}
+
+
+	$(function(){		
+		/*
+-		var slideIndex = 1;
+-		showDiv(slideIndex);
+-		
+-		function plusDiv(n) {
+-			showDiv(slideIndex += n);
+-		}
+-
+-		function showDiv(n) {
+-			var images = document.getElementsByClassName("product_image");
+-			if(n > images.length) { slideIndex = 1;}
+-			if(n < 1) { slideIndex = images.length;}
+-			for(var i = 0; i < images.length; i++) {
+-				images[i].style.display = "none";
+-			}
+-			images[slideIndex-1].style.display = "block";
+-		}
+-		*/
+	
+		$(".product_image img").hover(function() {
+			$(this).parent().find(".details").animate({opacity: "0.0"});
+		}, function(){
+			$(this).parent().find(".details").animate({opacity: "1.0"});
+		})
+
+		supplyData= $.ajax({
+					url: "/listSupply",
+					type: "GET",
+					data: {
+						query:"",
+					},
+					success: function (mes) {
+						if (mes.length==0){
+							$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
+							$("#pagination").css('display','none');		
+						}
+						else if (mes.length>12){
+							for (var i=0; i<12;i++){
+								$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + mes[i].name +"</h4>\
+																<p class=\"item_price\">HKD" + mes[i].price + "</p>\
+																<p class=\"item_description\">" + mes[i].description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
+							}
+							$("#pagination").css('display','flex');
+							total_page=Math.ceil(mes.length/12);
+							for (var i=total_page;i>0;i--)
+								$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pageSupply("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+							$('#page'+current_page).css("background-color","gainsboro");
+						}
+						else{
+							mes.forEach(function(element,index) {
+								$("#product_display").append("\
+										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+											<div class=\"card\">\
+												<div class=\"thumbnail\">\
+													<a class=\"product_image\">"+element.supplyurl+"</a>\
+													<div class=\"details\">\
+														<a class=\"user\" href=\"\">\
+															<div class=\"user-photo\">\
+																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+															</div>\
+															<div class=\"username\">User</div>\
+														</a>\
+														<div class=\"heart_info\">\
+															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+														</div>\
+													</div>\
+													<div class=\"arrow\">\
+														<div class=\"left_arrow\">&#xf104;</div>\
+														<div class=\"right_arrow\">&#xf105;</div>\
+													</div>\
+													<div class=\"card-info\">\
+														<div class=\"product_info\">\
+															<a href=\"\" class=\"product_page\">\
+																<h4 class=\"product_title\">" + element.name +"</h4>\
+																<p class=\"item_price\">HKD" + element.price + "</p>\
+																<p class=\"item_description\">" + element.description +"</p>\
+															</a>\
+														</div>\
+														<div class=\"product_buttons\">\
+															<div class=\"shopping_cart\">\
+																<i class=\"fa fa-cart-plus\"></i>\
+															</div>\
+															<div class=\"heart\">\
+																<i class=\"far fa-heart\"></i>\
+																<i class=\"fas fa-heart\"></i>\
+															</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>")
 							});
+							$("#pagination").css('display','none');
 						}
 						return mes;
 					},
@@ -439,70 +1117,6 @@
 			nodes[handle].innerHTML = values[handle];
 		})
 	});
-
-
-function findSupply(){
-	var searchQuery="";
-	var temp="";
-	if ($("#condition").val()!=null){
-		temp="";
-		if (document.getElementById("new").checked = true)
-			temp+="'new'";
-		else
-			temp+="'used'";
-
-		temp=temp.substring(0,temp.length-1);
-		searchQuery+=" AND status IN("+temp+")";
-	}
-
-
-	if ($("#pet_types").val()!=null){
-		temp="";
-		if (document.getElementById("dog").checked = true)
-			temp+="'dog',";
-		if (document.getElementById("cat").checked = true)
-			temp+="'cat',";
-		if (document.getElementById("bird").checked = true)
-			temp+="'bird',";
-		if (document.getElementById("fish").checked = true)
-			temp+="'fish',";
-		if (document.getElementById("reptile").checked = true)
-			temp+="'reptile',";
-		if (document.getElementById("rodent").checked = true)
-			temp+="'rodent',";	
-
-		temp=temp.substring(0,temp.length-1);
-
-		searchQuery+=" AND pettype IN("+temp+")";
-	}
-
-	if ($("#category").val()!=null){
-		temp="";
-		if (document.getElementById("food").checked = true)
-			temp+="'food',";
-		if (document.getElementById("beds_cages").checked = true)
-			temp+="'beds_cages',";	
-		if (document.getElementById("feeding_utensils").checked = true)
-			temp+="'feeding_utensils',";	
-		if (document.getElementById("health_products").checked = true)
-			temp+="'health_products',";	
-		if (document.getElementById("clhm").checked = true)
-			temp+="'clhm',";	
-		if (document.getElementById("grooming").checked = true)
-			temp+="'grooming',";	
-		if (document.getElementById("fashion").checked = true)
-			temp+="'fashion',";	
-		if (document.getElementById("waste_management").checked = true)
-			temp+="'waste_management',";	
-		if (document.getElementById("toys").checked = true)
-			temp+="'toys',";	
-		if (document.getElementById("travelling_equipment").checked = true)
-			temp+="'travelling_equipment',";	
-
-		temp=temp.substring(0,temp.length-1);
-		searchQuery+=" AND type IN("+temp+")";
-	}
-}
 
 </script>
 
