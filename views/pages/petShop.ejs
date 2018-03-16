@@ -123,43 +123,43 @@
 							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
 							<div id="collapse_category" class="collapse">
 								<label class="container">Food
-									<input type="checkbox" id="food"/>
+									<input type="checkbox" id="food" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Beds &amp; Cages
-									<input type="checkbox" id="beds_cages"/>
+									<input type="checkbox" id="beds_cages" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Feeding Utensils
-									<input type="checkbox" id="feeding_utensils"/>
+									<input type="checkbox" id="feeding_utensils" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Health Products
-									<input type="checkbox" id="health_products"/>
+									<input type="checkbox" id="health_products" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Collars, Leads &amp; Harness
-									<input type="checkbox" id="clhm"/>
+									<input type="checkbox" id="clhm" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Grooming
-									<input type="checkbox" id="grooming"/>
+									<input type="checkbox" id="grooming" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Fashion
-									<input type="checkbox" id="fashion"/>
+									<input type="checkbox" id="fashion" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Waste Management
-									<input type="checkbox" id="waste_management"/>
+									<input type="checkbox" id="waste_management" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Toys
-									<input type="checkbox" id="toys"/>
+									<input type="checkbox" id="toys" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Travelling Equipment
-									<input type="checkbox" id="travelling_equipment"/>
+									<input type="checkbox" id="travelling_equipment" name="category"/>
 									<span class="checkbox"></span>
 								</label>
 							</div>
@@ -863,19 +863,23 @@ function pageSupply(pageNo){
 function findSupply(){
 	var searchQuery="";
 	var temp="";
-	/*if ($("#condition").val()!=null){
-		temp="";
-		if (document.getElementById("new").checked == true)
-			temp+="'new'";
-		else
-			temp+="'used'";
+	var checkboxes;
 
-		temp=temp.substring(0,temp.length-1);
-		searchQuery+=" AND status IN("+temp+")";
-	}*/
-
-	var checkboxes = document.getElementsByName('pet_types');
+	temp="";
+	checkboxes = document.getElementsByName('radio');
+	temp="";
+	for (var i=0; i<checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			temp+="'" + checkboxes[i].id + "',";
+		}
+	}
+	temp=temp.substring(0,temp.length-1);
+	searchQuery+=" AND status IN("+temp+")";
 	
+
+
+	temp="";
+	checkboxes = document.getElementsByName('pet_types');
 	for (var i=0; i<checkboxes.length; i++) {
 		if (checkboxes[i].checked) {
 			temp+="'" + checkboxes[i].id + "',";
@@ -883,55 +887,20 @@ function findSupply(){
 	}
 	temp=temp.substring(0,temp.length-1);
 	searchQuery+=" AND pettype IN("+temp+")";
-	alert(searchQuery);
 	
-		/*temp="";
-		if (document.getElementById("dog").checked == true)
-			temp+="'dog',";
-		if (document.getElementById("cat").checked == true)
-			temp+="'cat',";
-		if (document.getElementById("bird").checked == true)
-			temp+="'bird',";
-		if (document.getElementById("fish").checked == true)
-			temp+="'fish',";
-		if (document.getElementById("reptile").checked == true)
-			temp+="'reptile',";
-		if (document.getElementById("rodent").checked == true)
-			temp+="'rodent',";	
 
-		temp=temp.substring(0,temp.length-1);
-
-		searchQuery+=" AND pettype IN("+temp+")";
-		alert(searchQuery);
-	*/
-	/*
-	if ($("#category").val()!=null){
-		temp="";
-		if (document.getElementById("food").checked == true)
-			temp+="'food',";
-		if (document.getElementById("beds_cages").checked = true)
-			temp+="'beds_cages',";	
-		if (document.getElementById("feeding_utensils").checked == true)
-			temp+="'feeding_utensils',";	
-		if (document.getElementById("health_products").checked == true)
-			temp+="'health_products',";	
-		if (document.getElementById("clhm").checked == true)
-			temp+="'clhm',";	
-		if (document.getElementById("grooming").checked == true)
-			temp+="'grooming',";	
-		if (document.getElementById("fashion").checked == true)
-			temp+="'fashion',";	
-		if (document.getElementById("waste_management").checked == true)
-			temp+="'waste_management',";	
-		if (document.getElementById("toys").checked == true)
-			temp+="'toys',";	
-		if (document.getElementById("travelling_equipment").checked == true)
-			temp+="'travelling_equipment',";	
-
-		temp=temp.substring(0,temp.length-1);
-		searchQuery+=" AND type IN("+temp+")";
+	temp="";
+	checkboxes = document.getElementsByName('category');
+	for (var i=0; i<checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			temp+="'" + checkboxes[i].id + "',";
+		}
 	}
-	*/
+	temp=temp.substring(0,temp.length-1);
+	searchQuery+=" AND type IN("+temp+")";
+
+	Alert(searchQuery);
+
 	callAjax(searchQuery);
 
 }
