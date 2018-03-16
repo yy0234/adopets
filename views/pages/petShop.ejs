@@ -603,6 +603,7 @@ function spinner(){
 
 function callAjax(Query){
 	Query = "WHERE" + Query ;
+	alert(Query);
 	supplyData= $.ajax({
 		url: "/listSupply",
 		type: "GET",
@@ -941,7 +942,6 @@ function findSupply(){
 						query:"",
 					},
 					success: function (mes) {
-						alert(mes.length);
 						if (mes.length==0){
 							$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 							$("#pagination").css('display','none');		
