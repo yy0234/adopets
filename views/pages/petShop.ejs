@@ -876,7 +876,11 @@ function findSupply(){
 	}
 	temp=temp.substring(0,temp.length-1);
 	if (temp.length>1)
-		searchQuery+=" AND status IN("+temp+")";
+	{
+		if (searchQuery.length>25)
+			searchQuery += " AND ";
+		searchQuery+="status IN("+temp+")";
+	}
 	
 
 
@@ -889,7 +893,11 @@ function findSupply(){
 	}
 	temp=temp.substring(0,temp.length-1);
 	if (temp.length>1)
-		searchQuery+=" AND pettype IN("+temp+")";
+	{
+		if (searchQuery.length>25)
+			searchQuery += " AND ";
+		searchQuery+="pettype IN("+temp+")";
+	}
 	
 
 	temp="";
@@ -901,7 +909,11 @@ function findSupply(){
 	}
 	temp=temp.substring(0,temp.length-1);
 	if (temp.length>1)
+	{
+		if (searchQuery.length>25)
+			searchQuery += " AND ";
 		searchQuery+=" AND type IN("+temp+")";
+	}
 
 
 	callAjax(searchQuery);
