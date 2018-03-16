@@ -611,7 +611,6 @@ function callAjax(Query){
 		},
 		success: function (mes) {
 			$("#product_display").html("");
-			alert(mes.length);
 			if (mes.length==0){
 				$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 				$("#pagination").css('display','none');	
@@ -942,6 +941,7 @@ function findSupply(){
 						query:"",
 					},
 					success: function (mes) {
+						alert(Query);
 						if (mes.length==0){
 							$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 							$("#pagination").css('display','none');		
