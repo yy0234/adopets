@@ -941,7 +941,7 @@ function findSupply(){
 						query:"",
 					},
 					success: function (mes) {
-						alert(Query);
+						alert(mes.length);
 						if (mes.length==0){
 							$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 							$("#pagination").css('display','none');		
