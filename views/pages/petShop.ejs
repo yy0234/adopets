@@ -93,27 +93,27 @@
 							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
 							<div id="collapse_pet_types" class="collapse">
 								<label class="container">Dog
-									<input type="checkbox" id="dog"/>
+									<input type="checkbox" id="dog" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Cat
-									<input type="checkbox" id="cat"/>
+									<input type="checkbox" id="cat" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Bird
-									<input type="checkbox" id="bird"/>
+									<input type="checkbox" id="bird" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Fish
-									<input type="checkbox" id="fish"/>
+									<input type="checkbox" id="fish" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Reptile
-									<input type="checkbox" id="reptile"/>
+									<input type="checkbox" id="reptile" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 								<label class="container">Rodent
-									<input type="checkbox" id="rodent"/>
+									<input type="checkbox" id="rodent" name="pet_types"/>
 									<span class="checkbox"></span>
 								</label>
 							</div>
@@ -862,7 +862,7 @@ function pageSupply(pageNo){
 function findSupply(){
 	var searchQuery="";
 	var temp="";
-	if ($("#condition").val()!=null){
+	/*if ($("#condition").val()!=null){
 		temp="";
 		if (document.getElementById("new").checked = true)
 			temp+="'new'";
@@ -871,10 +871,12 @@ function findSupply(){
 
 		temp=temp.substring(0,temp.length-1);
 		searchQuery+=" AND status IN("+temp+")";
-	}
+	}*/
 
 
-	if ($("#collapse_pet_types").val()!=null){
+	//if ($("#pet_types").val()!=null){
+
+}
 		temp="";
 		if (document.getElementById("dog").checked = true)
 			temp+="'dog',";
@@ -892,8 +894,8 @@ function findSupply(){
 		temp=temp.substring(0,temp.length-1);
 
 		searchQuery+=" AND pettype IN("+temp+")";
-	}
-
+	//}
+	/*
 	if ($("#category").val()!=null){
 		temp="";
 		if (document.getElementById("food").checked = true)
@@ -920,7 +922,7 @@ function findSupply(){
 		temp=temp.substring(0,temp.length-1);
 		searchQuery+=" AND type IN("+temp+")";
 	}
-
+	*/
 	callAjax(searchQuery,null);
 
 }
