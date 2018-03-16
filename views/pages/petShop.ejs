@@ -601,7 +601,7 @@ function spinner(){
 }
 
 
-function callAjax(Query,age){
+function callAjax(Query){
 	supplyData= $.ajax({
 		url: "/listSupply",
 		type: "GET",
@@ -864,7 +864,7 @@ function findSupply(){
 	var temp="";
 	/*if ($("#condition").val()!=null){
 		temp="";
-		if (document.getElementById("new").checked = true)
+		if (document.getElementById("new").checked == true)
 			temp+="'new'";
 		else
 			temp+="'used'";
@@ -899,32 +899,32 @@ function findSupply(){
 	/*
 	if ($("#category").val()!=null){
 		temp="";
-		if (document.getElementById("food").checked = true)
+		if (document.getElementById("food").checked == true)
 			temp+="'food',";
 		if (document.getElementById("beds_cages").checked = true)
 			temp+="'beds_cages',";	
-		if (document.getElementById("feeding_utensils").checked = true)
+		if (document.getElementById("feeding_utensils").checked == true)
 			temp+="'feeding_utensils',";	
-		if (document.getElementById("health_products").checked = true)
+		if (document.getElementById("health_products").checked == true)
 			temp+="'health_products',";	
-		if (document.getElementById("clhm").checked = true)
+		if (document.getElementById("clhm").checked == true)
 			temp+="'clhm',";	
-		if (document.getElementById("grooming").checked = true)
+		if (document.getElementById("grooming").checked == true)
 			temp+="'grooming',";	
-		if (document.getElementById("fashion").checked = true)
+		if (document.getElementById("fashion").checked == true)
 			temp+="'fashion',";	
-		if (document.getElementById("waste_management").checked = true)
+		if (document.getElementById("waste_management").checked == true)
 			temp+="'waste_management',";	
-		if (document.getElementById("toys").checked = true)
+		if (document.getElementById("toys").checked == true)
 			temp+="'toys',";	
-		if (document.getElementById("travelling_equipment").checked = true)
+		if (document.getElementById("travelling_equipment").checked == true)
 			temp+="'travelling_equipment',";	
 
 		temp=temp.substring(0,temp.length-1);
 		searchQuery+=" AND type IN("+temp+")";
 	}
 	*/
-	callAjax(searchQuery,null);
+	callAjax(searchQuery);
 
 }
 
