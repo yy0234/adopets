@@ -602,7 +602,7 @@ function spinner(){
 
 
 function callAjax(Query){
-	Query = "WHERE" + Query ;
+	Query = "WHERE " + Query ;
 	alert(Query);
 	supplyData= $.ajax({
 		url: "/listSupply",
@@ -912,7 +912,7 @@ function findSupply(){
 	{
 		if (searchQuery.length>25)
 			searchQuery += " AND ";
-		searchQuery+=" AND type IN("+temp+")";
+		searchQuery+="type IN("+temp+")";
 	}
 
 
