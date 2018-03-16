@@ -874,7 +874,8 @@ function findSupply(){
 		}
 	}
 	temp=temp.substring(0,temp.length-1);
-	searchQuery+=" AND status IN("+temp+")";
+	if (temp.length>1)
+		searchQuery+=" AND status IN("+temp+")";
 	
 
 
@@ -886,7 +887,8 @@ function findSupply(){
 		}
 	}
 	temp=temp.substring(0,temp.length-1);
-	searchQuery+=" AND pettype IN("+temp+")";
+	if (temp.length>1)
+		searchQuery+=" AND pettype IN("+temp+")";
 	
 
 	temp="";
@@ -897,7 +899,8 @@ function findSupply(){
 		}
 	}
 	temp=temp.substring(0,temp.length-1);
-	searchQuery+=" AND type IN("+temp+")";
+	if (temp.length>1)
+		searchQuery+=" AND type IN("+temp+")";
 
 	alert(searchQuery);
 
