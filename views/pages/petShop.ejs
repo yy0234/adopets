@@ -602,11 +602,12 @@ function spinner(){
 
 
 function callAjax(Query){
+	Query = "WHERE" + Query ;
 	supplyData= $.ajax({
 		url: "/listSupply",
 		type: "GET",
 		data: {
-			query: "WHERE" + Query,
+			query: Query,
 		},
 		success: function (mes) {
 			$("#product_display").html("");
