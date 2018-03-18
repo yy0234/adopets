@@ -39,7 +39,7 @@
 			</div>
 			<div class="col-md-4" id="items_count">
 				<!--SERVER-->
-				<div><span class="item_number" id="first_item_number">1</span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number">60</span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number">500</span>&nbsp;items</div>
+				<div><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
 			</div>
 			<div class="col-md-2" id="display_size">
 				<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
@@ -58,7 +58,7 @@
 			<div class="col-md-2" id="left_container">
 				<div class="search-container">
 					<form id="searchBar">
-						<input type="text" id="search" placeholder="Search.." name="search"/><button class="search_button" type="submit">&#xf002;</button>
+						<input type="text" id="search" placeholder="Search.." name="search"/><button type="button" class="search_button" onclick="spinner();searchByKey()">&#xf002;</button>
 					</form>
 				</div>
 				<br>
@@ -80,7 +80,7 @@
 						</div>
 						<br>
 						<div class="price">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
+							<button id="price" type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
 							<div id="collapse_price" class="collapse">
 								<br>
 								<div id="price_range"></div>
@@ -173,7 +173,7 @@
       
 				<div class="col-md-10" >
 					<div class="row" id="product_display">
-						<div class="card-deck">
+						<!--<div class="card-deck">-->
 						<!--
 								<div class="card">
 									<div class="thumbnail">
@@ -281,7 +281,7 @@
 									</a>
 								</div>
 							-->
-							</div> 
+							<!--</div> -->
 						</div>
 
 						<ul id="pagination" class="pagination justify-content-center" style="display:none">
@@ -471,13 +471,23 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_desc"){
 		supplyData.responseJSON.sort(function(a, b){
-			return -(new Date(a.price) - new Date(b.price));
+			var x = parseFloat(a.price);
+			var y = parseFloat(b.price);
+			if (x < y) {return -1;}
+			if (x > y) {return 1;}
+			return 0;
+			//return parseFloat(b.price) - parseFloat(a.price);
 		});
 	}
 
 	else if ($("#dropdownlist").val()=="price_asc"){
 		supplyData.responseJSON.sort(function(a, b){
-			return new Date(a.price) - new Date(b.price);
+			var x = parseFloat(a.price);
+			var y = parseFloat(b.price);
+			if (x < y) {return 1;}
+			if (x > y) {return -1;}
+			return 0;
+			//return parseFloat(a.price) - parseFloat(b.price);
 		});
 	}
 	$("#product_display").html("");
@@ -535,6 +545,9 @@ $("#dropdownlist").change(function(){
 		$('#page'+current_page).css("background-color","gainsboro");
 	}
 	else{
+		document.getElementById("first_item_number").innerHTML = "1";
+		document.getElementById("last_item_number").innerHTML = supplyData.responseJSON.length;
+		document.getElementById("total_item_number").innerHTML = supplyData.responseJSON.length;
 		supplyData.responseJSON.forEach(function(element,index) {
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
@@ -669,6 +682,9 @@ function callAjax(Query){
 				$('#page'+current_page).css("background-color","gainsboro");
 			}
 			else{
+				document.getElementById("first_item_number").innerHTML = "1";
+				document.getElementById("last_item_number").innerHTML = mes.length;
+				document.getElementById("total_item_number").innerHTML = mes.length;
 				mes.forEach(function(element,index) {
 					$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
@@ -915,10 +931,21 @@ function findSupply(){
 	}
 
 
-	callAjax(searchQuery);
+	var min_price = document.getElementById('min_price').innerHTML;
+	var max_price = document.getElementById('max_price').innerHTML;
 
+	if (searchQuery.length>5)
+		searchQuery += " AND ";
+	searchQuery +=  "price between '" + min_price + "' and '" + max_price + "'";
+
+	callAjax(searchQuery);
 }
 
+function searchByKey(){
+	var keyword=$("#search").val().toLowerCase();
+	var searchQuery="(supplyid||name||description||price||type||status||remark||providerid||quantity||pettype) LIKE '%"+keyword+"%'";
+	callAjax(searchQuery,null);
+}
 
 	$(function(){		
 		/*
@@ -1008,6 +1035,9 @@ function findSupply(){
 							$('#page'+current_page).css("background-color","gainsboro");
 						}
 						else{
+							document.getElementById("first_item_number").innerHTML = "1";
+							document.getElementById("last_item_number").innerHTML = mes.length;
+							document.getElementById("total_item_number").innerHTML = mes.length;
 							mes.forEach(function(element,index) {
 								$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
