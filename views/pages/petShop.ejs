@@ -471,13 +471,13 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_desc"){
 		supplyData.responseJSON.sort(function(a, b){
-			return b.price - a.price;
+			return parseFloat(b.price) - parseFloat(a.price);
 		});
 	}
 
 	else if ($("#dropdownlist").val()=="price_asc"){
 		supplyData.responseJSON.sort(function(a, b){
-			return a.price - b.price;
+			return parseFloat(a.price) - parseFloat(b.price);
 		});
 	}
 	$("#product_display").html("");
