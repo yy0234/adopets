@@ -39,7 +39,7 @@
 			</div>
 			<div class="col-md-4" id="items_count">
 				<!--SERVER-->
-				<div><span class="item_number" id="first_item_number">1</span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number">60</span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number">500</span>&nbsp;items</div>
+				<div><span class="item_number" id="first_item_number"></span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"></span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"></span>&nbsp;items</div>
 			</div>
 			<div class="col-md-2" id="display_size">
 				<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
@@ -546,6 +546,9 @@ $("#dropdownlist").change(function(){
 	}
 	else{
 		supplyData.responseJSON.forEach(function(element,index) {
+			document.getElementById("first_item_number").innerHTML = "1";
+			document.getElementById("last_item_number").innerHTML = mes.length;
+			document.getElementById("total_item_number").innerHTML = mes.length;
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
@@ -680,6 +683,9 @@ function callAjax(Query){
 			}
 			else{
 				mes.forEach(function(element,index) {
+					document.getElementById("first_item_number").innerHTML = "1";
+					document.getElementById("last_item_number").innerHTML = mes.length;
+					document.getElementById("total_item_number").innerHTML = mes.length;
 					$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
@@ -822,6 +828,9 @@ function pageSupply(pageNo){
 	}
 	else{
 		for (var i=page_no;i<supplyData.responseJSON.length;i++){
+			document.getElementById("first_item_number").innerHTML = "1";
+			document.getElementById("last_item_number").innerHTML = mes.length;
+			document.getElementById("total_item_number").innerHTML = mes.length;
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
