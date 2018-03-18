@@ -937,7 +937,7 @@ function findSupply(){
 
 function searchByKey(){
 	var keyword=$("#search").val().toLowerCase();
-	var searchQuery="(supplyid,name,description,price,type,status,remark,providerid,quantity,pettype) LIKE '%"+keyword+"%'";
+	var searchQuery="(supplyid||name||description||price||type||status||remark||providerid||quantity||pettype) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
 }
 
