@@ -1029,9 +1029,9 @@ function searchByKey(){
 							$('#page'+current_page).css("background-color","gainsboro");
 						}
 						else{
-							document.getElementById("first_item_number").innerHTML("1");
-							document.getElementById("last_item_number").innerHTML(mes.length);
-							document.getElementById("total_item_number").innerHTML(mes.length);
+							document.getElementById("first_item_number").innerHTML = "1";
+							document.getElementById("last_item_number").innerHTML = mes.length;
+							document.getElementById("total_item_number").innerHTML = mes.length;
 							mes.forEach(function(element,index) {
 								$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
