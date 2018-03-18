@@ -173,7 +173,7 @@
       
 				<div class="col-md-10" >
 					<div class="row" id="product_display">
-						<!--<div class="card-deck">-->
+						<div class="card-deck">
 						<!--
 								<div class="card">
 									<div class="thumbnail">
@@ -281,7 +281,7 @@
 									</a>
 								</div>
 							-->
-							<!--</div>--> 
+							</div> 
 						</div>
 
 						<ul id="pagination" class="pagination justify-content-center" style="display:none">
@@ -1038,11 +1038,7 @@ function searchByKey(){
 							document.getElementById("first_item_number").innerHTML = "1";
 							document.getElementById("last_item_number").innerHTML = mes.length;
 							document.getElementById("total_item_number").innerHTML = mes.length;
-							var count=0;
 							mes.forEach(function(element,index) {
-								if (count%3 == 0)
-									$("#product_display").append("<div class=\"card-deck\">");
-									
 								$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
@@ -1083,11 +1079,7 @@ function searchByKey(){
 													</div>\
 												</div>\
 											</div>\
-										</div>");
-
-								if (count%3 == 0)
-									$("#product_display").append("</div>");
-								count++;
+										</div>")
 							});
 							$("#pagination").css('display','none');
 						}
