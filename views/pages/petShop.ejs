@@ -922,6 +922,7 @@ function findSupply(){
 		searchQuery += " AND ";
 	searchQuery +=  "price between " + min_price + " and " + max_price;
 
+	alert(searchQuery);
 	callAjax(searchQuery);
 }
 
