@@ -80,7 +80,7 @@
 						</div>
 						<br>
 						<div class="price">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
+							<button id="price" type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
 							<div id="collapse_price" class="collapse">
 								<br>
 								<div id="price_range"></div>
@@ -914,9 +914,11 @@ function findSupply(){
 		searchQuery+="type IN("+temp+")";
 	}
 
+	var min_price = document.getElementsById('min_price');
+	var max_price = document.getElementsById('max_price');
+	searchQuery +=  "price between " + min_price + " and " + max_price;
 
 	callAjax(searchQuery);
-
 }
 
 
