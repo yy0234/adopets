@@ -471,8 +471,8 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_desc"){
 		supplyData.responseJSON.sort(function(a, b){
-			var x = a.price;
-			var y = b.price;
+			var x = parseFloat(a.price);
+			var y = parseFloat(b.price);
 			if (x < y) {return -1;}
 			if (x > y) {return 1;}
 			return 0;
@@ -482,8 +482,8 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_asc"){
 		supplyData.responseJSON.sort(function(a, b){
-			var x = a.price;
-			var y = b.price;
+			var x = parseFloat(a.price);
+			var y = parseFloat(b.price);
 			if (x < y) {return 1;}
 			if (x > y) {return -1;}
 			return 0;
@@ -935,6 +935,11 @@ function findSupply(){
 	callAjax(searchQuery);
 }
 
+function searchByKey(){
+	var keyword=$("#search").val().toLowerCase();
+	var searchQuery=" AND (supplyid,name,description,price,type,status,remark,providerid,quantity,pettype) LIKE '%"+keyword+"%'";
+	callAjax(searchQuery,null);
+}
 
 	$(function(){		
 		/*
