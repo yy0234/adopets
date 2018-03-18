@@ -914,8 +914,12 @@ function findSupply(){
 		searchQuery+="type IN("+temp+")";
 	}
 
+
 	var min_price = document.getElementById('min_price').innerHTML;
 	var max_price = document.getElementById('max_price').innerHTML;
+
+	if (searchQuery.length>5)
+		searchQuery += " AND ";
 	searchQuery +=  "price between " + min_price + " and " + max_price;
 
 	callAjax(searchQuery);
