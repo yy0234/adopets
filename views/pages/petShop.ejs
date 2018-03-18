@@ -470,12 +470,14 @@ $("#dropdownlist").change(function(){
 	}
 
 	else if ($("#dropdownlist").val()=="price_desc"){
+		alert("doing price_desc");
 		supplyData.responseJSON.sort(function(a, b){
 			return parseFloat(b.price) - parseFloat(a.price);
 		});
 	}
 
 	else if ($("#dropdownlist").val()=="price_asc"){
+		alert("doing price_asc");
 		supplyData.responseJSON.sort(function(a, b){
 			return parseFloat(a.price) - parseFloat(b.price);
 		});
