@@ -130,7 +130,7 @@ app.get("/listPet", function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send(result.rows+request);   }
+        { return response.send(result.rows);   }
     });
   });
 });
