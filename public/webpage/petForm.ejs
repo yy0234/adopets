@@ -198,12 +198,12 @@
 				$('#alert-mess').fadeIn(500).delay(800).fadeOut(500);
 				
 				$.ajax({
-					url: "/listPet",
+					url: "/toPetSearch",
 					type: "GET",
 					data: {
 					},
-					success: function (page) {
-						$("#dynamic").load(page);
+					success: function (mes) {
+						$("#dynamic").load(mes);
 					},
 					error: function (err) {
 						alert(err);
