@@ -525,6 +525,7 @@ function changeModal(elementNo){
 	$("#modal_petSize").html(petData_element.size);
 	$("#modal_petCoat").html(petData_element.coat);
 	var d=new Date(petData_element.postdate);
+	console.log(d);
 	$("#modal_petPostDate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
 	$("#modal_petGender").html(petData_element.gender);
 	$("#modal_petBreed").html(petData_element.breed);
