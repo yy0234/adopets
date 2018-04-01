@@ -194,7 +194,7 @@
 				console.log(err);
 			},
 			success: function success(mes) {
-				$(".container-fluid").append("<div id='alert-mess'><div class='alert alert-success col-md-5'><span><strong>Record Created</strong></span><span class='tab'>Page Redicting...</span></div>");
+				$(".container-fluid").append("<div id='alert-mess' style='margin:0 auto;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;background:rgba(0,0,0,0.6);'><div class='alert alert-success col-md-5'><span><strong>Record Created</strong></span><span class='tab' style='display:inline-block;margin-left:10px;'>Page Redicting...</span></div>");
                 $('#alert-mess').fadeIn(500).delay(800).fadeOut(500);
 				console.log(mes);
 			}
