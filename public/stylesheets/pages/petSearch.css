@@ -190,7 +190,7 @@
   }
 
   #pet_image img{
-    height: 235px;
+    max-height: 235px;
   }
 
   #modal_petImage{
