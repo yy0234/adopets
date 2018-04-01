@@ -527,6 +527,8 @@ function changeModal(elementNo){
 	var d=new Date(petData_element.postdate);
 	console.log(d);
 	$("#modal_petPostDate").html(d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear());
+	console.log(d.getMonth());
+	console.log(d.getDate());
 	$("#modal_petGender").html(petData_element.gender);
 	$("#modal_petBreed").html(petData_element.breed);
 	if (petData_element.neutered==true)
