@@ -110,14 +110,14 @@ app.get("/signin", function (request, response) {
 
 app.post('/addPets', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)'; 
+	  var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING petid'; 
 	  var sqlValue = [request.body.name,request.body.type,request.body.breed,request.body.gender,request.body.age,request.body.postdate,request.body.lastupdate,request.body.status,request.body.remark,request.body.peturl,request.body.providerid,request.body.description,request.body.neutered,request.body.size,request.body.coat]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
         { console.error(err); return response.end("Error " + err); }
        else
-        { return response.send(result.rows);   }
+        { return response.send(result.rows); }
       });
   });
 });
