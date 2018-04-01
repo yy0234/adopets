@@ -194,7 +194,8 @@
 				console.log(err);
 			},
 			success: function success(mes) {
-				alert(mes);
+				$(".container-fluid").append("<div id='alert-mess'><div class='alert alert-success col-md-5'><span><strong>Record Created</strong></span><span class='tab'>Page Redicting...</span></div>");
+                $('#alert-mess').fadeIn(500).delay(800).fadeOut(500);
 				console.log(mes);
 			}
 		})
