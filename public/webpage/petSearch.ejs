@@ -781,12 +781,12 @@ function initialGet(callback){
 					$("#pagination").css('display','none');
 				}
 				return mes;
+				callback();
 			},
 			error: function (err) {
 				return err;
 			}
 		});
-		callback();
 }
 
 $(document).ready(function() {
