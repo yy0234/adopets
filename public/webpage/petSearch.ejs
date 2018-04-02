@@ -683,7 +683,7 @@ function searchByKey(){
 }
 function checkPost(){
 	if (adoption_post_id!=null){
-		for (var x=petData.responseJSON.length;x<=0;x--){
+		for (var x=petData.length;x<=0;x--){
 			if (petData.responseJSON[x].petid==adoption_post_id){
 				changeModal(x);
 				$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
