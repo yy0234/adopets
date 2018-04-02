@@ -319,7 +319,7 @@ $("#order").change(function(){
 
 	else if ($("#order").val()=="date"){
 		petData.sort(function(a, b){
-			return (parseInt(a.petid)>parseInt(b.petid));
+			return (parseInt(a.petid)-parseInt(b.petid));
 		});
 	}
 
