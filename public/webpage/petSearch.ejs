@@ -687,6 +687,7 @@ function checkPost(){
 			if (petData[x].petid==adoption_post_id){
 				changeModal(x);
 				$("#petDetailModal").modal();
+				adoption_post_id=null;
 				break;
 			}
 		}
