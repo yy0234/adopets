@@ -694,7 +694,7 @@ function checkPost(){
 }
 
 function initialGet(callback){
-	petData= $.ajax({
+	 $.ajax({
 			url: "/listPet",
 			type: "GET",
 			data: {
@@ -780,11 +780,11 @@ function initialGet(callback){
 					});
 					$("#pagination").css('display','none');
 				}
-				return mes;
+				petData = mes;
 				callback();
 			},
 			error: function (err) {
-				return err;
+				alert(err);
 			}
 		});
 }
