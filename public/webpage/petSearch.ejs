@@ -681,6 +681,113 @@ function searchByKey(){
 	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
 }
+function checkPost(){
+	if (adoption_post_id!=null){
+		for (var x=petData.responseJSON.length;x<=0;x--){
+			if (petData.responseJSON[x].petid==adoption_post_id){
+				changeModal(x);
+				$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
+				break;
+			}
+		}
+	}
+}
+
+function initialGet(callback){
+	petData= $.ajax({
+			url: "/listPet",
+			type: "GET",
+			data: {
+				query:adoption_search_query,
+			},
+			success: function (mes) {
+				adoption_search_query="";
+				$("#petSearchResult").html("");
+				if (adopton_query_age!=null){
+					var min_age=parseInt(adopton_query_age.split(" ")[0]);
+					var max_age=parseInt(adopton_query_age.split(" ")[2]);
+					for (var i=0;i<mes.length;i++){
+						var mes_age=parseInt(mes[i].age.split(" ")[0]);
+						if ((mes_age<min_age)||(mes_age>max_age)){
+							mes.splice(i,1);
+							i--;
+						}
+					}
+				}
+				if (mes.length==0){
+					$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
+					$("#pagination").css('display','none');
+				}
+				else if (mes.length>12){
+					for (var i=0; i<12;i++){
+						$("#petSearchResult").append("\
+							<div class=\"col-lg-4 col-md-6 mb-4\">\
+								<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+									<div class=\"card h-100\">\
+										<a id=\"pet_image\">"+mes[i].peturl+"</a>\
+										<div class=\"card-body\">\
+											<div id=\"petTable\" style=\"display:table\">\
+												<div style=\"display:table-row\">\
+													<div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
+												</div>\
+												<div style=\"display:table-row\">\
+													<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
+												</div>\
+													<div style=\"display:table-row\">\
+													<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
+												</div>\
+												<div style=\"display:table-row\">\
+													<div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>\
+							</div>")
+					}
+					$("#pagination").css('display','flex');
+					total_page=Math.ceil(mes.length/12);
+					for (var i=total_page;i>0;i--)
+						$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+					$('#page'+current_page).css("background-color","gainsboro");
+				}
+				else{
+					mes.forEach(function(element,index) {
+						$("#petSearchResult").append("\
+							<div class=\"col-lg-4 col-md-6 mb-4\">\
+								<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+									<div class=\"card h-100\">\
+										<a id=\"pet_image\">"+element.peturl+"</a>\
+										<div class=\"card-body\">\
+											<div id=\"petTable\" style=\"display:table\">\
+												<div style=\"display:table-row\">\
+													<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+												</div>\
+												<div style=\"display:table-row\">\
+													<div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+												</div>\
+													<div style=\"display:table-row\">\
+													<div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+												</div>\
+												<div style=\"display:table-row\">\
+													<div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>\
+							</div>")
+					});
+					$("#pagination").css('display','none');
+				}
+				return mes;
+			},
+			error: function (err) {
+				return err;
+			}
+		});
+		callback();
+}
 
 $(document).ready(function() {
 	window.history.replaceState('Pet Search', 'Pet_Search', '/pet_search');
@@ -803,111 +910,13 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
-	petData= $.ajax({
-					url: "/listPet",
-					type: "GET",
-					data: {
-						query:adoption_search_query,
-					},
-					success: function (mes) {
-						adoption_search_query="";
-						$("#petSearchResult").html("");
-						if (adopton_query_age!=null){
-							var min_age=parseInt(adopton_query_age.split(" ")[0]);
-							var max_age=parseInt(adopton_query_age.split(" ")[2]);
-							for (var i=0;i<mes.length;i++){
-								var mes_age=parseInt(mes[i].age.split(" ")[0]);
-								if ((mes_age<min_age)||(mes_age>max_age)){
-									mes.splice(i,1);
-									i--;
-								}
-							}
-						}
-						if (mes.length==0){
-							$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
-							$("#pagination").css('display','none');
-						}
-						else if (mes.length>12){
-							for (var i=0; i<12;i++){
-								$("#petSearchResult").append("\
-									<div class=\"col-lg-4 col-md-6 mb-4\">\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
-											<div class=\"card h-100\">\
-												<a id=\"pet_image\">"+mes[i].peturl+"</a>\
-												<div class=\"card-body\">\
-													<div id=\"petTable\" style=\"display:table\">\
-														<div style=\"display:table-row\">\
-															<div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
-														</div>\
-														<div style=\"display:table-row\">\
-															<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
-														</div>\
-															<div style=\"display:table-row\">\
-															<div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
-														</div>\
-														<div style=\"display:table-row\">\
-															<div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
-														</div>\
-													</div>\
-												</div>\
-											</div>\
-										</div>\
-									</div>")
-							}
-							$("#pagination").css('display','flex');
-							total_page=Math.ceil(mes.length/12);
-							for (var i=total_page;i>0;i--)
-								$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
-							$('#page'+current_page).css("background-color","gainsboro");
-						}
-						else{
-							mes.forEach(function(element,index) {
-								$("#petSearchResult").append("\
-									<div class=\"col-lg-4 col-md-6 mb-4\">\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
-											<div class=\"card h-100\">\
-												<a id=\"pet_image\">"+element.peturl+"</a>\
-												<div class=\"card-body\">\
-													<div id=\"petTable\" style=\"display:table\">\
-														<div style=\"display:table-row\">\
-															<div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
-														</div>\
-														<div style=\"display:table-row\">\
-															<div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
-														</div>\
-															<div style=\"display:table-row\">\
-															<div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
-														</div>\
-														<div style=\"display:table-row\">\
-															<div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
-														</div>\
-													</div>\
-												</div>\
-											</div>\
-										</div>\
-									</div>")
-							});
-							$("#pagination").css('display','none');
-						}
-						return mes;
-					},
-					error: function (err) {
-						return err;
-					}
-				});
-				console.log(adoption_post_id);
-				console.log(petData.responseJSON);
-				if (adoption_post_id!=null){
-					for (var x=petData.responseJSON.length;x<=0;x--){
-						if (petData.responseJSON[x].petid==adoption_post_id){
-							changeModal(x);
-							$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
-							break;
-						}
-					}
-				}
+	initialGet( function(){
+		checkPost();
+	});
 
-			});
+
+
+});
 	
 
 function encodeImageFileAsURL() {
