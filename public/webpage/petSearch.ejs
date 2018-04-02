@@ -681,17 +681,7 @@ function searchByKey(){
 	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
 }
-function checkPost(){
-	if (adoption_post_id!=null){
-		for (var x=petData.length;x>=0;x--){
-			if (petData[x].petid==adoption_post_id){
-				changeModal(x);
-				$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
-				break;
-			}
-		}
-	}
-}
+
 
 function initialGet(callback){
 	 $.ajax({
@@ -702,6 +692,15 @@ function initialGet(callback){
 			},
 			success: function (mes) {
 				petData = mes;
+				if (adoption_post_id!=null){
+					for (var x=petData.length;x>=0;x--){
+						if (petData[x].petid==adoption_post_id){
+							changeModal(x);
+							$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
+							break;
+						}
+					}
+				}
 				adoption_search_query="";
 				$("#petSearchResult").html("");
 				if (adopton_query_age!=null){
@@ -781,7 +780,6 @@ function initialGet(callback){
 					});
 					$("#pagination").css('display','none');
 				}
-				callback();
 			},
 			error: function (err) {
 				alert(err);
@@ -910,9 +908,7 @@ $(document).ready(function() {
 		document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 	});
 
-	initialGet( function(){
-		checkPost();
-	});
+	initialGet();
 
 
 
