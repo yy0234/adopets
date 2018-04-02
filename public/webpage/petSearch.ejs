@@ -895,7 +895,7 @@ $(document).ready(function() {
 						return err;
 					}
 				});
-
+				console.log(adoption_post_id);
 				if (adoption_post_id!=null){
 					for (var x=petData.responseJSON.length;x<=0;x--){
 						if (petData.responseJSON[x].petid==adoption_post_id){
