@@ -686,7 +686,7 @@ function checkPost(){
 		for (var x=0;x<petData.length;x++){
 			if (petData[x].petid==adoption_post_id){
 				changeModal(x);
-				$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
+				$("#petDetailModal").modal();
 				break;
 			}
 		}
