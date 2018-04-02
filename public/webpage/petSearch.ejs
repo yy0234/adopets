@@ -810,6 +810,7 @@ $(document).ready(function() {
 						query:adoption_search_query,
 					},
 					success: function (mes) {
+						adoption_search_query="";
 						$("#petSearchResult").html("");
 						if (adopton_query_age!=null){
 							var min_age=parseInt(adopton_query_age.split(" ")[0]);
@@ -894,7 +895,19 @@ $(document).ready(function() {
 						return err;
 					}
 				});
+
+				if (adoption_post_id!=null){
+					for (var x=petData.responseJSON.length;x<=0;x--){
+						if (petData.responseJSON[x].petid==adoption_post_id){
+							changeModal(x);
+							$("#petDetailModal").addClass("show").css({"display": "block","padding-right":"17px"});
+							break;
+						}
+					}
+				}
+
 			});
+	
 
 function encodeImageFileAsURL() {
 	var base64Image="";
