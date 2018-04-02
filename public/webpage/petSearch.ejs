@@ -701,7 +701,7 @@ function initialGet(callback){
 				query:adoption_search_query,
 			},
 			success: function (mes) {
-				petData = mes;callback();
+				petData = mes;
 				adoption_search_query="";
 				$("#petSearchResult").html("");
 				if (adopton_query_age!=null){
@@ -781,6 +781,7 @@ function initialGet(callback){
 					});
 					$("#pagination").css('display','none');
 				}
+				callback();
 			},
 			error: function (err) {
 				alert(err);
