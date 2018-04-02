@@ -682,6 +682,7 @@ function searchByKey(){
 	callAjax(searchQuery,null);
 }
 function checkPost(){
+	console.log("run");
 	if (adoption_post_id!=null){
 		for (var x=petData.length;x<=0;x--){
 			console.log(petData[x].petid);
@@ -704,6 +705,7 @@ function initialGet(callback){
 			success: function (mes) {
 				petData = mes;
 				callback();
+				console.log(callback());
 				adoption_search_query="";
 				$("#petSearchResult").html("");
 				if (adopton_query_age!=null){
