@@ -58,8 +58,12 @@ app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
+app.get('/test_scraper', function(request, response) {
+  response.render('pages/test_scraper.ejs');
+});
+
 app.get('/run_scraper', function(request, response) {
-  response.send('../myscraper/scraper.ejs');
+  response.send('../myscraper/scraper.js');
 });
 
 
