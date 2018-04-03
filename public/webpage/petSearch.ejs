@@ -729,7 +729,7 @@ function initialGet(callback){
 						adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
 						if (adoption_list['breed']!=null) adoption_list['breed']=adoption_list['breed'].replace(/'/g,'').split(',');
 						if (adoption_list['gender']!=null) adoption_list['gender']=adoption_list['gender'].replace(/'/g,'').split(',');
-						for (var i=0;i<adoption_list['type'].length;i++){
+					
 							if (adoption_list['type'].includes('cat')){
 								$.ajax({
 									url: "/run_cat_scraper",
@@ -944,7 +944,7 @@ function initialGet(callback){
 									}
 								});
 							}
-						}
+						
 					}
 					$(".resultSession").prepend("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 					$("#pagination").css('display','none');
