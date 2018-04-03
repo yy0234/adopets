@@ -1,10 +1,10 @@
-var request = require("request");
+var req = require("request");
 var cheerio = require("cheerio");
 
 var url = "http://www.lap.org.hk/adoptcat.aspx";
 
 // 取得網頁資料
-request(url, function (error, response, body) {
+req(url, function (error, response, body) {
   if (!error) {
 
     var $ = cheerio.load(body);
