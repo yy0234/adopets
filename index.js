@@ -65,12 +65,12 @@ app.get('/test_scraper', function(request, response) {
 });
 
 app.get('/run_cat_scraper', function(request, response) {
-  var returnList=[];
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
     if (!error) {
       var $ = cheerio.load(body);
       var data = $("[class='textdb12pt']>span");   
       var photo=$("[class='photoborder']");
+      var returnList=[];
       for (var x=0; x<(data.length/5);x++){
         var pos=x*5;
         var obj={};
@@ -83,17 +83,17 @@ app.get('/run_cat_scraper', function(request, response) {
         returnList.push(obj);
       }
     }
+    response.send(returnList);
   });
-  response.send(returnList);
 });
 
 app.get('/run_dog_scraper', function(request, response) {
-  var returnList=[];
   req("http://www.lap.org.hk/adoptdog.aspx", function (error,r, body) {
     if (!error) {
       var $ = cheerio.load(body);
       var data = $("[class='textdb12pt']>span");   
       var photo=$("[class='photoborder']");
+      var returnList=[];
       for (var x=0; x<(data.length/5);x++){
         var pos=x*5;
         var obj={};
@@ -106,8 +106,8 @@ app.get('/run_dog_scraper', function(request, response) {
         returnList.push(obj);
       }
     }
+    response.send(returnList);
   });
-  response.send(returnList);
 });
 
 
