@@ -79,7 +79,7 @@ app.get('/run_cat_scraper', function(request, response) {
         obj['name']=data[pos].children[0].data;
         obj['breed']=data[pos+1].children[0].data;
         obj['age']=data[pos+2].children[0].data;
-        obj['sex']=data[pos+3].children[0].data;
+        obj['gender']=data[pos+3].children[0].data;
         returnList.push(obj);
       }
     }
@@ -102,7 +102,7 @@ app.get('/run_dog_scraper', function(request, response) {
         obj['name']=data[pos].children[0].data;
         obj['breed']=data[pos+1].children[0].data;
         obj['age']=data[pos+2].children[0].data;
-        obj['sex']=data[pos+3].children[0].data;
+        obj['gender']=data[pos+3].children[0].data;
         returnList.push(obj);
       }
     }
