@@ -4,8 +4,6 @@ var pg = require('pg');
 var req = require("request");
 var cheerio = require("cheerio");
 
-var url = "http://www.lap.org.hk/adoptcat.aspx";
-
 var multer = require('multer');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json({limit: '50mb'})); 
@@ -66,15 +64,12 @@ app.get('/test_scraper', function(request, response) {
   response.render('pages/test_scraper.ejs');
 });
 
-app.get('/run_scraper', function(request, response) {
-  req(url, function (error,r, body) {
+app.get('/run_cat_scraper', function(request, response) {
+  var returnLsit=[];
+  req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
     if (!error) {
-  
       var $ = cheerio.load(body);
-    
-      var data = $("[class='textdb12pt']>span");
-      var returnList=[];
-    
+      var data = $("[class='textdb12pt']>span");   
       for (var x=0; x<(data.length/5);x++){
         var pos=x*5;
         var obj={};
@@ -84,10 +79,10 @@ app.get('/run_scraper', function(request, response) {
         obj['sex']=data[pos+3].children[0].data;
         obj['detail']=data[pos+4].children[0].data;
         returnList.push(obj);
-    }
-    response.send(returnList);
+      }
     }
   });
+  response.send(returnList);
 });
 
 
