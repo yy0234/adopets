@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var scraper = require('../myscraper/scraper.js')
+var scraper = require('myscraper/scraper.js')
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
