@@ -769,28 +769,31 @@ function initialGet(callback){
 										else{
 											temp_cat=cat_info;
 										}
-										if (cat_info.length>0) {
+										if (temp_cat.length>0) {
 											petfound=true;
-											if (cat_info.length>12){
-												for (var i=0; i<12;i++){
+											var display_length=12;
+											if(adoption_list['type'].includes('dog'))
+												display_length=6;
+											if (temp_cat.length>display_length){
+												for (var i=0; i<display_length;i++){
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
 															<div class=\"card h-100\">\
-																<a id=\"pet_image\"><img src='"+cat_info[i].photo+"'alt='photo'></a>\
+																<a id=\"pet_image\"><img src='"+temp_cat[i].photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
 																	<div id=\"petTable\" style=\"display:table\">\
 																		<div style=\"display:table-row\">\
-																			<div class=\"captionName\" style=\"display:table-cell\">"+cat_info[i].name+"</div>\
+																			<div class=\"captionName\" style=\"display:table-cell\">"+temp_cat[i].name+"</div>\
 																		</div>\
 																		<div style=\"display:table-row\">\
-																			<div class=\"captionDescription\" style=\"display:table-cell\">"+cat_info[i].age+"</div>\
+																			<div class=\"captionDescription\" style=\"display:table-cell\">"+temp_cat[i].age+"</div>\
 																		</div>\
 																			<div style=\"display:table-row\">\
-																			<div class=\"captionDescription\" style=\"display:table-cell\">"+cat_info[i].gender+"</div>\
+																			<div class=\"captionDescription\" style=\"display:table-cell\">"+temp_cat[i].gender+"</div>\
 																		</div>\
 																		<div style=\"display:table-row\">\
-																			<div class=\"captionBreeds\" style=\"display:table-cell\">"+cat_info[i].breed+"</div>\
+																			<div class=\"captionBreeds\" style=\"display:table-cell\">"+temp_cat[i].breed+"</div>\
 																		</div>\
 																	</div>\
 																</div>\
@@ -800,7 +803,7 @@ function initialGet(callback){
 												}
 											}
 											else {
-												cat_info.forEach(function(element,index) {
+												temp_cat.forEach(function(element,index) {
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
@@ -875,8 +878,11 @@ function initialGet(callback){
 										}
 										if (temp_dog.length>0) {
 											petfound=true;
-											if (temp_dog.length>12){
-												for (var i=0; i<12;i++){
+											var display_length=12;
+											if(adoption_list['type'].includes('cat'))
+												display_length=6;
+											if (temp_dog.length>display_length){
+												for (var i=0; i<display_length;i++){
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptdog.aspx');\">\
@@ -907,7 +913,7 @@ function initialGet(callback){
 												temp_dog.forEach(function(element,index) {
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
-														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
+														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptdog.aspx');\">\
 															<div class=\"card h-100\">\
 																<a id=\"pet_image\"><img src='"+element.photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
