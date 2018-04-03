@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var scraper = require('myscraper/scraper.js')
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
@@ -64,7 +63,7 @@ app.get('/test_scraper', function(request, response) {
 });
 
 app.get('/run_scraper', function(request, response) {
-  response.send(scraper);
+  response.send("hi");
 });
 
 
