@@ -730,7 +730,7 @@ function initialGet(callback){
 					var petfound=false;
 					if (adoption_list['type']!=null){
 						for (var i=0;i<adoption_list['type'];i++){
-							if (adoption_list['type']=='cat'){
+							if (adoption_list['type'].includes('cat')){
 								$.ajax({
 									url: "/run_cat_scraper",
 									type: "GET",
@@ -814,7 +814,7 @@ function initialGet(callback){
 									}
 								});
 							}
-							if (adoption_list['type']=='dog'){
+							if (adoption_list['type'].includes('dog')){
 								$.ajax({
 									url: "/run_dog_scraper",
 									type: "GET",
