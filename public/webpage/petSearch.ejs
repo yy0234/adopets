@@ -429,6 +429,7 @@ function callAjax(Query,age){
 			$("#petSearchResult").html("");
 			if (mes.length==0){
 				console.log(Query);
+				console.log(age);
 				$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 				$("#pagination").css('display','none');	
 			}
@@ -717,6 +718,7 @@ function initialGet(callback){
 				}
 				if (mes.length==0){
 					console.log(adoption_search_query);
+					console.log(adopton_query_age);
 					$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
 					$("#pagination").css('display','none');
 				}
