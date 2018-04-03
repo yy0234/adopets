@@ -88,7 +88,7 @@
 			</div>
 			<!-- /.col-lg-3 -->
 	
-			<div class="col-lg-9">
+			<div class="col-lg-9 resultSession">
 	
 				<div id="petSearchResult" class="row mt-4" style="margin: 0 auto;">
 					<div class="sk-fading-circle">
@@ -742,7 +742,7 @@ function initialGet(callback){
 											cat_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
-													if ((adoption_list['breed'][x].toLowerCase).indexOf(element['breed'].toLowerCase)>=0){
+													if ((adoption_list['breed'][x].toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
 														count=true;
 													}
 												}
@@ -826,7 +826,7 @@ function initialGet(callback){
 											dog_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
-													if ((adoption_list['breed'][x].toLowerCase).indexOf(element['breed'].toLowerCase)>=0){
+													if (((adoption_list['breed'][x]).toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
 														count=true;
 													}
 												}
@@ -900,9 +900,7 @@ function initialGet(callback){
 							}
 						}
 					}
-					/*if (!petfound){
-						$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
-					}*/
+					$(".resultSession").prepend("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 					$("#pagination").css('display','none');
 				}
 				else if (mes.length>12){
