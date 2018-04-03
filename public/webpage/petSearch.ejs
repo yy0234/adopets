@@ -821,21 +821,23 @@ function initialGet(callback){
 									data: {
 									},
 									success: function (dog_info) {
-										console.log(dog_info);
+										var dog_temp=dog_info;
+										console.log(dog_temp);
+
 										if ((adoption_list['breed']!=null)){
 											console.log("run");
-											dog_info.forEach(function(element,index) {
+											dog_temp.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
 													if (((adoption_list['breed'][x]).toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
-														console.log("true");
+														console.log(element['breed']);
 														count=true;
 													}
 												}
-												if (!count) {console.log(index);dog_info.splice(index,1);console.log(dog_info);};
+												if (!count) {console.log(index);dog_temp.splice(index,1);console.log(dog_temp);};
 											});
 										}
-										console.log(dog_info);
+										console.log(dog_temp);
 										if (dog_info.length>0) {
 											petfound=true;
 											if (dog_info.length>12){
