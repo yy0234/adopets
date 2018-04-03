@@ -737,17 +737,37 @@ function initialGet(callback){
 									data: {
 									},
 									success: function (cat_info) {
+										var temp_cat=[];
 										console.log(cat_info);
+										
 										if ((adoption_list['breed']!=null)){
+											console.log("run");
 											cat_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
-													if ((adoption_list['breed'][x].toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
-														count=true;
+													if (((adoption_list['breed'][x]).toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
+														if (adoption_list['gender']!=null){
+															for (var x=0;x<adoption_list['gender'].length;x++){
+																if (((adoption_list['gender'][x]).toLowerCase())==(element['gender'].toLowerCase())){
+																	console.log(element['breed']);
+																	count=true;
+																}
+															}
+														}
+														else{
+															console.log(element['breed']);
+															count=true;
+														}
+														
 													}
 												}
-												if (!count) cat_info.splice(index,1);
+												if (count==true) {
+													temp_cat.push(element);
+												};
 											});
+										}
+										else{
+											temp_cat=cat_info;
 										}
 										if (cat_info.length>0) {
 											petfound=true;
@@ -830,17 +850,29 @@ function initialGet(callback){
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
 													if (((adoption_list['breed'][x]).toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
-														console.log(element['breed']);
-														count=true;
+														if (adoption_list['gender']!=null){
+															for (var x=0;x<adoption_list['gender'].length;x++){
+																if (((adoption_list['gender'][x]).toLowerCase())==(element['gender'].toLowerCase())){
+																	console.log(element['breed']);
+																	count=true;
+																}
+															}
+														}
+														else{
+															console.log(element['breed']);
+															count=true;
+														}
+														
 													}
 												}
-												if (count==true) {temp_dog.push(element);console.log(element)};
+												if (count==true) {
+													temp_dog.push(element);
+												};
 											});
 										}
 										else{
 											temp_dog=dog_info;
 										}
-										console.log(temp_dog);
 										if (temp_dog.length>0) {
 											petfound=true;
 											if (temp_dog.length>12){
