@@ -738,7 +738,7 @@ function initialGet(callback){
 									},
 									success: function (cat_info) {
 										console.log(cat_info);
-										if ((adoption_list['breed']!=null)||(adoption_list['breed'].length!=0)){
+										if ((adoption_list['breed']!=null)){
 											cat_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
@@ -822,7 +822,7 @@ function initialGet(callback){
 									},
 									success: function (dog_info) {
 										console.log(dog_info);
-										if ((adoption_list['breed']!=null)||(adoption_list['breed'].length!=0)){
+										if ((adoption_list['breed']!=null)){
 											dog_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
