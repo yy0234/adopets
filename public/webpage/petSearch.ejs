@@ -757,7 +757,7 @@ function initialGet(callback){
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
 															<div class=\"card h-100\">\
-																<a id=\"pet_image\">"+cat_info[i].photo+"</a>\
+																<a id=\"pet_image\"><img src='"+cat_info[i].photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
 																	<div id=\"petTable\" style=\"display:table\">\
 																		<div style=\"display:table-row\">\
@@ -785,7 +785,7 @@ function initialGet(callback){
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
 															<div class=\"card h-100\">\
-																<a id=\"pet_image\">"+element.photo+"</a>\
+																<a id=\"pet_image\"><img src='"+element.photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
 																	<div id=\"petTable\" style=\"display:table\">\
 																		<div style=\"display:table-row\">\
@@ -841,7 +841,7 @@ function initialGet(callback){
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptdog.aspx');\">\
 															<div class=\"card h-100\">\
-																<a id=\"pet_image\">"+dog_info[i].photo+"</a>\
+																<a id=\"pet_image\"><img src='"+dog_info[i].photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
 																	<div id=\"petTable\" style=\"display:table\">\
 																		<div style=\"display:table-row\">\
@@ -869,7 +869,7 @@ function initialGet(callback){
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
 															<div class=\"card h-100\">\
-																<a id=\"pet_image\">"+element.photo+"</a>\
+																<a id=\"pet_image\"><img src='"+element.photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
 																	<div id=\"petTable\" style=\"display:table\">\
 																		<div style=\"display:table-row\">\
@@ -900,9 +900,9 @@ function initialGet(callback){
 							}
 						}
 					}
-					if (!petfound){
+					/*if (!petfound){
 						$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
-					}
+					}*/
 					$("#pagination").css('display','none');
 				}
 				else if (mes.length>12){
