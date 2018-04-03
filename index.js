@@ -66,30 +66,26 @@ app.get('/test_scraper', function(request, response) {
   response.render('pages/test_scraper.ejs');
 });
 
-app.get('/run_scraper', function() {
-  req(url, function (error, response, body) {
+app.get('/run_scraper', function(request, response) {
+  req(url, function (e,r, body) {
     if (!error) {
   
       var $ = cheerio.load(body);
-  
+    
       var data = $("[class='textdb12pt']>span");
-    var returnList=[];
-  
-    for (var x=0; x<(data.length/5);x++){
-      var pos=x*5;
-      var obj={};
-      obj['name']=data[pos].children[0].data;
-      obj['breed']=data[pos+1].children[0].data;
-      obj['age']=data[pos+2].children[0].data;
-      obj['sex']=data[pos+3].children[0].data;
-      obj['detail']=data[pos+4].children[0].data;
-      returnList.push(obj);
+      var returnList=[];
+    
+      for (var x=0; x<(data.length/5);x++){
+        var pos=x*5;
+        var obj={};
+        obj['name']=data[pos].children[0].data;
+        obj['breed']=data[pos+1].children[0].data;
+        obj['age']=data[pos+2].children[0].data;
+        obj['sex']=data[pos+3].children[0].data;
+        obj['detail']=data[pos+4].children[0].data;
+        returnList.push(obj);
     }
-      
-    console.log(returnList);
-  
-    } else {
-      console.log("擷取錯誤：" + error);
+    response.send(returnList);
     }
   });
 });
