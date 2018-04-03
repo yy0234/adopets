@@ -46,15 +46,15 @@
 											<button type="button" class="btn btn-secondary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'bird\'')";>Birds</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-primary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'cat\'')">Cat</button>
+											<button type="button" class="btn btn-primary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'cat\'');changeList('cat');">Cat</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-success" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'dog\'')">Dog</button>
+											<button type="button" class="btn btn-success" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'dog\'');changeList('dog');">Dog</button>
 										</div>
 									</div>
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-info" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'fish\'')">Fish</button>
+											<button type="button" class="btn btn-info" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'fish\'');">Fish</button>
 										</div>
 										<div style="display:table-cell">
 											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'reptile\'')">Reptiles</button>
@@ -708,6 +708,7 @@
 				}
 				stringStorage=stringStorage.substring(0,stringStorage.length-1);
 				adoption_search_query=" AND breed in ("+stringStorage+")";
+				adoption_list['breed']=stringStorage;
 				dynamic('/toPetSearch');
 			}
 		}
@@ -723,9 +724,16 @@
 		adoption_search_query=query;
 	}
 
+	function changeList(breed){
+		adoption_list['breed']=breed;
+	}
+
 	function changeASQByKey(){
 		var keyword=$("#auto_complete").val().toLowerCase();
 		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
+		adoption_list['type']=keyword;
+		adoption_list['breed']=keyword;
+		adoption_list['gender']=keyword;
 	}
 
 	function changeASQBySelect(){
@@ -740,6 +748,7 @@
 			console.log(temp);
 
 			searchQuery+=" AND type IN("+temp+")";
+			adoption_list['type']=temp;
 		}
 		if ($("#petBreeds").val()!=null){
 			temp="";
@@ -749,6 +758,7 @@
 			temp=temp.substring(0,temp.length-1);
 
 			searchQuery+=" AND breed IN("+temp+")";
+			adoption_list['breed']=temp;
 		}
 
 		if ($("#petGender").val()!=null){
@@ -759,6 +769,7 @@
 			temp=temp.substring(0,temp.length-1);
 
 			searchQuery+=" AND gender IN("+temp+")";
+			adoption_list['gender']=temp;
 		}
 
 		if ($("#petSize").val()!=null){
@@ -771,8 +782,10 @@
 			searchQuery+=" AND size IN("+temp+")";
 		}
 
-		if ($("#petAgeTextHolder").text()!="Age")
+		if ($("#petAgeTextHolder").text()!="Age"){
 			adopton_query_age=$("#petAgeTextHolder").text();
+			adoption_list['age']=adopton_query_age;
+		}
 		
 		adoption_search_query=searchQuery;
 		dynamic('/toPetSearch');

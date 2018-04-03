@@ -428,8 +428,7 @@ function callAjax(Query,age){
 			}
 			$("#petSearchResult").html("");
 			if (mes.length==0){
-				console.log(Query);
-				console.log(age);
+				console.log(adoption_list);
 				$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
 				$("#pagination").css('display','none');	
 			}
@@ -623,7 +622,7 @@ function findPet(){
 			temp+="'"+$("#petTypes").val()[i]+"',"
 		}
 		temp=temp.substring(0,temp.length-1);
-		console.log(temp);
+		adoption_list['type']=temp;
 
 		searchQuery+=" AND type IN("+temp+")";
 	}
@@ -633,6 +632,7 @@ function findPet(){
 			temp+="'"+$("#petBreeds").val()[i]+"',"
 		}
 		temp=temp.substring(0,temp.length-1);
+		adoption_list['breed']=temp;
 
 		searchQuery+=" AND breed IN("+temp+")";
 	}
@@ -643,6 +643,7 @@ function findPet(){
 			temp+="'"+$("#petGender").val()[i]+"',"
 		}
 		temp=temp.substring(0,temp.length-1);
+		adoption_list['gender']=temp;
 
 		searchQuery+=" AND gender IN("+temp+")";
 	}
@@ -670,8 +671,10 @@ function findPet(){
 		searchQuery+=" AND coat IN("+temp+")";
 	}
 
-	if ($("#petAgeTextHolder").text()!="Age")
+	if ($("#petAgeTextHolder").text()!="Age"){
+		adoption_list['age']=$("#petAgeTextHolder").text();
 		callAjax(searchQuery,$("#petAgeTextHolder").text());
+	}
 	else callAjax(searchQuery,null);
 
 }
@@ -679,6 +682,9 @@ function findPet(){
 function searchByKey(){
 	var keyword=$("#auto_complete").val().toLowerCase();
 	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
+	adoption_list['type']=keyword;
+	adoption_list['breed']=keyword;
+	adoption_list['gender']=keyword;
 	callAjax(searchQuery,null);
 }
 function checkPost(){
@@ -717,8 +723,11 @@ function initialGet(callback){
 					}
 				}
 				if (mes.length==0){
-					console.log(adoption_search_query);
-					console.log(adopton_query_age);
+					console.log(adoption_list);
+					adoption_list['type']=null;
+					adoption_list['breed']=null;
+					adoption_list['gender']=null;
+					adoption_list['age']=null;
 					$("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
 					$("#pagination").css('display','none');
 				}
@@ -952,6 +961,7 @@ function encodeImageFileAsURL() {
 			}
 			stringStorage=stringStorage.substring(0,stringStorage.length-1);
 			var searchQuery=" AND breed in ("+stringStorage+")";
+			adoption_list['breed']=stringStorage;
 			callAjax(searchQuery,null);
 		}
 	}
