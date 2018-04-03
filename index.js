@@ -67,7 +67,7 @@ app.get('/test_scraper', function(request, response) {
 });
 
 app.get('/run_scraper', function(request, response) {
-  req(url, function (e,r, body) {
+  req(url, function (error,r, body) {
     if (!error) {
   
       var $ = cheerio.load(body);
