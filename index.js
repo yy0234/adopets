@@ -65,7 +65,7 @@ app.get('/test_scraper', function(request, response) {
 });
 
 app.get('/run_cat_scraper', function(request, response) {
-  var returnLsit=[];
+  var returnList=[];
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
     if (!error) {
       var $ = cheerio.load(body);
