@@ -828,10 +828,11 @@ function initialGet(callback){
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
 													if (((adoption_list['breed'][x]).toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
+														console.log("true");
 														count=true;
 													}
 												}
-												if (!count) dog_info.splice(index,1);
+												if (!count) {console.log("splice");dog_info.splice(index,1)};
 											});
 										}
 										console.log(dog_info);
