@@ -66,7 +66,7 @@ app.get('/test_scraper', function(request, response) {
   response.render('pages/test_scraper.ejs');
 });
 
-app.get('/run_scraper', function(request, response) {
+app.get('/run_scraper', function() {
   req(url, function (error, response, body) {
     if (!error) {
   
