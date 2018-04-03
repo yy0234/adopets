@@ -821,12 +821,12 @@ function initialGet(callback){
 									data: {
 									},
 									success: function (dog_info) {
-										var dog_temp=dog_info;
-										console.log(dog_temp);
-
+										var temp_dog=[];
+										console.log(dog_info);
+										
 										if ((adoption_list['breed']!=null)){
 											console.log("run");
-											dog_temp.forEach(function(element,index) {
+											dog_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
 													if (((adoption_list['breed'][x]).toLowerCase()).indexOf(element['breed'].toLowerCase())>=0){
@@ -834,32 +834,35 @@ function initialGet(callback){
 														count=true;
 													}
 												}
-												if (!count) {console.log(index);dog_temp.splice(index,1);console.log(dog_temp);};
+												if (!count) {temp_dog.push(element);};
 											});
 										}
-										console.log(dog_temp);
-										if (dog_info.length>0) {
+										else{
+											temp_dog=dog_info;
+										}
+										console.log(temp_dog);
+										if (temp_dog.length>0) {
 											petfound=true;
-											if (dog_info.length>12){
+											if (temp_dog.length>12){
 												for (var i=0; i<12;i++){
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptdog.aspx');\">\
 															<div class=\"card h-100\">\
-																<a id=\"pet_image\"><img src='"+dog_info[i].photo+"'alt='photo'></a>\
+																<a id=\"pet_image\"><img src='"+temp_dog[i].photo+"'alt='photo'></a>\
 																<div class=\"card-body\">\
 																	<div id=\"petTable\" style=\"display:table\">\
 																		<div style=\"display:table-row\">\
-																			<div class=\"captionName\" style=\"display:table-cell\">"+dog_info[i].name+"</div>\
+																			<div class=\"captionName\" style=\"display:table-cell\">"+temp_dog[i].name+"</div>\
 																		</div>\
 																		<div style=\"display:table-row\">\
-																			<div class=\"captionDescription\" style=\"display:table-cell\">"+dog_info[i].age+"</div>\
+																			<div class=\"captionDescription\" style=\"display:table-cell\">"+temp_dog[i].age+"</div>\
 																		</div>\
 																			<div style=\"display:table-row\">\
-																			<div class=\"captionDescription\" style=\"display:table-cell\">"+dog_info[i].gender+"</div>\
+																			<div class=\"captionDescription\" style=\"display:table-cell\">"+temp_dog[i].gender+"</div>\
 																		</div>\
 																		<div style=\"display:table-row\">\
-																			<div class=\"captionBreeds\" style=\"display:table-cell\">"+dog_info[i].breed+"</div>\
+																			<div class=\"captionBreeds\" style=\"display:table-cell\">"+temp_dog[i].breed+"</div>\
 																		</div>\
 																	</div>\
 																</div>\
@@ -869,7 +872,7 @@ function initialGet(callback){
 												}
 											}
 											else {
-												dog_info.forEach(function(element,index) {
+												temp_dog.forEach(function(element,index) {
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
 														<div class=\"overlay\" onclick=\"window.open('http://www.lap.org.hk/adoptcat.aspx');\">\
