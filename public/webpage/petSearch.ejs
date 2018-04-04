@@ -294,7 +294,7 @@ $('#petTypes').change(function(){
 
 
 $("#order").change(function(){
-	if (petData.length==0)
+	if (petData.length==undefined||petData.length==0)
 		return;
 	if ($("#order").val()=="name"){
 		petData.sort(function(a, b){
