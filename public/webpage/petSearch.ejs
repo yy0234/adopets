@@ -895,7 +895,7 @@ function findPet(){
 	if ($("#petBreeds").val()!=null){
 		temp="";
 		for (var i=0;i<$("#petBreeds").val().length;i++){
-			temp+="'"+$("#petBreeds").val()[i]+"',"
+			temp+="'"+($("#petBreeds").val()[i]).toLowerCase()+"',"
 		}
 		temp=temp.substring(0,temp.length-1);
 		adoption_list['breed']=temp;
