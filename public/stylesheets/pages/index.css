@@ -302,3 +302,7 @@ padding-bottom: 0;
 #pet_image>img{
     max-height:230px;
 }
+
+#modal_petImage img {
+    max-height: 250px;
+}
