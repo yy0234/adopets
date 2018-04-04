@@ -428,7 +428,7 @@ function callAjax(Query,age){
 			}
 			$("#petSearchResult").html("");
 			if (mes.length==0){
-				console.log(adoption_list);
+				
 				var petfound=false;
 				if (adoption_list['type']!=null){
 					if (adoption_list['type'].includes('cat')||adoption_list['type'].includes('dog'))
@@ -445,12 +445,12 @@ function callAjax(Query,age){
 								},
 								success: function (cat_info) {
 									var temp_cat=[];
-									console.log(cat_info);
+									
 									
 									$(".lap_mes").remove();
 
 									if ((adoption_list['breed']!=null)){
-										console.log("run");
+										
 										cat_info.forEach(function(element,index) {
 											var count=false;
 											for (var x=0;x<adoption_list['breed'].length;x++){
@@ -458,13 +458,13 @@ function callAjax(Query,age){
 													if (adoption_list['gender']!=null){
 														for (var x=0;x<adoption_list['gender'].length;x++){
 															if (((adoption_list['gender'][x]).toLowerCase())==(element['gender'].toLowerCase())){
-																console.log(element['breed']);
+																
 																count=true;
 															}
 														}
 													}
 													else{
-														console.log(element['breed']);
+														
 														count=true;
 													}
 													
@@ -577,11 +577,11 @@ function callAjax(Query,age){
 								},
 								success: function (dog_info) {
 									var temp_dog=[];
-									console.log(dog_info);
+									
 									$(".lap_mes").remove();
 									
 									if ((adoption_list['breed']!=null)){
-										console.log("run");
+										
 										dog_info.forEach(function(element,index) {
 											var count=false;
 											for (var x=0;x<adoption_list['breed'].length;x++){
@@ -589,13 +589,13 @@ function callAjax(Query,age){
 													if (adoption_list['gender']!=null){
 														for (var x=0;x<adoption_list['gender'].length;x++){
 															if (((adoption_list['gender'][x]).toLowerCase())==(element['gender'].toLowerCase())){
-																console.log(element['breed']);
+																
 																count=true;
 															}
 														}
 													}
 													else{
-														console.log(element['breed']);
+														
 														count=true;
 													}
 													
@@ -988,7 +988,7 @@ function initialGet(callback){
 					}
 				}
 				if (mes.length==0){
-					console.log(adoption_list);
+					
 					var petfound=false;
 					if (adoption_list['type']!=null){
 						if (adoption_list['type'].includes('cat')||adoption_list['type'].includes('dog'))
@@ -1005,12 +1005,12 @@ function initialGet(callback){
 									},
 									success: function (cat_info) {
 										var temp_cat=[];
-										console.log(cat_info);
+										
 										
 										$(".lap_mes").remove();
 
 										if ((adoption_list['breed']!=null)){
-											console.log("run");
+											
 											cat_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
@@ -1018,13 +1018,13 @@ function initialGet(callback){
 														if (adoption_list['gender']!=null){
 															for (var x=0;x<adoption_list['gender'].length;x++){
 																if (((adoption_list['gender'][x]).toLowerCase())==(element['gender'].toLowerCase())){
-																	console.log(element['breed']);
+																	
 																	count=true;
 																}
 															}
 														}
 														else{
-															console.log(element['breed']);
+															
 															count=true;
 														}
 														
@@ -1137,11 +1137,11 @@ function initialGet(callback){
 									},
 									success: function (dog_info) {
 										var temp_dog=[];
-										console.log(dog_info);
+										
 										$(".lap_mes").remove();
 										
 										if ((adoption_list['breed']!=null)){
-											console.log("run");
+											
 											dog_info.forEach(function(element,index) {
 												var count=false;
 												for (var x=0;x<adoption_list['breed'].length;x++){
@@ -1149,13 +1149,13 @@ function initialGet(callback){
 														if (adoption_list['gender']!=null){
 															for (var x=0;x<adoption_list['gender'].length;x++){
 																if (((adoption_list['gender'][x]).toLowerCase())==(element['gender'].toLowerCase())){
-																	console.log(element['breed']);
+																	
 																	count=true;
 																}
 															}
 														}
 														else{
-															console.log(element['breed']);
+															
 															count=true;
 														}
 														
