@@ -479,7 +479,7 @@ function callAjax(Query,age){
 										temp_cat=cat_info;
 									}
 									if (temp_cat.length>0) {
-										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">Cat for Adoption Result from lap.org.hk</div>");
+										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"color:gray;font-weight:bold\">Cat for Adoption Result from lap.org.hk</div>");
 										petfound=true;
 										var display_length=12;
 										if(adoption_list['type'].includes('dog'))
@@ -554,7 +554,7 @@ function callAjax(Query,age){
 										adoption_list['breed']=null;
 										adoption_list['gender']=null;
 										adoption_list['age']=null;
-										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes'\">No Result found in lap.org.hk</div>");
+										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4'style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 									}
 
 								},
@@ -604,7 +604,7 @@ function callAjax(Query,age){
 										temp_dog=dog_info;
 									}
 									if (temp_dog.length>0) {
-										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_dog_mes'\">Dog for Adoption Result from lap.org.hk</div>");
+										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_dog_mes'  style=\"color:gray;font-weight:bold\">Dog for Adoption Result from lap.org.hk</div>");
 										petfound=true;
 										var display_length=12;
 										if(adoption_list['type'].includes('cat'))
@@ -667,7 +667,7 @@ function callAjax(Query,age){
 										}
 									}
 									else{
-										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
+										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 									}
 								},
 								error: function (err) {
@@ -1021,7 +1021,7 @@ function initialGet(callback){
 											temp_cat=cat_info;
 										}
 										if (temp_cat.length>0) {
-											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">Cat for Adoption Result from lap.org.hk</div>");
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes'  style=\"color:gray;font-weight:bold\">Cat for Adoption Result from lap.org.hk</div>");
 											petfound=true;
 											var display_length=12;
 											if(adoption_list['type'].includes('dog'))
@@ -1084,7 +1084,7 @@ function initialGet(callback){
 											}
 										}
 										else{
-											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes'\">No Result found in lap.org.hk</div>");
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 										}
 
 									},
@@ -1134,7 +1134,7 @@ function initialGet(callback){
 											temp_dog=dog_info;
 										}
 										if (temp_dog.length>0) {
-											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_dog_mes'\">Dog for Adoption Result from lap.org.hk</div>");
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_dog_mes'  style=\"color:gray;font-weight:bold\">Dog for Adoption Result from lap.org.hk</div>");
 											petfound=true;
 											var display_length=12;
 											if(adoption_list['type'].includes('cat'))
@@ -1209,7 +1209,7 @@ function initialGet(callback){
 											adoption_list['breed']=null;
 											adoption_list['gender']=null;
 											adoption_list['age']=null;
-											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 										}
 									},
 									error: function (err) {
