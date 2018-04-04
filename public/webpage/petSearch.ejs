@@ -408,7 +408,7 @@ function spinner(){
 }
 
 function callAjax(Query,age){
-	petData= $.ajax({
+	$.ajax({
 		url: "/listPet",
 		type: "GET",
 		data: {
@@ -768,10 +768,10 @@ function callAjax(Query,age){
 				total_page=0;
 			}
 			document.getElementById('order').value="date";
-			return mes;
+			petData = mes;
 		},
 		error: function (err) {
-			return err;
+			console.log (err);
 		}
 	});
 }
