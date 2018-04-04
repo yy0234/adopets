@@ -484,10 +484,12 @@ function callAjax(Query,age){
 										if(adoption_list['type'].includes('dog'))
 											display_length=6;
 										if (temp_cat.length>display_length){
-											adoption_list['type']=null;
-											adoption_list['breed']=null;
-											adoption_list['gender']=null;
-											adoption_list['age']=null;
+											if(!(adoption_list['type'].includes('dog'))){
+												adoption_list['type']=null;
+												adoption_list['breed']=null;
+												adoption_list['gender']=null;
+												adoption_list['age']=null;
+											}
 											for (var i=0; i<display_length;i++){
 												$("#petSearchResult").append("\
 												<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -516,10 +518,12 @@ function callAjax(Query,age){
 											}
 										}
 										else {
-											adoption_list['type']=null;
-											adoption_list['breed']=null;
-											adoption_list['gender']=null;
-											adoption_list['age']=null;
+											if(!(adoption_list['type'].includes('dog'))){
+												adoption_list['type']=null;
+												adoption_list['breed']=null;
+												adoption_list['gender']=null;
+												adoption_list['age']=null;
+											}
 											temp_cat.forEach(function(element,index) {
 												$("#petSearchResult").append("\
 												<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -549,10 +553,12 @@ function callAjax(Query,age){
 										}
 									}
 									else{
-										adoption_list['type']=null;
-										adoption_list['breed']=null;
-										adoption_list['gender']=null;
-										adoption_list['age']=null;
+										if(!(adoption_list['type'].includes('dog'))){
+											adoption_list['type']=null;
+											adoption_list['breed']=null;
+											adoption_list['gender']=null;
+											adoption_list['age']=null;
+										}
 										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4'style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 									}
 
@@ -609,6 +615,10 @@ function callAjax(Query,age){
 										if(adoption_list['type'].includes('cat'))
 											display_length=6;
 										if (temp_dog.length>display_length){
+												adoption_list['type']=null;
+												adoption_list['breed']=null;
+												adoption_list['gender']=null;
+												adoption_list['age']=null;
 											for (var i=0; i<display_length;i++){
 												$("#petSearchResult").append("\
 												<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -637,6 +647,10 @@ function callAjax(Query,age){
 											}
 										}
 										else {
+											adoption_list['type']=null;
+											adoption_list['breed']=null;
+											adoption_list['gender']=null;
+											adoption_list['age']=null;
 											temp_dog.forEach(function(element,index) {
 												$("#petSearchResult").append("\
 												<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -666,6 +680,10 @@ function callAjax(Query,age){
 										}
 									}
 									else{
+										adoption_list['type']=null;
+										adoption_list['breed']=null;
+										adoption_list['gender']=null;
+										adoption_list['age']=null;
 										$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 									}
 								},
@@ -973,7 +991,8 @@ function initialGet(callback){
 					console.log(adoption_list);
 					var petfound=false;
 					if (adoption_list['type']!=null){
-						$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
+						if (adoption_list['type'].includes('cat')||adoption_list['type'].includes('dog'))
+							$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
 						adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
 						if (adoption_list['breed']!=null) adoption_list['breed']=adoption_list['breed'].replace(/'/g,'').split(',');
 						if (adoption_list['gender']!=null) adoption_list['gender']=adoption_list['gender'].replace(/'/g,'').split(',');
@@ -1026,6 +1045,12 @@ function initialGet(callback){
 											if(adoption_list['type'].includes('dog'))
 												display_length=6;
 											if (temp_cat.length>display_length){
+												if(!(adoption_list['type'].includes('dog'))){
+													adoption_list['type']=null;
+													adoption_list['breed']=null;
+													adoption_list['gender']=null;
+													adoption_list['age']=null;
+												}
 												for (var i=0; i<display_length;i++){
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -1054,6 +1079,12 @@ function initialGet(callback){
 												}
 											}
 											else {
+												if(!(adoption_list['type'].includes('dog'))){
+													adoption_list['type']=null;
+													adoption_list['breed']=null;
+													adoption_list['gender']=null;
+													adoption_list['age']=null;
+												}
 												temp_cat.forEach(function(element,index) {
 													$("#petSearchResult").append("\
 													<div class=\"col-lg-4 col-md-6 mb-4\">\
@@ -1083,6 +1114,12 @@ function initialGet(callback){
 											}
 										}
 										else{
+											if(!(adoption_list['type'].includes('dog'))){
+												adoption_list['type']=null;
+												adoption_list['breed']=null;
+												adoption_list['gender']=null;
+												adoption_list['age']=null;
+											}
 											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
 										}
 
