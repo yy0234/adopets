@@ -295,7 +295,7 @@ padding-bottom: 0;
     background-color: #fff;
 }
 
-#pet_image:hover{
+.overlay:hover>#pet_image{
     opacity: 0.5;
 }
 
