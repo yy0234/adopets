@@ -724,6 +724,8 @@ function initialGet(callback){
 				}
 				if (mes.length==0){
 					console.log(adoption_list);
+					$("#petSearchResult").prepend("<div class='col-lg-12 col-md-12 pt-4' style=\"text-align: center;margin: 0 auto;\">No record found in adopets</div>");
+					$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto;\">Searching from lap.org.hk... </div>");
 					var petfound=false;
 					if (adoption_list['type']!=null){
 						adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
@@ -740,6 +742,8 @@ function initialGet(callback){
 										var temp_cat=[];
 										console.log(cat_info);
 										
+										$('lap_mes'),remove();
+
 										if ((adoption_list['breed']!=null)){
 											console.log("run");
 											cat_info.forEach(function(element,index) {
@@ -770,6 +774,7 @@ function initialGet(callback){
 											temp_cat=cat_info;
 										}
 										if (temp_cat.length>0) {
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">Cat for Adoption Result from lap.org.hk</div>");
 											petfound=true;
 											var display_length=12;
 											if(adoption_list['type'].includes('dog'))
@@ -831,6 +836,9 @@ function initialGet(callback){
 												});
 											}
 										}
+										else{
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
+										}
 									},
 									error: function (err) {
 										alert(err);
@@ -846,6 +854,7 @@ function initialGet(callback){
 									success: function (dog_info) {
 										var temp_dog=[];
 										console.log(dog_info);
+										$('lap_mes'),remove();
 										
 										if ((adoption_list['breed']!=null)){
 											console.log("run");
@@ -877,6 +886,7 @@ function initialGet(callback){
 											temp_dog=dog_info;
 										}
 										if (temp_dog.length>0) {
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">Cat for Adoption Result from lap.org.hk</div>");
 											petfound=true;
 											var display_length=12;
 											if(adoption_list['type'].includes('cat'))
@@ -938,6 +948,9 @@ function initialGet(callback){
 												});
 											}
 										}
+										else{
+											$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_cat_mes' style=\"text-align: center;margin: 0 auto;\">No Result found in lap.org.hk</div>");
+										}
 									},
 									error: function (err) {
 										alert(err);
@@ -946,7 +959,7 @@ function initialGet(callback){
 							}
 						
 					}
-					$(".resultSession").prepend("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
+					
 					$("#pagination").css('display','none');
 				}
 				else if (mes.length>12){
