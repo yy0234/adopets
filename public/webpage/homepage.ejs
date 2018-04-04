@@ -708,8 +708,6 @@
 				}
 				stringStorage=stringStorage.substring(0,stringStorage.length-1);
 				adoption_search_query=" AND breed in ("+stringStorage+")";
-				adoption_list['type']="'cat','dog'";
-				adoption_list['breed']=stringStorage;
 				dynamic('/toPetSearch');
 			}
 		}
@@ -732,8 +730,6 @@
 	function changeASQByKey(){
 		var keyword=$("#auto_complete").val().toLowerCase();
 		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
-		adoption_list['type']="'cat','dog'";
-		adoption_list['breed']=keyword;
 	}
 
 	function changeASQBySelect(){

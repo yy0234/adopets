@@ -948,8 +948,6 @@ function findPet(){
 function searchByKey(){
 	var keyword=$("#auto_complete").val().toLowerCase();
 	var searchQuery=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
-	adoption_list['type']="'cat','dog'";
-	adoption_list['breed']=keyword;
 	callAjax(searchQuery,null);
 }
 function checkPost(){
@@ -1488,7 +1486,6 @@ function encodeImageFileAsURL() {
 			}
 			stringStorage=stringStorage.substring(0,stringStorage.length-1);
 			var searchQuery=" AND breed in ("+stringStorage+")";
-			adoption_list['breed']=stringStorage;
 			callAjax(searchQuery,null);
 		}
 	}
