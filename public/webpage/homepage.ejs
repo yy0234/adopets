@@ -173,13 +173,13 @@
 				<div class="modal-body" style="margin-bottom: 20px;">
 					<div class="row" style="margin-left:0;margin-right:0;">
 						<div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
-							<img src="/images/cat3.jpg" />
+							<a id="modal_petImage"><img src="/images/cat3.jpg" /></a>
 							<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
 								<div class="col-md-12" style="margin-bottom:20px;">
 									<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 								</div>
 								<div class="col-md-12">
-									<button type="button" class="btn btn-primary" style="width:80%">Adopt Me</button>
+									<button type="button" class="btn btn-primary" style="width:80%">Contact Provider</button>
 								</div>
 							</div>
 						</div>
@@ -188,42 +188,42 @@
 								<div class="col-md-12 col-lg-6">
 									<div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
 										<div style="display:table-row;">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Pet ID
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petId" style="display:table-cell">
 												001
 											</div>
 										</div>
 										<div style="display:table-row;">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Name
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petName" style="display:table-cell">
 												Name
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Age
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petAge" style="display:table-cell">
 												Age
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Size
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petSize" style="display:table-cell">
 												Small
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Coat length
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petCoat" style="display:table-cell">
 												Medium
 											</div>
 										</div>
@@ -232,42 +232,42 @@
 								<div class="col-md-12 col-lg-6">
 									<div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Post date
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petPostDate" style="display:table-cell">
 												2018/2/21
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Gender
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petGender" style="display:table-cell">
 												Male
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Breed type
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petBreed" style="display:table-cell">
 												Mixed
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Neutered
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petNeutered" style="display:table-cell">
 												Yes
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Provider
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petProvider" style="display:table-cell">
 												yy0234
 											</div>
 										</div>
@@ -278,7 +278,7 @@
 								<div class="col-md-12" style="font-weight:bold;color:blue">
 									Description
 								</div>
-								<div class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+								<div id="modal_petDescription" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
 									Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
 									
 									I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
@@ -290,7 +290,7 @@
 								<div class="col-md-12" style="font-weight:bold;color:grey">
 									Remark
 								</div>
-								<div class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+								<div id="modal_petRemark" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
 									None
 								</div>
 							</div>

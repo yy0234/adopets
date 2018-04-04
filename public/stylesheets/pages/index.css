@@ -288,7 +288,7 @@ padding-bottom: 0;
   }
 
 #pet_image{
-    height: 200px;
+    height: 230px;
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
@@ -300,5 +300,5 @@ padding-bottom: 0;
 }
 
 #pet_image>img{
-    max-height:200px;
+    max-height:230px;
 }
