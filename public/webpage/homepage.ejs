@@ -731,9 +731,8 @@
 	function changeASQByKey(){
 		var keyword=$("#auto_complete").val().toLowerCase();
 		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
-		adoption_list['type']=keyword;
+		adoption_list['type']="'cat','dog'";
 		adoption_list['breed']=keyword;
-		adoption_list['gender']=keyword;
 	}
 
 	function changeASQBySelect(){
