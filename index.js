@@ -173,6 +173,18 @@ app.post('/addPets', function (request, response) {
   });
 });
 
+app.get("/listInterest", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	   client.query("SELECT * FROM pets WHERE status='open'"+request.query.query+" order by petid DESC limit 12", function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+       else
+        { return response.send(result.rows);   }
+    });
+  });
+});
+
 
 app.get("/listPet", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {

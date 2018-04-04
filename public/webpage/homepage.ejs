@@ -408,7 +408,7 @@
 					</li>
 				</ul>
 			</div>
-			<div style="float:right;"><a href="/search">more >></a></div>
+			<div style="float:right;"><a href="/pet_search">more >></a></div>
 		</div>
 	</div>
 
@@ -557,6 +557,7 @@
 <script src="/javascript/nouislider.min.js"></script>
 <script src="/javascript/adoption.js"></script>
 <script>
+	var petData;
 	$(window).bind("resize", function(){
     	$('.flexslider').flexslider(0);
 	});
@@ -577,6 +578,27 @@
 		}
 		$('#petBreeds').multiselect('rebuild');
 	});
+
+	function changeModal(elementNo){
+		var petData_element=petData[elementNo];
+		$("#modal_petImage").html(petData_element.peturl);
+		$("#modal_petId").html(petData_element.petid);
+		$("#modal_petName").html(petData_element.name);
+		$("#modal_petAge").html(petData_element.age);
+		$("#modal_petSize").html(petData_element.size);
+		$("#modal_petCoat").html(petData_element.coat);
+		var d=new Date(petData_element.postdate);
+		$("#modal_petPostDate").html(d.getDate()+"-"+(parseInt(d.getMonth())+1)+"-"+d.getFullYear());
+		$("#modal_petGender").html(petData_element.gender);
+		$("#modal_petBreed").html(petData_element.breed);
+		if (petData_element.neutered==true)
+			$("#modal_petNeutered").html("Yes");
+		else $("#modal_petNeutered").html("No");
+		$("#modal_petProvider").html(petData_element.providerid);
+		$("#modal_petDescription").html(petData_element.description);
+		$("#modal_petRemark").html(petData_element.remark);
+
+	}
 
     $(document).ready(function() {
 		$('.flexslider').flexslider({
@@ -675,6 +697,72 @@
 			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 		});
 
+		$.ajax({
+            url: "/listInterest",
+            type: "GET",
+            data: {
+            },
+            success: function (mes) {
+                if(mes.length!=0){
+					petData=mes;
+					if (mes.length>12){
+						for(var i=0; i<12;i++){
+							$(".slides").append("\
+								<li>\
+									<div class='overlay' onclick=\"changeModal("+i+")\" data-toggle='modal' data-target='#petDetailModal'>\
+										<a id=\"pet_image\">"+mes[i].peturl+"</a>\
+										<div class='flex-caption'>\
+											<div style='display:table'>\
+												<div style='display:table-row'>\
+													<div class='captionName' style='display:table-cell'>"+mes[i].name+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+mes[i].age+"</div>\
+												</div>\
+													<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+mes[i].gender+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionBreeds' style='display:table-cell'>"+mes[i].breed+"</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</li>")
+						}
+					}
+					else {
+						mes.forEach(function(element,index){
+							$(".slides").append("\
+								<li>\
+									<div class='overlay' onclick=\"changeModal("+index+")\" data-toggle='modal' data-target='#petDetailModal'>\
+										<a id=\"pet_image\">"+element.peturl+"</a>\
+										<div class='flex-caption'>\
+											<div style='display:table'>\
+												<div style='display:table-row'>\
+													<div class='captionName' style='display:table-cell'>"+element.name+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+element.age+"</div>\
+												</div>\
+													<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+element.gender+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionBreeds' style='display:table-cell'>"+element.breed+"</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</li>")
+						});
+					}
+				}
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 		
 	});
 	
