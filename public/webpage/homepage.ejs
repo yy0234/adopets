@@ -350,13 +350,6 @@
 	}
 
     $(document).ready(function() {
-		$('.flexslider').flexslider({
-			animation: "slide",
-			animationLoop: false,
-            itemWidth: 200,
-			itemMargin: 15,
-			start: function(){ $(".flexslider li").css("width", "200"); }
-		});
 
 		$('#searchTab a:first').tab('show');
         $('#petTypes').multiselect({
@@ -513,9 +506,20 @@
             error: function (err) {
                 console.log(err);
             }
-        });
-		
+        }).done(function() {
+				$('.flexslider').flexslider({
+					animation: "slide",
+					animationLoop: false,
+					itemWidth: 200,
+					itemMargin: 15,
+					start: function(){ $(".flexslider li").css("width", "200"); }
+				});
+			});
 	});
+
+
+			
+
 	
 	function encodeImageFileAsURL() {
 	  var base64Image="";
