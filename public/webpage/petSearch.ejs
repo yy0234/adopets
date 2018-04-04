@@ -429,10 +429,9 @@ function callAjax(Query,age){
 			$("#petSearchResult").html("");
 			if (mes.length==0){
 				console.log(adoption_list);
-				$("#petSearchResult").prepend("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;border-bottom: 1px solid lightgrey;\">No record found in adopets</div>");
-				$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
 				var petfound=false;
 				if (adoption_list['type']!=null){
+					$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
 					adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
 					if (adoption_list['breed']!=null) adoption_list['breed']=adoption_list['breed'].replace(/'/g,'').split(',');
 					if (adoption_list['gender']!=null) adoption_list['gender']=adoption_list['gender'].replace(/'/g,'').split(',');
@@ -677,6 +676,7 @@ function callAjax(Query,age){
 						}
 					
 				}
+				$("#petSearchResult").prepend("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;border-bottom: 1px solid lightgrey;\">No record found in adopets</div>");
 				$("#pagination").css('display','none');
 			}
 			else if (mes.length>12){
@@ -971,10 +971,9 @@ function initialGet(callback){
 				}
 				if (mes.length==0){
 					console.log(adoption_list);
-					$("#petSearchResult").prepend("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;border-bottom: 1px solid lightgrey;\">No record found in adopets</div>");
-					$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
 					var petfound=false;
 					if (adoption_list['type']!=null){
+						$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
 						adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
 						if (adoption_list['breed']!=null) adoption_list['breed']=adoption_list['breed'].replace(/'/g,'').split(',');
 						if (adoption_list['gender']!=null) adoption_list['gender']=adoption_list['gender'].replace(/'/g,'').split(',');
@@ -1219,6 +1218,7 @@ function initialGet(callback){
 							}
 						
 					}
+					$("#petSearchResult").prepend("<div class='col-lg-12 col-md-12 pt-4 pb-4' style=\"text-align: center;margin: 0 auto;border-bottom: 1px solid lightgrey;\">No record found in adopets</div>");
 					$("#pagination").css('display','none');
 				}
 				else if (mes.length>12){
