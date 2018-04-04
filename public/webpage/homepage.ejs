@@ -571,8 +571,10 @@
 	}
 
 	function changeASQByKey(){
-		var keyword=$("#auto_complete").val().toLowerCase();
-		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
+		var keyword=$("#auto_complete").val()
+		var keyword_low=$("#auto_complete").val().toLowerCase();
+		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE any (array['%"+keyword+"%','%"+keyword_low+"%'])";
+		
 	}
 
 	function changeASQBySelect(){
