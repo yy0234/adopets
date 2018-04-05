@@ -88,6 +88,7 @@
 <script>
 
 	function minus(){
+		alert("clicked");
 		e.preventDefault();
 		var $this = $(this);
 		var $input = $this.closest('div').find('input');
@@ -186,7 +187,7 @@
 															<i class=\"fa fa-plus\"></i>\
 														</button>\
 														<input type=\"text\" name=\"quantity\" value=\" "+element.quantity+ "\">\
-														<button class=\"minus-btn\" type=\"button\" name=\"button\" onclick=\"minus()\">\>\
+														<button class=\"minus-btn\" type=\"button\" name=\"button\" onclick=\"minus()\">\
 															<i class=\"fa fa-minus\"></i>\
 														</button>\
 													</div>\
