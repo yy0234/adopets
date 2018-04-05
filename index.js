@@ -158,16 +158,15 @@ app.get('/regist', function (request, response) {
 
 app.get("/signin", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "SELECT * FROM users WHERE userid IN " + request.query.username + " AND password IN " + request.query.password; 
-	  client.query(sql, function(err, result) {
+	  client.query("SELECT * FROM users WHERE userid IN " +request.query.username+" AND password IN "+request.query.password, function(err, result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
         else if (result.length==null) {
-          return response.send(sql+result.rows); 
+          return response.send(result.rows); 
         }
        else
-        { return response.send(sql+"success"+result.rows);}
+        { return response.send("success"+result.rows);}
       });
   });
 });
