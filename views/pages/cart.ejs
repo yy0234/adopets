@@ -88,8 +88,6 @@
 <script>
 
 	function minus(){
-		alert("clicked");
-		e.preventDefault();
 		var $this = $(this);
 		var $input = $this.closest('div').find('input');
 		var value = parseInt($input.val());
@@ -105,12 +103,10 @@
 	};
 	
 	function plus(){
-		alert("clicked");
-		e.preventDefault();
 		var $this = $(this);
 		var $input = $this.closest('div').find('input');
 		var value = parseInt($input.val());
-	
+		alert(value);
 		if (value < 100) {
 			value = value + 1;
 		} else {
