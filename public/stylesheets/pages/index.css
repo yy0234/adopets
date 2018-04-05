@@ -311,8 +311,8 @@ nav{
     background-color: powderblue;
 }
 
-nav darkBlue{
-    background-color: #3097D1;
+darkBlue{
+    background-color: #3097D1 !important;
 }
 
 nav:hover{
