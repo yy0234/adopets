@@ -550,6 +550,7 @@
 					stringStorage+="'"+resultList.responses[0].labelAnnotations[i].description+"',";
 				}
 				stringStorage=stringStorage.substring(0,stringStorage.length-1);
+				adoption_list["breed"]=stringStorage;
 				adoption_search_query=" AND breed in ("+stringStorage+")";
 				dynamic('/toPetSearch');
 			}
@@ -574,7 +575,13 @@
 		var keyword=$("#auto_complete").val()
 		var keyword_low=$("#auto_complete").val().toLowerCase();
 		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE any (array['%"+keyword+"%','%"+keyword_low+"%'])";
-		
+		if(keyword_low=="cat"||keyword_low=="dog"){
+			adoption_list["type"]=keyword_low;
+		}
+		else{
+			adoption_list["breed"]=keyword_low;
+		}
+			
 	}
 
 	function changeASQBySelect(){
