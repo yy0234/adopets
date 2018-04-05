@@ -308,7 +308,7 @@ padding-bottom: 0;
 }
 
 nav{
-    background-color: powderblue;
+    background-color: powderblue !important;
 }
 
 .darkBlue{
@@ -316,5 +316,5 @@ nav{
 }
 
 nav:hover{
-    background-color: #3097D1;
+    background-color: #3097D1 !important;
 }
