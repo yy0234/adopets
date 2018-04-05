@@ -82,7 +82,7 @@
 							<input type="password" id="confirmPassword" class="form-control" placeholder="Confirmed Password" required>
 						</div>
 	
-						<button class="btn btn-primary btn-block mb-3" type="submit" onclick="userSignUp()">Sign Up</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit" id="signUp">Sign Up</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -115,7 +115,7 @@
 							<input type="checkbox" value="remember-me"> Remember me
 							</label>
 						</div>
-						<button class="btn btn-primary btn-block mb-3" type="submit" onclick="userSignIn()">Sign in</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit" id="signIn">Sign in</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -137,6 +137,34 @@
 	var adoption_post_id=null;
 	var adoption_list={type:null,breed:null,gender:null,age:null};
 
+	$(document).ready(function() {
+		$("#submitButton").click(function() {
+			var form = $("#form-signin")
+			if (form[0].checkValidity() === false) {
+				event.preventDefault()
+				event.stopPropagation()
+			}
+			else if (form[0].checkValidity() === true){
+				$.ajax({
+					url: "/signin",
+					type: "GET",
+					data: {
+						username: "('"+$(".form-signin #login_username").val()+"')",
+						password: "('"+$(".form-signin #login_password").val()+"')"
+					},
+					success: function (mes) {
+						console.log(mes);
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+				event.preventDefault();
+			}
+			form.addClass('was-validated');
+		})
+	})
+
 	function dynamic(link){
 		$.ajax({
 			url: link,
@@ -150,33 +178,6 @@
 				alert(err);
 			}
 		});
-	}
-
-	function userSignIn(){
-		var form = $("#form-signin")
-
-		if (form[0].checkValidity() === false) {
-			event.preventDefault()
-			event.stopPropagation()
-		}
-		else if (form[0].checkValidity() === true){
-			$.ajax({
-				url: "/signin",
-				type: "GET",
-				data: {
-					username: "('"+$(".form-signin #login_username").val()+"')",
-					password: "('"+$(".form-signin #login_password").val()+"')"
-				},
-				success: function (mes) {
-					console.log(mes);
-				},
-				error: function (err) {
-					console.log(err);
-				}
-			});
-			event.preventDefault();
-		}
-		form.addClass('was-validated');
 	}
 
 	function userSignUp(){
