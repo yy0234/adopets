@@ -306,3 +306,7 @@ padding-bottom: 0;
 #modal_petImage img {
     max-height: 250px;
 }
+
+nav{
+    background-color: powderblue;
+}
