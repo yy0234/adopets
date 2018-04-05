@@ -158,7 +158,7 @@ app.get('/regist', function (request, response) {
 
 app.get("/signin", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "SELECT * FROM users WHERE userid IN (" + request.body.username + ") AND password IN (" + request.body.password+")"; 
+	  var sql = "SELECT * FROM users WHERE userid IN " + request.query.username + " AND password IN " + request.query.password; 
 	  client.query(sql, function(err, result) {
        done();
        if (err)
