@@ -65,7 +65,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form class="form-signup">
+					<form class="form-signup" novalidate>
 						<div class="form-label-group">
 							<input type="text" id="username" class="form-control" placeholder="Username" required>
 						</div>
@@ -82,7 +82,7 @@
 							<input type="password" id="confirmPassword" class="form-control" placeholder="Confirmed Password" required>
 						</div>
 	
-						<button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit">Sign Up</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -101,7 +101,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form class="form-signin">
+					<form class="form-signin" novalidate>
 						<div class="form-label-group">
 							<input type="text" id="username" class="form-control" placeholder="Username" required>
 						</div>
@@ -115,7 +115,7 @@
 							<input type="checkbox" value="remember-me"> Remember me
 							</label>
 						</div>
-						<button class="btn btn-primary btn-block" type="submit">Sign in</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit">Sign in</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -138,19 +138,95 @@
 	var adoption_list={type:null,breed:null,gender:null,age:null};
 
 	function dynamic(link){
-	$.ajax({
-		url: link,
-		type: "GET",
-		data: {
-		},
-		success: function (mes) {
-			$("#dynamic").load(mes);
-		},
-		error: function (err) {
-			alert(err);
-		}
-	});
-}
+		$.ajax({
+			url: link,
+			type: "GET",
+			data: {
+			},
+			success: function (mes) {
+				$("#dynamic").load(mes);
+			},
+			error: function (err) {
+				alert(err);
+			}
+		});
+	}
+
+	(function() {
+		'use strict';
+
+		window.addEventListener('load', function() {
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var signInForms = document.getElementsByClassName('form-signin');
+
+		// Loop over them and prevent submission
+		var validation = Array.prototype.filter.call(signInForms, function(form) {
+			form.addEventListener('submit', function(event) {
+			if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+			}
+			else if (form.checkValidity() === true){
+				userSignIn();
+				event.preventDefault();
+			}
+			form.classList.add('was-validated');
+			}, false);
+		});
+		}, false);
+	})();
+
+	function userSignIn(){
+		$.ajax({
+			url: "/signin",
+			type: "GET",
+			data: {
+				username: $(".form-signin #username").val(),
+				password: $(".form-signin #inputPassword").val()
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+		return false;
+	}
+
+
+	$("#user_login").click(function () {
+		var register_firstname = $("#register_firstname").val() || "";
+		var register_lastname = $("#register_lastname").val() || "";
+		var birthdate = $("#birthdate").val() || "";
+		var register_email = $("#register_email").val() || "";
+		var register_mobilenumber = $("#register_mobilenumber").val() || "";
+		var register_address = $("#register_address1").val()+" "+$("#register_address2").val()+" "+$("#district").val() || "";
+		var register_username = $("#register_username").val() || "";
+		var register_password = $("#register_password").val() || "";
+
+		$.ajax({
+			url: "/regist",
+			type: "GET",
+			contentType: "application/json",
+			data: {
+				userid: register_username,
+				lastname: register_lastname,
+				firstname:register_firstname,
+				email: register_email,
+				telnum: register_mobilenumber,
+				address: register_address,
+				birthday: birthdate,
+				password:register_password
+			},
+			error: function error(err) {
+				alert(err);
+			},
+			success: function success(mes) {
+				alert(mes);
+			}
+		})
+	})
 </script>
 </body>
 </html>
