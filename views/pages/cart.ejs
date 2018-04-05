@@ -121,6 +121,8 @@
 	function deleteItem(){
 		var userid = "test1234"; //change later
 		var name = document.getElementsByClassName("name").innerHTML;
+		alert(userid);
+		alert(name);
 		$.ajax({
 			url: "/deleteCart",
 			type: "POST",
