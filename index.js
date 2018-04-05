@@ -164,10 +164,10 @@ app.get("/signin", function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
         else if (result.length==null) {
-          return response.send("cannot find user"); 
+          return response.send(sql); 
         }
        else
-        { return response.send("sql");}
+        { return response.send(sql+"success");}
       });
   });
 });
