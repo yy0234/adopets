@@ -310,3 +310,7 @@ padding-bottom: 0;
 nav{
     background-color: powderblue;
 }
+
+nav:hover{
+    background-color: #3097D1;
+}
