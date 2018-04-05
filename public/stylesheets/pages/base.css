@@ -1,0 +1,7 @@
+.navbar-nav>.displayT{
+    display:block;
+}
+
+.navbar-nav>.displayF{
+    display:none;
+}
