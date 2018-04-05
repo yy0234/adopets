@@ -9,3 +9,8 @@
 nav{
     background-color: #3097D1;
 }
+
+.form-label-group{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
