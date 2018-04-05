@@ -239,8 +239,8 @@ app.get("/listSupply", function (request, response) {
 
 app.post('/addCart', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO cart(userid,itemurl,name,quantity,price) VALUES($1, $2, $3, $4, $5)'; 
-	  var sqlValue = [request.body.userid, request.body.itemurl,request.body.name,request.body.quantity,request.body.price]; 
+	  var sql = 'INSERT INTO cart(itemurl,name,quantity,price,userid) VALUES($1, $2, $3, $4, $5)'; 
+	  var sqlValue = [request.body.itemurl,request.body.name,request.body.quantity,request.body.price, request.body.userid]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)

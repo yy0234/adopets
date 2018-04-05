@@ -961,11 +961,11 @@ function addCart(){
 			dataType: 'json',
 			contentType: "application/json",
 			data: JSON.stringify({
-				userid:userid, 
 				itemurl:itemurl, 
 				name:name, 
 				quantity:quantity, 
-				price:price
+				price:price,
+				userid:userid
 			}),
 			complete: function complete() {
 			},
