@@ -47,11 +47,11 @@
 					<a class="nav-link" href="#" >Forum</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav navbar-right">
-				<li class="nav-item displayT"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
-				<li class="nav-item displayT"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
-				<li class="nav-item displayT"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
-				<li class="nav-item dropdown displayT">
+			<ul class="navbar-nav login-item navbar-right">
+				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
+				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
+				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
+				<li class="nav-item dropdown displayF">
 					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
 					</a>
@@ -60,7 +60,7 @@
 						<a class="dropdown-item" href="#" style="margin-right:10px;color:gray;margin-top: 5px;"><span class="fas fa-sign-out-alt"></span>Logout</a>
 					</div>
 				</li>
-				<li class="nav-item displayF"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+				<li class="nav-item displayT"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt"></span> Login</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -145,6 +145,7 @@
 	var adopton_query_age=null;
 	var adoption_post_id=null;
 	var adoption_list={type:null,breed:null,gender:null,age:null};
+	var login=false;
 
 	function dynamic(link){
 		$.ajax({
@@ -178,6 +179,10 @@
 				},
 				success: function (mes) {
 					console.log(mes);
+					if(mes=="success"){
+						login=true;
+						$(".login-item li").toggleClass("displayT displayF");
+					}
 				},
 				error: function (err) {
 					console.log(err);
@@ -214,6 +219,10 @@
 				},
 				success: function success(mes) {
 					console.log(mes);
+					if(mes=="success"){
+						login=true;
+						$(".login-item li").toggleClass("displayT displayF");
+					}
 				}
 			})
 			event.preventDefault();

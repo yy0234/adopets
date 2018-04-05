@@ -151,7 +151,7 @@ app.get('/regist', function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send("register success");   }
+        { return response.send("success");   }
       });
   });
 });
