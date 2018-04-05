@@ -430,9 +430,10 @@ function callAjax(Query,age){
 			if (mes.length==0){
 				
 				var petfound=false;
+				
+					if (adoption_list['type']!=null)adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
 					if (adoption_list['type']==null||adoption_list['type'].includes('cat')||adoption_list['type'].includes('dog'))
 						$("#petSearchResult").append("<div class='col-lg-12 col-md-12 pt-4 pb-4 lap_mes' style=\"text-align: center;margin: 0 auto; font-weight:bold\">Searching from lap.org.hk... </div>");
-					adoption_list['type']=adoption_list['type'].replace(/'/g,'').split(',');
 					if (adoption_list['breed']!=null) adoption_list['breed']=adoption_list['breed'].replace(/'/g,'').split(',');
 					if (adoption_list['gender']!=null) adoption_list['gender']=adoption_list['gender'].replace(/'/g,'').split(',');
 				
