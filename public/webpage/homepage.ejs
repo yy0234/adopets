@@ -43,7 +43,7 @@
 								<div style="display:table">
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-secondary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'bird\'')";>Birds</button>
+											<button type="button" class="btn btn-secondary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'bird\'');changeList('bird');";>Birds</button>
 										</div>
 										<div style="display:table-cell">
 											<button type="button" class="btn btn-primary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'cat\'');changeList('cat');">Cat</button>
@@ -54,13 +54,13 @@
 									</div>
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-info" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'fish\'');">Fish</button>
+											<button type="button" class="btn btn-info" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'fish\'');changeList('fish');">Fish</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'reptile\'')">Reptiles</button>
+											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'reptile\'');changeList('reptile');">Reptiles</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-danger" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'rodent\'')">Rodents</button>
+											<button type="button" class="btn btn-danger" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'rodent\'');changeList('rodent');">Rodents</button>
 										</div>
 									</div>
 								</div>
