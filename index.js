@@ -162,11 +162,11 @@ app.get("/signin", function (request, response) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
-        else if (result.length==null) {
-          return response.send(result.rows); 
+        else if (result.length==0) {
+          return response.send("No Found"); 
         }
        else
-        { return response.send("success"+result.rows);}
+        { return response.send("success");}
       });
   });
 });
