@@ -158,10 +158,11 @@
 		window.addEventListener('load', function() {
 		// Fetch all the forms we want to apply custom Bootstrap validation styles to
 		var signInForms = document.getElementsByClassName('form-signin');
-		var signUpForms = document.getElementsByClassName('form-signup');
+		//var signUpForms = document.getElementsByClassName('form-signup');
 
 		// Loop over them and prevent submission
 		var signInvalidation = Array.prototype.filter.call(signInForms, function(form) {
+			console.log(form);
 			form.addEventListener('submit', function(event) {
 			if (form.checkValidity() === false) {
 				event.preventDefault();
@@ -175,7 +176,7 @@
 			}, false);
 		});
 
-		var signUpvalidation = Array.prototype.filter.call(signUpForms, function(form) {
+		/*var signUpvalidation = Array.prototype.filter.call(signUpForms, function(form) {
 			form.addEventListener('submit', function(event) {
 			if (form.checkValidity() === false) {
 				event.preventDefault();
@@ -187,7 +188,7 @@
 			}
 			form.classList.add('was-validated');
 			}, false);
-		});
+		});*/
 
 		}, false);
 	})
