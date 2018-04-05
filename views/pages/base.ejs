@@ -48,10 +48,19 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav navbar-right">
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
-				<li class="nav-item displayT"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+				<li class="nav-item displayT"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
+				<li class="nav-item displayT"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
+				<li class="nav-item displayT"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
+				<li class="nav-item dropdown displayT">
+					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
+					</a>
+					<div class="dropdown-menu" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Account Detail</a>
+						<a class="dropdown-item" href="#" >Logout</a>
+					</div>
+				</li>
+				<li class="nav-item displayF"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt"></span> Login</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -201,10 +210,10 @@
 					password:register_password
 				},
 				error: function error(err) {
-					alert(err);
+					console.log(err);
 				},
 				success: function success(mes) {
-					alert(mes);
+					console.log(mes);
 				}
 			})
 			event.preventDefault();
