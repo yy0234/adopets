@@ -163,7 +163,7 @@ app.get("/signin", function (request, response) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
-        else if (result.length == 0) {
+        else if (result == null) {
           return response.send("cannot find user"); 
         }
        else
