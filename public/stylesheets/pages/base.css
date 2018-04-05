@@ -23,3 +23,7 @@ nav{
     padding-left: 40px;
     padding-right: 40px;
 }
+
+.nav-item>.nav-link>.fas{
+    vertical-align: -webkit-baseline-middle;
+}
