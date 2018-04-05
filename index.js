@@ -162,7 +162,7 @@ app.get("/signin", function (request, response) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
-        else if (result.length==0) {
+        else if (result.rows.length==0) {
           return response.send("No Found"); 
         }
        else
