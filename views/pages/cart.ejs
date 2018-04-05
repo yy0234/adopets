@@ -87,7 +87,7 @@
 <!--Your own script-->
 <script>
 
-	$('.minus-btn').on('click', function(e) {
+	function minus(){
 		e.preventDefault();
 		var $this = $(this);
 		var $input = $this.closest('div').find('input');
@@ -101,9 +101,9 @@
 	
 	$input.val(value);
 	
-	});
+	};
 	
-	$('.plus-btn').on('click', function(e) {
+	function plus(){
 		alert("clicked");
 		e.preventDefault();
 		var $this = $(this);
@@ -117,7 +117,7 @@
 		}
 	
 		$input.val(value);
-	});
+	};
 
 	function deleteItem(){
 		var userid = "test1234"; //change later
@@ -182,11 +182,11 @@
 												</div>\
 												<div class=\"col-md-3\">\
 													<div class=\"quantity\">\
-														<button class=\"plus-btn\" type=\"button\" name=\"button\">\
+														<button class=\"plus-btn\" type=\"button\" name=\"button\" onclick=\"plus()\">\
 															<i class=\"fa fa-plus\"></i>\
 														</button>\
 														<input type=\"text\" name=\"quantity\" value=\" "+element.quantity+ "\">\
-														<button class=\"minus-btn\" type=\"button\" name=\"button\">\
+														<button class=\"minus-btn\" type=\"button\" name=\"button\" onclick=\"minus()\">\>\
 															<i class=\"fa fa-minus\"></i>\
 														</button>\
 													</div>\
