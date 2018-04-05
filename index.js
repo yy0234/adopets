@@ -164,10 +164,10 @@ app.get("/signin", function (request, response) {
        if (err)
         { console.error(err); return response.send("Error " + err); }
         else if (result.length==null) {
-          return response.send(sql); 
+          return response.send(sql+result.rows); 
         }
        else
-        { return response.send(sql+"success");}
+        { return response.send(sql+"success"+result.rows);}
       });
   });
 });
