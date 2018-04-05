@@ -43,24 +43,24 @@
 								<div style="display:table">
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-secondary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'bird\'')";>Birds</button>
+											<button type="button" class="btn btn-secondary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'bird\'');changeList('bird');";>Birds</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-primary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'cat\'')">Cat</button>
+											<button type="button" class="btn btn-primary" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'cat\'');changeList('cat');">Cat</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-success" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'dog\'')">Dog</button>
+											<button type="button" class="btn btn-success" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'dog\'');changeList('dog');">Dog</button>
 										</div>
 									</div>
 									<div style="display:table-row">
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-info" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'fish\'')">Fish</button>
+											<button type="button" class="btn btn-info" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'fish\'');changeList('fish');">Fish</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'reptile\'')">Reptiles</button>
+											<button type="button" style="color:white; background-color: #ffa500;" class="btn btn-warning" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'reptile\'');changeList('reptile');">Reptiles</button>
 										</div>
 										<div style="display:table-cell">
-											<button type="button" class="btn btn-danger" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'rodent\'')">Rodents</button>
+											<button type="button" class="btn btn-danger" onclick="dynamic('/toPetSearch');changeASQ(' AND type=\'rodent\'');changeList('rodent');">Rodents</button>
 										</div>
 									</div>
 								</div>
@@ -154,261 +154,10 @@
 			<div class="lineOnSlide">You May Also Interested</div>
 			<div class="flexslider carousel" style="overflow:hidden">
 				<ul class="slides">
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/dog1.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/dog2.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/dog3.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/cat1.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/cat2.png" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/cat3.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/dog1.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/dog2.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/dog3.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/cat1.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/cat2.png" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="overlay" data-toggle="modal" data-target="#petDetailModal">
-							<img src="/images/cat3.jpg" />
-							<div class="flex-caption">
-								<div style="display:table">
-									<div style="display:table-row">
-										<div class="captionName" style="display:table-cell">Name</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">2 years and 11 months</div>
-									</div>
-										<div style="display:table-row">
-										<div class="captionDescription" style="display:table-cell">Female</div>
-									</div>
-									<div style="display:table-row">
-										<div class="captionBreeds" style="display:table-cell">Rat Terrier</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
+					
 				</ul>
 			</div>
-			<div style="float:right;"><a href="/search">more >></a></div>
+			<div style="float:right;"><a onclick="dynamic('/toPetSearch')" style="cursor:pointer;color:blue">more >></a></div>
 		</div>
 	</div>
 
@@ -424,13 +173,13 @@
 				<div class="modal-body" style="margin-bottom: 20px;">
 					<div class="row" style="margin-left:0;margin-right:0;">
 						<div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
-							<img src="/images/cat3.jpg" />
+							<a id="modal_petImage"><img src="/images/cat3.jpg" /></a>
 							<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
 								<div class="col-md-12" style="margin-bottom:20px;">
 									<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 								</div>
 								<div class="col-md-12">
-									<button type="button" class="btn btn-primary" style="width:80%">Adopt Me</button>
+									<button type="button" class="btn btn-primary" style="width:80%">Contact Provider</button>
 								</div>
 							</div>
 						</div>
@@ -439,42 +188,42 @@
 								<div class="col-md-12 col-lg-6">
 									<div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
 										<div style="display:table-row;">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Pet ID
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petId" style="display:table-cell">
 												001
 											</div>
 										</div>
 										<div style="display:table-row;">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Name
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petName" style="display:table-cell">
 												Name
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Age
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petAge" style="display:table-cell">
 												Age
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Size
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petSize" style="display:table-cell">
 												Small
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Coat length
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petCoat" style="display:table-cell">
 												Medium
 											</div>
 										</div>
@@ -483,42 +232,42 @@
 								<div class="col-md-12 col-lg-6">
 									<div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Post date
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petPostDate" style="display:table-cell">
 												2018/2/21
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Gender
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petGender" style="display:table-cell">
 												Male
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Breed type
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petBreed" style="display:table-cell">
 												Mixed
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Neutered
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petNeutered" style="display:table-cell">
 												Yes
 											</div>
 										</div>
 										<div style="display:table-row">
-											<div style="display:table-cell; font-weight:bold;width:50%">
+											<div style="display:table-cell; font-weight:bold;width:40%">
 												Provider
 											</div>
-											<div style="display:table-cell">
+											<div id="modal_petProvider" style="display:table-cell">
 												yy0234
 											</div>
 										</div>
@@ -529,7 +278,7 @@
 								<div class="col-md-12" style="font-weight:bold;color:blue">
 									Description
 								</div>
-								<div class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+								<div id="modal_petDescription" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
 									Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
 									
 									I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
@@ -541,7 +290,7 @@
 								<div class="col-md-12" style="font-weight:bold;color:grey">
 									Remark
 								</div>
-								<div class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+								<div id="modal_petRemark" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
 									None
 								</div>
 							</div>
@@ -557,6 +306,7 @@
 <script src="/javascript/nouislider.min.js"></script>
 <script src="/javascript/adoption.js"></script>
 <script>
+	var petData;
 	$(window).bind("resize", function(){
     	$('.flexslider').flexslider(0);
 	});
@@ -578,14 +328,36 @@
 		$('#petBreeds').multiselect('rebuild');
 	});
 
+	function changeModal(elementNo){
+		var petData_element=petData[elementNo];
+		$("#modal_petImage").html(petData_element.peturl);
+		$("#modal_petId").html(petData_element.petid);
+		$("#modal_petName").html(petData_element.name);
+		$("#modal_petAge").html(petData_element.age);
+		$("#modal_petSize").html(petData_element.size);
+		$("#modal_petCoat").html(petData_element.coat);
+		var d=new Date(petData_element.postdate);
+		$("#modal_petPostDate").html(d.getDate()+"-"+(parseInt(d.getMonth())+1)+"-"+d.getFullYear());
+		$("#modal_petGender").html(petData_element.gender);
+		$("#modal_petBreed").html(petData_element.breed);
+		if (petData_element.neutered==true)
+			$("#modal_petNeutered").html("Yes");
+		else $("#modal_petNeutered").html("No");
+		$("#modal_petProvider").html(petData_element.providerid);
+		$("#modal_petDescription").html(petData_element.description);
+		$("#modal_petRemark").html(petData_element.remark);
+
+	}
+	$(document).scroll(function(){
+		if($(this).scrollTop() > 0)
+		{   
+		$('nav').css({"background":"#3097D1"});
+		} else {
+		$('nav').css({"background":"powderblue"});
+		}
+	});
+
     $(document).ready(function() {
-		$('.flexslider').flexslider({
-			animation: "slide",
-			animationLoop: false,
-            itemWidth: 200,
-			itemMargin: 15,
-			start: function(){ $(".flexslider li").css("width", "200"); }
-		});
 
 		$('#searchTab a:first').tab('show');
         $('#petTypes').multiselect({
@@ -675,8 +447,87 @@
 			document.getElementById('petAgeTextHolder').innerHTML = document.getElementById('lower-value').innerHTML+" to "+ document.getElementById('upper-value').innerHTML;
 		});
 
-		
+		$.ajax({
+            url: "/listInterest",
+            type: "GET",
+            data: {
+				query:"",
+            },
+            success: function (mes) {
+				console.log(mes);
+                if(mes.length!=0){
+					petData=mes;
+					if (mes.length>12){
+						for(var i=0; i<12;i++){
+							$(".slides").append("\
+								<li>\
+									<div class='overlay' onclick=\"changeModal("+i+")\" data-toggle='modal' data-target='#petDetailModal'>\
+										<a id=\"pet_image\">"+mes[i].peturl+"</a>\
+										<div class='flex-caption'>\
+											<div style='display:table'>\
+												<div style='display:table-row'>\
+													<div class='captionName' style='display:table-cell'>"+mes[i].name+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+mes[i].age+"</div>\
+												</div>\
+													<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+mes[i].gender+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionBreeds' style='display:table-cell'>"+mes[i].breed+"</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</li>")
+						}
+					}
+					else {
+						mes.forEach(function(element,index){
+							$(".slides").append("\
+								<li>\
+									<div class='overlay' onclick=\"changeModal("+index+")\" data-toggle='modal' data-target='#petDetailModal'>\
+										<a id=\"pet_image\">"+element.peturl+"</a>\
+										<div class='flex-caption'>\
+											<div style='display:table'>\
+												<div style='display:table-row'>\
+													<div class='captionName' style='display:table-cell'>"+element.name+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+element.age+"</div>\
+												</div>\
+													<div style='display:table-row'>\
+													<div class='captionDescription' style='display:table-cell'>"+element.gender+"</div>\
+												</div>\
+												<div style='display:table-row'>\
+													<div class='captionBreeds' style='display:table-cell'>"+element.breed+"</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</li>")
+						});
+					}
+				}
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        }).done(function() {
+				$('.flexslider').flexslider({
+					animation: "slide",
+					animationLoop: false,
+					itemWidth: 200,
+					itemMargin: 15,
+					start: function(){ $(".flexslider li").css("width", "200"); }
+				});
+			});
 	});
+
+
+			
+
 	
 	function encodeImageFileAsURL() {
 	  var base64Image="";
@@ -707,6 +558,7 @@
 					stringStorage+="'"+resultList.responses[0].labelAnnotations[i].description+"',";
 				}
 				stringStorage=stringStorage.substring(0,stringStorage.length-1);
+				adoption_list["breed"]=stringStorage;
 				adoption_search_query=" AND breed in ("+stringStorage+")";
 				dynamic('/toPetSearch');
 			}
@@ -723,9 +575,21 @@
 		adoption_search_query=query;
 	}
 
+	function changeList(type){
+		adoption_list['type']=type;
+	}
+
 	function changeASQByKey(){
-		var keyword=$("#auto_complete").val().toLowerCase();
-		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE '%"+keyword+"%'";
+		var keyword=$("#auto_complete").val()
+		var keyword_low=$("#auto_complete").val().toLowerCase();
+		adoption_search_query=" AND (petid||name||type||breed||gender||age||postdate||size||coat) LIKE any (array['%"+keyword+"%','%"+keyword_low+"%'])";
+		if(keyword_low=="cat"||keyword_low=="dog"){
+			adoption_list["type"]=keyword_low;
+		}
+		else{
+			adoption_list["breed"]=keyword_low;
+		}
+			
 	}
 
 	function changeASQBySelect(){
@@ -740,6 +604,7 @@
 			console.log(temp);
 
 			searchQuery+=" AND type IN("+temp+")";
+			adoption_list['type']=temp;
 		}
 		if ($("#petBreeds").val()!=null){
 			temp="";
@@ -749,6 +614,7 @@
 			temp=temp.substring(0,temp.length-1);
 
 			searchQuery+=" AND breed IN("+temp+")";
+			adoption_list['breed']=temp;
 		}
 
 		if ($("#petGender").val()!=null){
@@ -759,6 +625,7 @@
 			temp=temp.substring(0,temp.length-1);
 
 			searchQuery+=" AND gender IN("+temp+")";
+			adoption_list['gender']=temp;
 		}
 
 		if ($("#petSize").val()!=null){
@@ -771,8 +638,10 @@
 			searchQuery+=" AND size IN("+temp+")";
 		}
 
-		if ($("#petAgeTextHolder").text()!="Age")
+		if ($("#petAgeTextHolder").text()!="Age"){
 			adopton_query_age=$("#petAgeTextHolder").text();
+			adoption_list['age']=adopton_query_age;
+		}
 		
 		adoption_search_query=searchQuery;
 		dynamic('/toPetSearch');

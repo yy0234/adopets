@@ -3,13 +3,59 @@
 <head>
 	<% include ../partials/header.ejs %>
 	<% include ../partials/script.ejs %>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/base.css"/>
 	<title>Adopets Web</title>
 </head>
 
 <body>
-<section id="dynamic" class="main-content">
-	<%- include(action) %>
-</section>
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" style="padding-top: 0.5rem;" href="#">
+			<img src="/images/adopets.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			<span style="vertical-align:middle;font-weight:bold;color:white">Adopets Web</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Pet Adoption
+					</a>
+					<div class="dropdown-menu" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Search Pet</a>
+						<a class="dropdown-item" href="#">Post New Adoption</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Pet Supplies shop
+					</a>
+					<div class="dropdown-menu" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">None</a>
+						<a class="dropdown-item" href="#" >None</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" >Pet Service Search</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" >Forum</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+	<section id="dynamic" class="main-content">
+		<%- include(action) %>
+	</section>
 
 
 
@@ -18,6 +64,7 @@
 	var adoption_search_query="";
 	var adopton_query_age=null;
 	var adoption_post_id=null;
+	var adoption_list={type:null,breed:null,gender:null,age:null};
 
 	function dynamic(link){
 	$.ajax({

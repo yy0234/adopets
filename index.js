@@ -1,11 +1,16 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
+
+var req = require("request");
+var cheerio = require("cheerio");
+
 //var session = require('express-session');
 //var FileStore = require('session-file-store')(session);
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
+
 app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
@@ -13,7 +18,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -64,6 +68,60 @@ app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
+app.get('/toPostAdoption', function(request, response) {
+  response.send('../webpage/petForm.ejs');
+});
+
+app.get('/toHome', function(request, response) {
+  response.send('../webpage/homepage.ejs');
+});
+
+
+app.get('/run_cat_scraper', function(request, response) {
+  req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
+    if (!error) {
+      var $ = cheerio.load(body);
+      var data = $("[class='textdb12pt']>span");   
+      var photo=$("[class='photoborder']");
+      var returnList=[];
+      for (var x=0; x<(data.length/5);x++){
+        var pos=x*5;
+        var obj={};
+        var temp=(photo[x].attribs.src).replace("./","http://www.lap.org.hk/");
+        obj['photo']=temp;
+        obj['name']=data[pos].children[0].data;
+        obj['breed']=data[pos+1].children[0].data;
+        obj['age']=data[pos+2].children[0].data;
+        obj['gender']=data[pos+3].children[0].data;
+        returnList.push(obj);
+      }
+    }
+    response.send(returnList);
+  });
+});
+
+app.get('/run_dog_scraper', function(request, response) {
+  req("http://www.lap.org.hk/adoptdog.aspx", function (error,r, body) {
+    if (!error) {
+      var $ = cheerio.load(body);
+      var data = $("[class='textdb12pt']>span");   
+      var photo=$("[class='photoborder']");
+      var returnList=[];
+      for (var x=0; x<(data.length/5);x++){
+        var pos=x*5;
+        var obj={};
+        var temp=(photo[x].attribs.src).replace("./","http://www.lap.org.hk/");
+        obj['photo']=temp;
+        obj['name']=data[pos].children[0].data;
+        obj['breed']=data[pos+1].children[0].data;
+        obj['age']=data[pos+2].children[0].data;
+        obj['gender']=data[pos+3].children[0].data;
+        returnList.push(obj);
+      }
+    }
+    response.send(returnList);
+  });
+});
 
 
 
@@ -128,10 +186,22 @@ app.post('/addPets', function (request, response) {
   });
 });
 
+app.get("/listInterest", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	   client.query("SELECT * FROM pets WHERE status='open'"+request.query.query+" order by petid DESC limit 12", function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+       else
+        { return response.send(result.rows);   }
+    });
+  });
+});
+
 
 app.get("/listPet", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	   client.query("SELECT * FROM pets WHERE status='open'"+request.query.query+" order by postdate DESC", function(err, result) {
+	   client.query("SELECT * FROM pets WHERE status='open'"+request.query.query+" order by petid DESC", function(err, result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }

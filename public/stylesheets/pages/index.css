@@ -286,3 +286,27 @@ padding-bottom: 0;
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
+
+#pet_image{
+    height: 230px;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    background-color: #fff;
+}
+
+.overlay:hover>#pet_image{
+    opacity: 0.5;
+}
+
+#pet_image>img{
+    max-height:230px;
+}
+
+#modal_petImage img {
+    max-height: 250px;
+}
+
+nav{
+    background-color: powderblue;
+}
