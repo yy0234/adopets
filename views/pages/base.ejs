@@ -181,8 +181,8 @@
 			url: "/signin",
 			type: "GET",
 			data: {
-				username: $(".form-signin #login_username").val(),
-				password: $(".form-signin #login_password").val()
+				username: "'"+$(".form-signin #login_username").val()+"'",
+				password: "'"+$(".form-signin #login_password").val()+"'"
 			},
 			success: function (mes) {
 				console.log(mes);
