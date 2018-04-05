@@ -67,22 +67,22 @@
 				<div class="modal-body">
 					<form class="form-signup">
 						<div class="form-label-group">
-							<input type="text" id="username" class="form-control" placeholder="Username" required>
+							<input type="text" id="register_username" class="form-control" placeholder="Username" required>
 						</div>
 
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+							<input type="email" id="register_email" class="form-control" placeholder="Email address" required>
 						</div>
 					
 						<div class="form-label-group">
-							<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+							<input type="password" id="register_password" class="form-control" placeholder="Password" required>
 						</div>
 
 						<div class="form-label-group">
 							<input type="password" id="confirmPassword" class="form-control" placeholder="Confirmed Password" required>
 						</div>
 	
-						<button class="btn btn-primary btn-block mb-3" type="submit">Sign Up</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit" onclick="userSignUp()">Sign Up</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -115,7 +115,7 @@
 							<input type="checkbox" value="remember-me"> Remember me
 							</label>
 						</div>
-						<button class="btn btn-primary btn-block mb-3" type="submit">Sign in</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit" onclick="userSignIn()">Sign in</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -153,88 +153,75 @@
 	}
 
 	function userSignIn(){
-		$.ajax({
-			url: "/signin",
-			type: "GET",
-			data: {
-				username: "('"+$(".form-signin #login_username").val()+"')",
-				password: "('"+$(".form-signin #login_password").val()+"')"
-			},
-			success: function (mes) {
-				console.log(mes);
-			},
-			error: function (err) {
-				console.log(err);
-			}
-		});
+		var form = $("#form-signin")
+
+		if (form[0].checkValidity() === false) {
+			event.preventDefault()
+			event.stopPropagation()
+		}
+		else if (form[0].checkValidity() === true){
+			$.ajax({
+				url: "/signin",
+				type: "GET",
+				data: {
+					username: "('"+$(".form-signin #login_username").val()+"')",
+					password: "('"+$(".form-signin #login_password").val()+"')"
+				},
+				success: function (mes) {
+					console.log(mes);
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
+			event.preventDefault();
+		}
+		form.addClass('was-validated');
 	}
 
 	function userSignUp(){
-		var register_firstname ="";
-		var register_lastname ="";
-		var birthdate ="";
-		var register_email = $("#register_email").val();
-		var register_mobilenumber ="";
-		var register_address ="";
-		var register_username = $("#register_username").val();
-		var register_password = $("#register_password").val();
+		var form = $("#form-signup")
 
-		$.ajax({
-			url: "/regist",
-			type: "GET",
-			contentType: "application/json",
-			data: {
-				userid: register_username,
-				lastname: register_lastname,
-				firstname:register_firstname,
-				email: register_email,
-				telnum: register_mobilenumber,
-				address: register_address,
-				birthday: birthdate,
-				password:register_password
-			},
-			error: function error(err) {
-				alert(err);
-			},
-			success: function success(mes) {
-				alert(mes);
-			}
-		})
+		if (form[0].checkValidity() === false) {
+			event.preventDefault()
+			event.stopPropagation()
+		}
+		else if (form[0].checkValidity() === true){
+			var register_firstname ="";
+			var register_lastname ="";
+			var birthdate ="";
+			var register_email = $("#register_email").val();
+			var register_mobilenumber ="";
+			var register_address ="";
+			var register_username = $("#register_username").val();
+			var register_password = $("#register_password").val();
+	
+			$.ajax({
+				url: "/regist",
+				type: "GET",
+				contentType: "application/json",
+				data: {
+					userid: register_username,
+					lastname: register_lastname,
+					firstname:register_firstname,
+					email: register_email,
+					telnum: register_mobilenumber,
+					address: register_address,
+					birthday: birthdate,
+					password:register_password
+				},
+				error: function error(err) {
+					alert(err);
+				},
+				success: function success(mes) {
+					alert(mes);
+				}
+			})
+			event.preventDefault();
+		}
+		form.addClass('was-validated');
 	}
 
-
-	$("#user_login").click(function () {
-		var register_firstname = $("#register_firstname").val() || "";
-		var register_lastname = $("#register_lastname").val() || "";
-		var birthdate = $("#birthdate").val() || "";
-		var register_email = $("#register_email").val() || "";
-		var register_mobilenumber = $("#register_mobilenumber").val() || "";
-		var register_address = $("#register_address1").val()+" "+$("#register_address2").val()+" "+$("#district").val() || "";
-		var register_username = $("#register_username").val() || "";
-		var register_password = $("#register_password").val() || "";
-
-		$.ajax({
-			url: "/regist",
-			type: "GET",
-			contentType: "application/json",
-			data: {
-				userid: register_username,
-				lastname: register_lastname,
-				firstname:register_firstname,
-				email: register_email,
-				telnum: register_mobilenumber,
-				address: register_address,
-				birthday: birthdate,
-				password:register_password
-			},
-			error: function error(err) {
-				alert(err);
-			},
-			success: function success(mes) {
-				alert(mes);
-			}
-		})
-	})
 </script>
 </body>
 </html>
