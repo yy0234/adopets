@@ -348,6 +348,14 @@
 		$("#modal_petRemark").html(petData_element.remark);
 
 	}
+	$(document).scroll(function(){
+		if($(this).scrollTop() > 0)
+		{   
+		$('nav').css({"background":"blue"});
+		} else {
+		$('nav').css({"background":"powderblue"});
+		}
+	});
 
     $(document).ready(function() {
 
