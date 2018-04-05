@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/header.ejs %>
+	<!--Your own css file-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/cart.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+	<title>Shopping Cart</title>
+</head>
+
+<body>
+<% include ../partials/headline.ejs %>
+
+<section class="main-content">
+	<div class="container-fluid">
+		<div class="shopping-cart">
+			<div class="row">
+				<!-- Title -->
+				<div class="title">
+				Shopping Cart
+				</div>
+			</div>
+			<div id="cart_detail"></div>
+
+			<!--
+			<div class="row">
+				<div class="item">
+					<div class="col-md-1">
+						<div class="buttons">
+							<span class="delete-btn"></span>
+							<i class="fas fa-trash-alt"></i>
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="image">
+							<img src="/images/cat1.jpg" alt="" />
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="name">
+							<span>item</span>
+						</div>
+					</div>
+				
+					<div class="col-md-3">
+						<div class="quantity">
+							<button class="plus-btn" type="button" name="button">
+								<i class="fa fa-plus"></i>
+							</button>
+							<input type="text" name="name" value="1">
+							<button class="minus-btn" type="button" name="button">
+								<i class="fa fa-minus"></i>
+							</button>
+						</div>
+					</div>
+					
+					<div class="col-md-2">
+						<div class="total-price">$549</div>
+					</div>
+				</div>
+			</div>
+		-->
+
+			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+			<div class="row">
+				<div class="col-md-8">
+					<div class="text-right">
+						<div class="totalprice">Total Price: </div>
+					</div>
+				</div>
+					<div class="col-md-4">
+							<div class="text-right">
+							<button class="button" name="checkout" class="btn btn-success" >Checkout</button>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div>
+</section>
+
+
+<% include ../partials/script.ejs %>
+
+<!--Your own script-->
+<script>
+
+	$('.minus-btn').on('click', function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var $input = $this.closest('div').find('input');
+		var value = parseInt($input.val());
+	
+		if (value > 1) {
+			value = value - 1;
+		} else {
+			value = 0;
+		}
+	
+	$input.val(value);
+	
+	});
+	
+	$('.plus-btn').on('click', function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var $input = $this.closest('div').find('input');
+		var value = parseInt($input.val());
+	
+		if (value < 100) {
+			value = value + 1;
+		} else {
+			value =100;
+		}
+	
+		$input.val(value);
+	});
+
+	function deleteItem(item){
+		var userid = "test1234"; //change later
+		var name = document.getElementsByClassName("name").innerHTML;
+		$.ajax({
+			url: "/deleteCart",
+			type: "POST",
+			dataType: 'json',
+			contentType: "application/json",
+			data: JSON.stringify({
+				userid:userid,
+                name:name
+			}),
+			complete: function complete() {
+			},
+			error: function error(err) {
+                alert(err);
+                console.log(err);
+			},
+			success: function success(mes) {
+                alert(mes);
+                console.log(mes);
+			}
+		})
+		listItem();
+	};
+
+	function listItem(){
+				$.ajax({
+					url: "/listCart",
+					type: "GET",
+					data: {
+						query:"",
+					},
+					success: function (item) {
+						$("#cart_detail").html("");
+						if (item.length==0){
+							$("#cart_detail").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");	
+						}
+						else 
+						{
+							item.forEach(function(element,index) {
+								$("#cart_detail").append("\
+										<div class=\"row\">\
+											<div class=\"item\">\
+												<div class=\"col-md-1\">\
+													<div class=\"buttons\">\
+														<span class=\"delete-btn\"></span>\
+														<i class=\"fas fa-trash-alt\"></i>\
+													</div>\
+												</div>\
+												<div class=\"col-md-3\">\
+													<div class=\"image\">\
+														<a class=\"product_image\">"+element.itemurl+"</a>\
+													</div>\
+												</div>\
+												<div class=\"col-md-3\">\
+													<div class=\"name\">\
+														<span>" + element.name + "</span>\
+													</div>\
+												</div>\
+												<div class=\"col-md-3\">\
+													<div class=\"quantity\">\
+														<button class=\"plus-btn\" type=\"button\" name=\"button\">\
+															<i class=\"fa fa-plus\"></i>\
+														</button>\
+														<input type=\"text\" name=\"name\" value=\" "+element.quantity+ "\">\
+														<button class=\"minus-btn\" type=\"button\" name=\"button\">\
+															<i class=\"fa fa-minus\"></i>\
+														</button>\
+													</div>\
+												</div>\
+												<div class=\"col-md-2\">\
+													<div class=\"price\">" + element.price + "</div>\
+												</div>\
+											</div>\
+										</div>")
+							});
+						}
+						return item;
+					},
+					error: function (err) {
+						return err;
+					}
+				});
+		}
+</script>
+</body>
+</html>
