@@ -1,0 +1,12 @@
+.navbar-dark .navbar-nav .active>.nav-link{
+    color: #fff !important;
+    text-decoration: underline !important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    text-decoration: underline !important;
+}
