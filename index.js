@@ -163,11 +163,11 @@ app.get("/signin", function (request, response) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
-        else if (result == null) {
+        else if (result == "") {
           return response.send("cannot find user"); 
         }
        else
-        { return response.send(result.length);}
+        { return response.send("success");}
       });
   });
 });
