@@ -14,3 +14,12 @@ nav{
     margin-top:20px;
     margin-bottom: 20px;
 }
+
+.modal .signIn-model-dialog {
+    max-width: 400px;
+}
+
+.form-signin{
+    padding-left: 40px;
+    padding-right: 40px;
+}
