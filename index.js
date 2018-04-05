@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+//var session = require('express-session');
+//var FileStore = require('session-file-store')(session);
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
