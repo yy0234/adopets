@@ -15,11 +15,11 @@ nav{
     margin-bottom: 20px;
 }
 
-.modal .signIn-model-dialog {
-    max-width: 400px;
+.modal .md-model-dialog {
+    max-width: 400px !important;
 }
 
-.form-signin{
+.form-signin,.form-signup{
     padding-left: 40px;
     padding-right: 40px;
 }
