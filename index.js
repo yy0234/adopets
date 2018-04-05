@@ -167,7 +167,7 @@ app.get("/signin", function (request, response) {
           return response.send("cannot find user"); 
         }
        else
-        { return response.send(result.length==null||result.length==""||result.length==0||result.length==" ");}
+        { return response.send(result.length==""||result.length==0||result.length==" ");}
       });
   });
 });
