@@ -253,7 +253,7 @@ app.post('/addCart', function (request, response) {
 
 app.post('/deleteCart', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'delete from cart where userid = $1 and name = $2'; 
+	  var sql = 'delete from cart where userid = ($1) and name = ($2)'; 
 	  var sqlValue = [request.body.userid, request.body.name]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
