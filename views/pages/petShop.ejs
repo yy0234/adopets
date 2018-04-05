@@ -318,7 +318,7 @@
 													<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 												</div>
 												<div class="col-md-12">
-													<button type="button" class="btn btn-primary" style="width:80%">Add to Shopping Cart</button>
+													<button type="button" class="btn btn-primary" style="width:80%" onclick="addCart()">Add to Shopping Cart</button>
 												</div>
 											</div>
 										</div>
@@ -947,7 +947,7 @@ function searchByKey(){
 	callAjax(searchQuery,null);
 }
 
-/*
+
 function addCart(){
 	var userid = "test1234"; //change later
 	var name = document.getElementById("modal_supplyName");
@@ -979,7 +979,6 @@ function addCart(){
 			}
 		})
 }
-*/
 
 
 	$(function(){		
