@@ -60,7 +60,7 @@
 						<a class="dropdown-item" href="#" style="margin-right:10px;color:gray;margin-top: 5px;"><span class="fas fa-sign-out-alt"></span>Logout</a>
 					</div>
 				</li>
-				<li class="nav-item displayT"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+				<li class="nav-item displayT"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -182,6 +182,7 @@
 					if(mes=="success"){
 						login=true;
 						$(".login-item li").toggleClass("displayT displayF");
+						$("#signInModal").modal('hide');
 					}
 				},
 				error: function (err) {
@@ -222,6 +223,7 @@
 					if(mes=="success"){
 						login=true;
 						$(".login-item li").toggleClass("displayT displayF");
+						$("#signUpModal").modal('hide');
 					}
 				}
 			})
