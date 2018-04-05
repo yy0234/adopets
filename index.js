@@ -60,9 +60,14 @@ app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
-app.get('/test_scraper', function(request, response) {
-  response.render('pages/test_scraper.ejs');
+app.get('/toPostAdoption', function(request, response) {
+  response.send('../webpage/petForm.ejs');
 });
+
+app.get('/toHome', function(request, response) {
+  response.send('../webpage/homepage.ejs');
+});
+
 
 app.get('/run_cat_scraper', function(request, response) {
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
