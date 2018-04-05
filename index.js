@@ -1,8 +1,12 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
+
 var req = require("request");
 var cheerio = require("cheerio");
+
+//var session = require('express-session');
+//var FileStore = require('session-file-store')(session);
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
@@ -54,6 +58,10 @@ app.get('/pet_shop', function(request, response) {
 
 app.get('/post_supply', function(request, response) {
   response.render('pages/shopForm');
+});
+
+app.get('/cart', function(request, response) {
+  response.render('pages/cart');
 });
 
 app.get('/toPetSearch', function(request, response) {
@@ -228,6 +236,85 @@ app.get("/listSupply", function (request, response) {
     });
   });
 });
+
+app.post('/addCart', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO cart(userid,itemurl,name,quantity,price) VALUES($1, $2, $3, $4, $5)'; 
+	  var sqlValue = [request.body.userid, request.body.itemurl,request.body.name,request.body.quantity,request.body.price]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { console.error(err); return response.end("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
+});
+
+app.post('/deleteCart', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'delete from cart where userid = $1 and name = $2'; 
+	  var sqlValue = [request.body.userid, request.body.name]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { console.error(err); return response.end("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
+});
+
+app.get("/listCart", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	   client.query("SELECT * FROM cart "+ request.query.query, function(err, result) {
+       done();
+       if (err)
+        { console.error(err); return response.send("Error " + err); }
+       else
+        { return response.send(result.rows);   }
+    });
+  });
+});
+
+
+
+/*var identityKey = 'skey';
+
+app.use(session({
+    name: identityKey,
+    secret: 'chyingp', 
+    store: new FileStore(),  
+    saveUninitialized: false, 
+    resave: false, 
+    cookie: {
+        maxAge: 600 * 1000  
+    }
+}));
+
+app.get('/', function(req, res) {
+  if (req.session.cart) {
+      var itemsInCart = req.session.cart.length;
+  } else {
+      req.session.cart = [];
+  }
+  res.render('index', {
+      title: 'Shopping Cart',
+      itemsInCart: itemsInCart,
+      products: [
+        {id: 1, item: 'something', price: 100},
+    ]
+  });
+});
+
+app.post('/', function(req, res) {
+  if (req.body.action == 'Add to Cart') {
+      req.session.cart.push(req.body.itemId);
+      res.redirect('/');
+  }
+});
+
+
 
 /*app.get('*', function(request, response) {
   response.redirect('/');
