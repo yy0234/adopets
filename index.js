@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 });*/
 
 app.use(session({
-  name: 'Adopets Web',
+  name: identityKey,
   secret: 'Adopets Web',
   store: new FileStore(),
   cookie: {
@@ -198,9 +198,13 @@ app.get("/signin", function (request, response) {
 });
 
 app.get("/userLogout", function (request, response) { 
-  request.session.destroy();
-  resquest.clearCookie("Adopets Web");
-  return response.send("success");
+  request.session.destroy(function(err) {
+    if(err){
+        return response.send("error");
+    }
+    request.clearCookie("Adopets Web");
+    return response.send("success");
+  });
 
 });
 
