@@ -34,8 +34,6 @@ app.use(session({
   name: identityKey,
   secret: 'Adopets Web',
   store: new FileStore(),
-  saveUninitialized: false,
-  resave: false,
   cookie: {
       maxAge: 10 * 1000
   }
