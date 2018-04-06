@@ -48,19 +48,22 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav login-item navbar-right">
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
-				<li class="nav-item dropdown displayF">
-					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
-					</a>
-					<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#" style="border-bottom: 1px solid lightgray;color: gray;"><span class="fas fa-user" style="margin-right: 10px;"></span>Account Detail</a>
-						<a class="dropdown-item" href="#" style="color:gray;margin-top: 5px;"><span class="fas fa-sign-out-alt" style="margin-right:10px;"></span>Logout</a>
-					</div>
-				</li>
-				<li class="nav-item displayT"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
+				<% if(isLogined){ %>
+					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span><%= loginUser %></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#" style="border-bottom: 1px solid lightgray;color: gray;"><span class="fas fa-user" style="margin-right: 10px;"></span>Account Detail</a>
+							<a class="dropdown-item" href="#" style="color:gray;margin-top: 5px;"><span class="fas fa-sign-out-alt" style="margin-right:10px;"></span>Logout</a>
+						</div>
+					</li>
+				<% }else{ %>
+					<li class="nav-item"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
+				<% } %> 
 			</ul>
 		</div>
 	</nav>
@@ -145,26 +148,6 @@
 	var adopton_query_age=null;
 	var adoption_post_id=null;
 	var adoption_list={type:null,breed:null,gender:null,age:null};
-	var login=false;
-	var login_username=null;
-
-	$(function() {
-		$.ajax({
-			url: '/checklogined',
-			type: "GET",
-			data: {
-			},
-			success: function (mes) {
-				login=mes[0].isLogined;
-				login_username=mes[0].loginUser;
-				console.log(login);
-				console.log(login_username);
-			},
-			error: function (err) {
-				alert(err);
-			}
-		});
-	});
 
 	function dynamic(link){
 		$.ajax({
@@ -198,10 +181,6 @@
 				},
 				success: function (mes) {
 					if(mes!="No Found"){
-						login=true;
-						login_username=(mes[0].userid);
-						console.log(login_username);
-						$(".login-item li").toggleClass("displayT displayF");
 						$("#signInModal").modal('hide');
 					}
 				},
@@ -241,8 +220,6 @@
 				success: function success(mes) {
 					console.log(mes);
 					if(mes=="success"){
-						login=true;
-						$(".login-item li").toggleClass("displayT displayF");
 						$("#signUpModal").modal('hide');
 					}
 				}

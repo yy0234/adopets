@@ -43,14 +43,8 @@ app.get('/', function(request, response) {
   var sess = request.session;
   var loginUser=sess.loginUser;
   var isLogined = !!loginUser;
-  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
-
-app.get('/checklogined', function(request, response){
-  var loginUser=request.session.loginUser;
-  var isLogined = !!loginUser;
-  return response.send({isLogined:isLogined,loginUser:loginUser||""})
-})
 
 app.get('/login', function(request, response) {
   response.render('pages/login');
