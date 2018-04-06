@@ -148,8 +148,7 @@
 	var login=false;
 	var login_username=null;
 
-	window.onload = function2 ()
-	{
+	$(function() {
 		$.ajax({
 			url: '/checklogined',
 			type: "GET",
@@ -162,7 +161,7 @@
 				alert(err);
 			}
 		});
-	}
+	});
 
 	function dynamic(link){
 		$.ajax({
