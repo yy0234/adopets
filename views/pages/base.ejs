@@ -44,7 +44,7 @@
 					<a class="nav-link" href="#" >Pet Service Search</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" onclick="checklogin()" >Forum</a>
+					<a class="nav-link" href="#"  >Forum</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav login-item navbar-right">
@@ -148,20 +148,23 @@
 	var login=false;
 	var login_username=null;
 
-	function checklogin(){
+	$(function() {
 		$.ajax({
 			url: '/checklogined',
 			type: "GET",
 			data: {
 			},
 			success: function (mes) {
-				alert(mes);
+				login=mes[0].isLogined;
+				login_username=mes[0].loginUser;
+				console.log(login);
+				console.log(login_username);
 			},
 			error: function (err) {
 				alert(err);
 			}
 		});
-	}
+	});
 
 	function dynamic(link){
 		$.ajax({
