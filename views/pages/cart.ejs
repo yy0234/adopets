@@ -291,8 +291,6 @@ $('.input-number').change(function() {
 */
 	function deleteItem(name){
 		var userid = "test1234"; //change later
-		alert(userid);
-		alert(name);
 		$.ajax({
 			url: "/deleteCart",
 			type: "POST",
@@ -305,11 +303,9 @@ $('.input-number').change(function() {
 			complete: function complete() {
 			},
 			error: function error(err) {
-                alert(err);
                 console.log(err);
 			},
 			success: function success(mes) {
-                alert(mes);
                 console.log(mes);
 			}
 		})
@@ -360,7 +356,7 @@ $('.input-number').change(function() {
 							}
 					},
 					error: function (err) {
-						return err;
+						console.log(err);
 					}
 				});
 		};
