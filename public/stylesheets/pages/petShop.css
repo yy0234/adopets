@@ -32,7 +32,7 @@ span.item_number {
     margin-right:10px;
 }
 
-.fa:not(.fa-search), .fas, .far {
+#dynamic .fa:not(.fa-search), .fas, .far {
     font-size: 25px;
     color: #33b5e5;
     position: relative;
