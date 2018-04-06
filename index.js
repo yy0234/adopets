@@ -11,8 +11,6 @@ var FileStore = require('session-file-store')(session);
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
-var identityKey='Adopets Web'
-
 app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
@@ -31,7 +29,7 @@ app.set('view engine', 'ejs');
 });*/
 
 app.use(session({
-  name: identityKey,
+  name: 'Adopets Web',
   secret: 'Adopets Web',
   store: new FileStore(),
   cookie: {
@@ -201,7 +199,7 @@ app.get("/signin", function (request, response) {
 
 app.get("/userLogout", function (request, response) { 
   request.session.destroy();
-  resquest.clearCookie(identityKey);
+  resquest.clearCookie("Adopets Web");
   return response.send("success");
 
 });
