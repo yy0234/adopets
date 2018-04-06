@@ -208,7 +208,9 @@ app.get("/userLogout", function (request, response) {
     resquest.clearCookie(identityKey);
     return response.send("success");
   });*/
+  request.session.destroy();
   return response.send("success");
+
 });
 
 app.post('/addPets', function (request, response) { 
