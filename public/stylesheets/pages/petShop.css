@@ -135,7 +135,7 @@ form#filter_form button{
     font-weight: bold;
 }
 
-.checkbox {
+#dynamic .checkbox {
     position: absolute;
     top: 0;
     left: 0;
