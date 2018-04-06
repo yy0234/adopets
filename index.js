@@ -183,7 +183,6 @@ app.get('/regist', function (request, response) {
 });
 
 app.get("/signin", function (request, response) { 
-  var sess = req.session;
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  client.query("SELECT * FROM users WHERE userid IN " +request.query.username+" AND password IN "+request.query.password, function(err, result) {
        done();
@@ -201,16 +200,8 @@ app.get("/signin", function (request, response) {
 });
 
 app.get("/userLogout", function (request, response) { 
-  /*request.session.destroy(function(err) {
-    if(err){
-        return response.send("error");
-    }
-    resquest.clearCookie(identityKey);
-    return response.send("success");
-  });*/
   request.session.destroy();
   return response.send("success");
-
 });
 
 app.post('/addPets', function (request, response) { 
