@@ -24,6 +24,6 @@ nav{
     padding-right: 40px;
 }
 
-.nav-item>.nav-link>.fas{
+.nav-item>.nav-link>.fas,.nav-item>.nav-link>.svg-inline--fa{
     vertical-align: -webkit-baseline-middle;
 }
