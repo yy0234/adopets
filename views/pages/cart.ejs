@@ -338,7 +338,7 @@ $('.input-number').change(function() {
 							for (i=0; i<item.length; i++)
 							{
 
-											total = (+total) + (+item[i].price.substring(1,item[i].price.length));
+											total = parseFLoat((+total) + (+item[i].price.substring(1,item[i].price.length))).toFixed(2);
 											counter++;
 											$("#cart_detail").append("\
 											<li class=\"list-group-item d-flex justify-content-between lh-condensed\">\
