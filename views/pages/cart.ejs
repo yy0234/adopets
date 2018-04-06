@@ -336,6 +336,7 @@ $('.input-number').change(function() {
 							var total = 0;
 							var counter = 0;
 							for (i=0; i<item.length; i++)
+							{
 											total += element.price;
 											counter++;
 											$("#cart_detail").append("\
@@ -345,7 +346,7 @@ $('.input-number').change(function() {
 											</div>\
 											<span class=\"text-muted\">" + price[0] + "</span>\
 											</li>")
-							});
+							};
 							$("#cart_detail").append("\
 									<li>\
 									<li class=\"list-group-item d-flex justify-content-between\">\
