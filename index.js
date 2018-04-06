@@ -5,8 +5,8 @@ var pg = require('pg');
 var req = require("request");
 var cheerio = require("cheerio");
 
-//var session = require('express-session');
-//var FileStore = require('session-file-store')(session);
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
@@ -28,9 +28,34 @@ app.set('view engine', 'ejs');
   response.render('pages/index');
 });*/
 
+app.use(session({
+  name: 'Adopets Web',
+  secret: 'Adopets Web',
+  store: new FileStore(),
+  cookie: {
+      maxAge: 60 * 1000 * 60
+  }
+}));
+
 app.get('/', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
+
+app.get('/index', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,loginUser:loginUser||""});
+});
+
+app.get('/getlogined', function(request, response){
+  var loginUser=request.session.loginUser;
+  var isLogined = !!loginUser;
+  return response.send({isLogined:isLogined,loginUser:loginUser||""})
+})
 
 app.get('/login', function(request, response) {
   response.render('pages/login');
@@ -41,15 +66,24 @@ app.get('/register', function(request, response) {
 });
 
 app.get('/search_service', function(request, response) {
-  response.render('pages/searchService');
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/searchService.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/post_adoption', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/petForm.ejs'});
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/petForm.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/pet_search', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/petSearch.ejs'});
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/petSearch.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/pet_shop', function(request, response) {
@@ -145,31 +179,43 @@ app.get('/db', function (request, response) {
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO users(userid,lastname,firstname,email,telnum,address,birthday,havepet,typeofpet,userurl,password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'; 
-	  var sqlValue = [request.query.userid,request.query.lastname,request.query.firstname,request.query.email,request.query.telnum,request.query.address,request.query.birthday,false,"","",request.query.password]; 
+	  var sqlValue = [request.query.userid,"","",request.query.email,000,"",new Date(0),false,"","",request.query.password]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send("register success");   }
+        { return response.send("success");   }
       });
   });
 });
 
 app.get("/signin", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = "SELECT * FROM users WHERE userid='" + request.query.username + "' AND password='" + request.query.password + "'"; 
-	  client.query(sql, function(err, result) {
+	  client.query("SELECT * FROM users WHERE userid IN " +request.query.username+" AND password IN "+request.query.password, function(err, result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
-        else if (result.length==null) {
-          return response.send(sql+result.rows); 
+        else if (result.rows.length==0) {
+          return response.send("No Found"); 
         }
-       else
-        { return response.send(sql+"success"+result.rows);}
+       else{ 
+         request.session.loginUser=result.rows[0].userid;
+         return response.send(result.rows);
+        }
       });
   });
+});
+
+app.get("/userLogout", function (request, response) { 
+  request.session.destroy(function(err) {
+    if(err){
+        return response.send("error");
+    }
+    response.clearCookie('Adopets Web');
+    return response.send("success");
+  });
+
 });
 
 app.post('/addPets', function (request, response) { 

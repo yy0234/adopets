@@ -9,26 +9,23 @@
 
 <body>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" style="padding-top: 0.5rem;" href="#">
+		<a class="navbar-brand" style="padding-top: 0.5rem;" href="./index">
 			<img src="/images/adopets.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			<span style="vertical-align:middle;font-weight:bold;color:white">Adopets Web</span>
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 		
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home</a>
+					<a class="nav-link" href="./index">Home</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Pet Adoption
 					</a>
 					<div class="dropdown-menu" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">Search Pet</a>
-						<a class="dropdown-item" href="#">Post New Adoption</a>
+						<a class="dropdown-item" href="./pet_search">Search Pet</a>
+						<a class="dropdown-item" href="./post_adoption">Post New Adoption</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -41,17 +38,29 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#" >Pet Service Search</a>
+					<a class="nav-link" href="./search_service" >Pet Service Search</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#" >Forum</a>
+					<a class="nav-link" href="#"  >Forum</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav navbar-right">
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
-				<li class="nav-item displayF"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
-				<li class="nav-item displayT"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt"></span> Login</a></li>
+			<ul class="navbar-nav login-item navbar-right">
+				<% if(isLogined){ %>
+					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-shopping-cart"></span></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-comments"></span></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#" style="border-bottom: 1px solid lightgray;color: gray;"><span class="fas fa-user" style="margin-right: 10px;"></span>Account Detail</a>
+							<a class="dropdown-item" style="color:gray;margin-top: 5px;cursor:pointer" onclick="userSignOut()"><span class="fas fa-sign-out-alt" style="margin-right:10px;"></span>Logout</a>
+						</div>
+					</li>
+				<% }else{ %>
+					<li class="nav-item"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
+				<% } %> 
 			</ul>
 		</div>
 	</nav>
@@ -67,22 +76,22 @@
 				<div class="modal-body">
 					<form class="form-signup" novalidate>
 						<div class="form-label-group">
-							<input type="text" id="username" class="form-control" placeholder="Username" required>
+							<input type="text" id="register_username" class="form-control" placeholder="Username" required>
 						</div>
 
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+							<input type="email" id="register_email" class="form-control" placeholder="Email address" required>
 						</div>
 					
 						<div class="form-label-group">
-							<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+							<input type="password" id="register_password" class="form-control" placeholder="Password" required>
 						</div>
 
 						<div class="form-label-group">
 							<input type="password" id="confirmPassword" class="form-control" placeholder="Confirmed Password" required>
 						</div>
 	
-						<button class="btn btn-primary btn-block mb-3" type="submit">Sign Up</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit" onclick="userSignUp()">Sign Up</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -115,7 +124,7 @@
 							<input type="checkbox" value="remember-me"> Remember me
 							</label>
 						</div>
-						<button class="btn btn-primary btn-block mb-3" type="submit">Sign in</button>
+						<button class="btn btn-primary btn-block mb-3" type="submit" onclick="userSignIn()">Sign in</button>
 					</form>
 				</div>
 				<div class="modal-footer" style="justify-content: flex-start;">
@@ -147,86 +156,135 @@
 				$("#dynamic").load(mes);
 			},
 			error: function (err) {
-				alert(err);
+				console.log(err);
 			}
 		});
 	}
 
-	(function() {
-		'use strict';
-
-		window.addEventListener('load', function() {
-		// Fetch all the forms we want to apply custom Bootstrap validation styles to
-		var signInForms = document.getElementsByClassName('form-signin');
-
-		// Loop over them and prevent submission
-		var validation = Array.prototype.filter.call(signInForms, function(form) {
-			form.addEventListener('submit', function(event) {
-			if (form.checkValidity() === false) {
-				event.preventDefault();
-				event.stopPropagation();
-			}
-			else if (form.checkValidity() === true){
-				userSignIn();
-				event.preventDefault();
-			}
-			form.classList.add('was-validated');
-			}, false);
-		});
-		}, false);
-	})();
-
-	function userSignIn(){
+	function dynamic(link){
 		$.ajax({
-			url: "/signin",
+			url: link,
 			type: "GET",
 			data: {
-				username: $(".form-signin #login_username").val(),
-				password: $(".form-signin #login_password").val()
 			},
 			success: function (mes) {
-				console.log(mes);
+				$("#dynamic").load(mes);
 			},
 			error: function (err) {
 				console.log(err);
 			}
 		});
-		return false;
 	}
 
-
-	$("#user_login").click(function () {
-		var register_firstname = $("#register_firstname").val() || "";
-		var register_lastname = $("#register_lastname").val() || "";
-		var birthdate = $("#birthdate").val() || "";
-		var register_email = $("#register_email").val() || "";
-		var register_mobilenumber = $("#register_mobilenumber").val() || "";
-		var register_address = $("#register_address1").val()+" "+$("#register_address2").val()+" "+$("#district").val() || "";
-		var register_username = $("#register_username").val() || "";
-		var register_password = $("#register_password").val() || "";
-
+	function userSignOut(){
 		$.ajax({
-			url: "/regist",
+			url: "/userLogout",
 			type: "GET",
-			contentType: "application/json",
 			data: {
-				userid: register_username,
-				lastname: register_lastname,
-				firstname:register_firstname,
-				email: register_email,
-				telnum: register_mobilenumber,
-				address: register_address,
-				birthday: birthdate,
-				password:register_password
 			},
-			error: function error(err) {
-				alert(err);
+			success: function (mes) {
+				$(".login-item").html("");
+				$(".login-item").append("<li class='nav-item'><a class='nav-link' style='cursor:pointer' data-toggle='modal' data-target='#signInModal'><span class='fas fa-sign-in-alt' style='vertical-align: middle;'></span> Login</a></li>");
 			},
-			success: function success(mes) {
-				alert(mes);
+			error: function (err) {
+				console.log(err);
 			}
-		})
-	})
+		});
+	}
+
+	function userSignIn(){
+		var form = $(".form-signin")
+
+		if (form[0].checkValidity() === false) {
+			event.preventDefault()
+			event.stopPropagation()
+		}
+		else if (form[0].checkValidity() === true){
+			$.ajax({
+				url: "/signin",
+				type: "GET",
+				data: {
+					username: "('"+$(".form-signin #login_username").val()+"')",
+					password: "('"+$(".form-signin #login_password").val()+"')"
+				},
+				success: function (mes) {
+					if(mes!="No Found"){
+						$(".login-item").html("");
+						$(".login-item").append("\
+						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-shopping-cart'></span></a></li>\
+						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-comments'></span></a></li>\
+						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
+						<li class='nav-item dropdown'>\
+						<a class='nav-link dropdown-toggle' style='cursor:pointer'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+								<img src='/images/user_image.jpg' alt='user icon' width='30' height='30' class='rounded-circle'>\
+						</a>\
+						<div class='dropdown-menu dropdown-menu-right' style='width: auto;' aria-labelledby='navbarDropdownMenuLink'>\
+							<a class='dropdown-item' href='#' style='border-bottom: 1px solid lightgray;color: gray;'><span class='fas fa-user' style='margin-right: 10px;'></span>Account Detail</a>\
+							<a class='dropdown-item' href='#' style='color:gray;margin-top: 5px;'><span class='fas fa-sign-out-alt' style='margin-right:10px;'></span>Logout</a>\
+						</div>\
+						</li>");
+						$("#signInModal").modal('hide');
+					}
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
+			event.preventDefault();
+		}
+		form.addClass('was-validated');
+	}
+
+	function userSignUp(){
+		var form = $(".form-signup")
+
+		if (form[0].checkValidity() === false) {
+			event.preventDefault()
+			event.stopPropagation()
+		}
+		else if (form[0].checkValidity() === true){
+			var register_email = $("#register_email").val();
+			var register_username = $("#register_username").val();
+			var register_password = $("#register_password").val();
+	
+			$.ajax({
+				url: "/regist",
+				type: "GET",
+				contentType: "application/json",
+				data: {
+					userid: register_username,
+					email: register_email,
+					password:register_password
+				},
+				error: function error(err) {
+					console.log(err);
+				},
+				success: function success(mes) {
+					console.log(mes);
+					if(mes=="success"){
+						$(".login-item").html("");
+						$(".login-item").append("\
+						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-shopping-cart'></span></a></li>\
+						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-comments'></span></a></li>\
+						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
+						<li class='nav-item dropdown'>\
+						<a class='nav-link dropdown-toggle' style='cursor:pointer'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+								<img src='/images/user_image.jpg' alt='user icon' width='30' height='30' class='rounded-circle'>\
+						</a>\
+						<div class='dropdown-menu dropdown-menu-right' style='width: auto;' aria-labelledby='navbarDropdownMenuLink'>\
+							<a class='dropdown-item' href='#' style='border-bottom: 1px solid lightgray;color: gray;'><span class='fas fa-user' style='margin-right: 10px;'></span>Account Detail</a>\
+							<a class='dropdown-item' href='#' style='color:gray;margin-top: 5px;'><span class='fas fa-sign-out-alt' style='margin-right:10px;'></span>Logout</a>\
+						</div>\
+						</li>");
+						$("#signUpModal").modal('hide');
+					}
+				}
+			})
+			event.preventDefault();
+		}
+		form.addClass('was-validated');
+	}
+
 </script>
 </body>
 </html>
