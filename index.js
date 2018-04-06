@@ -201,13 +201,14 @@ app.get("/signin", function (request, response) {
 });
 
 app.get("/userLogout", function (request, response) { 
-  request.session.destroy(function(err) {
+  /*request.session.destroy(function(err) {
     if(err){
         return response.send("error");
     }
     resquest.clearCookie(identityKey);
     return response.send("success");
-  });
+  });*/
+  return response.send("success");
 });
 
 app.post('/addPets', function (request, response) { 
