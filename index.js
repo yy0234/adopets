@@ -200,7 +200,7 @@ app.get("/signin", function (request, response) {
   });
 });
 
-app.get("/logout", function (request, response) { 
+app.get("/userLogout", function (request, response) { 
   request.session.destroy(function(err) {
     if(err){
         return response.send("error");
