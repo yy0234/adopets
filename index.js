@@ -46,6 +46,12 @@ app.get('/', function(request, response) {
   response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
+app.get('/getlogined', function(request, response){
+  var loginUser=request.session.loginUser;
+  var isLogined = !!loginUser;
+  return response.send({isLogined:isLogined,loginUser:loginUser||""})
+})
+
 app.get('/login', function(request, response) {
   response.render('pages/login');
 });
@@ -59,11 +65,17 @@ app.get('/search_service', function(request, response) {
 });
 
 app.get('/post_adoption', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/petForm.ejs'});
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/petForm.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/pet_search', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/petSearch.ejs'});
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/petSearch.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/pet_shop', function(request, response) {
