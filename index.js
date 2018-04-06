@@ -44,6 +44,13 @@ app.get('/', function(request, response) {
   response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
+app.get('/index', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,loginUser:loginUser||""});
+});
+
 app.get('/getlogined', function(request, response){
   var loginUser=request.session.loginUser;
   var isLogined = !!loginUser;
