@@ -35,7 +35,7 @@ app.use(session({
   secret: 'Adopets Web',
   store: new FileStore(),
   cookie: {
-      maxAge: 10 * 1000
+      maxAge: 60 * 1000 * 60
   }
 }));
 
@@ -49,7 +49,7 @@ app.get('/', function(request, response) {
 app.get('/checklogined', function(request, response){
   var loginUser=request.session.loginUser;
   var isLogined = !!loginUser;
-  return response.send(isLogined)
+  return response.send({logined:isLogined,loginUserId:loginUser})
 })
 
 app.get('/login', function(request, response) {
