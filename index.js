@@ -49,7 +49,7 @@ app.get('/', function(request, response) {
 app.get('/checklogined', function(request, response){
   var loginUser=request.session.loginUser;
   var isLogined = !!loginUser;
-  return response.send({logined:isLogined,loginUserId:loginUser})
+  return response.render({isLogined:isLogined,loginUser:loginUser||""})
 })
 
 app.get('/login', function(request, response) {
