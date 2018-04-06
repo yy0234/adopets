@@ -202,7 +202,7 @@ app.get("/userLogout", function (request, response) {
     if(err){
         return response.send("error");
     }
-    request.clearCookie('Adopets Web');
+    //request.clearCookie('Adopets Web');
     return response.send("success");
   });
 
