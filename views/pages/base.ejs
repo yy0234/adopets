@@ -44,7 +44,7 @@
 					<a class="nav-link" href="#" >Pet Service Search</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#" >Forum</a>
+					<a class="nav-link" onclick="checklogin()" >Forum</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav login-item navbar-right">
@@ -148,7 +148,7 @@
 	var login=false;
 	var login_username=null;
 
-	$(function() {
+	function checklogin(){
 		$.ajax({
 			url: '/checklogined',
 			type: "GET",
@@ -161,7 +161,7 @@
 				alert(err);
 			}
 		});
-	});
+	}
 
 	function dynamic(link){
 		$.ajax({
