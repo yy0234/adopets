@@ -5,11 +5,13 @@ var pg = require('pg');
 var req = require("request");
 var cheerio = require("cheerio");
 
-//var session = require('express-session');
-//var FileStore = require('session-file-store')(session);
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
 
 var multer = require('multer');
 var bodyParser = require('body-parser');
+
+var identityKey='Adopets Web'
 
 app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -28,8 +30,22 @@ app.set('view engine', 'ejs');
   response.render('pages/index');
 });*/
 
+app.use(session({
+  name: identityKey,
+  secret: 'Adopets Web',
+  store: new FileStore(),
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+      maxAge: 10 * 1000
+  }
+}));
+
 app.get('/', function(request, response) {
-  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,username:loginUser||''});
 });
 
 app.get('/login', function(request, response) {
@@ -157,6 +173,7 @@ app.get('/regist', function (request, response) {
 });
 
 app.get("/signin", function (request, response) { 
+  var sess = req.session;
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  client.query("SELECT * FROM users WHERE userid IN " +request.query.username+" AND password IN "+request.query.password, function(err, result) {
        done();
@@ -165,9 +182,21 @@ app.get("/signin", function (request, response) {
         else if (result.rows.length==0) {
           return response.send("No Found"); 
         }
-       else
-        { return response.send("success");}
+       else{ 
+         request.session.loginUser=result.rows[0].userid;
+         return response.send(result.rows);
+        }
       });
+  });
+});
+
+app.get("/logout", function (request, response) { 
+  request.session.destroy(function(err) {
+    if(err){
+        return response.send("error");
+    }
+    resquest.clearCookie(identityKey);
+    return response.send("success");
   });
 });
 

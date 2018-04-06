@@ -145,7 +145,8 @@
 	var adopton_query_age=null;
 	var adoption_post_id=null;
 	var adoption_list={type:null,breed:null,gender:null,age:null};
-	var login=false;
+	var login=isLogined;
+	var login_username=username;
 
 	function dynamic(link){
 		$.ajax({
@@ -178,9 +179,10 @@
 					password: "('"+$(".form-signin #login_password").val()+"')"
 				},
 				success: function (mes) {
-					console.log(mes);
-					if(mes=="success"){
+					if(mes!="No Found"){
 						login=true;
+						login_username=(mes[0].userid);
+						console.log(login_username);
 						$(".login-item li").toggleClass("displayT displayF");
 						$("#signInModal").modal('hide');
 					}
