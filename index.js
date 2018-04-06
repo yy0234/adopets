@@ -59,7 +59,10 @@ app.get('/register', function(request, response) {
 });
 
 app.get('/search_service', function(request, response) {
-  response.render('pages/searchService');
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/searchService.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/post_adoption', function(request, response) {
