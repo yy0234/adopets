@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<% include ../partials/header.ejs %>
-	<!--Your own css file-->
 	<link rel="stylesheet" type="text/css" href="/stylesheets/pages/cart.css" />
 	<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
-	<title>Shopping Cart</title>
-</head>
 
-<body>
-<% include ../partials/headline.ejs %>
-
-<section class="main-content">
 	<div class="container-fluid">
 		<div class="container">
 			<div class="py-5 text-center">
@@ -174,12 +163,7 @@
 			  </div>
 			</div>
 	</div>
-</section>
 
-
-<% include ../partials/script.ejs %>
-
-<!--Your own script-->
 <script>
 
 	(function() {
@@ -345,6 +329,7 @@ $('.input-number').change(function() {
 												<h6 class=\"my-0\">" + item[i].name + "</h6>\
 											</div>\
 											<span class=\"text-muted\">" + item[i].price + "</span>\
+											<input type=\"number\" name=\"quantity\" min=\"1\" max=\"100\" step=\"1\" value=\"1\">\
 											</li>")
 							};
 							$("#cart_detail").append("\
@@ -364,5 +349,3 @@ $('.input-number').change(function() {
 
 
 </script>
-</body>
-</html>

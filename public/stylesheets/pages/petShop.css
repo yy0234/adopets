@@ -32,7 +32,7 @@ span.item_number {
     margin-right:10px;
 }
 
-.fa:not(.fa-search), .fas, .far {
+#dynamic .fa:not(.fa-search), #dynamic .fas, #dynamic .far {
     font-size: 25px;
     color: #33b5e5;
     position: relative;
@@ -135,7 +135,7 @@ form#filter_form button{
     font-weight: bold;
 }
 
-.checkbox {
+#dynamic .checkbox {
     position: absolute;
     top: 0;
     left: 0;
