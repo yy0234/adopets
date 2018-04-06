@@ -288,10 +288,9 @@ $('.input-number').change(function() {
     }
     
 });
-
+*/
 	function deleteItem(name){
 		var userid = "test1234"; //change later
-		//var x = document.getElementsByClassName("name");
 		alert(userid);
 		alert(name);
 		$.ajax({
@@ -300,8 +299,8 @@ $('.input-number').change(function() {
 			dataType: 'json',
 			contentType: "application/json",
 			data: JSON.stringify({
-				userid:userid,
-                name:name
+						userid:userid,
+            name:name
 			}),
 			complete: function complete() {
 			},
@@ -316,7 +315,7 @@ $('.input-number').change(function() {
 		})
 		listItem();
 	};
-*/
+
 
 
 	function listItem(){
@@ -341,10 +340,10 @@ $('.input-number').change(function() {
 											counter++;
 											$("#cart_detail").append("\
 											<li class=\"list-group-item d-flex justify-content-between lh-condensed\">\
-											<div class=\"buttons\" >\
+											<div class=\"buttons\" onclick=\"deleteItem("+item[i].name+")\">\
 														<span class=\"delete-btn\"></span>\
 														<i class=\"fas fa-trash-alt\"></i>\
-													</div>\
+											</div>\
 											<div>\
 												<h6 class=\"my-0\">" + item[i].name + "</h6>\
 											</div>\
