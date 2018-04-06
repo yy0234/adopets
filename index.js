@@ -87,15 +87,24 @@ app.get('/pet_search', function(request, response) {
 });
 
 app.get('/pet_shop', function(request, response) {
-  response.render('pages/petShop');
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/petShop.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/post_supply', function(request, response) {
-  response.render('pages/shopForm');
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/shopForm.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/cart', function(request, response) {
-  response.render('pages/cart');
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/cart.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
 app.get('/toPetSearch', function(request, response) {
