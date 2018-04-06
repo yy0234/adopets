@@ -45,8 +45,15 @@ app.get('/', function(request, response) {
   var sess = request.session;
   var loginUser=sess.loginUser;
   var isLogined = !!loginUser;
-  response.render('pages/base',{action:'../../public/webpage/homepage.ejs',isLogined:isLogined,username:loginUser||''});
+  response.render('pages/base',{action:'../../public/webpage/homepage.ejs'});
 });
+
+app.get('/checklogined', function(request, response){
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  return response.send({isLogined:isLogined,username:loginUser||''})
+})
 
 app.get('/login', function(request, response) {
   response.render('pages/login');
