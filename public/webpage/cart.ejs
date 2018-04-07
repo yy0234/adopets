@@ -349,7 +349,9 @@ $('.input-number').change(function() {
 
 		function qtyChange(price){
 			var $this = $(this);
+			alert($this);
 			var $input = $this.closest('span');
+			alert($input.val);
 			$input.text(price*$this.val);
 		}
 
