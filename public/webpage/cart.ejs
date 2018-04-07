@@ -86,42 +86,42 @@
 	  
 				  <div class="row">
 					<div class="col-md-5 mb-3">
-					  <label for="country">Region</label>
-					  <select class="custom-select d-block w-100" id="country" required>
+					  <label for="region">Region</label>
+					  <select class="custom-select d-block w-100" id="region" required>
 						<option value="">Choose...</option>
-						<option>Hong Kong Island</option>
-						<option>Kowloon</option>
-						<option>New Territories</option>
+						<option class="hk" id="selectionone">Hong Kong Island</option>
+						<option class="kl" id="selectiontwo">Kowloon</option>
+						<option class="nt" id="selectionthree">New Territories</option>
 					  </select>
 					  <div class="invalid-feedback">
-						Please select a valid country.
+						Please select a valid region.
 					  </div>
 					</div>
 					<div class="col-md-4 mb-3">
-					  <label for="state">District</label>
-					  <select class="custom-select d-block w-100" id="state" required>
+					  <label for="district">District</label>
+					  <select class="custom-select d-block w-100" id="district" required>
 						<option value="">Choose...</option>
-							<option value="cw">Central and Western</option>
-							<option value="eastern">Eastern</option>
-							<option value="southern">Southern</option>
-							<option value="wc">Wan Chai</option>
-							<option value="ssp">Sham Shui Po</option>
-							<option value="kc">Kowloon City</option>
-							<option value="ktong">Kwun Tong</option>
-							<option value="wts">Wong Tai Sin</option>
-							<option value="ytm">Yau Tsim Mong</option>
-							<option value="islands">Islands</option>
-							<option value="ktsing">Kwai Tsing</option>
-							<option value="north">North</option>
-							<option value="sk">Sai Kung</option>
-							<option value="st">Sha Tin</option>
-							<option value="tp">Tai Po</option>
-							<option value="tw">Tsuen Wan</option>
-							<option value="tm">Tuen Mun</option>
-							<option value="yl">Yuen Long</option>
+							<option value="cw" class="selectors hk">Central and Western</option>
+							<option value="eastern" class="selectors hk">Eastern</option>
+							<option value="southern" class="selectors hk">Southern</option>
+							<option value="wc" class="selectors hk">Wan Chai</option>
+							<option value="ssp" class="selectors kl">Sham Shui Po</option>
+							<option value="kc" class="selectors kl">Kowloon City</option>
+							<option value="ktong" class="selectors kl">Kwun Tong</option>
+							<option value="wts" class="selectors kl">Wong Tai Sin</option>
+							<option value="ytm" class="selectors kl">Yau Tsim Mong</option>
+							<option value="islands" class="selectors nt">Islands</option>
+							<option value="ktsing" class="selectors nt">Kwai Tsing</option>
+							<option value="north" class="selectors nt">North</option>
+							<option value="sk" class="selectors nt">Sai Kung</option>
+							<option value="st" class="selectors nt">Sha Tin</option>
+							<option value="tp" class="selectors nt">Tai Po</option>
+							<option value="tw" class="selectors nt">Tsuen Wan</option>
+							<option value="tm" class="selectors nt">Tuen Mun</option>
+							<option value="yl" class="selectors nt">Yuen Long</option>
 					  </select>
 					  <div class="invalid-feedback">
-						Please provide a valid state.
+						Please provide a valid district.
 					  </div>
 					</div>
 				  </div>
@@ -203,7 +203,18 @@
 							form.classList.add("was-validated");
             }, false);
           });
-        }, false);
+				}, false);
+				
+				var allOptions = $('#district option')
+				$('#region').change(function () {
+						$('#district option').remove()
+						var classN = $('#region option:selected').prop('class');
+						var opts = allOptions.filter('.' + classN);
+						$.each(opts, function (i, j) {
+								$(j).appendTo('#district');
+						});
+				});
+
       })();
 
 
