@@ -56,3 +56,14 @@
 					   color-stop(.5, transparent), to(transparent));
 }
 
+#post-date{
+  text-align:right;
+}
+
+.list-group-flush .post-content{
+  border-bottom: 5px solid rgba(128,128,128,.1);
+}
+
+.post-content-top, .post-content-bottom{
+  color: gray;
+}
