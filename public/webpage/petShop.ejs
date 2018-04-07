@@ -940,6 +940,7 @@ function checkLogined(){
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
+					alert(info.isLogined);
 					return info.isLogined;
 				},
 				error: function (err) {
