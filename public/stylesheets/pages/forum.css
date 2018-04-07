@@ -67,3 +67,16 @@
 .post-content-top, .post-content-bottom{
   color: gray;
 }
+.list-group-flush .post-title{
+  border-bottom: 1px solid lightgray;
+}
+
+.margin-top-30{
+  margin-top:30px;
+}
+
+.post-area{
+  background-color: rgba(128,128,128,.1);
+  padding-left: 0;
+  padding-right: 0;
+}
