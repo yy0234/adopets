@@ -270,8 +270,22 @@ $('.input-number').change(function() {
     
 });
 */
+
+function getUserName(){
+		$.ajax({
+				url: "/getlogined",
+				type: "GET",
+				success: function (info) {
+					return info.loginUser;
+				},
+				error: function (err) {
+					console.log(err);
+				}
+		});
+}
+
 	function deleteItem(name){
-		var userid = "test1234"; //change later
+		var userid = getUserName();
 		$.ajax({
 			url: "/deleteCart",
 			type: "POST",
@@ -296,11 +310,12 @@ $('.input-number').change(function() {
 
 
 	function listItem(){
+				var userName = getUserName();
 				$.ajax({
 					url: "/listCart",
 					type: "GET",
 					data: {
-						query:"",
+						query:"where userid = '"+userName+"'",
 					},
 					success: function (item) {
 						$("#cart_detail").html("");
