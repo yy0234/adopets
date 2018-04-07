@@ -56,3 +56,7 @@
 					   color-stop(.5, transparent), to(transparent));
 }
 
+#post-date{
+  text-align:right;
+}
+
