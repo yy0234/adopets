@@ -236,22 +236,26 @@
         </div>
         <div class="modal-body">
             <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="post-title" placeholder="Title" required>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" id="newForumPost-Category">
-                    <option>General</option>
-                    <option>Health</option>
-                    <option>Training</option>
-                    <option>Behavior</option>
-                    <option>Grooming</option>
-                    <option>Toy</option>
-                    </select>
+                <div style="display:table; width:100%;">
+                    <div style="display:table-row; width:100%;">
+                        <div class="form-group" style="display:table-cell; width:70%">
+                            <input type="text" class="form-control" id="post-title" placeholder="Title" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:table-cell; width:30%">
+                        <select class="form-control" id="post-category">
+                        <option>General</option>
+                        <option>Health</option>
+                        <option>Training</option>
+                        <option>Behavior</option>
+                        <option>Grooming</option>
+                        <option>Toy</option>
+                        </select>
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <textarea placeholder="Content" class="form-control" id="newForumPost-Content" rows="5"></textarea>
+                    <textarea placeholder="Content" class="form-control" id="post-content" rows="5"></textarea>
                 </div>
             </form>
         </div>
