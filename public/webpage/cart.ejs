@@ -272,7 +272,7 @@ $('.input-number').change(function() {
 */
 
 function getUserName(){
-		return Q($.ajax({
+		return Promise.resolve($.ajax({
 											url: "/getlogined",
 											type: "GET",
 											success: function (info) {
