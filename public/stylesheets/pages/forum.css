@@ -22,11 +22,15 @@
   cursor: pointer;
 }
 
+.category div{
+  color: gray;
+}
+
 .category div:hover{
-  color: gold;
+  color: lightblue;
 }
 
 .category .active{
-  color:orange;
+  color:darkblue;
 }
 
