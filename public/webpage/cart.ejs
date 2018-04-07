@@ -86,23 +86,42 @@
 	  
 				  <div class="row">
 					<div class="col-md-5 mb-3">
-					  <label for="country">Country</label>
-					  <select class="custom-select d-block w-100" id="country" required>
-						<option value="">Choose...</option>
-						<option>United States</option>
+					  <label for="region">Region</label>
+					  <select class="custom-select d-block w-100" id="region" required>
+						<option value="" class="nothing">Choose...</option>
+						<option class="hk" id="selectionone">Hong Kong Island</option>
+						<option class="kl" id="selectiontwo">Kowloon</option>
+						<option class="nt" id="selectionthree">New Territories</option>
 					  </select>
 					  <div class="invalid-feedback">
-						Please select a valid country.
+						Please select a valid region.
 					  </div>
 					</div>
 					<div class="col-md-4 mb-3">
-					  <label for="state">State</label>
-					  <select class="custom-select d-block w-100" id="state" required>
-						<option value="">Choose...</option>
-						<option>California</option>
+					  <label for="district">District</label>
+					  <select class="custom-select d-block w-100" id="district" required>
+						<option value="" class="abc">Choose...</option>
+							<option value="cw" class="selectors hk">Central and Western</option>
+							<option value="eastern" class="selectors hk">Eastern</option>
+							<option value="southern" class="selectors hk">Southern</option>
+							<option value="wc" class="selectors hk">Wan Chai</option>
+							<option value="ssp" class="selectors kl">Sham Shui Po</option>
+							<option value="kc" class="selectors kl">Kowloon City</option>
+							<option value="ktong" class="selectors kl">Kwun Tong</option>
+							<option value="wts" class="selectors kl">Wong Tai Sin</option>
+							<option value="ytm" class="selectors kl">Yau Tsim Mong</option>
+							<option value="islands" class="selectors nt">Islands</option>
+							<option value="ktsing" class="selectors nt">Kwai Tsing</option>
+							<option value="north" class="selectors nt">North</option>
+							<option value="sk" class="selectors nt">Sai Kung</option>
+							<option value="st" class="selectors nt">Sha Tin</option>
+							<option value="tp" class="selectors nt">Tai Po</option>
+							<option value="tw" class="selectors nt">Tsuen Wan</option>
+							<option value="tm" class="selectors nt">Tuen Mun</option>
+							<option value="yl" class="selectors nt">Yuen Long</option>
 					  </select>
 					  <div class="invalid-feedback">
-						Please provide a valid state.
+						Please provide a valid district.
 					  </div>
 					</div>
 				  </div>
@@ -154,7 +173,7 @@
 					</div>
 				  </div>
 				  <hr class="mb-4">
-				  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+				  <button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button>
 				</form>
 			  </div>
 			</div>
@@ -163,9 +182,9 @@
 <script>
 
 	(function() {
-        'use strict';
-				listItem();
+				'use strict';
 				autoFillUserName();
+				list_delete('list');
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
@@ -176,102 +195,46 @@
               if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
-              }
-              form.classList.add('was-validated');
+							}
+							else
+							{
+								alert('Transaction successful. Thank you for your order!');
+							}
+							form.classList.add("was-validated");
             }, false);
           });
-        }, false);
+				}, false);
+				
+				var allOptions = $('#district option')
+				$('#region').change(function () {
+						$('#district option').remove()
+						var classN = $('#region option:selected').prop('class');
+						var opts = allOptions.filter('.' + classN);
+						$.each(opts, function (i, j) {
+								$(j).appendTo('#district');
+						});
+				});
+
       })();
 
 
-	/*
-	function minus(){
-		var $this = $(this);
-		var $input = $this.closest('div').find('input');
-		var value = parseInt($input.val());
-	
-		if (value > 1) {
-			value = value - 1;
-		} else {
-			value = 0;
-		}
-	
-	$input.val(value);
-	
-	};
-	
-	function plus(){
-		var $this = $(this);
-		var $input = $this.closest('div').find('input');
-		var value = parseInt($input.val());
-		alert(value);
-		if (value < 100) {
-			value = value + 1;
-		} else {
-			value =100;
-		}
-	
-		$input.val(value);
-	};*/
+function list_delete(task,name){
+		$.ajax({
+								url: "/getlogined",
+								type: "GET",
+								success: function (info) {
+								  if (task == 'list')
+										listItem(info.loginUser);
+									else if (task == 'delete')
+										deleteItem(info.loginUser,name);
+								},
+								error: function (err) {
+									console.log(err);
+								}
+						});
+}
 
-	/*$('.btn-number').click(function(e){
-    e.preventDefault();
-    
-    fieldName = $(this).attr('data-field');
-    type      = $(this).attr('data-type');
-    var input = $("input[name='"+fieldName+"']");
-    var currentVal = parseInt(input.val());
-    if (!isNaN(currentVal)) {
-        if(type == 'minus') {
-            
-            if(currentVal > input.attr('min')) {
-                input.val(currentVal - 1).change();
-            } 
-            if(parseInt(input.val()) == input.attr('min')) {
-                $(this).attr('disabled', true);
-            }
-
-        } else if(type == 'plus') {
-
-            if(currentVal < input.attr('max')) {
-                input.val(currentVal + 1).change();
-            }
-            if(parseInt(input.val()) == input.attr('max')) {
-                $(this).attr('disabled', true);
-            }
-
-        }
-    } else {
-        input.val(0);
-    }
-});
-$('.input-number').focusin(function(){
-   $(this).data('oldValue', $(this).val());
-});
-$('.input-number').change(function() {
-    
-    minValue =  parseInt($(this).attr('min'));
-    maxValue =  parseInt($(this).attr('max'));
-    valueCurrent = parseInt($(this).val());
-    
-    name = $(this).attr('name');
-    if(valueCurrent >= minValue) {
-        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-    } else {
-        alert('Sorry, the minimum value was reached');
-        $(this).val($(this).data('oldValue'));
-    }
-    if(valueCurrent <= maxValue) {
-        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-    } else {
-        alert('Sorry, the maximum value was reached');
-        $(this).val($(this).data('oldValue'));
-    }
-    
-});
-*/
-	function deleteItem(name){
-		var userid = "test1234"; //change later
+	function deleteItem(userid,name){
 		$.ajax({
 			url: "/deleteCart",
 			type: "POST",
@@ -295,12 +258,12 @@ $('.input-number').change(function() {
 
 
 
-	function listItem(){
+	function listItem(userid){
 				$.ajax({
 					url: "/listCart",
 					type: "GET",
 					data: {
-						query:"",
+						query:"where userid = '"+userid+"'",
 					},
 					success: function (item) {
 						$("#cart_detail").html("");
@@ -318,7 +281,7 @@ $('.input-number').change(function() {
 											counter++;
 											$("#cart_detail").append("\
 											<li class=\"list-group-item d-flex justify-content-between lh-condensed\">\
-											<div class=\"buttons\" onclick=\"deleteItem('"+item[i].name+"')\">\
+											<div class=\"buttons\" onclick=\"list_delete('delete','"+item[i].name+"')\">\
 														<span class=\"delete-btn\"></span>\
 														<i class=\"fas fa-trash-alt\"></i>\
 											</div>\
