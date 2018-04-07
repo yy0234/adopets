@@ -357,7 +357,7 @@ $('.input-number').change(function() {
 					url: "/getlogined",
 					type: "GET",
 					success: function (info) {
-							alert(info.loginUser);
+						document.getElementById("username").value = info.loginUser;
 					},
 					error: function (err) {
 						console.log(err);
