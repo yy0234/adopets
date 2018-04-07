@@ -940,7 +940,6 @@ function checkLogined(){
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
-					alert(info.isLogined);
 					return info.isLogined;
 				},
 				error: function (err) {
@@ -963,36 +962,36 @@ function getUserName(){
 }
 
 function addCart(){
-	
+	alert(checkLogined());
 	if (checkLogined())
 	{
-	var userid = getUserName();
-	var name = document.getElementById("modal_supplyName").innerHTML;
-	var price = document.getElementById("modal_supplyPrice").innerHTML;
-	var itemurl = document.getElementById("modal_supplyImage").innerHTML;
-	var quantity = 1;
+		var userid = getUserName();
+		var name = document.getElementById("modal_supplyName").innerHTML;
+		var price = document.getElementById("modal_supplyPrice").innerHTML;
+		var itemurl = document.getElementById("modal_supplyImage").innerHTML;
+		var quantity = 1;
 
-	$.ajax({
-			url: "/addCart",
-			type: "POST",
-			dataType: 'json',
-			contentType: "application/json",
-			data: JSON.stringify({
-				itemurl:itemurl, 
-				name:name, 
-				quantity:quantity, 
-				price:price,
-				userid:userid
-			}),
-			complete: function complete() {
-			},
-			error: function error(err) {
-                console.log(err);
-			},
-			success: function success(mes) {
-                console.log(mes);
-			}
-		})
+		$.ajax({
+				url: "/addCart",
+				type: "POST",
+				dataType: 'json',
+				contentType: "application/json",
+				data: JSON.stringify({
+					itemurl:itemurl, 
+					name:name, 
+					quantity:quantity, 
+					price:price,
+					userid:userid
+				}),
+				complete: function complete() {
+				},
+				error: function error(err) {
+					console.log(err);
+				},
+				success: function success(mes) {
+					console.log(mes);
+				}
+			})
 	}
 	else{
 		alert("Please login to add your product.");
