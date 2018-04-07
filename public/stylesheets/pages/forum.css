@@ -27,10 +27,11 @@
 }
 
 .category div:hover{
-  color: lightblue;
+  color: royalblue;
 }
 
 .category .active{
-  color:darkblue;
+  color: royalblue;
+  font-weight: bold;
 }
 
