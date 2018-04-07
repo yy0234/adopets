@@ -276,13 +276,14 @@ function getUserName(){
 											url: "/getlogined",
 											type: "GET",
 											success: function (info) {
+												alert(info.loginUser);
 												return info.loginUser;
 											},
 											error: function (err) {
 												console.log(err);
 											}
 									});
-		alert(loginUser);
+		
 		return loginUser;
 }
 
