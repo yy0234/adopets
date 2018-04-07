@@ -272,16 +272,17 @@ $('.input-number').change(function() {
 */
 
 function getUserName(){
-		$.ajax({
-				url: "/getlogined",
-				type: "GET",
-				success: function (info) {
-					return info.loginUser;
-				},
-				error: function (err) {
-					console.log(err);
-				}
-		});
+		var loginUser = $.ajax({
+											url: "/getlogined",
+											type: "GET",
+											success: function (info) {
+												return info.loginUser;
+											},
+											error: function (err) {
+												console.log(err);
+											}
+									});
+		return loginUser;
 }
 
 	function deleteItem(name){
