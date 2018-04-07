@@ -940,10 +940,6 @@ function checkLogined(){
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
-					if (info.isLogined)
-						alert("it is logined");
-					else
-						alert("it is no logined");
 					return info.isLogined;
 				},
 				error: function (err) {
@@ -966,8 +962,8 @@ function getUserName(){
 }
 
 function addCart(){
-	
-	if (checkLogined() == 'true')
+	alert(checkLogined());
+	if (checkLogined())
 	{
 		var userid = getUserName();
 		var name = document.getElementById("modal_supplyName").innerHTML;
