@@ -178,7 +178,7 @@
                 event.stopPropagation();
 							}
 							form.classList.add("was-validated");
-							forms.setAttribute("onsubmit", "alert('Transaction successful. Thank you for your order!')");
+							forms[0].setAttribute("onsubmit", "alert('Transaction successful. Thank you for your order!')");
             }, false);
           });
         }, false);
