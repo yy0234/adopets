@@ -199,7 +199,7 @@ app.get('/addNewPost', function (request, response) {
           var sqlValue2 =[request.query.content,request.query.postdate,result.rows[0].topicid,request.query.postby,request.query.replyprev];
           client.query(sql2,sqlValue2,function(error,result2) {
             done();
-            if (err)
+            if (error)
              { return response.send(error); }
             else
              { 
