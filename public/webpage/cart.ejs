@@ -282,6 +282,7 @@ function getUserName(){
 												console.log(err);
 											}
 									});
+		alert(loginUser);
 		return loginUser;
 }
 
@@ -312,7 +313,7 @@ function getUserName(){
 
 	function listItem(){
 				var userName = getUserName();
-				alert(userName);
+				//alert(userName);
 				$.ajax({
 					url: "/listCart",
 					type: "GET",
