@@ -177,8 +177,11 @@
                 event.preventDefault();
                 event.stopPropagation();
 							}
+							else
+							{
+								forms[0].setAttribute("onsubmit", "alert('Transaction successful. Thank you for your order!')");
+							}
 							form.classList.add("was-validated");
-							forms[0].setAttribute("onsubmit", "alert('Transaction successful. Thank you for your order!')");
             }, false);
           });
         }, false);
