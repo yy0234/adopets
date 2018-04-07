@@ -163,9 +163,9 @@
 <script>
 
 	(function() {
-        'use strict';
-				listItem();
+				'use strict';
 				autoFillUserName();
+				listItem();
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
@@ -271,19 +271,6 @@ $('.input-number').change(function() {
 });
 */
 
-function getUserName(){
-		return Promise.resolve($.ajax({
-											url: "/getlogined",
-											type: "GET",
-											success: function (info) {
-												return info.loginUser;
-											},
-											error: function (err) {
-												console.log(err);
-											}
-									}));
-}
-
 	function deleteItem(name){
 		var userid = getUserName();
 		$.ajax({
@@ -310,7 +297,7 @@ function getUserName(){
 
 
 	function listItem(){
-				var userName = getUserName();
+				var userName = document.getElementById("username").value;
 			  alert(userName);
 				$.ajax({
 					url: "/listCart",
