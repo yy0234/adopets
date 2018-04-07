@@ -68,6 +68,7 @@
   color: gray;
 }
 .list-group-flush .post-title{
+  z-index:100;
   border-bottom: 1px solid darkblue;
 }
 
