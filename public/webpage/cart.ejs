@@ -154,7 +154,7 @@
 					</div>
 				  </div>
 				  <hr class="mb-4">
-				  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+				  <button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button>
 				</form>
 			  </div>
 			</div>
@@ -177,7 +177,8 @@
                 event.preventDefault();
                 event.stopPropagation();
               }
-              form.classList.add("was-validated");
+							form.classList.add("was-validated");
+							form.classList.add("onsubmit=\"alert('Transaction successful. Thank you for your order!')\"");
             }, false);
           });
         }, false);
