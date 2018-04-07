@@ -165,7 +165,7 @@
 	(function() {
         'use strict';
 				listItem();
-				document.getElementById("username").value = "1";
+				autoFillUserName();
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
@@ -352,5 +352,17 @@ $('.input-number').change(function() {
     	document.getElementById('total').innerHTML = '$' + total.toFixed(2);
 		}
 
+		function autoFillUserName(){
+			$.ajax({
+					url: "/getlogined",
+					type: "GET",
+					success: function (info) {
+							alert(info);
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+		}
 
 </script>
