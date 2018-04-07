@@ -328,8 +328,8 @@ $('.input-number').change(function() {
 											<div>\
 												<h6 class=\"my-0\">" + item[i].name + "</h6>\
 											</div>\
-											<span class=\"text-muted\">" + item[i].price + "</span>\
-											<input type=\"number\" name=\"quantity\" onchange=\"qtyChange("+item[i].price+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
+											<span class=\"text-muted\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
+											<input type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange("+item[i].price+","+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
 											</li>")
 							};
 							$("#cart_detail").append("\
@@ -347,12 +347,8 @@ $('.input-number').change(function() {
 				});
 		};
 
-		function qtyChange(price){
-			var $this = $(this);
-			alert($this);
-			var $input = $this.closest('span');
-			alert($input.val);
-			$input.text(price*$this.val);
+		function qtyChange(price,order){
+			document.getElementById('price-'+order).innerHTML = '$' + (document.getElementById('quantity-'+order).value * price.substring(1,price.length)).toFixed(2);
 		}
 
 
