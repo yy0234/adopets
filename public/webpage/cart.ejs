@@ -336,7 +336,7 @@ $('.input-number').change(function() {
 									<li>\
 									<li class=\"list-group-item d-flex justify-content-between\">\
 									<span>Total (HKD)</span>\
-									<strong>$"+ total.toFixed(2) +"</strong>\
+									<strong id=\"total\">$"+ total.toFixed(2) +"</strong>\
 									</li>");
 							$('#numberOfItem').text(counter);
 							}
@@ -349,6 +349,10 @@ $('.input-number').change(function() {
 
 		function qtyChange(price,order){
 			document.getElementById('price-'+order).innerHTML = '$' + (document.getElementById('quantity-'+order).value * price.substring(1,price.length)).toFixed(2);
+			var content = document.getElementById('total').innerHTML;
+    	content = content.substring(1,content.length);
+   	  total = parseFloat(content) + parseFloat(price.substring(1,price.length));
+    	document.getElementById('total').innerHTML = '$' + total.toFixed(2);
 		}
 
 
