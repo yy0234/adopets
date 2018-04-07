@@ -135,7 +135,7 @@
             <div class="list-group-item flex-column align-items-start post-title">
                 <div class="d-flex w-100 justify-content-between post-content-top">
                 <h6 class="my-1">Title</h6>
-                <button type="button" class="btn btn-outline-primary btn-sm">Reply</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#newReply">Reply</button>
                 </div>
             </div>
         </div>
@@ -256,7 +256,7 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="button" onclick="checkLogin()" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
@@ -270,11 +270,11 @@
         <div class="modal-body">
             <form>
                 <div class="form-group mb-4">
-                    <textarea placeholder="Content here..." class="form-control" id="post-content" rows="10"></textarea>
+                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10"></textarea>
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="button" onclick="checkLogin()" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
@@ -282,20 +282,4 @@
     </div>
 </div>
 </div>
-<script>
-    function checkLogin(){
-        $.ajax({
-			url: '/getlogined',
-			type: "GET",
-			data: {
-			},
-			success: function (mes) {
-                console.log(mes);
-			},
-			error: function (err) {
-				console.log(err);
-			}
-		});
-    }
-</script>
 
