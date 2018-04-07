@@ -1,7 +1,17 @@
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-.border-top-gray { border-top-color: #adb5bd; }
+@media (min-width: 1200px){
+  .row {
+    margin-left: -15px;
+  }
+}
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+@media (max-width: 979px) and (min-width: 768px){
+  .row {
+      margin-left: -15px;
+  }
+}
 
-.lh-condensed { line-height: 1.25; }
+@media (max-width: 767px){
+  .row, .thumbnails {
+      margin-left: -15px;
+  }
+}
