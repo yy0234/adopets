@@ -935,23 +935,37 @@ function searchByKey(){
 	callAjax(searchQuery,null);
 }
 
-/*function checkLogined(){
+function checkLogined(){
 		$.ajax({
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
-					
+					return info.isLogined;
 				},
 				error: function (err) {
 					console.log(err);
 				}
 		});
-}*/
+}
+
+function userName(){
+		$.ajax({
+				url: "/getlogined",
+				type: "GET",
+				success: function (info) {
+					return info.loginUser;
+				},
+				error: function (err) {
+					console.log(err);
+				}
+		});
+}
 
 function addCart(){
 	
-
-	var userid = "test1234"; //change later
+	if (checkLogined())
+	{
+	var userid = userName();
 	var name = document.getElementById("modal_supplyName").innerHTML;
 	var price = document.getElementById("modal_supplyPrice").innerHTML;
 	var itemurl = document.getElementById("modal_supplyImage").innerHTML;
@@ -978,6 +992,10 @@ function addCart(){
                 console.log(mes);
 			}
 		})
+	}
+	else{
+		alert("Please login to add your product.");
+	}
 }
 
 
