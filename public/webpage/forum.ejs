@@ -10,7 +10,7 @@
                             <span style="color: darkcyan;">Forum</span>
                     </h6>
                     <span class="tooltip-cust" style="display:table-cell;width:20%; text-align:right;">
-                        <button type="button" class="btn btn-light fas fa-plus"></button>
+                        <button type="button" class="btn btn-light fas fa-plus" data-toggle="modal" data-target="#newForumPost"></button>
                         <span class="tooltiptext">Create Post</span>
                     </span>
                     <!--<div class="tooltip-cust"><button>hi</button>
@@ -136,6 +136,7 @@
                 <div class="d-flex w-100 justify-content-between post-content-top">
                 <h6 class="my-1">Title</h6>
                 <button type="button" class="btn btn-outline-primary btn-sm">Reply</button>
+                </div>
             </div>
         </div>
         <div class="list-group list-group-flush" id="scrollbar" style="height:80vh; overflow-y:auto;">
@@ -220,6 +221,44 @@
                 <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
                 <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="newForumPost" tabindex="-1" role="dialog" aria-labelledby="newForumPostLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="newForumPostLabel">Create New Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="post-title" placeholder="Title" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="newForumPost-Category">
+                    <option>General</option>
+                    <option>Health</option>
+                    <option>Training</option>
+                    <option>Behavior</option>
+                    <option>Grooming</option>
+                    <option>Toy</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea placeholder="Content" class="form-control" id="newForumPost-Content" rows="5"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </div>
         </div>
     </div>
 </div>
