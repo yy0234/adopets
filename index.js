@@ -334,43 +334,6 @@ app.get("/listCart", function (request, response) {
 
 
 
-/*var identityKey = 'skey';
-
-app.use(session({
-    name: identityKey,
-    secret: 'chyingp', 
-    store: new FileStore(),  
-    saveUninitialized: false, 
-    resave: false, 
-    cookie: {
-        maxAge: 600 * 1000  
-    }
-}));
-
-app.get('/', function(req, res) {
-  if (req.session.cart) {
-      var itemsInCart = req.session.cart.length;
-  } else {
-      req.session.cart = [];
-  }
-  res.render('index', {
-      title: 'Shopping Cart',
-      itemsInCart: itemsInCart,
-      products: [
-        {id: 1, item: 'something', price: 100},
-    ]
-  });
-});
-
-app.post('/', function(req, res) {
-  if (req.body.action == 'Add to Cart') {
-      req.session.cart.push(req.body.itemId);
-      res.redirect('/');
-  }
-});
-
-
-
 /*app.get('*', function(request, response) {
   response.redirect('/');
 });*/

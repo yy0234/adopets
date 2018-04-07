@@ -935,8 +935,22 @@ function searchByKey(){
 	callAjax(searchQuery,null);
 }
 
+/*function checkLogined(){
+		$.ajax({
+				url: "/getlogined",
+				type: "GET",
+				success: function (info) {
+					
+				},
+				error: function (err) {
+					console.log(err);
+				}
+		});
+}*/
 
 function addCart(){
+	
+
 	var userid = "test1234"; //change later
 	var name = document.getElementById("modal_supplyName").innerHTML;
 	var price = document.getElementById("modal_supplyPrice").innerHTML;
