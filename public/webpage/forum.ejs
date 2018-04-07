@@ -235,7 +235,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form id="form-post" novalidate>
                 <div class="row">
                     <div class="form-group col-md-8">
                         <input type="text" class="form-control" id="post-title" placeholder="Title" required>
@@ -274,9 +274,9 @@
             </button>
         </div>
         <div class="modal-body">
-            <form>
+            <form id="form-reply" novalidate>
                 <div class="form-group mb-4">
-                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10"></textarea>
+                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10" required></textarea>
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
@@ -306,7 +306,7 @@
                 <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
                 <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
             </div>
-            <form>
+            <form id="form-replyPrev" novalidate>
                 <div class="form-group mb-4">
                     <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10"></textarea>
                 </div>
@@ -320,4 +320,38 @@
     </div>
 </div>
 </div>
+
+<script>
+    function submitPost(){
+        var form = $("#form-post")
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        else if (form[0].checkValidity() === true){
+            $.ajax({
+                url: "/addNewPost",
+                type: "GET",
+                data: {
+                    subject:$("#post-title").val(),
+                    postdate:new Date(),
+                    category:$("#post-category").val(),
+                    postby:"yy0234",
+                    replynum:0,
+                    content:$("#post-content").val(),
+                    replyprev:false
+                },
+                success: function (mes) {
+                    console.log(mes);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+            event.preventDefault();
+        }
+        form.addClass('was-validated');
+    }
+</script>
 
