@@ -188,15 +188,15 @@ app.get('/db', function (request, response) {
 app.get('/addNewPost', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO topics(subject,postdate,category,postby,replynum) VALUES($1, $2, $3, $4, $5) RETURNING topicid'; 
-	  var sqlValue = [request.query.subject,request.query.now(),request.query.category,request.query.postby,request.query.replynum]; 
+	  var sqlValue = [request.query.subject,now(),request.query.category,request.query.postby,request.query.replynum]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
         { return response.send("Error " + err); }
        else
         { 
-          /*var sql2='INSERT INTO posts(content,postdate,topic,postby,replyprev) VALUES($1, $2, $3, $4, $5)';
-          var sqlValue2 =[request.query.content,request.query.now(),result.rows[0].topicid,request.query.postby,request.query.replyprev];
+          var sql2='INSERT INTO posts(content,postdate,topic,postby,replyprev) VALUES($1, $2, $3, $4, $5)';
+          var sqlValue2 =[request.query.content,now(),result.rows[0].topicid,request.query.postby,request.query.replyprev];
           client.query(sql2,sqlValue2,function(error,result2) {
             done();
             if (error)
@@ -205,8 +205,7 @@ app.get('/addNewPost', function (request, response) {
              { 
               return response.send("success");
              }
-           });*/
-           return response.send("success");
+           });
         }
       });
   });
