@@ -195,7 +195,6 @@ app.get('/addNewPost', function (request, response) {
         { return response.send("Error " + err); }
        else
         { 
-          return response.send("success");
           var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
           var sqlValue2 =[request.query.content,result.rows[0].topicid,request.query.postby,request.query.replyprev];
           client.query(sql2,sqlValue2,function(error,result2) {
