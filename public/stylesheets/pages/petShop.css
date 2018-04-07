@@ -99,7 +99,7 @@ div.filtering label.container:hover input ~ .checkmark, div.filtering label.cont
 }
 
 div.filtering label.container input:checked ~ .checkmark, div.filtering label.container input:checked ~ .checkbox {
-    background-color: #33b5e5;
+    background-color: #33b5e5 !important;
 }
 
 div.filtering label.container .checkmark:after, div.filtering label.container .checkbox:after {
