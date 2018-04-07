@@ -19,6 +19,7 @@
 .category div{
   margin-top:5px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .category div:hover{
