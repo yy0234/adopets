@@ -165,7 +165,7 @@
 	(function() {
 				'use strict';
 				autoFillUserName();
-				listItem();
+				list_delete('list');
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
@@ -184,95 +184,23 @@
       })();
 
 
-	/*
-	function minus(){
-		var $this = $(this);
-		var $input = $this.closest('div').find('input');
-		var value = parseInt($input.val());
-	
-		if (value > 1) {
-			value = value - 1;
-		} else {
-			value = 0;
-		}
-	
-	$input.val(value);
-	
-	};
-	
-	function plus(){
-		var $this = $(this);
-		var $input = $this.closest('div').find('input');
-		var value = parseInt($input.val());
-		alert(value);
-		if (value < 100) {
-			value = value + 1;
-		} else {
-			value =100;
-		}
-	
-		$input.val(value);
-	};*/
+function list_delete(task,name){
+		$.ajax({
+								url: "/getlogined",
+								type: "GET",
+								success: function (info) {
+								  if (task == 'list')
+										listItem(info.loginUser);
+									else if (task == 'delete')
+										deleteItem(info.loginUser,name);
+								},
+								error: function (err) {
+									console.log(err);
+								}
+						});
+}
 
-	/*$('.btn-number').click(function(e){
-    e.preventDefault();
-    
-    fieldName = $(this).attr('data-field');
-    type      = $(this).attr('data-type');
-    var input = $("input[name='"+fieldName+"']");
-    var currentVal = parseInt(input.val());
-    if (!isNaN(currentVal)) {
-        if(type == 'minus') {
-            
-            if(currentVal > input.attr('min')) {
-                input.val(currentVal - 1).change();
-            } 
-            if(parseInt(input.val()) == input.attr('min')) {
-                $(this).attr('disabled', true);
-            }
-
-        } else if(type == 'plus') {
-
-            if(currentVal < input.attr('max')) {
-                input.val(currentVal + 1).change();
-            }
-            if(parseInt(input.val()) == input.attr('max')) {
-                $(this).attr('disabled', true);
-            }
-
-        }
-    } else {
-        input.val(0);
-    }
-});
-$('.input-number').focusin(function(){
-   $(this).data('oldValue', $(this).val());
-});
-$('.input-number').change(function() {
-    
-    minValue =  parseInt($(this).attr('min'));
-    maxValue =  parseInt($(this).attr('max'));
-    valueCurrent = parseInt($(this).val());
-    
-    name = $(this).attr('name');
-    if(valueCurrent >= minValue) {
-        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-    } else {
-        alert('Sorry, the minimum value was reached');
-        $(this).val($(this).data('oldValue'));
-    }
-    if(valueCurrent <= maxValue) {
-        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-    } else {
-        alert('Sorry, the maximum value was reached');
-        $(this).val($(this).data('oldValue'));
-    }
-    
-});
-*/
-
-	function deleteItem(name){
-		var userid = getUserName();
+	function deleteItem(userid,name){
 		$.ajax({
 			url: "/deleteCart",
 			type: "POST",
@@ -296,14 +224,12 @@ $('.input-number').change(function() {
 
 
 
-	function listItem(){
-				var userName = document.getElementById("username").value;
-			  alert(userName);
+	function listItem(userid){
 				$.ajax({
 					url: "/listCart",
 					type: "GET",
 					data: {
-						query:"where userid = '"+userName+"'",
+						query:"where userid = '"+userid+"'",
 					},
 					success: function (item) {
 						$("#cart_detail").html("");
@@ -321,7 +247,7 @@ $('.input-number').change(function() {
 											counter++;
 											$("#cart_detail").append("\
 											<li class=\"list-group-item d-flex justify-content-between lh-condensed\">\
-											<div class=\"buttons\" onclick=\"deleteItem('"+item[i].name+"')\">\
+											<div class=\"buttons\" onclick=\"list_delete('delete','"+item[i].name+"')\">\
 														<span class=\"delete-btn\"></span>\
 														<i class=\"fas fa-trash-alt\"></i>\
 											</div>\
