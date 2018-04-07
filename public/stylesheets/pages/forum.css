@@ -60,3 +60,10 @@
   text-align:right;
 }
 
+.list-group-flush .list-group-item{
+  border: 10px solid rgba(128,128,128,.1);
+}
+
+.post-content-top, .post-content-bottom{
+  color: lightgray;
+}
