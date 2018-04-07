@@ -948,7 +948,7 @@ function checkLogined(){
 		});
 }
 
-function userName(){
+function getUserName(){
 		$.ajax({
 				url: "/getlogined",
 				type: "GET",
@@ -965,7 +965,7 @@ function addCart(){
 	
 	if (checkLogined())
 	{
-	var userid = userName();
+	var userid = getUserName();
 	var name = document.getElementById("modal_supplyName").innerHTML;
 	var price = document.getElementById("modal_supplyPrice").innerHTML;
 	var itemurl = document.getElementById("modal_supplyImage").innerHTML;
