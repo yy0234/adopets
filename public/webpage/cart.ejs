@@ -176,9 +176,9 @@
               if (form.checkValidity() === false) {
                 event.preventDefault();
                 event.stopPropagation();
-              }
-							form.classList.add("was-validated");
+							}
 							forms.setAttribute("onsubmit", "alert('Transaction successful. Thank you for your order!')");
+							form.classList.add("was-validated");
             }, false);
           });
         }, false);
