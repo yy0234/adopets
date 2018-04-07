@@ -272,19 +272,16 @@ $('.input-number').change(function() {
 */
 
 function getUserName(){
-		var loginUser = $.ajax({
+		return Q($.ajax({
 											url: "/getlogined",
 											type: "GET",
 											success: function (info) {
-												alert(info.loginUser);
 												return info.loginUser;
 											},
 											error: function (err) {
 												console.log(err);
 											}
-									});
-		
-		return loginUser;
+									}));
 }
 
 	function deleteItem(name){
@@ -314,7 +311,7 @@ function getUserName(){
 
 	function listItem(){
 				var userName = getUserName();
-				//alert(userName);
+			  alert(userName);
 				$.ajax({
 					url: "/listCart",
 					type: "GET",
