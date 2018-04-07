@@ -307,7 +307,7 @@
 													<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 												</div>
 												<div class="col-md-12">
-													<button type="button" class="btn btn-primary" style="width:80%" onclick="addCart()">Add to Shopping Cart</button>
+													<button type="button" class="btn btn-primary" style="width:80%" onclick="loginToAddCart()">Add to Shopping Cart</button>
 												</div>
 											</div>
 										</div>
@@ -934,29 +934,16 @@ function searchByKey(){
 	var searchQuery="(supplyid||name||description||price||type||status||remark||providerid||quantity||pettype) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
 }
-/*
-function checkLogined(){
+
+function loginToAddCart(){
 		$.ajax({
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
 					if(info.isLogined)
-						return 'true';
+						addCart(info.loginUser);
 					else
-						return 'false';
-				},
-				error: function (err) {
-					console.log(err);
-				}
-		});
-}*/
-
-function getUserName(){
-		$.ajax({
-				url: "/getlogined",
-				type: "GET",
-				success: function (info) {
-					return info.loginUser;
+						alert("Please login to add your product.");
 				},
 				error: function (err) {
 					console.log(err);
@@ -964,11 +951,7 @@ function getUserName(){
 		});
 }
 
-function addCart(){
-	alert(checkLogined());
-	if (checkLogined() == 'true')
-	{
-		var userid = getUserName();
+function addCart(userid){
 		var name = document.getElementById("modal_supplyName").innerHTML;
 		var price = document.getElementById("modal_supplyPrice").innerHTML;
 		var itemurl = document.getElementById("modal_supplyImage").innerHTML;
@@ -995,10 +978,6 @@ function addCart(){
 					console.log(mes);
 				}
 			})
-	}
-	else{
-		alert("Please login to add your product.");
-	}
 }
 
 
