@@ -934,7 +934,7 @@ function searchByKey(){
 	var searchQuery="(supplyid||name||description||price||type||status||remark||providerid||quantity||pettype) LIKE '%"+keyword+"%'";
 	callAjax(searchQuery,null);
 }
-
+/*
 function checkLogined(){
 		$.ajax({
 				url: "/getlogined",
@@ -949,7 +949,7 @@ function checkLogined(){
 					console.log(err);
 				}
 		});
-}
+}*/
 
 function getUserName(){
 		$.ajax({
