@@ -195,7 +195,8 @@ app.get('/addNewPost', function (request, response) {
         { return response.send("Error " + err); }
        else
         { 
-          var sql2='INSERT INTO posts(content,postdate,topic,postby,replyprev) VALUES($1, $2, $3, $4, $5)';
+          return response.send("success");
+          /*var sql2='INSERT INTO posts(content,postdate,topic,postby,replyprev) VALUES($1, $2, $3, $4, $5)';
           var sqlValue2 =[request.query.content,DEFAULT,result.rows[0].topicid,request.query.postby,request.query.replyprev];
           client.query(sql2,sqlValue2,function(error,result2) {
             done();
@@ -205,7 +206,7 @@ app.get('/addNewPost', function (request, response) {
              { 
               return response.send("success");
              }
-           });
+           });*/
         }
       });
   });
