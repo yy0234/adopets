@@ -122,6 +122,6 @@
   margin-bottom: 30px;
 }
 
-#list-forum-topic .active{
+#list-forum-topic .content-active{
   border-left: 5px solid gold;
 }

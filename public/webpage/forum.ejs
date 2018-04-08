@@ -288,8 +288,8 @@
     }
 
     function listPostContent(topic,title,object){
-        $("#list-forum-topic>li").removeClass("active");
-        $(object).addClass("active");
+        $("#list-forum-topic>li").removeClass("content-active");
+        $(object).addClass("content-active");
         $.ajax({
             url: "/listPostContent",
             type: "GET",
@@ -309,8 +309,8 @@
                 </div>\
                 <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
                     <div class='margin-top-30'></div>\
-                </div>",function(){
-                    for(var i=0;i<mes.length;i++){
+                </div>");
+                for(var i=0;i<mes.length;i++){
                     console.log($("#list-forum-reply"));
                     $("#list-forum-reply").append("\
                         <div class='list-group-item flex-column align-items-start post-content'>\
@@ -321,8 +321,7 @@
                         <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
                         <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
                         </div>")
-                    }
-                });
+                }
             },
             error: function (err) {
                 console.log(err);
