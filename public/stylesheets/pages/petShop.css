@@ -283,6 +283,11 @@ div.right_arrow {
 .item_description {
     color: grey;
     font-size: 14px;
+    overflow: hidden;
+    line-height: 1.2em;
+    max-height: 3.6em;
+    text-align: justify; 
+    
     text-overflow: ellipsis;
     display: table-row;
 }
