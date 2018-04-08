@@ -284,6 +284,7 @@ a.product_page p {
 .item_description {
     color: grey;
     font-size: 14px;
+    text-overflow: ellipsis;
 }
 
 .product_buttons {
