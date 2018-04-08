@@ -235,6 +235,22 @@ app.get("/userLogout", function (request, response) {
 
 });
 
+app.get("/listPostTitle", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  client.query("SELECT * FROM topics WHERE userid IN " +category+" order by topicid DESC limit 50", function(err, result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+        else if (result.rows.length==0) {
+          return response.send("No Found"); 
+        }
+       else{ 
+         return response.send(result.rows);
+        }
+      });
+  });
+});
+
 app.post('/addNewPost', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid'; 
