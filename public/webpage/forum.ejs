@@ -19,12 +19,12 @@
                 </div>
             </div>
             <div class="row category" style="text-align:center">
-                <div class="col-sm-2 col-md-4 active" onclick="listPostTitle('General')">General</div>
-                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Health')">Health</div>
-                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Training')">Training</div>
-                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Behavior')">Behavior</div>
-                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Grooming')">Grooming</div>
-                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Toy')">Toy</div>
+                <div class="col-sm-2 col-md-4 active" onclick="listPostTitle('General',this)">General</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Health',this)">Health</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Training',this)">Training</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Behavior',this)">Behavior</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Grooming',this)">Grooming</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Toy',this)">Toy</div>
             </div>
         </div>
         <div id="scrollbar" style="overflow-y: auto;height: 70vh;">
@@ -259,9 +259,9 @@
         form.addClass('was-validated');
     }
 
-    function listPostTitle(category){
+    function listPostTitle(category,object){
         $(".category div").removeClass("active");
-        $(this)[0].addClass("active");
+        $(object).addClass("active");
         $.ajax({
             url: "/listPostTitle",
             type: "GET",
