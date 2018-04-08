@@ -988,15 +988,6 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
-		console.log($(".product_image").prop("tagName"));
-
-		$(".product_image").hover(function() {
-			console.log("in");
-			$(this).parent().find(".details").animate({opacity: "1.0"});
-		}, function(){
-			console.log("out");
-			$(this).parent().find(".details").animate({opacity: "0.0"});
-		})
 
 		supplyData= $.ajax({
 					url: "/listSupply",
@@ -1111,11 +1102,23 @@ function addCart(userid){
 					}
 				});
 
+		
+		console.log($(".product_image").prop("tagName"));
+
+		$(".product_image").hover(function() {
+			console.log("in");
+			$(this).parent().find(".details").animate({opacity: "1.0"});
+		}, function(){
+			console.log("out");
+			$(this).parent().find(".details").animate({opacity: "0.0"});
+		});
+
 		$("#show_hide_button").click(function(){
 			$("#left_container").toggle();
 			$(".filter_hide_button").toggle();
 			$(".filter_show_button").toggle();
 		});
+
 		$("#more_icon").click(function(){
 			$("#more_icon").css({
 				'opacity': '1.0',
@@ -1128,6 +1131,7 @@ function addCart(userid){
 				'cursor': 'pointer'
 			});
 		});
+
 		$("#less_icon").click(function(){
 			$("#less_icon").css({
 				'opacity': '1.0',
@@ -1140,6 +1144,7 @@ function addCart(userid){
 				'cursor': 'pointer'
 			});
 		});
+		
 		$("div.filtering button").click(function(){
 			$("i", this).toggleClass("fa fa-minus fa fa-plus")
 		});
