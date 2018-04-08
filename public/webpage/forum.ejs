@@ -19,12 +19,12 @@
                 </div>
             </div>
             <div class="row category" style="text-align:center">
-                <div class="col-sm-2 col-md-4 active">General</div>
-                <div class="col-sm-2 col-md-4">Health</div>
-                <div class="col-sm-2 col-md-4">Training</div>
-                <div class="col-sm-2 col-md-4">Behavior</div>
-                <div class="col-sm-2 col-md-4">Grooming</div>
-                <div class="col-sm-2 col-md-4">Toy</div>
+                <div class="col-sm-2 col-md-4 active" onclick="listPostTitle('General')">General</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Health')">Health</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Training')">Training</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Behavior')">Behavior</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Grooming')">Grooming</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Toy')">Toy</div>
             </div>
         </div>
         <div id="scrollbar" style="overflow-y: auto;height: 70vh;">
@@ -144,12 +144,12 @@
                     </div>
                     <div class="form-group col-md-4">
                         <select class="form-control" id="post-category">
-                            <option selected onclick="listPostTitle('General')">General</option>
-                            <option onclick="listPostTitle('Health')">Health</option>
-                            <option onclick="listPostTitle('Training')">Training</option>
-                            <option onclick="listPostTitle('Behavior')">Behavior</option>
-                            <option onclick="listPostTitle('Grooming')">Grooming</option>
-                            <option onclick="listPostTitle('Toy')">Toy</option>
+                            <option selected>General</option>
+                            <option>Health</option>
+                            <option>Training</option>
+                            <option>Behavior</option>
+                            <option>Grooming</option>
+                            <option>Toy</option>
                         </select>
                     </div>
                 </div>
