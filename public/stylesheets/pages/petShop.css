@@ -259,7 +259,6 @@ div.right_arrow {
     margin-top: 7px;
     background-color: #FFFFFF;
     position: relative;
-    height: 70px;
 }
 
 a.product_page p {
@@ -289,7 +288,7 @@ a.product_page p {
 
 .product_buttons {
     float: right;
-    width: 50px;
+    width: 40px;
 }
 
 .shopping_cart {
