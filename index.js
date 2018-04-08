@@ -235,7 +235,7 @@ app.get("/userLogout", function (request, response) {
 
 });
 
-app.get('/addNewPost', function (request, response) { 
+app.post('/addNewPost', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid'; 
 	  var sqlValue = [request.body.subject,request.body.category,request.body.postby,request.body.replynum]; 
