@@ -311,6 +311,7 @@
                         <div class='margin-top-30'></div>\
                     </div>");
                     $("#list-forum-content").promise().done(function() {
+                        console.log($("list-forum-reply"));
                         for(var i=0;i<mes.length;i++){
                             $("list-forum-reply").append("\
                                 <div class='list-group-item flex-column align-items-start post-content'>\
