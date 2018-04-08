@@ -196,6 +196,7 @@ div.right_arrow {
     width: 250px;
 }
 
+/*
 .thumbnail {
     border: 0 none;
     padding: 0;
@@ -203,6 +204,7 @@ div.right_arrow {
     height: 230px;
     position: relative;
 }
+*/
 
 .card .details {
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
