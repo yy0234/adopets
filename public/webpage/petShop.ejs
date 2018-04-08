@@ -307,7 +307,7 @@
 													<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 												</div>
 												<div class="col-md-12">
-													<button type="button" class="btn btn-primary" style="width:80%" onclick="addCart()">Add to Shopping Cart</button>
+													<button type="button" class="btn btn-primary" style="width:80%" onclick="loginToAddCart()">Add to Shopping Cart</button>
 												</div>
 											</div>
 										</div>
@@ -432,6 +432,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 
 <!--Your own script-->
@@ -934,35 +935,49 @@ function searchByKey(){
 	callAjax(searchQuery,null);
 }
 
+function loginToAddCart(){
+		$.ajax({
+				url: "/getlogined",
+				type: "GET",
+				success: function (info) {
+					if(info.isLogined)
+						addCart(info.loginUser);
+					else
+						alert("Please login to add your product.");
+				},
+				error: function (err) {
+					console.log(err);
+				}
+		});
+}
 
-function addCart(){
-	var userid = "test1234"; //change later
-	var name = document.getElementById("modal_supplyName").innerHTML;
-	var price = document.getElementById("modal_supplyPrice").innerHTML;
-	var itemurl = document.getElementById("modal_supplyImage").innerHTML;
-	var quantity = 1;
+function addCart(userid){
+		var name = document.getElementById("modal_supplyName").innerHTML;
+		var price = document.getElementById("modal_supplyPrice").innerHTML;
+		var itemurl = document.getElementById("modal_supplyImage").innerHTML;
+		var quantity = 1;
 
-	$.ajax({
-			url: "/addCart",
-			type: "POST",
-			dataType: 'json',
-			contentType: "application/json",
-			data: JSON.stringify({
-				itemurl:itemurl, 
-				name:name, 
-				quantity:quantity, 
-				price:price,
-				userid:userid
-			}),
-			complete: function complete() {
-			},
-			error: function error(err) {
-                console.log(err);
-			},
-			success: function success(mes) {
-                console.log(mes);
-			}
-		})
+		$.ajax({
+				url: "/addCart",
+				type: "POST",
+				dataType: 'json',
+				contentType: "application/json",
+				data: JSON.stringify({
+					itemurl:itemurl, 
+					name:name, 
+					quantity:quantity, 
+					price:price,
+					userid:userid
+				}),
+				complete: function complete() {
+				},
+				error: function error(err) {
+					console.log(err);
+				},
+				success: function success(mes) {
+					console.log(mes);
+				}
+			})
 }
 
 
