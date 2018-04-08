@@ -988,7 +988,8 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
-	
+		console.log($(".product_image").prop("tagName"));
+
 		$(".product_image").hover(function() {
 			console.log("in");
 			$(this).parent().find(".details").animate({opacity: "1.0"});
