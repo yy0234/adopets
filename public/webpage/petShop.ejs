@@ -45,10 +45,13 @@
 		<br>
 		<div class="row">
 			<div class="col-md-2" id="left_container">
-				<div class="search-container">
-					<form id="searchBar">
-						<input type="text" id="search" placeholder="Search.." name="search"/><button type="button" class="search_button" onclick="spinner();searchByKey()">&#xf002;</button>
-					</form>
+				<div class="list-group-item list-group-item-action flex-column align-items-start">
+					<div class="input-group autocomplete">
+						<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
+						<span class="input-group-addon">
+							<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
+						</span>
+					</div>
 				</div>
 				<br>
 				<br>

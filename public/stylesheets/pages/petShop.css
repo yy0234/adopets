@@ -39,18 +39,6 @@ span.item_number {
     top: 3px;
 }
 
-#search {
-    float: left;
-    width: 85%;
-}
-
-.search_button {
-    font-family: FontAwesome, sans-serif;
-    float: right;
-    width: 15%;
-    color: #33b5e5;
-}
-
 select#dropdownlist {
     font-family: FontAwesome, sans-serif;
     width: 280px;
