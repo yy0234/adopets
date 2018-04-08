@@ -237,7 +237,7 @@ app.get("/userLogout", function (request, response) {
 
 app.get("/listPostTitle", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  client.query("SELECT * FROM topics WHERE category IN " +category+" order by topicid DESC limit 50", function(err, result) {
+	  client.query("SELECT * FROM topics WHERE category IN " +request.query.category+" order by topicid DESC limit 50", function(err, result) {
        done();
        if (err)
         { return response.send("Error " + err); }
