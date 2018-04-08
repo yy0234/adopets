@@ -1002,8 +1002,10 @@ function addCart(userid){
 -		*/
 	
 		$(".product_image img").hover(function() {
+			console.log("in");
 			$(this).parent().parent().find(".details").animate({opacity: "0.0"});
 		}, function(){
+			console.log("out");
 			$(this).parent().parent().find(".details").animate({opacity: "1.0"});
 		})
 
