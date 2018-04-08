@@ -298,7 +298,7 @@
             },
             success: function (mes) {
                 $("#list-forum-content").html("");
-                var pointerObject=function (){$("#list-forum-content").append("\
+                $("#list-forum-content").append("\
                     <div class='list-group list-group-flush'>\
                         <div class='list-group-item flex-column align-items-start post-title'>\
                             <div class='d-flex w-100 justify-content-between post-content-top'>\
@@ -310,20 +310,19 @@
                     <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
                         <div class='margin-top-30'></div>\
                     </div>");
-                    return $("#list-forum-reply");
-                }
-                for(var i=0;i<mes.length;i++){
-                    console.log(pointerObject);
-                    pointerObject.append("\
-                        <div class='list-group-item flex-column align-items-start post-content'>\
-                        <div class='d-flex w-100 justify-content-between post-content-top'>\
-                        <small class='mb-1'>"+mes[i].postby+"</small>\
-                        <span class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev'></span>\
-                        </div>\
-                        <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
-                        <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
-                        </div>")
-                }
+                    $("#list-forum-content").promise().done(function() {
+                        for(var i=0;i<mes.length;i++){
+                            $("list-forum-reply").append("\
+                                <div class='list-group-item flex-column align-items-start post-content'>\
+                                <div class='d-flex w-100 justify-content-between post-content-top'>\
+                                <small class='mb-1'>"+mes[i].postby+"</small>\
+                                <span class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev'></span>\
+                                </div>\
+                                <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
+                                <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
+                                </div>")
+                        }
+                    });
             },
             error: function (err) {
                 console.log(err);
