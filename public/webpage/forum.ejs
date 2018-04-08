@@ -261,7 +261,7 @@
 
     function listPostTitle(category){
         $(".category div").removeClass("active");
-        $(this).addClass("active");
+        $(this)[0].addClass("active");
         $.ajax({
             url: "/listPostTitle",
             type: "GET",
