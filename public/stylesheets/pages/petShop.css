@@ -294,14 +294,14 @@ div.right_arrow {
 
 .item_description:before {
     content: '...';
-    position: absolute;
+    position: relative;
     right: 0;
     bottom: 0;
 }
 
 .item_description:after {
     content: '';
-    position: absolute;
+    position: relative;
     right: 0;
     width: 1em;
     height: 1em;
