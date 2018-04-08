@@ -242,12 +242,12 @@
                     </div>
                     <div class="form-group col-md-4">
                         <select class="form-control" id="post-category">
-                            <option selected>General</option>
-                            <option>Health</option>
-                            <option>Training</option>
-                            <option>Behavior</option>
-                            <option>Grooming</option>
-                            <option>Toy</option>
+                            <option selected onclick="listPostTitle('General')">General</option>
+                            <option onclick="listPostTitle('Health')">Health</option>
+                            <option onclick="listPostTitle('Training')">Training</option>
+                            <option onclick="listPostTitle('Behavior')">Behavior</option>
+                            <option onclick="listPostTitle('Grooming')">Grooming</option>
+                            <option onclick="listPostTitle('Toy')">Toy</option>
                         </select>
                     </div>
                 </div>
@@ -332,25 +332,44 @@
         else if (form[0].checkValidity() === true){
             $.ajax({
                 url: "/addNewPost",
-                type: "GET",
-                data: {
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
                     subject:$("#post-title").val(),
                     category:$("#post-category").val(),
                     postby:"yy0234",
                     replynum:0,
                     content:$("#post-content").val(),
                     replyprev:false
+                }),
+                complete: function complete() {
+                },
+                error: function error(err) {
+                    alert(err);
+                    console.log(err);
                 },
                 success: function (mes) {
                     console.log(mes);
-                },
-                error: function (err) {
-                    console.log(err);
                 }
             });
             event.preventDefault();
         }
         form.addClass('was-validated');
+    }
+
+    function listPostTitle(category){
+        $.ajax({
+            url: "/listPostTitle",
+            type: "GET",
+            data: {
+            },
+            success: function (mes) {
+                console.log(mes);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     }
 </script>
 
