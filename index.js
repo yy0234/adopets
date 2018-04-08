@@ -114,6 +114,13 @@ app.get('/forum', function(request, response) {
   response.render('pages/base',{action:'../../public/webpage/forum.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
+app.get('/chatroom', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/chatroom.ejs',isLogined:isLogined,loginUser:loginUser||""});
+});
+
 app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
