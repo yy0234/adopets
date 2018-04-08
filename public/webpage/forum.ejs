@@ -260,7 +260,8 @@
     }
 
     function listPostTitle(category){
-        console.log("onclick");
+        $(".category div").removeClass("active");
+        $(this).addClass("active");
         $.ajax({
             url: "/listPostTitle",
             type: "GET",
@@ -271,7 +272,7 @@
                 $("#list-forum-topic").html("");
                 for(var i=0;i<mes.length;i++){
                     $("#list-forum-topic").append("\
-                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed'>\
+                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed' style='cursor:pointer;' onclick='listPostContent("+mes[i].topicid+")'>\
                     <div>\
                     <h5 class='my-0'>"+mes[i].subject+"</h5>\
                     <small class='text-muted'>"+mes[i].postby+"</small>\

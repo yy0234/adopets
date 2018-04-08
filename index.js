@@ -241,9 +241,6 @@ app.get("/listPostTitle", function (request, response) {
        done();
        if (err)
         { return response.send("Error " + err); }
-        else if (result.rows.length==0) {
-          return response.send("No Found"); 
-        }
        else{ 
          return response.send(result.rows);
         }
