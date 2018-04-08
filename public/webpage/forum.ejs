@@ -298,21 +298,23 @@
             },
             success: function (mes) {
                 $("#list-forum-content").html("");
-                $("#list-forum-content").append("\
-                <div class='list-group list-group-flush'>\
-                    <div class='list-group-item flex-column align-items-start post-title'>\
-                        <div class='d-flex w-100 justify-content-between post-content-top'>\
-                        <h6 class='my-1'>"+title+"</h6>\
-                        <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply'>Reply</button>\
+                var pointerObject=function (){$("#list-forum-content").append("\
+                    <div class='list-group list-group-flush'>\
+                        <div class='list-group-item flex-column align-items-start post-title'>\
+                            <div class='d-flex w-100 justify-content-between post-content-top'>\
+                            <h6 class='my-1'>"+title+"</h6>\
+                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply'>Reply</button>\
+                            </div>\
                         </div>\
                     </div>\
-                </div>\
-                <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
-                    <div class='margin-top-30'></div>\
-                </div>");
+                    <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
+                        <div class='margin-top-30'></div>\
+                    </div>");
+                    return $("#list-forum-reply");
+                }
                 for(var i=0;i<mes.length;i++){
-                    console.log($("#list-forum-reply"));
-                    $("#list-forum-reply").append("\
+                    console.log(pointerObject);
+                    pointerObject.append("\
                         <div class='list-group-item flex-column align-items-start post-content'>\
                         <div class='d-flex w-100 justify-content-between post-content-top'>\
                         <small class='mb-1'>"+mes[i].postby+"</small>\
