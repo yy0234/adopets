@@ -248,6 +248,19 @@ app.get("/listPostTitle", function (request, response) {
   });
 });
 
+app.get("/listPostContent", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  client.query("SELECT * FROM posts WHERE topic IN " +request.query.topic+" order by postid ASC limit 50", function(err, result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+       else{ 
+         return response.send(result.rows);
+        }
+      });
+  });
+});
+
 app.post('/addNewPost', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid'; 

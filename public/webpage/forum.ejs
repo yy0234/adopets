@@ -32,7 +32,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-8 order-md-2 post-area">
+    <div id="list-forum-content" class="col-md-8 order-md-2 post-area">
         <div class="list-group list-group-flush">
             <div class="list-group-item flex-column align-items-start post-title">
                 <div class="d-flex w-100 justify-content-between post-content-top">
@@ -272,13 +272,54 @@
                 $("#list-forum-topic").html("");
                 for(var i=0;i<mes.length;i++){
                     $("#list-forum-topic").append("\
-                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed' style='cursor:pointer;' onclick='listPostContent("+mes[i].topicid+")'>\
+                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed' style='cursor:pointer;' onclick='listPostContent("+mes[i].topicid+","+mes[i].subject+",this)'>\
                     <div>\
                     <h5 class='my-0'>"+mes[i].subject+"</h5>\
                     <small class='text-muted'>"+mes[i].postby+"</small>\
                     </div>\
                     <small class='text-muted'>Replies: <span class'replyNum'>"+mes[i].replynum+"</span></small>\
                     </li>")
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+    function listPostContent(topic,title,object){
+        $("#list-forum-topic>li").removeClass("active");
+        $(object).addClass("active");
+        $.ajax({
+            url: "/listPostContent",
+            type: "GET",
+            data: {
+                topic:"('"+topic+"')"
+            },
+            success: function (mes) {
+                $("#list-forum-content").html("");
+                $("#list-forum-content").append("\
+                <div class='list-group list-group-flush'>\
+                    <div class='list-group-item flex-column align-items-start post-title'>\
+                        <div class='d-flex w-100 justify-content-between post-content-top'>\
+                        <h6 class='my-1'>"+title+"</h6>\
+                        <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply'>Reply</button>\
+                        </div>\
+                    </div>\
+                </div>\
+                <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
+                    <div class='margin-top-30'></div>\
+                </div>");
+                for(var i=0;i<mes.length;i++){
+                    $("#list-forum-reply").append("\
+                        <div class='list-group-item flex-column align-items-start post-content'>\
+                        <div class='d-flex w-100 justify-content-between post-content-top'>\
+                        <small class='mb-1'>"+mes[i].postby+"</small>\
+                        <span class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev'></span>\
+                        </div>\
+                        <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
+                        <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
+                        </div>")
                 }
             },
             error: function (err) {

@@ -121,3 +121,7 @@
   margin-top: 10px;
   margin-bottom: 30px;
 }
+
+#list-forum-topic .active{
+  border-left: 5px solid gold;
+}
