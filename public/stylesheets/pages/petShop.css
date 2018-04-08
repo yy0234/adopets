@@ -264,23 +264,27 @@ div.right_arrow {
 .product_info {
     float: left;
     max-width: 200px;
+    display: table;
 }
 
 .product_title {
     font-weight: bold;
     font-size: 16px;
     color: #000000;
+    display: table-row;
 }
 
 .item_price {
     color: #000000;
     font-size: 14px;
+    display: table-row;
 }
 
 .item_description {
     color: grey;
     font-size: 14px;
     text-overflow: ellipsis;
+    display: table-row;
 }
 
 .product_buttons {
