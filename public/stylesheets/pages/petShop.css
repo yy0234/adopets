@@ -3,8 +3,12 @@ div.shop {
     padding-right: 30px;
 }
 
-.toolbar, .left_container {
+.toolbar, #left_container {
     position: fixed;
+}
+
+.toolbar .div {
+    position: relative;
 }
 
 .filter_show_button {
