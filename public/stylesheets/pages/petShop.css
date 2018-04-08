@@ -289,8 +289,23 @@ div.right_arrow {
     text-align: justify; 
     margin-right: -1em;
     padding-right: 1em;
-    text-overflow: ellipsis;
     display: table-row;
+}
+
+.item_description:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.item_description:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
 }
 
 .product_buttons {
