@@ -297,29 +297,32 @@
                 topic:"('"+topic+"')"
             },
             success: function (mes) {
-                $("#list-forum-content").html("");
-                $("#list-forum-content").append("\
-                <div class='list-group list-group-flush'>\
-                    <div class='list-group-item flex-column align-items-start post-title'>\
-                        <div class='d-flex w-100 justify-content-between post-content-top'>\
-                        <h6 class='my-1'>"+title+"</h6>\
-                        <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply'>Reply</button>\
+                for(var i=0;i<1;i++){
+                    $("#list-forum-content").html("");
+                    $("#list-forum-content").append("\
+                    <div class='list-group list-group-flush'>\
+                        <div class='list-group-item flex-column align-items-start post-title'>\
+                            <div class='d-flex w-100 justify-content-between post-content-top'>\
+                            <h6 class='my-1'>"+title+"</h6>\
+                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply'>Reply</button>\
+                            </div>\
                         </div>\
                     </div>\
-                </div>\
-                <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
-                    <div class='margin-top-30'></div>\
-                </div>");
-                for(var i=0;i<mes.length;i++){
-                    $("#list-forum-reply").append("\
-                        <div class='list-group-item flex-column align-items-start post-content'>\
-                        <div class='d-flex w-100 justify-content-between post-content-top'>\
-                        <small class='mb-1'>"+mes[i].postby+"</small>\
-                        <span class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev'></span>\
-                        </div>\
-                        <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
-                        <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
-                        </div>")
+                    <div class='list-group list-group-flush' id='scrollbar list-forum-reply' style='height:80vh; overflow-y:auto;'>\
+                        <div class='margin-top-30'></div>\
+                    </div>");
+                    for(var i=0;i<mes.length;i++){
+                        console.log($("#list-forum-reply"));
+                        $("#list-forum-reply").append("\
+                            <div class='list-group-item flex-column align-items-start post-content'>\
+                            <div class='d-flex w-100 justify-content-between post-content-top'>\
+                            <small class='mb-1'>"+mes[i].postby+"</small>\
+                            <span class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev'></span>\
+                            </div>\
+                            <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
+                            <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
+                            </div>")
+                    }
                 }
             },
             error: function (err) {
