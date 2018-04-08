@@ -196,16 +196,6 @@ div.right_arrow {
     width: 250px;
 }
 
-/*
-.thumbnail {
-    border: 0 none;
-    padding: 0;
-    margin: 0;
-    height: 230px;
-    position: relative;
-}
-*/
-
 .card .details {
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
     background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
@@ -221,6 +211,7 @@ div.right_arrow {
     padding: 10px 10px 0;
     position: absolute;
     width: 100%;
+    opacity: 0.0;
 }
 
 .user {

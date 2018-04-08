@@ -989,12 +989,12 @@ function addCart(userid){
 -		}
 -		*/
 	
-		$(".product_image img").hover(function() {
+		$(".product_image").hover(function() {
 			console.log("in");
-			$(this).parent().parent().find(".details").animate({opacity: "0.0"});
+			$(this).parent().find(".details").animate({opacity: "1.0"});
 		}, function(){
 			console.log("out");
-			$(this).parent().parent().find(".details").animate({opacity: "1.0"});
+			$(this).parent().find(".details").animate({opacity: "0.0"});
 		})
 
 		supplyData= $.ajax({
