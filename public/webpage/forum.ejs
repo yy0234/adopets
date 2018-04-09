@@ -306,7 +306,7 @@
 
     function submitReply(pointer){
         var form = $("#form-reply");
-        var button = $(pointer.relatedTarget);
+        var button = $(pointer);
         var data_replyId= button.data('replyid'); 
         console.log(button);
         console.log(data_replyId);
