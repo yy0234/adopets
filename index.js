@@ -263,7 +263,7 @@ app.get("/listPostContent", function (request, response) {
 
 app.post('/addNewPost', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid'; 
+	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject'; 
 	  var sqlValue = [request.body.subject,request.body.category,request.body.postby,request.body.replynum]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
@@ -279,7 +279,7 @@ app.post('/addNewPost', function (request, response) {
              { return response.send(error); }
             else
              { 
-              return response.send(result2.rows);
+              return response.send(result.rows);
              }
            });
         }
