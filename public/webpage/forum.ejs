@@ -258,8 +258,8 @@
         var data_replyPrevId= button.data('replyPrevId'); 
         var modal = $(this);
         modal.find('.modal-title').text('Reply: ' + data_title);
-        //modal.find('.modal-body .preContent').html("");
-        //modal.find('.modal-body .preContent').append($(event.relatedTarget).parents(".post-content"));
+        modal.find('.modal-body .preContent').html("");
+        modal.find('.modal-body .preContent').append($(event.relatedTarget).parents(".post-content").clone());
         modal.find('.modal-body button').attr({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
     })
 
