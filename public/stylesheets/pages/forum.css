@@ -137,3 +137,9 @@
 .post-main-content{
   line-height: 30px;white-space: pre-line;
 }
+
+@media only screen and (max-width: 600px) {
+  .view-unactive {
+      display:none;
+  }
+}
