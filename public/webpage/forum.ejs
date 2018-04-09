@@ -126,7 +126,7 @@
 <!-- Modal -->
 
 <div class="modal fade" id="newReply" tabindex="-1" role="dialog" aria-labelledby="newReplyLabel" aria-hidden="true">
-    <!--<div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="newReplyLabel">Reply: Title</h5>
@@ -141,49 +141,12 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button id="submit-reply" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
+                    <button type="button" id="submit-reply" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
                 </div>
             </form>
         </div>
         </div>
-    </div>-->
-    <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="newForumPostLabel">Create New Post</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="form-reply" novalidate>
-                    <div class="row">
-                        <div class="form-group col-md-8">
-                            <input type="text" class="form-control" id="post-title" placeholder="Title" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <select class="form-control" id="post-category">
-                                <option selected>General</option>
-                                <option>Health</option>
-                                <option>Training</option>
-                                <option>Behavior</option>
-                                <option>Grooming</option>
-                                <option>Toy</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group mb-4">
-                        <textarea placeholder="Content here..." class="form-control" id="post-content" rows="10" required></textarea>
-                    </div>
-                    <div style="display: flex;justify-content: flex-end;padding: 1rem;">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-            </div>
-        </div>
-
+    </div> 
 </div>
 
 
