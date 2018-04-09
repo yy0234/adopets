@@ -138,8 +138,15 @@
   line-height: 30px;white-space: pre-line;
 }
 
-@media only screen and (max-width: 600px) {
+.return-button{
+  display:none;
+}
+
+@media only screen and (max-width: 768px) {
   .view-unactive {
       display:none;
+  }
+  .return-button{
+    display:block !important;
   }
 }
