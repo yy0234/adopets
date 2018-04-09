@@ -5,3 +5,35 @@
     <!--Your own content-->
     <p>chatroom testing</p>
 </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+$(function(){
+    let socket = io.connect();
+    
+		$.ajax({
+					url: "/getlogined",
+					type: "GET",
+					success: function (info) {
+						socket.emit('login',{username: info.loginUser});
+					},
+					error: function (err) {
+						console.log(err);
+					}
+                });
+                socket.on('loginResult',(data)=>{  
+
+        if(data.code === 0) {  
+            // 登陆成功，切换至聊天室页面  
+        }
+        else if(data.code ===1){  
+            alert('用户已登录！');  
+        }
+        else{
+            alert('登录失败！');
+        }
+    })              
+})
+
+
+</script>

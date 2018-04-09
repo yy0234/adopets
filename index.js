@@ -11,6 +11,13 @@ var FileStore = require('session-file-store')(session);
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
+const server = require('http').Server(app);  
+const io = require('socket.io')(server);    
+const path = require('path');
+
+const users = [];
+let userNum = 0;
+
 app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
@@ -418,6 +425,40 @@ app.get("/listCart", function (request, response) {
 });
 
 
+io.on('connection',(socket)=>{              
+    
+  socket.on('login',(data)=>{  
+
+      if(checkUserName(data)){
+          socket.emit('loginResult',{code:1});  
+      }
+      else{
+         
+          users.push({  
+              username: data.username,  
+              message: []  
+          }); 
+          socket.emit('loginResult',{code:0});  
+          usersNum = users.length;   
+      }
+      
+  });  
+
+   
+  socket.on('disconnect',()=>{         
+      usersNum = users.length; 
+  });  
+});  
+
+const checkUserName = (data) => {
+  let isExist = false;
+  users.map((user) => {
+      if(user.username === data.username){
+          isExist = true;
+      }
+  });
+  return isExist;
+}
 
 /*app.get('*', function(request, response) {
   response.redirect('/');
