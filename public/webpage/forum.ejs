@@ -124,6 +124,32 @@
     </div>
 </div>
 <!-- Modal -->
+
+<div class="modal fade" id="newReply" tabindex="-1" role="dialog" aria-labelledby="newReplyLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="newReplyLabel">Reply: Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="form-reply" novalidate>
+                <div class="form-group mb-4">
+                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10" required></textarea>
+                </div>
+                <div style="display: flex;justify-content: flex-end;padding: 1rem;">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
+                    <button id="submit-reply" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="newForumPost" tabindex="-1" role="dialog" aria-labelledby="newForumPostLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -163,29 +189,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="newReply" tabindex="-1" role="dialog" aria-labelledby="newReplyLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="newReplyLabel">Reply: Title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form id="form-reply" novalidate>
-                <div class="form-group mb-4">
-                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10" required></textarea>
-                </div>
-                <div style="display: flex;justify-content: flex-end;padding: 1rem;">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button id="submit-reply" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="newReplyPrev" tabindex="-1" role="dialog" aria-labelledby="newReplyPrevLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
