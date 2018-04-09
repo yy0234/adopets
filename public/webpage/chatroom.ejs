@@ -6,7 +6,7 @@
     <p>chatroom testing</p>
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.js"></script>
 <script>
 $(function(){
     let socket = io.connect();
@@ -21,7 +21,7 @@ $(function(){
 						console.log(err);
 					}
                 });
-                socket.on('loginResult',(data)=>{  
+    socket.on('loginResult',(data)=>{  
 
         if(data.code === 0) {  
             // 登陆成功，切换至聊天室页面  
@@ -32,7 +32,7 @@ $(function(){
         else{
             alert('登录失败！');
         }
-    })              
+    })        
 })
 
 
