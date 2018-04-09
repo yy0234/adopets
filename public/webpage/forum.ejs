@@ -181,7 +181,7 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button class="btn btn-primary" onclick="submitPost()" onclick="submitPrevReply(this)">Submit</button>
+                    <button class="btn btn-primary" onclick="submitPost()">Submit</button>
                 </div>
             </form>
         </div>
@@ -345,12 +345,11 @@
     }
 
     function submitPrevReply(pointer){
-        var form = $("#form-reply");
+        var form = $("#form-replyPrev");
         var button = $(pointer);
         var data_replyId= button.data('replyid'); 
         var data_prevReplyId= button.data('replyprevid');
-        var preContent=$(pointer).closest(".post-main-content").val();
-        console.log(preContent);
+        var preContent=$("#newReplyPrev .preContent .post-main-content").html();
 
         if (form[0].checkValidity() === false) {
             event.preventDefault();
