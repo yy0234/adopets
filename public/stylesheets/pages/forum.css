@@ -13,6 +13,7 @@
 @media (max-width: 767px){
   .container-fluid .row {
       margin-left: -15px;
+      margin-right: 0;
   }
 }
 
@@ -285,4 +286,8 @@
 @keyframes sk-circleFadeDelay {
   0%, 39%, 100% { opacity: 0; }
   40% { opacity: 1; } 
+}
+
+[type="button"]{
+  cursor:pointer;
 }
