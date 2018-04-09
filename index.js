@@ -11,10 +11,9 @@ var FileStore = require('session-file-store')(session);
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
-const server = require('http').Server(app);  
-const io = require('socket.io')(server);    
-const path = require('path');
-
+var server = require('http').createServer(app);  
+var io = require('socket.io').listen(server);
+//server.listen(process.env.PORT || 3000);
 var users = [];
 
 app.use(bodyParser.json({limit: '50mb'})); 
@@ -423,7 +422,6 @@ app.get("/listCart", function (request, response) {
   });
 });
 
-server.listen(app.get('port'));
 
 io.sockets.on('connection', function(socket) {
   //new user login
