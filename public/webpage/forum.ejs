@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
 <div class="container-fluid" style="margin-top:0; margin-bottom:0">
 <div class="row">
-    <div class="col-md-4 order-md-1" style="border-right: 1px solid lightgray;">
+    <div id="list-forum-select" class="col-md-4 order-md-1 view-active" style="border-right: 1px solid lightgray;">
         <div class="p-2" style="border-bottom: 1px solid lightgray;">
             <div class="mb-2" style="display:table; width:100%">
                 <div style="display:table-row; width:100%">
@@ -29,7 +29,7 @@
             </ul>
         </div>
     </div>
-    <div id="list-forum-content" class="col-md-8 order-md-2 post-area">
+    <div id="list-forum-content" class="col-md-8 order-md-2 post-area view-unactive">
         <div style="text-align: center;margin: 10%;">
             <img src="/images/adopets.png" width="auto" height="auto" class="d-inline-block align-top" alt="">
             <h4 style="margin-top: 10px; color:cornflowerblue;">Adopets Web - Forum</h4>
@@ -220,6 +220,7 @@
                     </div>\
                     <small class='text-muted'>Replies: <span class='replynum'>"+mes[0].replynum+"</span></small>\
                     </li>");
+                    $("#form-post").trigger("reset");
                     $.ajax({
                         url: "/listPostContent",
                         type: "GET",
@@ -325,6 +326,7 @@
                     <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
                     </div>");
                     $(".content-active .replynum").html(reply_num+1);
+                    $("#form-reply").trigger("reset");
                 }
             });
             event.preventDefault();
@@ -379,6 +381,7 @@
                     <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
                     </div>");
                     $(".content-active .replynum").html(reply_num+1);
+                    $("#form-replyPev").trigger("reset");
                     
                 }
             });
@@ -423,6 +426,8 @@
 
     function listPostContent(topic,title,object){
         $("#list-forum-topic>li").removeClass("content-active");
+        $("#list-forum-select").toggleClass("view-active view-unactive");
+        $("#list-forum-content").toggleClass("view-active view-unactive");
         $(object).addClass("content-active");
         $.ajax({
             url: "/listPostContent",

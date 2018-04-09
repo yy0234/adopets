@@ -213,6 +213,7 @@
 						</div>\
 						</li>");
 						$("#signInModal").modal('hide');
+						$(".form-signin").trigger("reset");
 					}
 				},
 				error: function (err) {
@@ -266,6 +267,7 @@
 						</div>\
 						</li>");
 						$("#signUpModal").modal('hide');
+						$(".form-signup").trigger("reset");
 					}
 				}
 			})
