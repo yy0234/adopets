@@ -133,3 +133,7 @@
 .modal-body .preContent .fa-reply{
   display:none;
 }
+
+.post-main-content{
+  line-height: 30px;white-space: pre-line;
+}
