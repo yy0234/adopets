@@ -247,8 +247,7 @@
         var data_replyId= button.data('replyId'); 
         var modal = $(this);
         modal.find('.modal-title').text('Reply: ' + data_title);
-        console.log(modal.find(".modal-body [type='submit']"));
-        modal.find(".modal-body [type='submit']").attr("data-replyId", data_replyId);
+        modal.find(".modal-body [type='submit']").data("data-replyId", data_replyId);
     })
 
     $('#newReplyPrev').on('show.bs.modal', function (event) {
@@ -261,8 +260,7 @@
         modal.find('.modal-title').text('Reply: ' + data_title);
         modal.find('.modal-body .preContent').html("");
         modal.find('.modal-body .preContent').append($(event.relatedTarget).parents(".post-content").clone());
-        console.log(modal.find(".modal-body [type='submit']"));
-        modal.find(".modal-body [type='submit']").attr({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
+        modal.find(".modal-body [type='submit']").data({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
     })
 
     function submitPost(){
