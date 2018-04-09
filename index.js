@@ -237,7 +237,7 @@ app.get("/userLogout", function (request, response) {
 
 app.get("/listPostTitle", function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  client.query("SELECT * FROM topics WHERE category IN " +request.query.category+" order by topicid DESC limit 50", function(err, result) {
+	  client.query("SELECT * FROM topics WHERE category IN " +request.query.category+" order by postdate DESC limit 50", function(err, result) {
        done();
        if (err)
         { return response.send("Error " + err); }
@@ -282,6 +282,22 @@ app.post('/addNewPost', function (request, response) {
               return response.send("success");
              }
            });
+        }
+      });
+  });
+});
+
+app.post('/addNewReply', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)'; 
+	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+       else
+        { 
+          return response.send("success");
         }
       });
   });

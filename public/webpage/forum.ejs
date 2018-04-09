@@ -179,7 +179,7 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Reply</button>
+                    <button type="submit" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
                 </div>
             </form>
         </div>
@@ -264,11 +264,11 @@
     })
 
     function submitPost(){
-        var form = $("#form-post")
+        var form = $("#form-post");
 
         if (form[0].checkValidity() === false) {
-            event.preventDefault()
-            event.stopPropagation()
+            event.preventDefault();
+            event.stopPropagation();
         }
         else if (form[0].checkValidity() === true){
             $.ajax({
@@ -281,6 +281,42 @@
                     postby:"yy0234",
                     replynum:0,
                     content:$("#post-content").val(),
+                    replyprev:false
+                }),
+                complete: function complete() {
+                },
+                error: function error(err) {
+                    alert(err);
+                    console.log(err);
+                },
+                success: function (mes) {
+                    console.log(mes);
+                }
+            });
+            event.preventDefault();
+        }
+        form.addClass('was-validated');
+    }
+
+    function submitReply(event){
+        var form = $("#form-reply");
+        var button = $(event.relatedTarget);
+        var data_replyId= button.data('replyId'); 
+
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        else if (form[0].checkValidity() === true){
+            $.ajax({
+                url: "/addNewReply",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    topic:data_replyId,
+                    postby:"yy0234",
+                    content:$("#reply-content").val(),
                     replyprev:false
                 }),
                 complete: function complete() {
