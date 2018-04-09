@@ -289,8 +289,8 @@ app.post('/addNewPost', function (request, response) {
 
 app.post('/addNewReply', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)'; 
-	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev]; 
+	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6)'; 
+	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev,request.body.replyprevid,request.body.replyprevcontent]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)

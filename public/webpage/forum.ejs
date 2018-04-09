@@ -181,7 +181,7 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button class="btn btn-primary" onclick="submitPost()">Submit</button>
+                    <button class="btn btn-primary" onclick="submitPost()" onclick="submitPrevReply(this)">Submit</button>
                 </div>
             </form>
         </div>
@@ -208,7 +208,7 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="submit" id="submit-replyPrev" class="btn btn-primary">Reply</button>
+                    <button id="submit-replyPrev" class="btn btn-primary">Reply</button>
                 </div>
             </form>
         </div>
@@ -325,7 +325,49 @@
                     topic:data_replyId,
                     postby:"yy0234",
                     content:$("#reply-content").val(),
-                    replyprev:false
+                    replyprev:false,
+                    replyprevid:null,
+                    replyprecontent:null
+                }),
+                complete: function complete() {
+                },
+                error: function error(err) {
+                    alert(err);
+                    console.log(err);
+                },
+                success: function (mes) {
+                    console.log(mes);
+                }
+            });
+            event.preventDefault();
+        }
+        form.addClass('was-validated');
+    }
+
+    function submitPrevReply(pointer){
+        var form = $("#form-reply");
+        var button = $(pointer);
+        var data_replyId= button.data('replyid'); 
+        var data_prevReplyId= button.data('replyprevid');
+        var preContent=$(pointer).closest(".post-main-content").val();
+        console.log(preContent);
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else if (form[0].checkValidity() === true){
+            $.ajax({
+                url: "/addNewReply",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    topic:data_replyId,
+                    postby:"yy0234",
+                    content:$("#replyPrev-content").val(),
+                    replyprev:true,
+                    replyprevid:data_prevReplyId,
+                    replyprecontent:preContent
                 }),
                 complete: function complete() {
                 },
@@ -401,7 +443,7 @@
                                 <small class='mb-1'>"+mes[i].postby+"</small>\
                                 <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+title+"'data-replyId='"+topic+"' data-replyPrevId='"+mes[i].postid+"'></button>\
                                 </div>\
-                                <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
+                                <div class='mb-1 mt-2 post-main-content'>"+mes[i].content+"</div>\
                                 <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
                                 </div>")
                         }
