@@ -326,7 +326,7 @@
                         <div class='list-group-item flex-column align-items-start post-title'>\
                             <div class='d-flex w-100 justify-content-between post-content-top'>\
                             <h6 class='my-1'>"+title+"</h6>\
-                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply' replay-target='"+topic+"'>Reply</button>\
+                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply' data-whatever='"+topic+"'>Reply</button>\
                             </div>\
                         </div>\
                     </div>\
@@ -339,7 +339,7 @@
                                 <div class='list-group-item flex-column align-items-start post-content'>\
                                 <div class='d-flex w-100 justify-content-between post-content-top'>\
                                 <small class='mb-1'>"+mes[i].postby+"</small>\
-                                <span class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev' reply-prev-target='"+mes[i].postid+"'></span>\
+                                <button type='button' class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev' data-whatever='"+mes[i].postid+"'></button>\
                                 </div>\
                                 <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
                                 <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
