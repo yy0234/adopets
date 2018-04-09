@@ -30,9 +30,9 @@
         </div>
     </div>
     <div id="list-forum-content" class="col-md-8 order-md-2 post-area">
-        <div>
+        <div style="text-align: center;margin: 10%;">
             <img src="/images/adopets.png" width="auto" height="auto" class="d-inline-block align-top" alt="">
-            <h4 style="margin:0 auto; color:cornflowerblue;">Adopets Web - Forum</h4>
+            <h4 style="margin-top: 10px; color:cornflowerblue;">Adopets Web - Forum</h4>
         </div>
     </div>
 </div>
@@ -404,6 +404,12 @@
                     <small class='text-muted'>Replies: <span class='replynum'>"+mes[i].replynum+"</span></small>\
                     </li>")
                 }
+                $("#list-forum-content").html();
+                $("#list-forum-content").append("\
+                <div style='text-align: center;margin: 10%;'>\
+                    <img src='/images/adopets.png' width='auto' height='auto' class='d-inline-block align-top' alt=''>\
+                    <h4 style='margin-top: 10px; color:cornflowerblue;'>Adopets Web - Forum</h4>\
+                </div>")
             },
             error: function (err) {
                 console.log(err);
