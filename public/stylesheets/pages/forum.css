@@ -297,3 +297,7 @@
       width:33% !important;
   }
 }
+
+body{
+  background-color: rgba(128,128,128,.1);
+}
