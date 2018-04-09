@@ -247,6 +247,22 @@
         });
     });
 
+    $('#newReply').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var data_title= button.data('title');
+        var modal = $(this);
+        modal.find('.modal-title').text('Reply: ' + data_title);
+        //modal.find('.modal-body input').val(recipient)
+    })
+
+    $('#newReplyPrev').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var data_title= button.data('title'); 
+        var modal = $(this);
+        modal.find('.modal-title').text('Reply: ' + data_title);
+        //modal.find('.modal-body input').val(recipient)
+    })
+
     function submitPost(){
         var form = $("#form-post")
 
@@ -326,7 +342,7 @@
                         <div class='list-group-item flex-column align-items-start post-title'>\
                             <div class='d-flex w-100 justify-content-between post-content-top'>\
                             <h6 class='my-1'>"+title+"</h6>\
-                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply' data-whatever='"+topic+"'>Reply</button>\
+                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply' data-title='"+title+"'data-repyId='"+topic+"'>Reply</button>\
                             </div>\
                         </div>\
                     </div>\
@@ -339,7 +355,7 @@
                                 <div class='list-group-item flex-column align-items-start post-content'>\
                                 <div class='d-flex w-100 justify-content-between post-content-top'>\
                                 <small class='mb-1'>"+mes[i].postby+"</small>\
-                                <button type='button' class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev' data-whatever='"+mes[i].postid+"'></button>\
+                                <button type='button' class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev' data-title='"+title+"'data-repyId='"+topic+"' data-replyPrevId='"+mes[i].postid+"'></button>\
                                 </div>\
                                 <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
                                 <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
