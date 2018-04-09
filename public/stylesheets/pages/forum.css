@@ -291,3 +291,9 @@
 [type="button"]{
   cursor:pointer;
 }
+
+@media (max-width: 575px){
+  .category .col-sm-2 {
+      width:33% !important;
+  }
+}
