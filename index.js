@@ -423,7 +423,7 @@ app.get("/listCart", function (request, response) {
   });
 });
 
-server.listen(8000);
+server.listen(app.get('port'));
 
 io.sockets.on('connection', function(socket) {
   //new user login
