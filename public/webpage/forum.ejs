@@ -284,6 +284,7 @@
         var button = $(pointer);
         var data_replyId= button.data('replyid'); 
         var data_title= button.data('title'); 
+        var reply_num=parseInt($(".content-active .replynum").html());
         console.log(button);
         console.log(data_replyId);
 
@@ -322,7 +323,8 @@
                     </div>\
                     <div class='mb-1 mt-2 post-main-content'>"+mes[0].content+"</div>\
                     <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
-                    </div>")
+                    </div>");
+                    $(".content-active .replynum").html(reply_num+1);
                 }
             });
             event.preventDefault();
@@ -337,6 +339,7 @@
         var data_prevReplyId= button.data('replyprevid');
         var preContent=$("#newReplyPrev .preContent .post-main-content").html();
         var data_title= button.data('title'); 
+        var reply_num=parseInt($(".content-active .replynum").html());
         console.log(preContent);
 
         if (form[0].checkValidity() === false) {
@@ -374,7 +377,8 @@
                     <div style='padding: 8px;margin-top: 15px;margin-bottom: 15px;border-left: 2px solid lightgray; color:  gray;'>"+mes[0].replyprecontent+"</div>\
                     <div class='mb-1 mt-2 post-main-content'>"+mes[0].content+"</div>\
                     <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
-                    </div>")
+                    </div>");
+                    $(".content-active .replynum").html(reply_num+1);
                     
                 }
             });
