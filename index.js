@@ -297,7 +297,16 @@ app.post('/addNewReply', function (request, response) {
         { return response.send("Error " + err); }
        else
         { 
-          return response.send("success");
+          var sql2="UPDATE topics set replynum=replynum+1,postdate=DEFAULT WHERE topicid='"+request.body.topic+"'";
+          client.query(sql2,function(error,result2) {
+            done();
+            if (error)
+             { return response.send(error); }
+            else
+             { 
+              return response.send("success");
+             }
+           });
         }
       });
   });
