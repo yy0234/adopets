@@ -279,7 +279,7 @@ app.post('/addNewPost', function (request, response) {
              { return response.send(error); }
             else
              { 
-              return response.send("success");
+              return response.send(result2.rows);
              }
            });
         }
