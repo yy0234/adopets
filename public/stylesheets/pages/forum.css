@@ -125,3 +125,7 @@
 #list-forum-topic .content-active{
   border-left: 5px solid gold;
 }
+
+.modal-body .preContent .fa-reply{
+  display:none;
+}
