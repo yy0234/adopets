@@ -302,7 +302,7 @@
             });
             event.preventDefault();
         }
-        form.addClass('was-validated');
+        //form.addClass('was-validated');
     }
 
     function submitReply(pointer){
@@ -356,7 +356,7 @@
             });
             event.preventDefault();
         }
-        form.addClass('was-validated');
+        //form.addClass('was-validated');
     }
 
     function submitPrevReply(pointer){
@@ -406,13 +406,13 @@
                     <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
                     </div>");
                     $(".content-active .replynum").html(reply_num+1);
-                    $("#form-replyPev").trigger("reset");
+                    $("#form-replyPrev").trigger("reset");
                     
                 }
             });
             event.preventDefault();
         }
-        form.addClass('was-validated');
+        //form.addClass('was-validated');
     }
 
     function listPostTitle(category,object){
