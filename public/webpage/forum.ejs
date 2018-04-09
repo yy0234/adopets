@@ -174,12 +174,27 @@
         </div>
         <div class="modal-body">
             <form id="form-reply" novalidate>
+                <div class="row">
+                        <div class="form-group col-md-8">
+                            <input type="text" class="form-control" id="post-title" placeholder="Title" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select class="form-control" id="post-category">
+                                <option selected="">General</option>
+                                <option>Health</option>
+                                <option>Training</option>
+                                <option>Behavior</option>
+                                <option>Grooming</option>
+                                <option>Toy</option>
+                            </select>
+                        </div>
+                    </div>
                 <div class="form-group mb-4">
                     <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10" required></textarea>
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="submit" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
+                    <button type="submit" id="submit-reply" class="btn btn-primary" oclick="submitReply(this)">Reply</button>
                 </div>
             </form>
         </div>
@@ -205,7 +220,7 @@
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Reply</button>
+                    <button type="submit" id="submit-replyPrev"class="btn btn-primary">Reply</button>
                 </div>
             </form>
         </div>
@@ -247,7 +262,7 @@
         var data_replyId= button.data('replyId'); 
         var modal = $(this);
         modal.find('.modal-title').text('Reply: ' + data_title);
-        modal.find(".modal-body [type='submit']").data("data-replyId", data_replyId);
+        modal.find(".modal-body #submit-reply").attr("data-replyId", data_replyId);
     })
 
     $('#newReplyPrev').on('show.bs.modal', function (event) {
@@ -260,7 +275,7 @@
         modal.find('.modal-title').text('Reply: ' + data_title);
         modal.find('.modal-body .preContent').html("");
         modal.find('.modal-body .preContent').append($(event.relatedTarget).parents(".post-content").clone());
-        modal.find(".modal-body [type='submit']").data({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
+        modal.find(".modal-body #submit-replyPrev").attr({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
     })
 
     function submitPost(){
