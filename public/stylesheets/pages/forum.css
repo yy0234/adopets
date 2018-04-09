@@ -67,6 +67,10 @@
 .post-content-top, .post-content-bottom{
   color: gray;
 }
+.post-content-top small{
+  color: cornflowerblue;
+}
+
 .list-group-flush .post-title{
   z-index:100;
   border-bottom: 1px solid lightgray;
