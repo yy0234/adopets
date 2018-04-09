@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 
 var server = require('http').createServer(app);  
 var io = require('socket.io').listen(server);
-server.listen(process.env.PORT || 3000);
+//server.listen(process.env.PORT || 3000);
 var users = [];
 
 app.use(bodyParser.json({limit: '50mb'})); 
