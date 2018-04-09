@@ -247,23 +247,26 @@
     $('#newReply').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var data_title= button.data('title');
-        var data_replyId= button.data('replyId'); 
+        var data_replyId= button.data('replyid'); 
+        console.log(data_replyId);
         var modal = $(this);
         modal.find('.modal-title').text('Reply: ' + data_title);
-        $("#submit-reply").attr("data-replyId", data_replyId.toString());
+        modal.find('.modal-body #submit-reply').attr("data-replyId", data_replyId);
     })
 
     $('#newReplyPrev').on('show.bs.modal', function (event) {
         console.log($(event.relatedTarget).parents(".post-content"));
         var button = $(event.relatedTarget);
         var data_title= button.data('title'); 
-        var data_replyId= button.data('replyId'); 
-        var data_replyPrevId= button.data('replyPrevId'); 
+        var data_replyId= button.data('replyid'); 
+        var data_replyPrevId= button.data('replyprevid'); 
+        console.log(data_replyId);
+        console.log(data_replyPrevId);
         var modal = $(this);
         modal.find('.modal-title').text('Reply: ' + data_title);
         modal.find('.modal-body .preContent').html("");
         modal.find('.modal-body .preContent').append($(event.relatedTarget).parents(".post-content").clone());
-        $("#submit-replyPrev").attr({"data-replyId":data_replyId.toString(),"data-replyPrevId":data_replyPrevId.toString()});
+        modal.find('.modal-body #submit-replyPrev').attr({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
     })
 
     function submitPost(){
@@ -309,8 +312,8 @@
 
 
         if (form[0].checkValidity() === false) {
-            event.preventDefault()
-            event.stopPropagation()
+            event.preventDefault();
+            event.stopPropagation();
         }
         else if (form[0].checkValidity() === true){
             $.ajax({
