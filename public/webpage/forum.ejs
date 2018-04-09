@@ -350,6 +350,7 @@
         var data_replyId= button.data('replyid'); 
         var data_prevReplyId= button.data('replyprevid');
         var preContent=$("#newReplyPrev .preContent .post-main-content").html();
+        console.log(preContent);
 
         if (form[0].checkValidity() === false) {
             event.preventDefault();
