@@ -296,6 +296,7 @@
                     console.log(err);
                 },
                 success: function (mes) {
+                    $('#newForumPost').modal('hide');
                     console.log(mes);
                     $("#list-forum-topic li").removeClass("content-active");
                     $("#list-forum-topic").prepend("\
@@ -369,6 +370,7 @@
         var form = $("#form-reply");
         var button = $(pointer);
         var data_replyId= button.data('replyid'); 
+        var data_title= button.data('title'); 
         console.log(button);
         console.log(data_replyId);
 
@@ -397,7 +399,17 @@
                     console.log(err);
                 },
                 success: function (mes) {
+                    $('#newReply').modal('hide');
                     console.log(mes);
+                    $("#list-forum-reply").append("\
+                    <div class='list-group-item flex-column align-items-start post-content'>\
+                    <div class='d-flex w-100 justify-content-between post-content-top'>\
+                    <small class='mb-1'>"+"yy0234"+"</small>\
+                    <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+data_title+"'data-replyId='"+data_replyId+"' data-replyPrevId='"+mes[0].postid+"'></button>\
+                    </div>\
+                    <div class='mb-1 mt-2 post-main-content'>"+mes[0].content+"</div>\
+                    <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
+                    </div>")
                 }
             });
             event.preventDefault();
@@ -411,6 +423,7 @@
         var data_replyId= button.data('replyid'); 
         var data_prevReplyId= button.data('replyprevid');
         var preContent=$("#newReplyPrev .preContent .post-main-content").html();
+        var data_title= button.data('title'); 
         console.log(preContent);
 
         if (form[0].checkValidity() === false) {
@@ -438,6 +451,18 @@
                 },
                 success: function (mes) {
                     console.log(mes);
+                    $('#newReplyPrev').modal('hide');
+                    $("#list-forum-reply").append("\
+                    <div class='list-group-item flex-column align-items-start post-content'>\
+                    <div class='d-flex w-100 justify-content-between post-content-top'>\
+                    <small class='mb-1'>"+mes[0].postby+"</small>\
+                    <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+data_title+"'data-replyId='"+data_replyId+"' data-replyPrevId='"+mes[0].postid+"'></button>\
+                    </div>\
+                    <div style='padding: 8px;margin-top: 15px;margin-bottom: 15px;border-left: 2px solid lightgray; color:  gray;'>"+mes[0].replyprecontent+"</div>\
+                    <div class='mb-1 mt-2 post-main-content'>"+mes[0].content+"</div>\
+                    <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
+                    </div>")
+                    
                 }
             });
             event.preventDefault();

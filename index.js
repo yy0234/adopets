@@ -263,7 +263,7 @@ app.get("/listPostContent", function (request, response) {
 
 app.post('/addNewPost', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject'; 
+	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject,postby,replynum'; 
 	  var sqlValue = [request.body.subject,request.body.category,request.body.postby,request.body.replynum]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
@@ -289,7 +289,7 @@ app.post('/addNewPost', function (request, response) {
 
 app.post('/addNewReply', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6)'; 
+	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6) RETURNING content,postby,postdate,replyprecontent,postid'; 
 	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev,request.body.replyprevid,request.body.replyprecontent]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
@@ -304,7 +304,7 @@ app.post('/addNewReply', function (request, response) {
              { return response.send(error); }
             else
              { 
-              return response.send("success");
+              return response.send(result.rows);
              }
            });
         }
