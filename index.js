@@ -199,32 +199,6 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.get('/addNewPost', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid'; 
-	  var sqlValue = [request.query.subject,request.query.category,request.query.postby,request.query.replynum]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { return response.send("Error " + err); }
-       else
-        { 
-          var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
-          var sqlValue2 =[request.query.content,result.rows[0].topicid,request.query.postby,request.query.replyprev];
-          client.query(sql2,sqlValue2,function(error,result2) {
-            done();
-            if (error)
-             { return response.send(error); }
-            else
-             { 
-              return response.send("success");
-             }
-           });
-        }
-      });
-  });
-});
-
 
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -266,6 +240,83 @@ app.get("/userLogout", function (request, response) {
     return response.send("success");
   });
 
+});
+
+app.get("/listPostTitle", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  client.query("SELECT * FROM topics WHERE category IN " +request.query.category+" order by postdate DESC limit 50", function(err, result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+       else{ 
+         return response.send(result.rows);
+        }
+      });
+  });
+});
+
+app.get("/listPostContent", function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  client.query("SELECT * FROM posts WHERE topic IN " +request.query.topic+" order by postid ASC limit 50", function(err, result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+       else{ 
+         return response.send(result.rows);
+        }
+      });
+  });
+});
+
+app.post('/addNewPost', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject,postby,replynum'; 
+	  var sqlValue = [request.body.subject,request.body.category,request.body.postby,request.body.replynum]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+       else
+        { 
+          var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
+          var sqlValue2 =[request.body.content,result.rows[0].topicid,request.body.postby,request.body.replyprev];
+          client.query(sql2,sqlValue2,function(error,result2) {
+            done();
+            if (error)
+             { return response.send(error); }
+            else
+             { 
+              return response.send(result.rows);
+             }
+           });
+        }
+      });
+  });
+});
+
+app.post('/addNewReply', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6) RETURNING content,postby,postdate,replyprecontent,postid'; 
+	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev,request.body.replyprevid,request.body.replyprecontent]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { return response.send("Error " + err); }
+       else
+        { 
+          var sql2="UPDATE topics set replynum=replynum+1,postdate=DEFAULT WHERE topicid='"+request.body.topic+"'";
+          client.query(sql2,function(error,result2) {
+            done();
+            if (error)
+             { return response.send(error); }
+            else
+             { 
+              return response.send(result.rows);
+             }
+           });
+        }
+      });
+  });
 });
 
 app.post('/addPets', function (request, response) { 

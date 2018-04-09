@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 	<!--Your own content-->
 	<div class="shop">
-		<div class="row">
+		<div class="row affix">
 			<div class="col-md-3" id="filter_button">
 				<a id="show_hide_button">
 					<span class="filter_hide_button"><span class="fa fa-caret-left"></span>Hide</span>
@@ -44,11 +44,14 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-2" id="left_container">
-				<div class="search-container">
-					<form id="searchBar">
-						<input type="text" id="search" placeholder="Search.." name="search"/><button type="button" class="search_button" onclick="spinner();searchByKey()">&#xf002;</button>
-					</form>
+			<div class="col-md-2" id="left_container" class="affix">
+				<div class="list-group-item list-group-item-action flex-column align-items-start">
+					<div class="input-group autocomplete">
+						<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
+						<span class="input-group-addon">
+							<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
+						</span>
+					</div>
 				</div>
 				<br>
 				<br>
@@ -489,39 +492,37 @@ $("#dropdownlist").change(function(){
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + supplyData.responseJSON[i].name +"</div>\
+															<div class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</div>\
+															<div class=\"item_description\">" + supplyData.responseJSON[i].description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + supplyData.responseJSON[i].name +"</h4>\
-																<p class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</p>\
-																<p class=\"item_description\">" + supplyData.responseJSON[i].description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -540,39 +541,37 @@ $("#dropdownlist").change(function(){
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+element.supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + element.name +"</div>\
+															<div class=\"item_price\">HKD" + element.price + "</div>\
+															<div class=\"item_description\">" + element.description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + element.name +"</h4>\
-																<p class=\"item_price\">HKD" + element.price + "</p>\
-																<p class=\"item_description\">" + element.description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -621,39 +620,37 @@ function callAjax(Query){
 					$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + mes[i].name +"</div>\
+															<div class=\"item_price\">HKD" + mes[i].price + "</div>\
+															<div class=\"item_description\">" + mes[i].description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + mes[i].name +"</h4>\
-																<p class=\"item_price\">HKD" + mes[i].price + "</p>\
-																<p class=\"item_description\">" + mes[i].description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -677,39 +674,37 @@ function callAjax(Query){
 					$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+element.supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + element.name +"</div>\
+															<div class=\"item_price\">HKD" + element.price + "</div>\
+															<div class=\"item_description\">" + element.description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + element.name +"</h4>\
-																<p class=\"item_price\">HKD" + element.price + "</p>\
-																<p class=\"item_description\">" + element.description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -774,39 +769,37 @@ function pageSupply(pageNo){
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + supplyData.responseJSON[i].name +"</div>\
+															<div class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</div>\
+															<div class=\"item_description\">" + supplyData.responseJSON[i].description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + supplyData.responseJSON[i].name +"</h4>\
-																<p class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</p>\
-																<p class=\"item_description\">" + supplyData.responseJSON[i].description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -819,39 +812,37 @@ function pageSupply(pageNo){
 			$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + supplyData.responseJSON[i].name +"</div>\
+															<div class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</div>\
+															<div class=\"item_description\">" + supplyData.responseJSON[i].description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + supplyData.responseJSON[i].name +"</h4>\
-																<p class=\"item_price\">HKD" + supplyData.responseJSON[i].price + "</p>\
-																<p class=\"item_description\">" + supplyData.responseJSON[i].description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -980,6 +971,13 @@ function addCart(userid){
 			})
 }
 
+	$(document).ajaxComplete(function(){
+		$(".card").hover(function() {
+			$(this).find(".details").animate({opacity: "1.0"});
+		}, function(){
+			$(this).find(".details").animate({opacity: "0.0"});
+		});
+	})
 
 	$(function(){		
 		/*
@@ -1000,12 +998,6 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
-	
-		$(".product_image img").hover(function() {
-			$(this).parent().find(".details").animate({opacity: "0.0"});
-		}, function(){
-			$(this).parent().find(".details").animate({opacity: "1.0"});
-		})
 
 		supplyData= $.ajax({
 					url: "/listSupply",
@@ -1023,39 +1015,37 @@ function addCart(userid){
 								$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + mes[i].name +"</div>\
+															<div class=\"item_price\">HKD" + mes[i].price + "</div>\
+															<div class=\"item_description\">" + mes[i].description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + mes[i].name +"</h4>\
-																<p class=\"item_price\">HKD" + mes[i].price + "</p>\
-																<p class=\"item_description\">" + mes[i].description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -1076,39 +1066,37 @@ function addCart(userid){
 								$("#product_display").append("\
 										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<div class=\"thumbnail\">\
-													<a class=\"product_image\">"+element.supplyurl+"</a>\
-													<div class=\"details\">\
-														<a class=\"user\" href=\"\">\
-															<div class=\"user-photo\">\
-																<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-															</div>\
-															<div class=\"username\">User</div>\
+												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<div class=\"details\">\
+													<a class=\"user\" href=\"\">\
+														<div class=\"user-photo\">\
+															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
+														</div>\
+														<div class=\"username\">User</div>\
+													</a>\
+													<div class=\"heart_info\">\
+														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
+													</div>\
+												</div>\
+												<div class=\"arrow\">\
+													<div class=\"left_arrow\">&#xf104;</div>\
+													<div class=\"right_arrow\">&#xf105;</div>\
+												</div>\
+												<div class=\"card-info\">\
+													<div class=\"product_info\">\
+														<a class=\"product_page\">\
+															<div class=\"product_title\">" + element.name +"</div>\
+															<div class=\"item_price\">HKD" + element.price + "</div>\
+															<div class=\"item_description\">" + element.description +"</div>\
 														</a>\
-														<div class=\"heart_info\">\
-															<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-														</div>\
 													</div>\
-													<div class=\"arrow\">\
-														<div class=\"left_arrow\">&#xf104;</div>\
-														<div class=\"right_arrow\">&#xf105;</div>\
-													</div>\
-													<div class=\"card-info\">\
-														<div class=\"product_info\">\
-															<a href=\"\" class=\"product_page\">\
-																<h4 class=\"product_title\">" + element.name +"</h4>\
-																<p class=\"item_price\">HKD" + element.price + "</p>\
-																<p class=\"item_description\">" + element.description +"</p>\
-															</a>\
+													<div class=\"product_buttons\">\
+														<div class=\"shopping_cart\">\
+															<i class=\"fa fa-cart-plus\"></i>\
 														</div>\
-														<div class=\"product_buttons\">\
-															<div class=\"shopping_cart\">\
-																<i class=\"fa fa-cart-plus\"></i>\
-															</div>\
-															<div class=\"heart\">\
-																<i class=\"far fa-heart\"></i>\
-																<i class=\"fas fa-heart\"></i>\
-															</div>\
+														<div class=\"heart\">\
+															<i class=\"far fa-heart\"></i>\
+															<i class=\"fas fa-heart\"></i>\
 														</div>\
 													</div>\
 												</div>\
@@ -1124,15 +1112,13 @@ function addCart(userid){
 					}
 				});
 
-		$(".thumbnail").hover(function() {
-			$(".arrow").toggle();
- 		});
 
 		$("#show_hide_button").click(function(){
 			$("#left_container").toggle();
 			$(".filter_hide_button").toggle();
 			$(".filter_show_button").toggle();
 		});
+
 		$("#more_icon").click(function(){
 			$("#more_icon").css({
 				'opacity': '1.0',
@@ -1145,6 +1131,7 @@ function addCart(userid){
 				'cursor': 'pointer'
 			});
 		});
+
 		$("#less_icon").click(function(){
 			$("#less_icon").css({
 				'opacity': '1.0',
@@ -1157,6 +1144,7 @@ function addCart(userid){
 				'cursor': 'pointer'
 			});
 		});
+
 		$("div.filtering button").click(function(){
 			$("i", this).toggleClass("fa fa-minus fa fa-plus")
 		});

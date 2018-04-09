@@ -13,218 +13,56 @@
                         <button type="button" class="btn btn-light fas fa-plus" data-toggle="modal" data-target="#newForumPost"></button>
                         <span class="tooltiptext">Create Post</span>
                     </span>
-                    <!--<div class="tooltip-cust"><button>hi</button>
-                        <span class="tooltiptext">Tooltip text</span>
-                    </div>-->
                 </div>
             </div>
             <div class="row category" style="text-align:center">
-                <div class="col-sm-2 col-md-4 active">General</div>
-                <div class="col-sm-2 col-md-4">Health</div>
-                <div class="col-sm-2 col-md-4">Training</div>
-                <div class="col-sm-2 col-md-4">Behavior</div>
-                <div class="col-sm-2 col-md-4">Grooming</div>
-                <div class="col-sm-2 col-md-4">Toy</div>
+                <div class="col-sm-2 col-md-4 active" onclick="listPostTitle('General',this)">General</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Health',this)">Health</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Training',this)">Training</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Behavior',this)">Behavior</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Grooming',this)">Grooming</div>
+                <div class="col-sm-2 col-md-4" onclick="listPostTitle('Toy',this)">Toy</div>
             </div>
         </div>
         <div id="scrollbar" style="overflow-y: auto;height: 70vh;">
-            <ul class="list-group list-group-flush mb-3">
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
-            <li class="list-group-item list-group-item-action d-flex justify-content-between lh-condensed">
-                <div>
-                <h5 class="my-0">Topic</h5>
-                <small class="text-muted">username</small>
-                </div>
-                <small class="text-muted">Replies: <span class"replyNum">0</span></small>
-            </li>
+            <ul id="list-forum-topic" class="list-group list-group-flush mb-3">
             </ul>
         </div>
     </div>
-    <div class="col-md-8 order-md-2 post-area">
-        <div class="list-group list-group-flush">
-            <div class="list-group-item flex-column align-items-start post-title">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <h6 class="my-1">Title</h6>
-                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#newReply">Reply</button>
-                </div>
-            </div>
-        </div>
-        <div class="list-group list-group-flush" id="scrollbar" style="height:80vh; overflow-y:auto;">
-            <div class="margin-top-30"></div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer" data-toggle="modal" data-target="#newReplyPrev"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
-            </div>
+    <div id="list-forum-content" class="col-md-8 order-md-2 post-area">
+        <div style="text-align: center;margin: 10%;">
+            <img src="/images/adopets.png" width="auto" height="auto" class="d-inline-block align-top" alt="">
+            <h4 style="margin-top: 10px; color:cornflowerblue;">Adopets Web - Forum</h4>
         </div>
     </div>
 </div>
 <!-- Modal -->
+
+<div class="modal fade" id="newReply" tabindex="-1" role="dialog" aria-labelledby="newReplyLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="newReplyLabel">Reply: Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="form-reply" novalidate>
+                <div class="form-group mb-4">
+                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10" required></textarea>
+                </div>
+                <div style="display: flex;justify-content: flex-end;padding: 1rem;">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
+                    <button type="submit" id="submit-reply" class="btn btn-primary" onclick="submitReply(this)">Reply</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div> 
+</div>
+
+
 <div class="modal fade" id="newForumPost" tabindex="-1" role="dialog" aria-labelledby="newForumPostLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -252,7 +90,7 @@
                     </div>
                 </div>
                 <div class="form-group mb-4">
-                    <textarea placeholder="Content here..." class="form-control" id="post-content" rows="10"></textarea>
+                    <textarea placeholder="Content here..." class="form-control" id="post-content" rows="10" required></textarea>
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
@@ -264,29 +102,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="newReply" tabindex="-1" role="dialog" aria-labelledby="newReplyLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="newReplyLabel">Reply: Title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form id="form-reply" novalidate>
-                <div class="form-group mb-4">
-                    <textarea placeholder="Content here..." class="form-control" id="reply-content" rows="10" required></textarea>
-                </div>
-                <div style="display: flex;justify-content: flex-end;padding: 1rem;">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Reply</button>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="newReplyPrev" tabindex="-1" role="dialog" aria-labelledby="newReplyPrevLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -298,21 +113,15 @@
             </button>
         </div>
         <div class="modal-body">
-            <div class="list-group-item flex-column align-items-start post-content">
-                <div class="d-flex w-100 justify-content-between post-content-top">
-                <small class="mb-1">username</small>
-                <span class="fas fa-reply" style="cursor:pointer;display:none;" data-toggle="modal" data-target="#newForumPost"></span>
-                </div>
-                <p class="mb-1 mt-2">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <div id="post-date" class="post-content-bottom"><small>2018-04-07 16:26</small></div>
+            <div class="preContent">
             </div>
             <form id="form-replyPrev" novalidate>
                 <div class="form-group mb-4">
-                    <textarea placeholder="Content here..." class="form-control" id="replyPrev-content" rows="10"></textarea>
+                    <textarea placeholder="Content here..." class="form-control" id="replyPrev-content" rows="10" required></textarea>
                 </div>
                 <div style="display: flex;justify-content: flex-end;padding: 1rem;">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: .25rem;">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Reply</button>
+                    <button type="submit" id="submit-replyPrev" class="btn btn-primary"  onclick="submitPrevReply(this)">Reply</button>
                 </div>
             </form>
         </div>
@@ -322,35 +131,351 @@
 </div>
 
 <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "/listPostTitle",
+            type: "GET",
+            data: {
+                category:"('General')"
+            },
+            success: function (mes) {
+                $("#list-forum-topic").html("");
+                for(var i=0;i<mes.length;i++){
+                    $("#list-forum-topic").append("\
+                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed' style='cursor:pointer;' onclick='listPostContent("+mes[i].topicid+",\""+mes[i].subject+"\",this)'>\
+                    <div>\
+                    <h5 class='my-0'>"+mes[i].subject+"</h5>\
+                    <small class='text-muted'>"+mes[i].postby+"</small>\
+                    </div>\
+                    <small class='text-muted'>Replies: <span class='replynum'>"+mes[i].replynum+"</span></small>\
+                    </li>")
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    $('#newReply').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var data_title= button.data('title');
+        var data_replyId= button.data('replyid'); 
+        console.log(data_replyId);
+        var modal = $(this);
+        modal.find('.modal-title').text('Reply: ' + data_title);
+        modal.find('.modal-body #submit-reply').attr("data-replyId", data_replyId);
+    })
+
+    $('#newReplyPrev').on('show.bs.modal', function (event) {
+        console.log($(event.relatedTarget).parents(".post-content"));
+        var button = $(event.relatedTarget);
+        var data_title= button.data('title'); 
+        var data_replyId= button.data('replyid'); 
+        var data_replyPrevId= button.data('replyprevid'); 
+        console.log(data_replyId);
+        console.log(data_replyPrevId);
+        var modal = $(this);
+        modal.find('.modal-title').text('Reply: ' + data_title);
+        modal.find('.modal-body .preContent').html("");
+        modal.find('.modal-body .preContent').append($(event.relatedTarget).parents(".post-content").clone());
+        modal.find('.modal-body #submit-replyPrev').attr({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
+    })
+
     function submitPost(){
-        var form = $("#form-post")
+        var form = $("#form-post");
 
         if (form[0].checkValidity() === false) {
-            event.preventDefault()
-            event.stopPropagation()
+            event.preventDefault();
+            event.stopPropagation();
         }
         else if (form[0].checkValidity() === true){
             $.ajax({
                 url: "/addNewPost",
-                type: "GET",
-                data: {
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
                     subject:$("#post-title").val(),
                     category:$("#post-category").val(),
                     postby:"yy0234",
                     replynum:0,
                     content:$("#post-content").val(),
                     replyprev:false
+                }),
+                complete: function complete() {
+                },
+                error: function error(err) {
+                    alert(err);
+                    console.log(err);
                 },
                 success: function (mes) {
+                    $('#newForumPost').modal('hide');
                     console.log(mes);
-                },
-                error: function (err) {
-                    console.log(err);
+                    $("#list-forum-topic li").removeClass("content-active");
+                    $("#list-forum-topic").prepend("\
+                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed content-active' style='cursor:pointer;' onclick='listPostContent("+mes[0].topicid+",\""+mes[0].subject+"\",this)'>\
+                    <div>\
+                    <h5 class='my-0'>"+mes[0].subject+"</h5>\
+                    <small class='text-muted'>"+mes[0].postby+"</small>\
+                    </div>\
+                    <small class='text-muted'>Replies: <span class='replynum'>"+mes[0].replynum+"</span></small>\
+                    </li>");
+                    $.ajax({
+                        url: "/listPostContent",
+                        type: "GET",
+                        data: {
+                            topic:"('"+mes[0].topicid+"')"
+                        },
+                        success: function (res) {
+                            $("#list-forum-content").html("");
+                            $("#list-forum-content").append("\
+                                <div class='list-group list-group-flush'>\
+                                    <div class='list-group-item flex-column align-items-start post-title'>\
+                                        <div class='d-flex w-100 justify-content-between post-content-top'>\
+                                        <h6 class='my-1'>"+mes[0].subject+"</h6>\
+                                        <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply' data-title='"+mes[0].subject+"'data-replyId='"+mes[0].topicid+"'>Reply</button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class='list-group list-group-flush scrollbar' id='list-forum-reply' style='height:80vh; overflow-y:auto;'>\
+                                    <div class='margin-top-30'></div>\
+                                </div>");
+                                $("#list-forum-content").promise().done(function() {
+                                    for(var i=0;i<res.length;i++){
+                                        if (res[i].replyprev==false){
+                                            $("#list-forum-reply").append("\
+                                                <div class='list-group-item flex-column align-items-start post-content'>\
+                                                <div class='d-flex w-100 justify-content-between post-content-top'>\
+                                                <small class='mb-1'>"+res[i].postby+"</small>\
+                                                <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+mes[0].subject+"'data-replyId='"+mes[0].topicid+"' data-replyPrevId='"+res[i].postid+"'></button>\
+                                                </div>\
+                                                <div class='mb-1 mt-2 post-main-content'>"+res[i].content+"</div>\
+                                                <div id='post-date' class='post-content-bottom'><small>"+res[i].postdate+"</small></div>\
+                                                </div>")
+                                        }
+                                        else{
+                                            $("#list-forum-reply").append("\
+                                                <div class='list-group-item flex-column align-items-start post-content'>\
+                                                <div class='d-flex w-100 justify-content-between post-content-top'>\
+                                                <small class='mb-1'>"+res[i].postby+"</small>\
+                                                <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+mes[0].subject+"'data-replyId='"+mes[0].topicid+"' data-replyPrevId='"+res[i].postid+"'></button>\
+                                                </div>\
+                                                <div style='padding: 8px;margin-top: 15px;margin-bottom: 15px;border-left: 2px solid lightgray; color:  gray;'>"+res[i].replyprecontent+"</div>\
+                                                <div class='mb-1 mt-2 post-main-content'>"+res[i].content+"</div>\
+                                                <div id='post-date' class='post-content-bottom'><small>"+res[i].postdate+"</small></div>\
+                                                </div>")
+                                        }
+                                    }
+                                });
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
                 }
             });
             event.preventDefault();
         }
         form.addClass('was-validated');
+    }
+
+    function submitReply(pointer){
+        var form = $("#form-reply");
+        var button = $(pointer);
+        var data_replyId= button.data('replyid'); 
+        var data_title= button.data('title'); 
+        var reply_num=parseInt($(".content-active .replynum").html());
+        console.log(button);
+        console.log(data_replyId);
+
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else if (form[0].checkValidity() === true){
+            $.ajax({
+                url: "/addNewReply",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    topic:data_replyId,
+                    postby:"yy0234",
+                    content:$("#reply-content").val(),
+                    replyprev:false,
+                    replyprevid:null,
+                    replyprecontent:null
+                }),
+                complete: function complete() {
+                },
+                error: function error(err) {
+                    alert(err);
+                    console.log(err);
+                },
+                success: function (mes) {
+                    $('#newReply').modal('hide');
+                    console.log(mes);
+                    $("#list-forum-reply").append("\
+                    <div class='list-group-item flex-column align-items-start post-content'>\
+                    <div class='d-flex w-100 justify-content-between post-content-top'>\
+                    <small class='mb-1'>"+"yy0234"+"</small>\
+                    <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+data_title+"'data-replyId='"+data_replyId+"' data-replyPrevId='"+mes[0].postid+"'></button>\
+                    </div>\
+                    <div class='mb-1 mt-2 post-main-content'>"+mes[0].content+"</div>\
+                    <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
+                    </div>");
+                    $(".content-active .replynum").html(reply_num+1);
+                }
+            });
+            event.preventDefault();
+        }
+        form.addClass('was-validated');
+    }
+
+    function submitPrevReply(pointer){
+        var form = $("#form-replyPrev");
+        var button = $(pointer);
+        var data_replyId= button.data('replyid'); 
+        var data_prevReplyId= button.data('replyprevid');
+        var preContent=$("#newReplyPrev .preContent .post-main-content").html();
+        var data_title= button.data('title'); 
+        var reply_num=parseInt($(".content-active .replynum").html());
+        console.log(preContent);
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else if (form[0].checkValidity() === true){
+            $.ajax({
+                url: "/addNewReply",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    topic:data_replyId,
+                    postby:"yy0234",
+                    content:$("#replyPrev-content").val(),
+                    replyprev:true,
+                    replyprevid:data_prevReplyId,
+                    replyprecontent:preContent
+                }),
+                complete: function complete() {
+                },
+                error: function error(err) {
+                    alert(err);
+                    console.log(err);
+                },
+                success: function (mes) {
+                    console.log(mes);
+                    $('#newReplyPrev').modal('hide');
+                    $("#list-forum-reply").append("\
+                    <div class='list-group-item flex-column align-items-start post-content'>\
+                    <div class='d-flex w-100 justify-content-between post-content-top'>\
+                    <small class='mb-1'>"+mes[0].postby+"</small>\
+                    <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+data_title+"'data-replyId='"+data_replyId+"' data-replyPrevId='"+mes[0].postid+"'></button>\
+                    </div>\
+                    <div style='padding: 8px;margin-top: 15px;margin-bottom: 15px;border-left: 2px solid lightgray; color:  gray;'>"+mes[0].replyprecontent+"</div>\
+                    <div class='mb-1 mt-2 post-main-content'>"+mes[0].content+"</div>\
+                    <div id='post-date' class='post-content-bottom'><small>"+mes[0].postdate+"</small></div>\
+                    </div>");
+                    $(".content-active .replynum").html(reply_num+1);
+                    
+                }
+            });
+            event.preventDefault();
+        }
+        form.addClass('was-validated');
+    }
+
+    function listPostTitle(category,object){
+        $(".category div").removeClass("active");
+        $(object).addClass("active");
+        $.ajax({
+            url: "/listPostTitle",
+            type: "GET",
+            data: {
+                category:"('"+category+"')"
+            },
+            success: function (mes) {
+                $("#list-forum-topic").html("");
+                for(var i=0;i<mes.length;i++){
+                    $("#list-forum-topic").append("\
+                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed' style='cursor:pointer;' onclick='listPostContent("+mes[i].topicid+",\""+mes[i].subject+"\",this)'>\
+                    <div>\
+                    <h5 class='my-0'>"+mes[i].subject+"</h5>\
+                    <small class='text-muted'>"+mes[i].postby+"</small>\
+                    </div>\
+                    <small class='text-muted'>Replies: <span class='replynum'>"+mes[i].replynum+"</span></small>\
+                    </li>")
+                }
+                $("#list-forum-content").html("");
+                $("#list-forum-content").append("\
+                <div style='text-align: center;margin: 10%;'>\
+                    <img src='/images/adopets.png' width='auto' height='auto' class='d-inline-block align-top' alt=''>\
+                    <h4 style='margin-top: 10px; color:cornflowerblue;'>Adopets Web - Forum</h4>\
+                </div>")
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+    function listPostContent(topic,title,object){
+        $("#list-forum-topic>li").removeClass("content-active");
+        $(object).addClass("content-active");
+        $.ajax({
+            url: "/listPostContent",
+            type: "GET",
+            data: {
+                topic:"('"+topic+"')"
+            },
+            success: function (mes) {
+                $("#list-forum-content").html("");
+                $("#list-forum-content").append("\
+                    <div class='list-group list-group-flush'>\
+                        <div class='list-group-item flex-column align-items-start post-title'>\
+                            <div class='d-flex w-100 justify-content-between post-content-top'>\
+                            <h6 class='my-1'>"+title+"</h6>\
+                            <button type='button' class='btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#newReply' data-title='"+title+"'data-replyId='"+topic+"'>Reply</button>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class='list-group list-group-flush scrollbar' id='list-forum-reply' style='height:80vh; overflow-y:auto;'>\
+                        <div class='margin-top-30'></div>\
+                    </div>");
+                    $("#list-forum-content").promise().done(function() {
+                        for(var i=0;i<mes.length;i++){
+                            if (mes[i].replyprev==false){
+                                $("#list-forum-reply").append("\
+                                    <div class='list-group-item flex-column align-items-start post-content'>\
+                                    <div class='d-flex w-100 justify-content-between post-content-top'>\
+                                    <small class='mb-1'>"+mes[i].postby+"</small>\
+                                    <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+title+"'data-replyId='"+topic+"' data-replyPrevId='"+mes[i].postid+"'></button>\
+                                    </div>\
+                                    <div class='mb-1 mt-2 post-main-content'>"+mes[i].content+"</div>\
+                                    <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
+                                    </div>")
+                            }
+                            else{
+                                $("#list-forum-reply").append("\
+                                    <div class='list-group-item flex-column align-items-start post-content'>\
+                                    <div class='d-flex w-100 justify-content-between post-content-top'>\
+                                    <small class='mb-1'>"+mes[i].postby+"</small>\
+                                    <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+title+"'data-replyId='"+topic+"' data-replyPrevId='"+mes[i].postid+"'></button>\
+                                    </div>\
+                                    <div style='padding: 8px;margin-top: 15px;margin-bottom: 15px;border-left: 2px solid lightgray; color:  gray;'>"+mes[i].replyprecontent+"</div>\
+                                    <div class='mb-1 mt-2 post-main-content'>"+mes[i].content+"</div>\
+                                    <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
+                                    </div>")
+                            }
+                        }
+                    });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     }
 </script>
 
