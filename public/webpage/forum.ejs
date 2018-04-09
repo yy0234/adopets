@@ -260,9 +260,10 @@
         var button = $(event.relatedTarget);
         var data_title= button.data('title'); 
         var data_replyId= button.data('replyId'); 
+        var data_replyPrevId= button.data('replyPrevId'); 
         var modal = $(this);
         modal.find('.modal-title').text('Reply: ' + data_title);
-        modal.find('.modal-body button').attr("data-replyId", data_replyId);
+        modal.find('.modal-body button').attr({"data-replyId":data_replyId,"data-replyPrevId":data_replyPrevId});
     })
 
     function submitPost(){
@@ -357,7 +358,7 @@
                                 <div class='list-group-item flex-column align-items-start post-content'>\
                                 <div class='d-flex w-100 justify-content-between post-content-top'>\
                                 <small class='mb-1'>"+mes[i].postby+"</small>\
-                                <button type='button' class='fas fa-reply' style='cursor:pointer' data-toggle='modal' data-target='#newReplyPrev' data-title='"+title+"'data-replyId='"+topic+"' data-replyPrevId='"+mes[i].postid+"'></button>\
+                                <button type='button' class='fas fa-reply' style='border:none;background:none;' data-toggle='modal' data-target='#newReplyPrev' data-title='"+title+"'data-replyId='"+topic+"' data-replyPrevId='"+mes[i].postid+"'></button>\
                                 </div>\
                                 <div class='mb-1 mt-2'>"+mes[i].content+"</div>\
                                 <div id='post-date' class='post-content-bottom'><small>"+mes[i].postdate+"</small></div>\
