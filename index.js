@@ -11,8 +11,8 @@ var FileStore = require('session-file-store')(session);
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
-//var chatServer = require('./mychat/chat-server');
-//app.use(app.router);
+var chatServer = require('./mychat/chat-server');
+app.use(app.router);
 var server = require('http').createServer(app); 
 
 
