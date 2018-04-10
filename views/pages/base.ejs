@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-light">
 		<a class="navbar-brand" style="padding-top: 0.5rem;" href="./index">
 			<img src="/images/adopets.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			<span style="vertical-align:middle;font-weight:bold;color:white">Adopets Web</span>
@@ -19,7 +19,7 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="./index">Home</a>
 				</li>
-				<!--<li class="nav-item dropdown">
+				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Pet Adoption
 					</a>
@@ -44,9 +44,9 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="./forum">Forum</a>
-				</li>-->
+				</li>
 			</ul>
-			<!--<ul class="navbar-nav login-item navbar-right">
+			<ul class="navbar-nav login-item navbar-right">
 				<% if(isLogined){ %>
 					<li class="nav-item"><a class="nav-link" href="./cart"><span class="fas fa-shopping-cart"></span></a></li>
 					<li class="nav-item"><a class="nav-link" href="./chatroom"><span class="fas fa-comments"></span></a></li>
@@ -64,7 +64,7 @@
 				<% }else{ %>
 					<li class="nav-item"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
 				<% } %> 
-			</ul>-->
+			</ul>
 		</div>
 	</nav>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -96,12 +96,30 @@
 			  <a class="nav-link disabled" href="#">Disabled</a>
 			</li>
 		  </ul>
-		  <form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		  </form>
+		  <ul class="navbar-nav login-item navbar-right">
+			<% if(isLogined){ %>
+				<li class="nav-item"><a class="nav-link" href="./cart"><span class="fas fa-shopping-cart"></span></a></li>
+				<li class="nav-item"><a class="nav-link" href="./chatroom"><span class="fas fa-comments"></span></a></li>
+				<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#" style="margin-bottom: 5px;color: gray;"><span class="fas fa-user" style="margin-right: 10px;"></span>Account</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" style="color:gray;cursor:pointer" onclick="userSignOut()"><span class="fas fa-sign-out-alt" style="margin-right:10px;"></span>Logout</a>
+					</div>
+				</li>
+			<% }else{ %>
+				<li class="nav-item"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
+			<% } %> 
+		</ul>
 		</div>
 	  </nav>
+
+
+
 	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
 		<div class="modal-dialog md-model-dialog" role="document">
 			<div class="modal-content">
