@@ -46,7 +46,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
     $(function(){
-	var socket = io.connect();
+	this.socket = io.connect();
 	// id of user that is being private messaged
 	var userToPM = undefined;
 
