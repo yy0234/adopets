@@ -11,9 +11,11 @@
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark">
 		<a class="navbar-brand" style="padding-top: 0.5rem;" href="./index">
 			<img src="/images/adopets.png" width="30" height="30" class="d-inline-block align-top" alt="">
-			Adopets Web
+			<span style="vertical-align:middle;font-weight:bold;color:white">Adopets Web</span>
 		</a>
-		
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
@@ -73,38 +75,29 @@
 		  <span class="navbar-toggler-icon"></span>
 		</button>
 	  
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active">
-					<a class="nav-link" href="./index">Home</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Pet Adoption
-					</a>
-					<div class="dropdown-menu" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="./pet_search">Search Pet</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./post_adoption">Post New Adoption</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Pet Supplies shop
-					</a>
-					<div class="dropdown-menu" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="./pet_shop">Search Supplies</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./post_supply" >Post Supplies</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="./search_service">Pet Service Search</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="./forum">Forum</a>
-				</li>
-			</ul>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#">Link</a>
+			</li>
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Dropdown
+			  </a>
+			  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="#">Action</a>
+				<a class="dropdown-item" href="#">Another action</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Something else here</a>
+			  </div>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link disabled" href="#">Disabled</a>
+			</li>
+		  </ul>
 		  <ul class="navbar-nav login-item navbar-right">
 			<% if(isLogined){ %>
 				<li class="nav-item"><a class="nav-link" href="./cart"><span class="fas fa-shopping-cart"></span></a></li>
