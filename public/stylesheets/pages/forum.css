@@ -1,32 +1,3 @@
-@media only screen and (min-width: 1200px){
-  .container-fluid .row {
-    margin-left: -15px;
-  }
-}
-
-@media only screen and (max-width: 979px) and (min-width: 768px){
-  .container-fluid .row {
-      margin-left: -15px;
-  }
-}
-
-@media only screen and (max-width: 767px){
-  .container-fluid .row {
-      margin-left: -15px;
-      margin-right: 0;
-  }
-  .view-unactive {
-    display:none;
-  }
-  .return-button{
-    display:inline-block !important;
-  }
-
-  #list-forum-select>#scrollbar{
-    height: 75vh;
-  }
-}
-
 .category div{
   margin-top:5px;
   margin-bottom: 5px;
@@ -306,4 +277,33 @@ html{
 
 #list-forum-select>#scrollbar{
   height: 70vh;
+}
+
+@media only screen and (min-width: 1200px){
+  .container-fluid .row {
+    margin-left: -15px;
+  }
+}
+
+@media only screen and (max-width: 979px) and (min-width: 768px){
+  .container-fluid .row {
+      margin-left: -15px;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .container-fluid .row {
+      margin-left: -15px;
+      margin-right: 0;
+  }
+  .view-unactive {
+    display:none;
+  }
+  .return-button{
+    display:inline-block !important;
+  }
+
+  #list-forum-select>#scrollbar{
+    height: 75vh;
+  }
 }
