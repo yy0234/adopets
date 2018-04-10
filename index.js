@@ -458,6 +458,7 @@ function showActiveUsers(socket){
     }
   }
   socket.emit('names', activeNames);
+  //testing
 }
 /*
 function showOldMsgs(socket){
