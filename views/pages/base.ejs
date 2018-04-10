@@ -47,23 +47,7 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav login-item navbar-right">
-				<% if(isLogined){ %>
-					<li class="nav-item"><a class="nav-link" href="./cart"><span class="fas fa-shopping-cart"></span></a></li>
-					<li class="nav-item"><a class="nav-link" href="./chatroom"><span class="fas fa-comments"></span></a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
-						</a>
-						<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#" style="margin-bottom: 5px;color: gray;"><span class="fas fa-user" style="margin-right: 10px;"></span>Account</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" style="color:gray;cursor:pointer" onclick="userSignOut()"><span class="fas fa-sign-out-alt" style="margin-right:10px;"></span>Logout</a>
-						</div>
-					</li>
-				<% }else{ %>
-					<li class="nav-item"><a class="nav-link" style="cursor:pointer" data-toggle="modal" data-target="#signInModal"><span class="fas fa-sign-in-alt" style="vertical-align: middle;"></span> Login</a></li>
-				<% } %> 
+				
 			</ul>
 		</div>
 	</nav>
