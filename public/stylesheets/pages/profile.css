@@ -52,3 +52,11 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     -webkit-box-pack: center;
     -webkit-box-align: center;
 }
+
+.fa-trash-alt{
+    position: absolute;
+    right: 0;
+    font-size: 200%;
+    bottom: 0;
+    margin: 20px;
+}
