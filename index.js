@@ -11,8 +11,6 @@ var FileStore = require('session-file-store')(session);
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
-var chatServer = require('./mychat/chat-server');
-
 var server = require('http').createServer(app); 
 
 app.use(bodyParser.json({limit: '50mb'})); 
@@ -21,7 +19,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //testing
 server.listen(process.env.PORT || 5000);
 //app.set('port', (process.env.PORT || 5000));
-chatServer.listen(server);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -430,6 +427,43 @@ app.get("/listCart", function (request, response) {
   });
 });
 
+
+//chatroom
+const io = require('socket.io')(server);
+
+//JSON.stringify();
+var usocket = {},user = [];
+
+io.on('connection', (socket) => {
+
+	socket.on('new user', (username) => {
+		if(!(username in usocket)) {
+			socket.username = username;
+			usocket[username] = socket;
+			user.push(username);
+			socket.emit('login',user);
+			socket.broadcast.emit('user joined',username,(user.length-1));
+			console.log(user);
+		}
+	})
+
+	socket.on('send private message', function(res){
+		console.log(res);
+		if(res.recipient in usocket) {
+			usocket[res.recipient].emit('receive private message', res);
+		}
+	});
+
+	socket.on('disconnect', function(){
+		if(socket.username in usocket){
+			delete(usocket[socket.username]);
+			user.splice(user.indexOf(socket.username), 1);
+		}
+		console.log(user);
+		socket.broadcast.emit('user left',socket.username)
+	})
+
+});
 
 /*app.get('*', function(request, response) {
   response.redirect('/');
