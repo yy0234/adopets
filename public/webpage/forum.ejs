@@ -24,7 +24,7 @@
                 <div class="col-sm-2 col-md-4" onclick="listPostTitle('Toy',this)">Toy</div>
             </div>
         </div>
-        <div id="scrollbar" style="overflow-y: auto;height: 70vh;">
+        <div id="scrollbar" style="overflow-y: auto;">
             <ul id="list-forum-topic" class="list-group list-group-flush mb-3">
             </ul>
         </div>
@@ -32,7 +32,6 @@
     <div id="list-forum-content" class="col-md-8 order-md-2 post-area view-unactive">
         <div style="text-align: center;margin: 10%;">
             <img src="/images/adopets.png" width="auto" height="auto" class="d-inline-block align-top" alt="">
-            <h4 style="margin-top: 10px; color:cornflowerblue;">Adopets Web - Forum</h4>
         </div>
     </div>
 </div>
@@ -440,7 +439,6 @@
                 $("#list-forum-content").append("\
                 <div style='text-align: center;margin: 10%;'>\
                     <img src='/images/adopets.png' width='auto' height='auto' class='d-inline-block align-top' alt=''>\
-                    <h4 style='margin-top: 10px; color:cornflowerblue;'>Adopets Web - Forum</h4>\
                 </div>")
             },
             error: function (err) {
