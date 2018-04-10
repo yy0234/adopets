@@ -3,7 +3,7 @@ var name = false;
 var socket;
 // 要求写一个名字
 smalltalk.prompt('身份验证', '你的名字?', '').then(function(name) {
-	socket = io.connect('ws://127.0.0.1:3000');
+	socket = io.connect();
 	$('h1').text(name);
 
 	// 正在连接
