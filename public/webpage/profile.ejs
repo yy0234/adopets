@@ -1,22 +1,22 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/pages/profile.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
 <div class="container-fluid">
-    <div><img src="..." alt="..." class="rounded-circle"></div>
+    <div><img src="/images/user_image.jpg" alt="user image" class="rounded-circle"></div>
     <button type="button" class="btn btn-success">Edit Profile</button>
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pet Adoption</a>
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pet Adoption</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Supplies Trade</a>
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Supplies Trade</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Forum Posts</a>
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Forum Posts</a>
         </li>
     </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <table class="table table-hover">
+        <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <table class="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -40,14 +40,15 @@
                     </tr>
                     <tr>
                     <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
                     <td>@twitter</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <table class="table table-hover">
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <table class="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -71,14 +72,15 @@
                     </tr>
                     <tr>
                     <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
                     <td>@twitter</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-            <table class="table table-hover">
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <table class="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -102,7 +104,8 @@
                     </tr>
                     <tr>
                     <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
                     <td>@twitter</td>
                     </tr>
                 </tbody>
