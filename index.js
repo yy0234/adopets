@@ -487,9 +487,10 @@ function handleMessageBroadcasting(socket){
    /*db.saveMsg({nick: nick, msg: msg}, function(err){
       if(err) throw err;
       io.sockets.emit('message', {nick: nick, msg: msg});
-    });
-  });*/
+    });*/
+  });
 }
+
 
 function handlePrivateMessaging(socket){
   socket.on('private message', function(data){
