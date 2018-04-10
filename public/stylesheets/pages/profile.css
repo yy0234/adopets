@@ -35,3 +35,20 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     color: black;
     background-color: #d3d3d35e;
 }
+#pet_image img {
+    max-height: 235px;
+}
+#pet_image {
+    margin: 0 auto;
+    height: 235px;
+    object-fit: cover;
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
