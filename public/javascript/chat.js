@@ -106,21 +106,11 @@ HiChat.prototype = {
                 reader.readAsDataURL(file);
             };
         }, false);
-        document.getElementById('emojiWrapper').addEventListener('click', function(e) {
-            var target = e.target;
-            if (target.nodeName.toLowerCase() == 'img') {
-                var messageInput = document.getElementById('messageInput');
-                messageInput.focus();
-                messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
-            };
-        }, false);
     },
     _displayNewMsg: function(user, msg, color) {
         var container = document.getElementById('historyMsg'),
             msgToDisplay = document.createElement('p'),
-            date = new Date().toTimeString().substr(0, 8),
-            //determine whether the msg contains emoji
-            msg = this._showEmoji(msg);
+            date = new Date().toTimeString().substr(0, 8);
         msgToDisplay.style.color = color || '#000';
         msgToDisplay.innerHTML = user + '<span class="timespan">(' + date + '): </span>' + msg;
         container.appendChild(msgToDisplay);
