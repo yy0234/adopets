@@ -276,7 +276,7 @@ html{
 }
 
 #list-forum-select>#scrollbar{
-  height: 70vh;
+  height: 72vh;
 }
 
 @media only screen and (min-width: 1200px){
