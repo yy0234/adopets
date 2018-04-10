@@ -29,3 +29,6 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
 @media (min-width:992px){section.resume-section{padding-top:3rem!important;padding-bottom:3rem!important}}
 .bg-primary{background-color:#bd5d38!important}.text-primary{color:#bd5d38!important}a{color:#bd5d38}
 a:active,a:focus,a:hover{color:#824027}
+.my-auto{
+    width:100%;
+}
