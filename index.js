@@ -11,12 +11,9 @@ var FileStore = require('session-file-store')(session);
 var multer = require('multer');
 var bodyParser = require('body-parser');
 
-//var chatServer = require('./mychat/chat-server');
-//app.use(app.router);
+var chatServer = require('./mychat/chat-server');
+
 var server = require('http').createServer(app); 
-
-
-//server.listen(5000);
 
 app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -24,7 +21,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 //testing
 server.listen(process.env.PORT || 5000);
 //app.set('port', (process.env.PORT || 5000));
-//chatServer.listen(server);
+chatServer.listen(server);
 
 app.use(express.static(__dirname + '/public'));
 
