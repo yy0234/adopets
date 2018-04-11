@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 	<!--Your own content-->
 	<div class="shop">
-		<div class="row affix">
+		<div class="row">
 			<div class="col-md-3" id="filter_button">
 				<a id="show_hide_button">
 					<span class="filter_hide_button"><span class="fa fa-caret-left"></span>Hide</span>
@@ -44,7 +44,7 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-2" id="left_container" class="affix">
+			<div class="col-md-2" id="left_container">
 				<div class="list-group-item list-group-item-action flex-column align-items-start">
 					<div class="input-group autocomplete">
 						<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
@@ -448,6 +448,9 @@
 
 
 $("#dropdownlist").change(function(){
+	if (supplyData.length==undefined||supplyData.length==0)
+		return;
+
 	if ($("#dropdownlist").val()=="popular"){
 		supplyData.responseJSON.sort(function(a, b){
 			//do it later
@@ -465,8 +468,8 @@ $("#dropdownlist").change(function(){
 			var x = parseFloat(a.price);
 			var y = parseFloat(b.price);
 			if (x < y) {return -1;}
-			if (x > y) {return 1;}
-			return 0;
+			else if (x > y) {return 1;}
+			else return 0;
 			//return parseFloat(b.price) - parseFloat(a.price);
 		});
 	}
@@ -476,8 +479,8 @@ $("#dropdownlist").change(function(){
 			var x = parseFloat(a.price);
 			var y = parseFloat(b.price);
 			if (x < y) {return 1;}
-			if (x > y) {return -1;}
-			return 0;
+			else if (x > y) {return -1;}
+			else return 0;
 			//return parseFloat(a.price) - parseFloat(b.price);
 		});
 	}
