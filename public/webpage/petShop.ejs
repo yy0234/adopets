@@ -448,8 +448,6 @@
 
 
 $("#dropdownlist").change(function(){
-	if (supplyData.length==undefined||supplyData.length==0)
-		return;
 
 	if ($("#dropdownlist").val()=="popular"){
 		supplyData.responseJSON.sort(function(a, b){
