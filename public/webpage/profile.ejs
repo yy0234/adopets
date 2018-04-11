@@ -310,11 +310,12 @@
 </div>
 <script>
     var onclick_trash=false;
-
+    
     function delePet(petid,trash){
         var onclick_trash=true;
         $('#petDetailModal').on('show.bs.modal', function (e) {
-            if(onclick_trash==true) {
+            var button = e.relatedTarget;
+            if($(button).hasClass('no-modal')) {
                 e.stopPropegation();
             }  
         });
