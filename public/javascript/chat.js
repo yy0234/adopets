@@ -1,7 +1,7 @@
 // 默认没有名字
 var name;
 var socket;
-var user = [];
+var users = [];
 
 	initializeName();
 	importUserInDb();
@@ -13,22 +13,13 @@ var user = [];
 		console.log('connecting');
 	});
 
-	socket.on('connect', function () {
-		console.log('connect');
-		user.forEach(function(r) { 
-			alert(r);
-		});
-		// 请求加入
-		if(name){
-			socket.emit('new user', name);
-		}
-	});
+
 	// connect all user
-	/*user.forEach(function(r) { 
+	users.forEach(function(r) { 
 		socket.on('connect', function () {
 			socket.emit('new user', r);
 		});
-	});*/
+	});
 
 	// 第一次登陆接收其它成员信息
 	socket.on('login', function (user) {
@@ -223,7 +214,7 @@ var user = [];
 			type: "GET",
 			success: function (info) {
 				info.forEach(function(r) { 
-					user.push(r.userid);
+					users.push(r.userid);
 				});
 			},
 			error: function (err) {
