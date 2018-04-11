@@ -83,7 +83,6 @@
         </div>
     </div>
     <!--pet detail-->
-    <!--
     <div class="modal fade" id="petDetailModal" tabindex="-1" role="dialog" aria-labelledby="petDetailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -222,7 +221,7 @@
             </div>
         </div>
     </div>
--->
+
     					<!--supply detail-->
                         <div class="modal fade" id="supplyDetailModal" tabindex="-1" role="dialog" aria-labelledby="supplyDetailModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
@@ -712,7 +711,7 @@ function pageSupply(pageNo){
 }
 
 function showSell(){
-$.ajax({
+supplyData = $.ajax({
 		url: "/listSellingSupply",
 		type: "GET",
 		data: {
@@ -822,7 +821,7 @@ $.ajax({
 				$("#pagination").css('display','none');
 				total_page=0;
 			}
-            supplyData = mes;
+            return mes;
 		},
 		error: function (err) {
 			return err;
