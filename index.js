@@ -469,6 +469,24 @@ app.get('/showAllUser', function (request, response) {
   });
 });
 
+app.get("/listSellingSupply", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var providerid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT * FROM petsupply WHERE providerid ="+providerid+" order by supplyid DESC", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
+
 //chatroom
 var io = require('socket.io')(server);
 
