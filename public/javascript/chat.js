@@ -15,7 +15,9 @@ var user = [];
 
 	socket.on('connect', function () {
 		console.log('connect');
-		alert(user);
+		user.forEach(function(r) { 
+			alert(r);
+		});
 		// 请求加入
 		if(name){
 			socket.emit('new user', name);
