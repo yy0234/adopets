@@ -315,7 +315,7 @@
         var onclick_trash=true;
         $('#petDetailModal').on('show.bs.modal', function (e) {
             var button = e.relatedTarget;
-            if($(button).hasClass('no-modal')) {
+            if(onclick_trash==true) {
                 e.stopPropegation();
             }  
         });
