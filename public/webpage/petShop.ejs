@@ -448,8 +448,6 @@
 
 
 $("#dropdownlist").change(function(){
-	if (supplyData.length==undefined||supplyData.length==0)
-		return;
 
 	if ($("#dropdownlist").val()=="popular"){
 		supplyData.responseJSON.sort(function(a, b){
@@ -459,16 +457,17 @@ $("#dropdownlist").change(function(){
 	}
 	else if ($("#dropdownlist").val()=="newest"){
 		supplyData.responseJSON.sort(function(a, b){
+			console.log(a);
 			return -(new Date(a.postdate) - new Date(b.postdate));
 		});
 	}
 
 	else if ($("#dropdownlist").val()=="price_desc"){
 		supplyData.responseJSON.sort(function(a, b){
-			var x = parseFloat(a.price);
-			var y = parseFloat(b.price);
-			if (x < y) {return -1;}
-			else if (x > y) {return 1;}
+			var x = parseFloat(a.price.replace('$', ''));
+			var y = parseFloat(b.price.replace('$', ''));
+			if (x > y) {return -1;}
+			else if (x < y) {return 1;}
 			else return 0;
 			//return parseFloat(b.price) - parseFloat(a.price);
 		});
@@ -476,10 +475,10 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_asc"){
 		supplyData.responseJSON.sort(function(a, b){
-			var x = parseFloat(a.price);
-			var y = parseFloat(b.price);
-			if (x < y) {return 1;}
-			else if (x > y) {return -1;}
+			var x = parseFloat(a.price.replace('$', ''));
+			var y = parseFloat(b.price.replace('$', ''));
+			if (x > y) {return 1;}
+			else if (x < y) {return -1;}
 			else return 0;
 			//return parseFloat(a.price) - parseFloat(b.price);
 		});
