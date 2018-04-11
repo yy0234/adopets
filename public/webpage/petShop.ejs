@@ -458,8 +458,8 @@ $("#dropdownlist").change(function(){
 		});
 	}
 	else if ($("#dropdownlist").val()=="newest"){
+		console.log("a");
 		supplyData.responseJSON.sort(function(a, b){
-			console.log(a);
 			return -(new Date(a.postdate) - new Date(b.postdate));
 		});
 	}
