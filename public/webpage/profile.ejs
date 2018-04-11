@@ -310,6 +310,9 @@
 </div>
 <script>
     function delePet(petid,trash){
+        $('#petDetailModal').on('show.bs.modal', function (e) {
+                e.stopPropegation();
+        });
         console.log(trash);
     }
 </script>

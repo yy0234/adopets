@@ -90,3 +90,7 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     transition: all 0.3s ease-out;
     cursor: pointer;
 }
+
+.card:hover{
+    opacity:0.5;
+}
