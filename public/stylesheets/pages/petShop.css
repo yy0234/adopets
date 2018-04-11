@@ -32,7 +32,7 @@ span.item_number {
     margin-right:10px;
 }
 
-#dynamic .fa, #dynamic .fas, #dynamic .far {
+#dynamic .shop .fa, #dynamic .shop .fas, #dynamic .shop .far,#dynamic #product_display .fa, #dynamic #product_display .fas, #dynamic #product_display .far {
     font-size: 25px;
     color: #33b5e5;
     position: relative;
@@ -179,7 +179,7 @@ div.right_arrow {
     width: 250px;
 }
 
-.card {
+.shop .card, #product_display .card{
     overflow: hidden;
     border-radius: 6px;
     position: relative;
@@ -190,7 +190,7 @@ div.right_arrow {
     width: 250px;
 }
 
-.card .details {
+.shop .card .details, #product_display .card .details{
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
     background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(62%, rgba(0,0,0,0.36)), color-stop(100%, rgba(0,0,0,0)));
