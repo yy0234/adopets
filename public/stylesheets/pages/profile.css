@@ -60,3 +60,7 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     bottom: 0;
     margin: 20px;
 }
+
+.cus-active{
+    background-color:#d3d3d35e;
+}
