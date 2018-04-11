@@ -1,8 +1,10 @@
 // 默认没有名字
 var name;
 var socket;
+var user = [];
 
 	initializeName();
+	importUserInDb();
 	socket = io.connect();
 	$('h1').text(name);
 
@@ -11,15 +13,13 @@ var socket;
 		console.log('connecting');
 	});
 
-	// 连接上
-	socket.on('connect', function () {
-		console.log('connect');
-		// 请求加入
-		if(name){
-			socket.emit('new user', name);
-		}
+	// connect all user
+	user.forEach(function(r) { 
+		socket.on('connect', function () {
+			socket.emit('new user', r);
+		});
 	});
-
+	
 	// 第一次登陆接收其它成员信息
 	socket.on('login', function (user) {
 		if(user.length>=1){
@@ -31,8 +31,8 @@ var socket;
 	// 监听中途的成员加入
 	socket.on('user joined', function (tname, index) {
 		incomeHtml(tname,'/images/cat1.jpg');
-		console.log(tname+'加入');
-		showNotice('/images/cat1.jpg',tname,"上线了");
+		console.log(tname+'join');
+		showNotice('/images/cat1.jpg',tname,"online");
 	});
 	// 接收私聊信息
 	socket.on('receive private message', function (data) {
@@ -47,7 +47,7 @@ var socket;
 	});
 	// 监听中途的成员离开
 	socket.on('user left', function (data) {
-		console.log(data+'离开');
+		console.log(data+'leave');
 		$('#'+hex_md5(data)).remove();
 		$('#li'+hex_md5(data)).remove();
 	});
@@ -131,7 +131,7 @@ var socket;
 		html+='<div class="footer"><div class="box"><div class="head">';
 		html+='<svg class="icon emoji" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4692" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><path d="M520.76544 767.05792c-99.14368 0-180.30592-73.65632-193.78176-169.09312l-49.22368 0c13.78304 122.624 116.61312 218.29632 242.91328 218.29632S749.81376 720.5888 763.5968 597.9648l-49.0496 0C701.0816 693.4016 619.90912 767.05792 520.76544 767.05792zM512 0C229.23264 0 0 229.2224 0 512c0 282.75712 229.23264 512 512 512 282.76736 0 512-229.24288 512-512C1024 229.2224 794.76736 0 512 0zM511.95904 972.78976C257.46432 972.78976 51.1488 766.48448 51.1488 512c0-254.49472 206.30528-460.81024 460.81024-460.81024 254.48448 0 460.8 206.30528 460.8 460.81024C972.75904 766.48448 766.44352 972.78976 511.95904 972.78976zM655.57504 456.92928c31.06816 0 56.24832-25.1904 56.24832-56.24832 0-31.06816-25.18016-56.24832-56.24832-56.24832-31.06816 0-56.25856 25.18016-56.25856 56.24832C599.31648 431.73888 624.49664 456.92928 655.57504 456.92928zM362.73152 456.92928c31.06816 0 56.24832-25.1904 56.24832-56.24832 0-31.06816-25.1904-56.24832-56.24832-56.24832-31.0784 0-56.25856 25.18016-56.25856 56.24832C306.47296 431.73888 331.65312 456.92928 362.73152 456.92928z" p-id="4693"></path></svg>';
 		html+='</div><div class="body"><input type="text" class="input" /></div>';
-		html+='<div class="foot"><a class="send" href="javascript:void(0)">发送(Enter)</a></div></div></div></div></div>';
+		html+='<div class="foot"><a class="send" href="javascript:void(0)">Enter</a></div></div></div></div></div>';
 		$('#chat').append(html);
 	}
 
@@ -177,7 +177,7 @@ var socket;
 	                    window.focus();
 	                },
 	                notify.onerror = function () {
-	                    console.log("HTML5桌面消息出错！！！");
+	                    console.log("HTML5 error！！！");
 	                };
 	                notify.onshow = function () {
 	                    setTimeout(function(){
@@ -185,12 +185,12 @@ var socket;
 	                    },2000)
 	                };
 	                notify.onclose = function () {
-	                    console.log("HTML5桌面消息关闭！！！");
+	                    console.log("HTML5 close！！！");
 	                };
 	            }
 	        });
 	    }else{
-	        console.log("您的浏览器不支持桌面消息");
+	        console.log("not support");
 	    }
 	};
 
@@ -204,5 +204,19 @@ var socket;
 				error: function (err) {
 					console.log(err);
 				}
+			});
+	}
+	function importUserInDb(){
+		$.ajax({
+			url: "/showAllUser",
+			type: "GET",
+			success: function (info) {
+				info.forEach(function(r) { 
+					user.push(r.userid);
+				});
+			},
+			error: function (err) {
+				console.log(err);
+			}
 			});
 	}
