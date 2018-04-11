@@ -453,12 +453,12 @@ $("#dropdownlist").change(function(){
 
 	if ($("#dropdownlist").val()=="popular"){
 		supplyData.responseJSON.sort(function(a, b){
+			console.log("ok");
 			//do it later
 			return 0;
 		});
 	}
 	else if ($("#dropdownlist").val()=="newest"){
-		console.log(a);
 		supplyData.responseJSON.sort(function(a, b){
 			return -(new Date(a.postdate) - new Date(b.postdate));
 		});
