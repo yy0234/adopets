@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-9">
-            <div class="row">
+            <div class="row" style="margin:0 auto;">
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div>
                         <div class="card h-100">
@@ -171,6 +171,6 @@
 </div>
 <script>
     function delePet(petid,trash){
-        console.log($(trash));
+        console.log($(trash).parents().parents());
     }
 </script>
