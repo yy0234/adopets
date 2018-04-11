@@ -323,9 +323,182 @@
     </div>
 </div>
 <script>
+    var petData;
+    var current_page =1;
+    var total_page=0;
     
     function delePet(petid,trash){
         console.log($(trash).parents().parents());
         ($(trash).parents().parents())[2].remove();
     }
+
+    function pagePet(pageNo){
+        var static_pageNo=pageNo;
+        if (pageNo==-2){
+            if (current_page==1){
+                return;
+            }
+            static_pageNo=current_page-1;
+        }
+        else if (pageNo==-1){
+            if (current_page==total_page){
+                return;
+            }
+            static_pageNo=current_page+1;
+        }
+        $("#petSearchResult").html("");
+        var page_no=(static_pageNo-1)*12;
+        if (petData.length>(page_no+12)){
+            for (var i=page_no;i<page_no+12;i++){
+                $("#petSearchResult").append("\
+                    <div class=\"col-lg-4 col-md-6 mb-4\">\
+                        <div>\
+                            <div class=\"card h-100\">\
+                                <a id=\"pet_image\" class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">"+petData[i].peturl+"</a>\
+                                <div class=\"card-body\">\
+                                    <div id=\"petTable\" style=\"display:table\">\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionName\" style=\"display:table-cell\">"+petData[i].name+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].age+"</div>\
+                                        </div>\
+                                            <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].gender+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionBreeds\" style=\"display:table-cell\">"+petData[i].breed+"</div>\
+                                        </div>\
+                                    </div>\
+                                    <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+petData[i].petid+",this)\"></button>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>")
+            }
+        }
+        else{
+            for (var i=page_no;i<petData.length;i++){
+                $("#petSearchResult").append("\
+                    <div class=\"col-lg-4 col-md-6 mb-4\">\
+                        <div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">\
+                            <div class=\"card h-100\">\
+                                <a id=\"pet_image\">"+petData[i].peturl+"</a>\
+                                <div class=\"card-body\">\
+                                    <div id=\"petTable\"style=\"display:table\">\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionName\" style=\"display:table-cell\">"+petData[i].name+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].age+"</div>\
+                                        </div>\
+                                            <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].gender+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionBreeds\" style=\"display:table-cell\">"+petData[i].breed+"</div>\
+                                        </div>\
+                                    </div>\
+                                    <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+petData[i].petid+",this)\"></button>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>")
+            }
+        }
+        $('#page'+current_page).css("background-color","white");
+        current_page=static_pageNo;
+        $("#page"+current_page).css("background-color","gainsboro");
+    }
+
+    function AdoptPost(){
+        $.ajax({
+            url: "/list_my_adopt",
+            type: "GET",
+            data: {
+            },
+            success: function (mes) {
+                $("#petSearchResult").html("");
+                if (mes.length==0){
+                    console.log("No result");
+                }
+                else if (mes.length>12){
+                    for (var i=0; i<12;i++){
+                        $("#petSearchResult").append("\
+                            <div class=\"col-lg-4 col-md-6 mb-4\">\
+                                <div>\
+                                    <div class=\"card h-100\">\
+                                        <a id=\"pet_image\" class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\" >"+mes[i].peturl+"</a>\
+                                        <div class=\"card-body\">\
+                                            <div id=\"petTable\" style=\"display:table\">\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
+                                                </div>\
+                                                    <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
+                                                </div>\
+                                            </div>\
+                                            <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+mes[i].petid+",this)\"></button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>")
+                    }
+                    if (total_page!=0)
+                        for (var i=1;i<=total_page;i++)
+                            $("#page"+i).remove();
+                    $("#pagination").css('display','flex');
+                    total_page=Math.ceil(mes.length/12);
+                    for (var i=total_page;i>0;i--)
+                        $("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+                    $('#page'+current_page).css("background-color","gainsboro");
+                }
+                else{
+                    mes.forEach(function(element,index) {
+                        $("#petSearchResult").append("\
+                            <div class=\"col-lg-4 col-md-6 mb-4\">\
+                                <div>\
+                                    <div class=\"card h-100\">\
+                                        <a id=\"pet_image\"  class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">"+element.peturl+"</a>\
+                                        <div class=\"card-body\">\
+                                            <div id=\"petTable\" style=\"display:table\">\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+                                                </div>\
+                                                    <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+                                                </div>\
+                                            </div>\
+                                            <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+element.petid+",this)\"></button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>")
+                    });
+                    if (total_page!=0)
+                        for (var i=1;i<=total_page;i++)
+                            $("#page"+i).remove();
+                    $("#pagination").css('display','none');
+                    total_page=0;
+                }
+                petData = mes;
+            },
+            error: function (err) {
+                console.log (err);
+            }
+        });
+    }
+
 </script>

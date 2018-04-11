@@ -361,6 +361,24 @@ app.get("/listPet", function (request, response) {
   });
 });
 
+app.get("/listMyAdopt", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var providerid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT * FROM pets WHERE status='open' AND providerid ="+providerid+" order by petid DESC", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
+
 app.post('/addSupply', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO petsupply(supplyid,name,description,price,type,postdate,lastupdate,status,remark,supplyurl,providerid,quantity,pettype) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)'; 
