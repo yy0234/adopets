@@ -76,21 +76,3 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
         max-width: 1000px;
     }
 }
-
-.overlay {
-    display: block;
-    content: " ";
-    top: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    background-image: url(/images/view.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 60px;
-    z-index: 1;
-    transition: all 0.3s ease-out;
-    cursor: pointer;
-}
-
-.card:hover{
-    opacity:0.5;
-}
