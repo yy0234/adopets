@@ -448,19 +448,18 @@
 
 
 $("#dropdownlist").change(function(){
-	console.log("ok");
 	if (supplyData.length==undefined||supplyData.length==0)
 		return;
 
 	if ($("#dropdownlist").val()=="popular"){
 		supplyData.responseJSON.sort(function(a, b){
-			console.log("ok");
 			//do it later
 			return 0;
 		});
 	}
 	else if ($("#dropdownlist").val()=="newest"){
 		supplyData.responseJSON.sort(function(a, b){
+			console.log(a);
 			return -(new Date(a.postdate) - new Date(b.postdate));
 		});
 	}
