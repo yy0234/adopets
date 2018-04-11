@@ -13,13 +13,19 @@ var users = [];
 		console.log('connecting');
 	});
 
+	socket.on('connect', function () {
+		console.log('connect');
+		if(name){
+			socket.emit('new user', name);
+		}
+	});
 
-	// connect all user
+	/*
 	users.forEach(function(r) { 
 		socket.on('connect', function () {
 			socket.emit('new user', r);
 		});
-	});
+	});*/
 
 	// 第一次登陆接收其它成员信息
 	socket.on('login', function (user) {
