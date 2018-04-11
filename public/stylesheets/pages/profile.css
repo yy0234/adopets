@@ -92,10 +92,6 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     cursor: pointer;
 }
 
-.card:hover{
+#pet_image:hover{
     opacity:0.5;
-}
-
-.card:hover button:hover{
-    opacity:1 !important;
 }
