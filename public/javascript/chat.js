@@ -1,8 +1,8 @@
 // 默认没有名字
-var name = false;
+var name;
 var socket;
-// 要求写一个名字
-smalltalk.prompt('身份验证', '你的名字?', '').then(function(name) {
+
+	initializeName()
 	socket = io.connect();
 	$('h1').text(name);
 
@@ -194,6 +194,15 @@ smalltalk.prompt('身份验证', '你的名字?', '').then(function(name) {
 	    }
 	};
 
-}, function() {
-    document.write('刷新重连');
-});
+	function initializeName(){
+		$.ajax({
+				url: "/getlogined",
+				type: "GET",
+				success: function (info) {
+					name = info.loginUser;
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
+	}
