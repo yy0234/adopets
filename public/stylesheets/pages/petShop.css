@@ -1,51 +1,51 @@
-div.shop {
+div #product_display {
     padding-left: 30px;
     padding-right: 30px;
 }
 
-.filter_show_button {
+#product_display.filter_show_button {
     display: none;
 }
 
-.fa-caret-left, .fa-caret-right {
+#product_display.fa-caret-left, #product_display.fa-caret-right {
     margin-right: 10px;
 }
 
-#show_hide_button {
+#product_display #show_hide_button {
     pointer-events: auto;
     cursor: pointer;
 }
 
-span.item_number {
+#product_display span.item_number {
     font-weight:bold;
 }
 
-#more_icon {
+#product_display #more_icon {
     opacity: 0.5;
     pointer-events: auto;
     cursor: pointer;
 }
 
-#less_icon {
+#product_display #less_icon {
     pointer-events: none;
     cursor: default;
     margin-right:10px;
 }
 
-#dynamic .fa, #dynamic .fas, #dynamic .far {
+#product_display #dynamic .fa, #product_display #dynamic .fas, #product_display #dynamic .far {
     font-size: 25px;
     color: #33b5e5;
     position: relative;
     top: 3px;
 }
 
-.fa-search {
+#product_display .fa-search {
     margin-left: 5px;
     margin-right: -10px;
     margin-top: 3px;
 }
 
-select#dropdownlist {
+#product_display select#dropdownlist {
     font-family: FontAwesome, sans-serif;
     width: 280px;
     height: 38px;
@@ -58,7 +58,7 @@ div#left_container {
 }
 */
 
-div.filtering label.container {
+#product_display div.filtering label.container {
     display: block;
     position: relative;
     padding-left: 35px;
@@ -72,13 +72,13 @@ div.filtering label.container {
     user-select: none;
 }
 
-div.filtering label.container input {
+#product_display div.filtering label.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
 }
 
-div.filtering label.container .checkmark {
+#product_display div.filtering label.container .checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -88,25 +88,25 @@ div.filtering label.container .checkmark {
     border-radius: 50%;
 }
 
-div.filtering label.container:hover input ~ .checkmark, div.filtering label.container:hover input ~ .checkbox {
+#product_display div.filtering label.container:hover input ~ .checkmark, div.filtering label.container:hover input ~ .checkbox {
     background-color: #ccc;
 }
 
-div.filtering label.container input:checked ~ .checkmark, div.filtering label.container input:checked ~ .checkbox {
+#product_display div.filtering label.container input:checked ~ .checkmark, div.filtering label.container input:checked ~ .checkbox {
     background-color: #33b5e5 !important;
 }
 
-div.filtering label.container .checkmark:after, div.filtering label.container .checkbox:after {
+#product_display div.filtering label.container .checkmark:after, #product_display div.filtering label.container .checkbox:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-div.filtering label.container input:checked ~ .checkmark:after, div.filtering label.container input:checked ~ .checkbox:after {
+#product_display div.filtering label.container input:checked ~ .checkmark:after,#product_display div.filtering label.container input:checked ~ .checkbox:after {
     display: block;
 }
 
-div.filtering label.container .checkmark:after {
+#product_display div.filtering label.container .checkmark:after {
     top: 7px;
     left: 7px;
     width: 8px;
@@ -115,21 +115,21 @@ div.filtering label.container .checkmark:after {
     background: white;
 }
 
-.fa-plus, .fa-minus {
+#product_display .fa-plus, #product_display .fa-minus {
     float: right;
     margin-top: -2px;
 }
 
-form#filter_form button{
+#product_display form#filter_form button{
     text-align: left;
 }
 
-#price_range_text {
+#product_display #price_range_text {
     text-align: center;
     font-weight: bold;
 }
 
-#dynamic .checkbox {
+#product_display #dynamic .checkbox {
     position: absolute;
     top: 0;
     left: 0;
@@ -138,7 +138,7 @@ form#filter_form button{
     background-color: #eee;
 }
 
-.container .checkbox:after {
+#product_display .container .checkbox:after {
     left: 9px;
     top: 5px;
     width: 6px;
@@ -150,36 +150,36 @@ form#filter_form button{
     transform: rotate(45deg);
 }
 
-div.product_grid_item {
+#product_display div.product_grid_item {
     width: 100px;
     height: 300px;
     margin: 20px 40px;
 }
 
-div.left_arrow {
+#product_display div.left_arrow {
     display:none;
     font-family: FontAwesome, sans-serif;
     border: 1px outset rgb(192, 191, 191);
 }
 
-div.right_arrow {
+#product_display div.right_arrow {
     display:none;
     font-family: FontAwesome, sans-serif;
     border: 1px outset rgb(192, 191, 191);
 }
 
-.card-deck {
+#product_display .card-deck {
     margin-left: 30px;
     margin-right: 30px;
 }
 
 
-.product_image img {
+#product_display .product_image img {
     height: 230px;
     width: 250px;
 }
 
-.card {
+#product_display .card {
     overflow: hidden;
     border-radius: 6px;
     position: relative;
@@ -190,7 +190,7 @@ div.right_arrow {
     width: 250px;
 }
 
-.card .details {
+#product_display .card .details {
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
     background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.36) 62%, rgba(0,0,0,0) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(62%, rgba(0,0,0,0.36)), color-stop(100%, rgba(0,0,0,0)));
@@ -208,7 +208,7 @@ div.right_arrow {
     opacity: 0.0;
 }
 
-.user {
+#product_display .user {
     font-weight: 400;
     color: #FFFFFF;
     text-shadow: 0 1px 2px rgba(0,0,0,0.23);
@@ -216,7 +216,7 @@ div.right_arrow {
     display: block;
 }
 
-.user-photo {
+#product_display .user-photo {
     max-width: 30px;
     max-height: 30px;
     border: 2px solid #FFFFFF;
@@ -225,47 +225,47 @@ div.right_arrow {
     float: left;
 }
 
-.username {
+#product_display .username {
     line-height: 35px;
     margin-left: 10px;
     font-size: 16px;
     float: left;
 }
 
-.heart_info {
+#product_display .heart_info {
     color: #FFFFFF;
     float: right;
     margin-top: 6px;
 }
 
-.heart_no {
+#product_display .heart_no {
     margin-left: 6px;
     font-size: 16px;
     font-weight: 400;
 }
 
-.fa-gratipay {
+#product_display .fa-gratipay {
     font-size: 20px;
     margin-right: 3px;
 }
 
-.card-info {
+#product_display .card-info {
     margin-top: 7px;
     background-color: #FFFFFF;
     position: relative;
 }
 
-.product_page:hover {
+#product_display .product_page:hover {
     text-decoration: none;
 }
 
-.product_info {
+#product_display .product_info {
     float: left;
     max-width: 200px;
     display: table;
 }
 
-.product_title {
+#product_display .product_title {
     font-weight: bold;
     font-size: 14px;
     color: #000000;
@@ -277,13 +277,13 @@ div.right_arrow {
     -webkit-box-orient: vertical;  
 }
 
-.item_price {
+#product_display .item_price {
     color: #000000;
     font-size: 14px;
     display: table-row;
 }
 
-.item_description {
+#product_display .item_description {
     color: grey;
     font-size: 14px;
     display: table-row;
@@ -294,28 +294,28 @@ div.right_arrow {
     -webkit-box-orient: vertical;  
 }
 
-.product_buttons {
+#product_display .product_buttons {
     float: right;
     width: 40px;
 }
 
-.shopping_cart {
+#product_display .shopping_cart {
     margin-top: -3px;
     margin-bottom: 7px;
     margin-right: 6px;
     opacity: 0.7;
 }
 
-.heart {
+#product_display .heart {
     opacity: 0.7;
     font-size: 25px;
 }
 
-.shopping_cart:hover, .heart:hover {
+#product_display .shopping_cart:hover, #product_display .heart:hover {
     opacity: 1.0;
 }
 
-.fas.fa-heart {
+#product_display .fas.fa-heart {
     display: none;
 }
 
