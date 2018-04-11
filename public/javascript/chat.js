@@ -4,7 +4,7 @@ var socket;
 var users = [];
 
 	initializeName();
-	importUserInDb();
+	//importUserInDb();
 	socket = io.connect();
 	$('h1').text(name);
 
