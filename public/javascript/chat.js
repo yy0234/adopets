@@ -2,7 +2,7 @@
 var name;
 var socket;
 
-	initializeName()
+	initializeName();
 	socket = io.connect();
 	$('h1').text(name);
 
