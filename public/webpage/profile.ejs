@@ -312,11 +312,12 @@
     var onclick_trash=false;
     
     function delePet(petid,trash){
-        var onclick_trash=true;
+        onclick_trash=true;
         $('#petDetailModal').on('show.bs.modal', function (e) {
             var button = e.relatedTarget;
             if(onclick_trash==true) {
                 e.stopPropegation();
+                onclick_trash==false;
             }  
         });
 
