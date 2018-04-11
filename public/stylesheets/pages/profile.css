@@ -60,6 +60,7 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     bottom: 0;
     margin: 20px;
     color:gray;
+    cursor:pointer;
 }
 
 .cus-active{
@@ -92,6 +93,6 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     cursor: pointer;
 }
 
-#pet_image:hover{
+#pet_image:hover img{
     opacity:0.5;
 }
