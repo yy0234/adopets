@@ -73,6 +73,42 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
     }
 }
 
+#modal_petImage img {
+    max-height: 250px;
+}
+
+#modal_petImage {
+    margin: 0 auto;
+}
+
+#petTable {
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.captionName, .captionDescription, .captionBreeds {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.captionName {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.captionDescription {
+    font-size: 13px;
+    color: #444343;
+}
+
+.captionBreeds {
+    font-size: 13px;
+    color: #777;
+    font-style: italic;
+}
+
 @media (min-width: 992px){
     .modal .modal-lg {
         max-width: 1000px;
