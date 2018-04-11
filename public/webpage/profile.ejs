@@ -14,7 +14,7 @@
                     </a>
                     <div class="panel-collapse collapse" id="collapseTC001A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
                         <div class="panel-body">
-                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Post</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue" onclick="AdoptPost()">Your Post</a>
                             <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
                         </div>
                     </div>
@@ -332,6 +332,27 @@
         ($(trash).parents().parents())[2].remove();
     }
 
+    function changeModal(elementNo){
+        var petData_element=petData[elementNo];
+        $("#modal_petImage").html(petData_element.peturl);
+        $("#modal_petId").html(petData_element.petid);
+        $("#modal_petName").html(petData_element.name);
+        $("#modal_petAge").html(petData_element.age);
+        $("#modal_petSize").html(petData_element.size);
+        $("#modal_petCoat").html(petData_element.coat);
+        var d=new Date(petData_element.postdate);
+        $("#modal_petPostDate").html(d.getDate()+"-"+(parseInt(d.getMonth())+1)+"-"+d.getFullYear());
+        $("#modal_petGender").html(petData_element.gender);
+        $("#modal_petBreed").html(petData_element.breed);
+        if (petData_element.neutered==true)
+            $("#modal_petNeutered").html("Yes");
+        else $("#modal_petNeutered").html("No");
+        $("#modal_petProvider").html(petData_element.providerid);
+        $("#modal_petDescription").html(petData_element.description);
+        $("#modal_petRemark").html(petData_element.remark);
+
+    }
+
     function pagePet(pageNo){
         var static_pageNo=pageNo;
         if (pageNo==-2){
@@ -413,7 +434,7 @@
 
     function AdoptPost(){
         $.ajax({
-            url: "/list_my_adopt",
+            url: "/listMyAdopt",
             type: "GET",
             data: {
             },
