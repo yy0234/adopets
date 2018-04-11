@@ -311,7 +311,7 @@
 <script>
     
     function delePet(petid,trash){
-        $('#myModal').modal('hide');
+        $('#petDetailModal').modal('hide');
         console.log($(trash).parents().parents());
         ($(trash).parents().parents())[2].remove();
     }
