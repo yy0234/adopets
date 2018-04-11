@@ -14,7 +14,7 @@
                     </a>
                     <div class="panel-collapse collapse" id="collapseTC001A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
                         <div class="panel-body">
-                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue" onclick="AdoptPost()">Your Post</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="AdoptPost()">Your Post</a>
                             <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
                         </div>
                     </div>
@@ -208,8 +208,20 @@
     var total_page=0;
     
     function delePet(petid,trash){
-        console.log($(trash).parents().parents());
         ($(trash).parents().parents())[2].remove();
+        $.ajax({
+			url: "/deleteMyAdopt",
+			type: "GET",
+			data: {
+                petid:petid
+			},
+			success: function (mes) {
+				console.log(success);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
     }
 
     function changeModal(elementNo){
