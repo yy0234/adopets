@@ -64,7 +64,7 @@
                                         <div class="captionBreeds" style="display:table-cell">mixed</div>
                                     </div>
                                 </div>
-                                <div class="fas fa-trash-alt"></div>
+                                <button type="button" class="fas fa-trash-alt" style="background:none;border:none" onclick="delePet('1',this)"></div>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                                         <div class="captionBreeds" style="display:table-cell">mixed</div>
                                     </div>
                                 </div>
-                                <div id="test" class="fas fa-trash-alt" data-petid="1"></div>
+                                <button type="button" class="fas fa-trash-alt" style="background:none;border:none" onclick="delePet('1',this)"></div>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                                         <div class="captionBreeds" style="display:table-cell">mixed</div>
                                     </div>
                                 </div>
-                                <div class="fas fa-trash-alt"></div>
+                                <button type="button" class="fas fa-trash-alt" style="background:none;border:none" onclick="delePet('1',this)"></div>
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                                         <div class="captionBreeds" style="display:table-cell">mixed</div>
                                     </div>
                                 </div>
-                                <div class="fas fa-trash-alt"></div>
+                                <button type="button" class="fas fa-trash-alt" style="background:none;border:none" onclick="delePet('1',this)"></div>
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                                         <div class="captionBreeds" style="display:table-cell">mixed</div>
                                     </div>
                                 </div>
-                                <div class="fas fa-trash-alt"></div>
+                                <button type="button" class="fas fa-trash-alt" style="background:none;border:none" onclick="delePet('1',this)"></div>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                     </button>
                 </div>
                 <div class="modal-body" style="margin-bottom: 20px;">
-                    <div class="row" style="margin-left:0;margin-right:0;">
+                    <div id="petSearchResult" class="row" style="margin: 0 auto;">
                         <div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
                             <a id="modal_petImage"><img src="/images/cat3.jpg" /></a>
                             <div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
@@ -308,3 +308,8 @@
         </div>
     </div>
 </div>
+<script>
+    function delePet(petid,trash){
+        $(trash.parent().parent().parent()).remove;
+    }
+</script>
