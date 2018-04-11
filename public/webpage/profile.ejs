@@ -368,7 +368,7 @@
 
     function switchMode(mode){
         $("#mode").html("");
-        if (mode = 'AdoptPost')
+        if (mode == 'AdoptPost')
         {
             $("#mode").append("\
             <div id=\"petSearchResult\" class=\"row\" style=\"margin: 0 auto;\">\
@@ -388,7 +388,7 @@
                 </li>\
             </ul>")
         }
-        else if (mode = 'showSell')
+        else if (mode == 'showSell')
         {
             $("#mode").append("\
             <div class=\"row\" id=\"product_display\">\
