@@ -464,8 +464,8 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_desc"){
 		supplyData.responseJSON.sort(function(a, b){
-			var x = parseFloat(a.price);
-			var y = parseFloat(b.price);
+			var x = parseFloat(a.price.replace('$', ''));
+			var y = parseFloat(b.price.replace('$', ''));
 			if (x < y) {return -1;}
 			else if (x > y) {return 1;}
 			else return 0;
@@ -475,8 +475,8 @@ $("#dropdownlist").change(function(){
 
 	else if ($("#dropdownlist").val()=="price_asc"){
 		supplyData.responseJSON.sort(function(a, b){
-			var x = parseFloat(a.price);
-			var y = parseFloat(b.price);
+			var x = parseFloat(a.price.replace('$', ''));
+			var y = parseFloat(b.price.replace('$', ''));
 			if (x < y) {return 1;}
 			else if (x > y) {return -1;}
 			else return 0;
