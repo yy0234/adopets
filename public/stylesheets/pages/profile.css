@@ -64,3 +64,29 @@ section.resume-section .resume-item .resume-date{min-width:18rem}}
 .cus-active{
     background-color:#d3d3d35e;
 }
+
+@media (min-width: 576px){
+    .modal .modal-dialog {
+        max-width: 700px;
+    }
+}
+
+@media (min-width: 992px){
+    .modal .modal-lg {
+        max-width: 1000px;
+    }
+}
+
+.overlay {
+    display: block;
+    content: " ";
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(/images/view.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60px;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
