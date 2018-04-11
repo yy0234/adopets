@@ -309,18 +309,9 @@
     </div>
 </div>
 <script>
-    var onclick_trash=false;
     
     function delePet(petid,trash){
-        onclick_trash=true;
-        $('#petDetailModal').on('show.bs.modal', function (e) {
-            var button = e.relatedTarget;
-            if(onclick_trash==true) {
-                e.stopPropegation();
-                onclick_trash==false;
-            }  
-        });
-
+        $('#petDetailModal').modal('show');
         console.log($(trash).parents().parents());
         ($(trash).parents().parents())[2].remove();
     }
