@@ -207,6 +207,7 @@
 
     function submitPost(){
         var form = $("#form-post");
+        var current_position=($(".category>.active").html()==$("#post-category").val());
 
         if (form[0].checkValidity() === false) {
             event.preventDefault();
@@ -235,14 +236,16 @@
                     $('#newForumPost').modal('hide');
                     console.log(mes);
                     $("#list-forum-topic li").removeClass("content-active");
+                    if(current_position){
                     $("#list-forum-topic").prepend("\
-                    <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed content-active' style='cursor:pointer;' onclick='listPostContent("+mes[0].topicid+",\""+mes[0].subject+"\",this)'>\
-                    <div>\
-                    <h5 class='my-0'>"+mes[0].subject+"</h5>\
-                    <small class='text-muted'>"+mes[0].postby+"</small>\
-                    </div>\
-                    <small class='text-muted'>Replies: <span class='replynum'>"+mes[0].replynum+"</span></small>\
-                    </li>");
+                        <li class='list-group-item list-group-item-action d-flex justify-content-between lh-condensed content-active' style='cursor:pointer;' onclick='listPostContent("+mes[0].topicid+",\""+mes[0].subject+"\",this)'>\
+                        <div>\
+                        <h5 class='my-0'>"+mes[0].subject+"</h5>\
+                        <small class='text-muted'>"+mes[0].postby+"</small>\
+                        </div>\
+                        <small class='text-muted'>Replies: <span class='replynum'>"+mes[0].replynum+"</span></small>\
+                        </li>");
+                    }
                     $("#form-post").trigger("reset");
                     $.ajax({
                         url: "/listPostContent",
