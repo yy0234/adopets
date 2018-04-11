@@ -1,0 +1,101 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: black;
+    background-color: #d3d3d35e;
+}
+#pet_image img {
+    max-height: 235px;
+}
+#pet_image {
+    margin: 0 auto;
+    height: 235px;
+    object-fit: cover;
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.fa-trash-alt{
+    position: absolute;
+    right: 0;
+    font-size: 160%;
+    bottom: 0;
+    margin: 20px;
+    color:gray;
+    cursor:pointer;
+}
+
+.cus-active{
+    background-color:#d3d3d35e;
+}
+
+@media (min-width: 576px){
+    .modal .modal-dialog {
+        max-width: 700px;
+    }
+}
+
+#modal_petImage img {
+    max-height: 250px;
+}
+
+#modal_petImage {
+    margin: 0 auto;
+}
+
+#petTable {
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.captionName, .captionDescription, .captionBreeds {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.captionName {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.captionDescription {
+    font-size: 13px;
+    color: #444343;
+}
+
+.captionBreeds {
+    font-size: 13px;
+    color: #777;
+    font-style: italic;
+}
+
+@media (min-width: 992px){
+    .modal .modal-lg {
+        max-width: 1000px;
+    }
+}
+
+.overlay {
+    display: block;
+    content: " ";
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(/images/view.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 60px;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+#pet_image:hover img{
+    opacity:0.5;
+}

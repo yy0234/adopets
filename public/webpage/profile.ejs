@@ -1,0 +1,417 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/pages/profile.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+<div class="container-fluid">
+    <div class="row" style="padding-left:30px;padding-right:30px;padding-top:20px;margin:0">
+        <div class="col-md-3" style="margin-bottom:30px;">
+            <div style="text-align:center;margin-bottom:30px;">
+                <img src="/images/user_image.jpg" alt="user image" class="rounded-circle" style="width:120px;height:120px;">
+                <div style="color:darkgray;font-weight:bold;margin-top:10px;">Username</div>
+            </div>
+            <div class="panel-group"> 
+                <div class="panel panel-default">
+                    <a class="list-group-item cus-active" data-toggle="collapse" href="#collapseTC001A">
+                        Adoption
+                    </a>
+                    <div class="panel-collapse collapse" id="collapseTC001A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
+                        <div class="panel-body">
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="AdoptPost()">Your Post</a>
+                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a class="list-group-item" data-toggle="collapse" href="#collapseTC002A">
+                        Trade
+                    </a>
+                    <div class="panel-collapse collapse" id="collapseTC002A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
+                        <div class="panel-body">
+                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Sell</a>
+                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Purchase</a>
+                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a class="list-group-item" style="color: #007bff;text-decoration:none;cursor:pointer;">
+                        Forum
+                    </a>
+                </div>
+                <div class="panel panel-default">
+                    <a class="list-group-item" style="color: #007bff;text-decoration:none;cursor:pointer;">
+                        Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="petSearchResult" class="row" style="margin: 0 auto;">
+            </div>
+            <ul id="pagination" class="pagination justify-content-center" style="display:none">
+                <li id="previous" class="page-item">
+                    <a class="page-link" aria-label="Previous" onclick="pagePet(-2)">
+                    <span aria-hidden="true">«</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" aria-label="Next" onclick="pagePet(-1)">
+                    <span aria-hidden="true">»</span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--pet detail-->
+    <div class="modal fade" id="petDetailModal" tabindex="-1" role="dialog" aria-labelledby="petDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom:none;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="margin-bottom: 20px;">
+                    <div id="petSearchResult" class="row" style="margin: 0 auto;">
+                        <div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
+                            <a id="modal_petImage"><img src="/images/cat3.jpg" /></a>
+                            <div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
+                                <div class="col-md-12" style="margin-bottom:20px;">
+                                    <button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-primary" style="width:80%">Contact Provider</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-8" id="scrollbar" style="margin-bottom:10px; max-height: 500px; overflow-y: auto;">
+                            <div class="row" style="margin-left:0;margin-right:0;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+                                <div class="col-md-12 col-lg-6">
+                                    <div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
+                                        <div style="display:table-row;">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Pet ID
+                                            </div>
+                                            <div id="modal_petId" style="display:table-cell">
+                                                001
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row;">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Name
+                                            </div>
+                                            <div id="modal_petName" style="display:table-cell">
+                                                Name
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Age
+                                            </div>
+                                            <div id="modal_petAge" style="display:table-cell">
+                                                Age
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Size
+                                            </div>
+                                            <div id="modal_petSize" style="display:table-cell">
+                                                Small
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Coat length
+                                            </div>
+                                            <div id="modal_petCoat" style="display:table-cell">
+                                                Medium
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Post date
+                                            </div>
+                                            <div id="modal_petPostDate" style="display:table-cell">
+                                                2018/2/21
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Gender
+                                            </div>
+                                            <div id="modal_petGender" style="display:table-cell">
+                                                Male
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Breed type
+                                            </div>
+                                            <div id="modal_petBreed" style="display:table-cell">
+                                                Mixed
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Neutered
+                                            </div>
+                                            <div id="modal_petNeutered" style="display:table-cell">
+                                                Yes
+                                            </div>
+                                        </div>
+                                        <div style="display:table-row">
+                                            <div style="display:table-cell; font-weight:bold;width:40%">
+                                                Provider
+                                            </div>
+                                            <div id="modal_petProvider" style="display:table-cell">
+                                                yy0234
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+                                <div class="col-md-12" style="font-weight:bold;color:blue">
+                                    Description
+                                </div>
+                                <div id="modal_petDescription" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+                                    Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
+                                    
+                                    I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
+                                    
+                                    My estimated birthdate is 10/1/2015.
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;padding-bottom: 20px;">
+                                <div class="col-md-12" style="font-weight:bold;color:grey">
+                                    Remark
+                                </div>
+                                <div id="modal_petRemark" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+                                    None
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var petData;
+    var current_page =1;
+    var total_page=0;
+    
+    function delePet(petid,trash){
+        ($(trash).parents().parents())[2].remove();
+        $.ajax({
+			url: "/deleteMyAdopt",
+			type: "GET",
+			data: {
+                petid:petid
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+    }
+
+    function changeModal(elementNo){
+        var petData_element=petData[elementNo];
+        $("#modal_petImage").html(petData_element.peturl);
+        $("#modal_petId").html(petData_element.petid);
+        $("#modal_petName").html(petData_element.name);
+        $("#modal_petAge").html(petData_element.age);
+        $("#modal_petSize").html(petData_element.size);
+        $("#modal_petCoat").html(petData_element.coat);
+        var d=new Date(petData_element.postdate);
+        $("#modal_petPostDate").html(d.getDate()+"-"+(parseInt(d.getMonth())+1)+"-"+d.getFullYear());
+        $("#modal_petGender").html(petData_element.gender);
+        $("#modal_petBreed").html(petData_element.breed);
+        if (petData_element.neutered==true)
+            $("#modal_petNeutered").html("Yes");
+        else $("#modal_petNeutered").html("No");
+        $("#modal_petProvider").html(petData_element.providerid);
+        $("#modal_petDescription").html(petData_element.description);
+        $("#modal_petRemark").html(petData_element.remark);
+
+    }
+
+    function pagePet(pageNo){
+        var static_pageNo=pageNo;
+        if (pageNo==-2){
+            if (current_page==1){
+                return;
+            }
+            static_pageNo=current_page-1;
+        }
+        else if (pageNo==-1){
+            if (current_page==total_page){
+                return;
+            }
+            static_pageNo=current_page+1;
+        }
+        $("#petSearchResult").html("");
+        var page_no=(static_pageNo-1)*12;
+        if (petData.length>(page_no+12)){
+            for (var i=page_no;i<page_no+12;i++){
+                $("#petSearchResult").append("\
+                    <div class=\"col-lg-4 col-md-6 mb-4\">\
+                        <div>\
+                            <div class=\"card h-100\">\
+                                <a id=\"pet_image\" class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">"+petData[i].peturl+"</a>\
+                                <div class=\"card-body\">\
+                                    <div id=\"petTable\" style=\"display:table\">\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionName\" style=\"display:table-cell\">"+petData[i].name+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].age+"</div>\
+                                        </div>\
+                                            <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].gender+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionBreeds\" style=\"display:table-cell\">"+petData[i].breed+"</div>\
+                                        </div>\
+                                    </div>\
+                                    <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+petData[i].petid+",this)\"></button>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>")
+            }
+        }
+        else{
+            for (var i=page_no;i<petData.length;i++){
+                $("#petSearchResult").append("\
+                    <div class=\"col-lg-4 col-md-6 mb-4\">\
+                        <div>\
+                            <div class=\"card h-100\">\
+                                <a id=\"pet_image\" class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">"+petData[i].peturl+"</a>\
+                                <div class=\"card-body\">\
+                                    <div id=\"petTable\"style=\"display:table\">\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionName\" style=\"display:table-cell\">"+petData[i].name+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].age+"</div>\
+                                        </div>\
+                                            <div style=\"display:table-row\">\
+                                            <div class=\"captionDescription\" style=\"display:table-cell\">"+petData[i].gender+"</div>\
+                                        </div>\
+                                        <div style=\"display:table-row\">\
+                                            <div class=\"captionBreeds\" style=\"display:table-cell\">"+petData[i].breed+"</div>\
+                                        </div>\
+                                    </div>\
+                                    <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+petData[i].petid+",this)\"></button>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>")
+            }
+        }
+        $('#page'+current_page).css("background-color","white");
+        current_page=static_pageNo;
+        $("#page"+current_page).css("background-color","gainsboro");
+    }
+
+    function AdoptPost(){
+        $.ajax({
+            url: "/listMyAdopt",
+            type: "GET",
+            data: {
+            },
+            success: function (mes) {
+                $("#petSearchResult").html("");
+                if (mes.length==0){
+                    console.log("No result");
+                }
+                else if (mes.length>12){
+                    for (var i=0; i<12;i++){
+                        $("#petSearchResult").append("\
+                            <div class=\"col-lg-4 col-md-6 mb-4\">\
+                                <div>\
+                                    <div class=\"card h-100\">\
+                                        <a id=\"pet_image\" class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\" >"+mes[i].peturl+"</a>\
+                                        <div class=\"card-body\">\
+                                            <div id=\"petTable\" style=\"display:table\">\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
+                                                </div>\
+                                                    <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
+                                                </div>\
+                                            </div>\
+                                            <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+mes[i].petid+",this)\"></button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>")
+                    }
+                    if (total_page!=0)
+                        for (var i=1;i<=total_page;i++)
+                            $("#page"+i).remove();
+                    $("#pagination").css('display','flex');
+                    total_page=Math.ceil(mes.length/12);
+                    for (var i=total_page;i>0;i--)
+                        $("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pagePet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+                    $('#page'+current_page).css("background-color","gainsboro");
+                }
+                else{
+                    mes.forEach(function(element,index) {
+                        $("#petSearchResult").append("\
+                            <div class=\"col-lg-4 col-md-6 mb-4\">\
+                                <div>\
+                                    <div class=\"card h-100\">\
+                                        <a id=\"pet_image\"  class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">"+element.peturl+"</a>\
+                                        <div class=\"card-body\">\
+                                            <div id=\"petTable\" style=\"display:table\">\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+                                                </div>\
+                                                    <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+                                                </div>\
+                                            </div>\
+                                            <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"delePet("+element.petid+",this)\"></button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>")
+                    });
+                    if (total_page!=0)
+                        for (var i=1;i<=total_page;i++)
+                            $("#page"+i).remove();
+                    $("#pagination").css('display','none');
+                    total_page=0;
+                }
+                petData = mes;
+            },
+            error: function (err) {
+                console.log (err);
+            }
+        });
+    }
+
+</script>
