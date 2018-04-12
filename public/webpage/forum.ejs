@@ -235,6 +235,10 @@
                 success: function (mes) {
                     $('#newForumPost').modal('hide');
                     console.log(mes);
+                    $("#list-forum-select").removeClass("view-active");
+                    $("#list-forum-select").addClass("view-unactive");
+                    $("#list-forum-content").removeClass("view-unactive");
+                    $("#list-forum-content").addClass("view-active");
                     $("#list-forum-topic li").removeClass("content-active");
                     if(current_position){
                     $("#list-forum-topic").prepend("\
