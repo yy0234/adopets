@@ -201,18 +201,6 @@ app.get('/db', function (request, response) {
   });
 });
 
-app.get('/notify', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client) {
-    if(err) {
-      console.log(err);
-    }
-    client.on('notification', function(msg) {
-      return response.send(msg); 
-    });
-  });
-});
-
-
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO users(userid,lastname,firstname,email,telnum,address,birthday,havepet,typeofpet,userurl,password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'; 
