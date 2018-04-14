@@ -385,7 +385,7 @@ app.get('/listMyFavPet', function(request, response) {
   if (isLogined==true){
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query("SELECT * from pets where petid in (SELECT unnest(petfav) FROM users WHERE userid ="+userid, function(err, result) {
+      client.query("SELECT * from pets where petid in (SELECT unnest(petfav) FROM users WHERE userid ="+userid+")", function(err, result) {
         done();
         if (err)
           { console.error(err); return response.send("Error " + err); }
