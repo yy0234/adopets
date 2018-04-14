@@ -54,7 +54,7 @@
 					<li class="nav-item"><a class="nav-link" href="./chatroom"><span class="fas fa-comments"></span></a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" style="cursor:pointer;margin-top: 5px;"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<%= loginUser %>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
@@ -206,7 +206,7 @@
 						<li class='nav-item'><a class='nav-link' href='./chatroom'><span class='fas fa-comments'></span></a></li>\
 						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
 						<li class='nav-item dropdown'>\
-						<a class='nav-link dropdown-toggle' style='cursor:pointer'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\
+						<a class='nav-link dropdown-toggle' style='cursor:pointer;margin-top: 5px;'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\
 						<div class='dropdown-menu dropdown-menu-right' style='width: auto;' aria-labelledby='navbarDropdownMenuLink'>\
 							<a class='dropdown-item' href='./profile' style='margin-bottom: 5px;color: gray;'><span class='fas fa-user' style='margin-right: 10px;'></span>Account</a>\
 							<div class='dropdown-divider'></div>\
@@ -227,7 +227,8 @@
 	}
 
 	function userSignUp(){
-		var form = $(".form-signup")
+		var form = $(".form-signup");
+		var username=$("#register_username").val();
 
 		if (form[0].checkValidity() === false) {
 			event.preventDefault()
@@ -259,9 +260,7 @@
 						<li class='nav-item'><a class='nav-link' href='./chatroom'><span class='fas fa-comments'></span></a></li>\
 						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
 						<li class='nav-item dropdown'>\
-						<a class='nav-link dropdown-toggle' style='cursor:pointer'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
-								<img src='/images/user_image.jpg' alt='user icon' width='30' height='30' class='rounded-circle'>\
-						</a>\
+								<a class='nav-link dropdown-toggle' style='cursor:pointer;margin-top: 5px;'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\
 						<div class='dropdown-menu dropdown-menu-right' style='width: auto;' aria-labelledby='navbarDropdownMenuLink'>\
 							<a class='dropdown-item' href='./profile' style='border-bottom: 1px solid lightgray;color: gray;'><span class='fas fa-user' style='margin-right: 10px;'></span>Account</a>\
 							<a class='dropdown-item' href='#' style='color:gray;margin-top: 5px;'><span class='fas fa-sign-out-alt' style='margin-right:10px;'></span>Logout</a>\
