@@ -440,6 +440,43 @@
 		});
     }
 
+    function deleFavPet(petid,trash){
+        ($(trash).parents().parents())[2].remove();
+        $.ajax({
+			url: "/deleFavPet",
+			type: "GET",
+			data: {
+                petid:petid
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+    }
+
+    function changePetFavModal(elementNo){
+        var favPetData_element=favPetData[elementNo];
+        $("#modal_petImage").html(favPetData_element.peturl);
+        $("#modal_petId").html(favPetData_element.petid);
+        $("#modal_petName").html(favPetData_element.name);
+        $("#modal_petAge").html(favPetData_element.age);
+        $("#modal_petSize").html(favPetData_element.size);
+        $("#modal_petCoat").html(favPetDataa_element.coat);
+        var d=new Date(favPetData_element.postdate);
+        $("#modal_petPostDate").html(d.getDate()+"-"+(parseInt(d.getMonth())+1)+"-"+d.getFullYear());
+        $("#modal_petGender").html(favPetData_element.gender);
+        $("#modal_petBreed").html(favPetData_element.breed);
+        if (favPetData_element.neutered==true)
+            $("#modal_petNeutered").html("Yes");
+        else $("#modal_petNeutered").html("No");
+        $("#modal_petProvider").html(favPetData_element.providerid);
+        $("#modal_petDescription").html(favPetData_element.description);
+        $("#modal_petRemark").html(favPetData_element.remark);
+    }
+
     function changeModal(elementNo){
         var petData_element=petData[elementNo];
         $("#modal_petImage").html(petData_element.peturl);
