@@ -370,7 +370,7 @@
 
     function switchMode(mode,pointer){
         $(".panel-group a").removeClass("cus-active");
-        $(this).addClass("cus-active");
+        $(pointer).addClass("cus-active");
         $("#mode").html("");
         if (mode == 'AdoptPost')
         {
