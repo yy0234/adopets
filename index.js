@@ -136,7 +136,6 @@ app.get('/toPetSearch', function(request, response) {
 });
 
 
-
 app.get('/run_cat_scraper', function(request, response) {
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
     if (!error) {
@@ -359,6 +358,24 @@ app.get("/listPet", function (request, response) {
         { return response.send(result.rows);   }
     });
   });
+});
+
+app.get('/updatePetFav', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("UPDATE users SET petfav = petfav || "+request.query.petid+" WHERE userid = "+userid, function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send("success");   }
+      });
+    });
+  }
 });
 
 app.get("/listMyAdopt", function (request, response) { 
