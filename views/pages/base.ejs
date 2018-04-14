@@ -276,6 +276,18 @@
 		form.addClass('was-validated');
 	}
 
+	(function poll() {
+		$.ajax({
+			url: "/notify",
+			type: "GET",
+			success: function(data) {
+				console.log("polling");
+			},
+			complete: setTimeout(function() {poll()}, 5000),
+			timeout: 2000
+		})
+	})();
+
 </script>
 </body>
 </html>
