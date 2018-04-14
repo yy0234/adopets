@@ -378,6 +378,24 @@ app.get('/updatePetFav', function(request, response) {
   }
 });
 
+app.get('/listMyFavPet', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT * from pets where petid in (SELECT unnest(petfav) FROM users WHERE userid ="+userid, function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
+
 app.get("/listMyAdopt", function (request, response) { 
   var sess = request.session;
   var loginUser=sess.loginUser;

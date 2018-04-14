@@ -16,7 +16,7 @@
                     <div class="panel-collapse collapse" id="collapseTC001A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
                         <div class="panel-body">
                             <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('AdoptPost',this); AdoptPost()">Your Post</a>
-                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('AdoptPost',this); listPetFav()">Your Favorite</a>
                         </div>
                     </div>
                 </div>
@@ -27,8 +27,8 @@
                     <div class="panel-collapse collapse" id="collapseTC002A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
                         <div class="panel-body">
                             <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showSell',this); showSell()">Sell</a>
-                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Purchase</a>
-                            <a href="#" class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Purchase</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
                         </div>
                     </div>
                 </div>
@@ -421,6 +421,7 @@
     var petData;
     var current_page =1;
     var total_page=0;
+    var favPetData;
     
     function delePet(petid,trash){
         ($(trash).parents().parents())[2].remove();
@@ -539,6 +540,97 @@
         $("#page"+current_page).css("background-color","gainsboro");
     }
 
+    function listPetFav(){
+        $.ajax({
+            url: "/listMyFavPet",
+            type: "GET",
+            data: {
+            },
+            success: function (mes) {
+                $("#petSearchResult").html("");
+                if (mes.length==0){
+                    $("#petSearchResult").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
+				    $("#pagination").css('display','none');	
+                }
+                else if (mes.length>12){
+                    for (var i=0; i<12;i++){
+                        $("#petSearchResult").append("\
+                            <div class=\"col-lg-4 col-md-6 mb-4\">\
+                                <div>\
+                                    <div class=\"card h-100\">\
+                                        <a id=\"pet_image\" class=\"overlay\" onclick=\"changePetFavModal("+i+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\" >"+mes[i].peturl+"</a>\
+                                        <div class=\"card-body\">\
+                                            <div id=\"petTable\" style=\"display:table\">\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionName\" style=\"display:table-cell\">"+mes[i].name+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].age+"</div>\
+                                                </div>\
+                                                    <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+mes[i].gender+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionBreeds\" style=\"display:table-cell\">"+mes[i].breed+"</div>\
+                                                </div>\
+                                            </div>\
+                                            <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"deleFavPet("+mes[i].petid+",this)\"></button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>")
+                    }
+                    if (total_page!=0)
+                        for (var i=1;i<=total_page;i++)
+                            $("#page"+i).remove();
+                    $("#pagination").css('display','flex');
+                    total_page=Math.ceil(mes.length/12);
+                    for (var i=total_page;i>0;i--)
+                        $("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pageFavPet("+i+")\">"+i+"</a></li>").insertAfter("#previous");
+                    $('#page'+current_page).css("background-color","gainsboro");
+                }
+                else{
+                    mes.forEach(function(element,index) {
+                        $("#petSearchResult").append("\
+                            <div class=\"col-lg-4 col-md-6 mb-4\">\
+                                <div>\
+                                    <div class=\"card h-100\">\
+                                        <a id=\"pet_image\"  class=\"overlay\" onclick=\"changePetFavModal("+index+")\" data-toggle=\"modal\" data-target=\"#petDetailModal\">"+element.peturl+"</a>\
+                                        <div class=\"card-body\">\
+                                            <div id=\"petTable\" style=\"display:table\">\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionName\" style=\"display:table-cell\">"+element.name+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+element.age+"</div>\
+                                                </div>\
+                                                    <div style=\"display:table-row\">\
+                                                    <div class=\"captionDescription\" style=\"display:table-cell\">"+element.gender+"</div>\
+                                                </div>\
+                                                <div style=\"display:table-row\">\
+                                                    <div class=\"captionBreeds\" style=\"display:table-cell\">"+element.breed+"</div>\
+                                                </div>\
+                                            </div>\
+                                            <button type=\"button\" class=\"fas fa-trash-alt\" style=\"background:none;border:none\" onclick=\"deleFavPet("+element.petid+",this)\"></button>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>")
+                    });
+                    if (total_page!=0)
+                        for (var i=1;i<=total_page;i++)
+                            $("#page"+i).remove();
+                    $("#pagination").css('display','none');
+                    total_page=0;
+                }
+                favPetData = mes;
+            },
+            error: function (err) {
+                console.log (err);
+            }
+        });
+
+    }
     function AdoptPost(){
         $.ajax({
             url: "/listMyAdopt",
