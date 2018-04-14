@@ -185,10 +185,10 @@ app.get('/run_dog_scraper', function(request, response) {
 app.get('/notify', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client) {
     if (err) {
-        return response.send("Error connecting to database: " + err);
+        console.log("Error connecting to database: " + err);
     } else {
         client.on('notification', function(msg) {
-            return response.send("DATABASE NOTIFY: ", msg.payload);
+            console.log("DATABASE NOTIFY: ", msg.payload);
         });
     }
   });

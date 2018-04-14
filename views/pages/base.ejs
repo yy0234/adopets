@@ -151,22 +151,6 @@
 	var adoption_post_id=null;
 	var adoption_list={type:null,breed:null,gender:null,age:null};
 
-	function poll() {
-		$.ajax({
-			url: "/notify",
-			type: "GET",
-			success: function(data) {
-				console.log("polling");
-			},
-			complete: setTimeout(function() {poll()}, 5000),
-			timeout: 2000
-		})
-	}
-
-	$(function() {
-		poll();
-	})
-
 	function dynamic(link){
 		$.ajax({
 			url: link,
