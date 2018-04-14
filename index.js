@@ -185,12 +185,11 @@ app.get('/run_dog_scraper', function(request, response) {
 app.get('/notify', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client) {
     if (err) {
-        console.log("Error connecting to database: " + err);
+        return response.send("Error connecting to database: " + err);
     } else {
         client.on('notification', function(msg) {
-            console.log("DATABASE NOTIFY: ", msg.payload);
+            return response.send("DATABASE NOTIFY: ", msg.payload);
         });
-        var query = client.query("LISTEN channel1");
     }
   });
 });
