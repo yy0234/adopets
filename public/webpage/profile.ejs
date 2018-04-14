@@ -4,12 +4,8 @@
 <div class="container-fluid">
     <div class="row" style="padding-left:30px;padding-right:30px;padding-top:20px;margin:0">
         <div class="col-md-3" style="margin-bottom:30px;">
-            <div class="hovereffect" style="text-align:center;margin-bottom:30px;">
-                <img src="/images/user_image.jpg" alt="user image" class="rounded-circle image" style="width:120px;height:120px;">
-                <div class="overlay">
-                    <h6>Change Image</h6>
-                </div>
-                <div style="color:darkgray;font-weight:bold;margin-top:10px;"><%= loginUser %></div>
+            <div style="text-align:center;margin-bottom:30px;">
+                <div style="color:darkgray;font-weight:bold;margin-top:10px;">Member:<%= loginUser %></div>
             </div>
             <div class="panel-group"> 
                 <div class="panel panel-default">
@@ -361,7 +357,6 @@
     </div>
 </div>
 <script>
-
     function switchMode(mode,pointer){
         $(".panel-group a").removeClass("cus-active");
         $(pointer).addClass("cus-active");
