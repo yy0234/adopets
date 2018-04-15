@@ -28,74 +28,76 @@ nav{
     vertical-align: -webkit-baseline-middle;
 }
 
-.col-md-2, .col-md-10{
+/*chatroom*/
+
+.chatroom.col-md-2, .chatroom.col-md-10{
     padding:0;
 }
-.panel{
+.chatroom.panel{
     margin-bottom: 0px;
 }
-.chat-window{
+.chatroom.chat-window{
     bottom:0;
     position:fixed;
     float:right;
     margin-left:10px;
 }
-.chat-window > div > .panel{
+.chatroom .chat-window > div > .panel{
     border-radius: 5px 5px 0 0;
 }
-.icon_minim{
+.chatroom.icon_minim{
     padding:2px 10px;
 }
-.msg_container_base{
+.chatroom.msg_container_base{
   background: #e5e5e5;
   margin: 0;
   padding: 0 10px 10px;
   max-height:300px;
   overflow-x:hidden;
 }
-.top-bar {
+.chatroom.top-bar {
   background: #666;
   color: white;
   padding: 10px;
   position: relative;
   overflow: hidden;
 }
-.msg_receive{
+.chatroom.msg_receive{
     padding-left:0;
     margin-left:0;
 }
-.msg_sent{
+.chatroom.msg_sent{
     padding-bottom:20px !important;
     margin-right:0;
 }
-.messages {
+.chatroom.messages {
   background: white;
   padding: 10px;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   max-width:100%;
 }
-.messages > p {
+.chatroom.messages > p {
     font-size: 13px;
     margin: 0 0 0.2rem 0;
   }
-.messages > time {
+  .chatroom.messages > time {
     font-size: 11px;
     color: #ccc;
 }
-.msg_container {
+.chatroom.msg_container {
     padding: 10px;
     overflow: hidden;
     display: flex;
 }
-img {
+.chatroom img {
     display: block;
     width: 100%;
 }
-.avatar {
+.chatroom.avatar {
     position: relative;
 }
-.base_receive > .avatar:after {
+.chatroom.base_receive > .avatar:after {
     content: "";
     position: absolute;
     top: 0;
@@ -107,11 +109,11 @@ img {
     border-bottom-color: rgba(0, 0, 0, 0);
 }
 
-.base_sent {
+.chatroom.base_sent {
   justify-content: flex-end;
   align-items: flex-end;
 }
-.base_sent > .avatar:after {
+.chatroom.base_sent > .avatar:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -124,31 +126,31 @@ img {
     box-shadow: 1px 1px 2px rgba(black, 0.2); // not quite perfect but close
 }
 
-.msg_sent > time{
+.chatroom.msg_sent > time{
     float: right;
 }
 
 
 
-.msg_container_base::-webkit-scrollbar-track
+.chatroom.msg_container_base::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
 }
 
-.msg_container_base::-webkit-scrollbar
+.chatroom.msg_container_base::-webkit-scrollbar
 {
     width: 12px;
     background-color: #F5F5F5;
 }
 
-.msg_container_base::-webkit-scrollbar-thumb
+.chatroom.msg_container_base::-webkit-scrollbar-thumb
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
 }
 
-.btn-group.dropup{
+.chatroom.btn-group.dropup{
     position:fixed;
     left:0px;
     bottom:0;
