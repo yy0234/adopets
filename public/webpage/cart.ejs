@@ -301,7 +301,7 @@ function list_delete(task,name){
 												</div>\
 												<h6 class=\"my-0 mr-auto cart_data\">" + item[i].name + "</h6>\
 												<span class=\"text-muted cart_data\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
-												<input class=\"cart_data\" type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
+												<input type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
 											</li>")
 							};
 							$("#cart_detail").append("\
