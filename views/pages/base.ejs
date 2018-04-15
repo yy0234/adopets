@@ -367,13 +367,13 @@
 		$('.panel-title').html($("#modal_petProvider").html());
 	}
 
-	function sendChat(){
+	/*function sendChat(){
 		$.ajax({
 			url: "/sendChat",
 			type: "GET",
 			data: {
 				receiverid="'"+$('.panel-title').html()+"'",
-				content="'"+"'"
+				content="'"
 			},
 			success: function (mes) {
 				console.log(mes);
@@ -382,7 +382,7 @@
 				console.log(err);
 			}
 		});
-	}
+	}*/
 
 	$(document).on('click', '.icon_close', function (e) {
 		$( "#chat_window_1" ).css('display','none');
