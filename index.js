@@ -43,11 +43,12 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('ready for data', function (data) {
       socket.emit('ready', { connected: true });
-        pg_client.on('notification', function(mes) {
-            socket.emit('update');
+        pg_client.on('notification', function(title) {
+            socket.emit('update',{ message: title });
         });
     });
 });
+
 
 /*app.get('/notify', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client) {
