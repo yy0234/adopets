@@ -53,9 +53,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('ready for data', function (data) {
         pg_client.on('notification', function(title) {
-            var sess = request.session||"";
-            var loginUser=sess.loginUser||"";
-            if (loginUser!="" && (title.payload==loginUser)) socket.emit('update',{ message: title });
+          socket.emit('update',{ message: title });
         });
     });
 });
