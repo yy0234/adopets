@@ -139,12 +139,12 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;">
+		<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;display:none;">
 			<div class="col-xs-12 col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading top-bar">
 						<div>
-							<span class="panel-title">username</span>
+							<span class="panel-title"></span>
 							<span style="right:20px;position:absolute;">
 								<a style="cursor:pointer;"><span class="fas fa-times icon_close" data-id="chat_window_1"></span></a>
 							</span>
@@ -360,6 +360,11 @@
 			event.preventDefault();
 		}
 		form.addClass('was-validated');
+	}
+
+	function contactProvider(){
+		$( "#chat_window_1" ).css('display','block');
+		$('.panel-title').html($("#modal_petProvider").html());
 	}
 
 	$(document).on('click', '.icon_close', function (e) {
