@@ -112,7 +112,7 @@
 <script>
 
 			function getUserName(){
-			return $.ajax({
+			providerid = $.ajax({
 					url: "/getlogined",
 					type: "GET",
 					success: function (info) {
@@ -140,7 +140,8 @@
 		var description = $('#description').val() || "";
         var remark = $('#remark').val() || "";
 		var supplyid = Math.floor(Math.random() * 99999999);
-		var providerid = getUserName();
+		var providerid;
+		getUserName();
 		alert(providerid);
     //supplyurl:newImage.outerHTML,
     //supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
