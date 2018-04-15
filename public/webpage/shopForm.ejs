@@ -140,45 +140,52 @@
 	function updateDatabase(){
 		var description = $('#description').val() || "";
         var remark = $('#remark').val() || "";
-		var supplyid = Math.floor(Math.random() * 99999999);
-		alert(providerid);
+		var supplyid = Math.floor(Math.random() * 99999999); 
     //supplyurl:newImage.outerHTML,
-    //supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
+	//supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
 		$.ajax({
-			url: "/addSupply",
-			type: "POST",
-			dataType: 'json',
-			contentType: "application/json",
-			data: JSON.stringify({
-                supplyid:supplyid,
-                name:$('#supplyname').val(),
-                description:description,
-                price:$('#price').val(),
-                type:$('#type').val(),
-                postdate: new Date(),
-				lastupdate:new Date(),
-                status:$('#status').val(),
-                remark:remark,
-                supplyurl:newImage.outerHTML,
-                providerid:"test1234",
-                quantity:$('#quantity').val(),
-                pettype:$('#pettype').val(),
-			}),
-			complete: function complete() {
-			},
-			error: function error(err) {
-                alert(err);
-                console.log(err);
-			},
-			success: function success(mes) {
-                alert(mes);
-                console.log(mes);
-			}
-		})
+					url: "/getlogined",
+					type: "GET",
+					success: function (info) {
+						$.ajax({
+							url: "/addSupply",
+							type: "POST",
+							dataType: 'json',
+							contentType: "application/json",
+							data: JSON.stringify({
+								supplyid:supplyid,
+								name:$('#supplyname').val(),
+								description:description,
+								price:$('#price').val(),
+								type:$('#type').val(),
+								postdate: new Date(),
+								lastupdate:new Date(),
+								status:$('#status').val(),
+								remark:remark,
+								supplyurl:newImage.outerHTML,
+								providerid:info.loginUser,
+								quantity:$('#quantity').val(),
+								pettype:$('#pettype').val(),
+							}),
+							complete: function complete() {
+							},
+							error: function error(err) {
+								console.log(err);
+							},
+							success: function success(mes) {
+								console.log(mes);
+							}
+						})
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+
 	}
+
 	(function() {
 		'use strict';
-		getUserName();
 		window.addEventListener('load', function() {
 		// Fetch all the forms we want to apply custom Bootstrap validation styles to
 		var forms = document.getElementsByClassName('needs-validation');
