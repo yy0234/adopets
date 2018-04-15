@@ -31,6 +31,36 @@ app.set('view engine', 'ejs');
   response.render('pages/index');
 });*/
 
+//chatroom
+var io = require('socket.io')(server);
+
+var pg_client = new pg.Client(process.env.DATABASE_URL);
+pg_client.connect();
+var query = pg_client.query('LISTEN addedrecord');
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('connected', { connected: true });
+
+    socket.on('ready for data', function (data) {
+        pg_client.on('notification', function(title) {
+            socket.emit('update', { message: title });
+        });
+    });
+});
+
+/*app.get('/notify', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client) {
+    if (err) {
+        console.log("Error connecting to database: " + err);
+    } else {
+        client.on('notification', function(msg) {
+            console.log("DATABASE NOTIFY: ", msg.payload);
+        });
+    }
+  });
+});*/
+
+
 app.use(session({
   name: 'Adopets Web',
   secret: 'Adopets Web',
@@ -181,20 +211,6 @@ app.get('/run_dog_scraper', function(request, response) {
     response.send(returnList);
   });
 });
-
-app.get('/notify', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client) {
-    if (err) {
-        console.log("Error connecting to database: " + err);
-    } else {
-        client.on('notification', function(msg) {
-            console.log("DATABASE NOTIFY: ", msg.payload);
-        });
-    }
-  });
-});
-
-
 
 
 /*app.get('/image_search', function(request, response) {
@@ -551,8 +567,6 @@ app.get("/listSellingSupply", function (request, response) {
   }
 });
 
-//chatroom
-var io = require('socket.io')(server);
 
 //JSON.stringify();
 var usocket = {},user = [];

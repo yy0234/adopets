@@ -42,7 +42,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="./search_service">Pet Service Search</a>
+					<a class="nav-link" href="https://adopets.herokuapp.com/search_service">Pet Service Search</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="./forum">Forum</a>
@@ -145,6 +145,7 @@
 
 
 <!--Your own script-->
+<script src="/socket.io/socket.io.js"></script>
 <script>
 	var adoption_search_query="";
 	var adopton_query_age=null;
@@ -275,6 +276,17 @@
 		}
 		form.addClass('was-validated');
 	}
+
+
+    //WEB_SOCKET_SWF_LOCATION = 'inc/WebSocketMain.swf';
+    var socket = io.connect();
+    socket.on('connected', function (data) {
+        socket.emit('ready for data', {});
+    });
+    socket.on('update', function (data) {
+        console.log(data.message.payload);
+    });
+
 
 </script>
 </body>
