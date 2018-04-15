@@ -486,7 +486,7 @@ app.get("/listChat", function (request, response) {
   if (isLogined==true){
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE senderid IN ("+request.query.target+","+userid+") OR receiverid IN ("+request.query.target+","+userid+")", function(err, result) {
+      client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE senderid IN ('yy0234') OR receiverid IN ('yy0234')", function(err, result) {
          done();
          if (err)
           { console.error(err); return response.send("Error " + err); }
