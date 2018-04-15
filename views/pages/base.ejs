@@ -42,7 +42,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="./search_service">Pet Service Search</a>
+					<a class="nav-link" href="https://adopets.herokuapp.com/search_service">Pet Service Search</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="./forum">Forum</a>
@@ -54,8 +54,8 @@
 					<li class="nav-item"><a class="nav-link" href="./chatroom"><span class="fas fa-comments"></span></a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" style="cursor:pointer"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="/images/user_image.jpg" alt="user icon" width="30" height="30" class="rounded-circle">
+						<a class="nav-link dropdown-toggle" style="cursor:pointer;margin-top: 5px;"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<%= loginUser %>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" style="width: auto;" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="./profile" style="margin-bottom: 5px;color: gray;"><span class="fas fa-user" style="margin-right: 10px;"></span>Account</a>
@@ -138,6 +138,80 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;display:none;">
+			<div class="col-xs-12 col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading top-bar">
+						<div>
+							<span class="panel-title"></span>
+							<span style="right:20px;position:absolute;">
+								<a style="cursor:pointer;"><span class="fas fa-times icon_close" data-id="chat_window_1"></span></a>
+							</span>
+						</div>
+					</div>
+					<div class="panel-body msg_container_base">
+						<div class="row msg_container base_sent">
+							<div class="col-md-10 col-xs-10">
+								<div class="messages msg_sent">
+									<p>that mongodb thing looks good, huh?
+									tiny master db, and huge document store</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container base_receive">
+							<div class="col-md-10 col-xs-10">
+								<div class="messages msg_receive">
+									<p>that mongodb thing looks good, huh?
+									tiny master db, and huge document store</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container base_receive">
+							<div class="col-xs-10 col-md-10">
+								<div class="messages msg_receive">
+									<p>that mongodb thing looks good, huh?
+									tiny master db, and huge document store</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container base_sent">
+							<div class="col-xs-10 col-md-10">
+								<div class="messages msg_sent">
+									<p>that mongodb thing looks good, huh?
+									tiny master db, and huge document store</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container base_receive">
+							<div class="col-xs-10 col-md-10">
+								<div class="messages msg_receive">
+									<p>that mongodb thing looks good, huh?
+									tiny master db, and huge document store</p>
+								</div>
+							</div>
+						</div>
+						<div class="row msg_container base_sent">
+							<div class="col-md-10 col-xs-10 ">
+								<div class="messages msg_sent">
+									<p>that mongodb thing looks good, huh?
+									tiny master db, and huge document store</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="input-group" style="padding: 10px;background: #f5f5f5;padding-bottom: 20px;">
+							<input id="btn-input" type="text" style="background:white;padding: 0 10px;font-size: 0.9rem;" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+							<span class="input-group-btn">
+							<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<section id="dynamic" class="main-content">
 		<%- include(action) %>
 	</section>
@@ -145,7 +219,19 @@
 
 
 <!--Your own script-->
+<script src="/socket.io/socket.io.js"></script>
 <script>
+
+	WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
+	var socket = io.connect();
+    socket.on('connected', function (data) {
+		socket.emit('ready for data', {});
+    });
+    socket.on('update', function (data) {
+        console.log(data.message.payload);
+	});
+	
+
 	var adoption_search_query="";
 	var adopton_query_age=null;
 	var adoption_post_id=null;
@@ -183,7 +269,8 @@
 	}
 
 	function userSignIn(){
-		var form = $(".form-signin")
+		var form = $(".form-signin");
+		var username=$(".form-signin #login_username").val();
 
 		if (form[0].checkValidity() === false) {
 			event.preventDefault()
@@ -205,9 +292,7 @@
 						<li class='nav-item'><a class='nav-link' href='./chatroom'><span class='fas fa-comments'></span></a></li>\
 						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
 						<li class='nav-item dropdown'>\
-						<a class='nav-link dropdown-toggle' style='cursor:pointer'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
-								<img src='/images/user_image.jpg' alt='user icon' width='30' height='30' class='rounded-circle'>\
-						</a>\
+						<a class='nav-link dropdown-toggle' style='cursor:pointer;margin-top: 5px;'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\
 						<div class='dropdown-menu dropdown-menu-right' style='width: auto;' aria-labelledby='navbarDropdownMenuLink'>\
 							<a class='dropdown-item' href='./profile' style='margin-bottom: 5px;color: gray;'><span class='fas fa-user' style='margin-right: 10px;'></span>Account</a>\
 							<div class='dropdown-divider'></div>\
@@ -228,7 +313,8 @@
 	}
 
 	function userSignUp(){
-		var form = $(".form-signup")
+		var form = $(".form-signup");
+		var username=$("#register_username").val();
 
 		if (form[0].checkValidity() === false) {
 			event.preventDefault()
@@ -260,9 +346,7 @@
 						<li class='nav-item'><a class='nav-link' href='./chatroom'><span class='fas fa-comments'></span></a></li>\
 						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
 						<li class='nav-item dropdown'>\
-						<a class='nav-link dropdown-toggle' style='cursor:pointer'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
-								<img src='/images/user_image.jpg' alt='user icon' width='30' height='30' class='rounded-circle'>\
-						</a>\
+								<a class='nav-link dropdown-toggle' style='cursor:pointer;margin-top: 5px;'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\
 						<div class='dropdown-menu dropdown-menu-right' style='width: auto;' aria-labelledby='navbarDropdownMenuLink'>\
 							<a class='dropdown-item' href='./profile' style='border-bottom: 1px solid lightgray;color: gray;'><span class='fas fa-user' style='margin-right: 10px;'></span>Account</a>\
 							<a class='dropdown-item' href='#' style='color:gray;margin-top: 5px;'><span class='fas fa-sign-out-alt' style='margin-right:10px;'></span>Logout</a>\
@@ -277,6 +361,16 @@
 		}
 		form.addClass('was-validated');
 	}
+
+	function contactProvider(){
+		$( "#chat_window_1" ).css('display','block');
+		$('.panel-title').html($("#modal_petProvider").html());
+	}
+
+	$(document).on('click', '.icon_close', function (e) {
+		$( "#chat_window_1" ).css('display','none');
+	});
+
 
 </script>
 </body>

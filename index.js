@@ -31,6 +31,13 @@ app.set('view engine', 'ejs');
   response.render('pages/index');
 });*/
 
+//chatroom
+var io = require('socket.io')(server);
+
+var pg_client = new pg.Client(process.env.DATABASE_URL);
+pg_client.connect();
+var query = pg_client.query('LISTEN addedrecord');
+
 app.use(session({
   name: 'Adopets Web',
   secret: 'Adopets Web',
@@ -39,6 +46,17 @@ app.use(session({
       maxAge: 60 * 1000 * 60
   }
 }));
+
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('connected', { connected: true });
+
+    socket.on('ready for data', function (data) {
+        pg_client.on('notification', function(title) {
+            socket.emit('update',{ message: title });
+        });
+    });
+});
 
 app.get('/', function(request, response) {
   var sess = request.session;
@@ -136,7 +154,6 @@ app.get('/toPetSearch', function(request, response) {
 });
 
 
-
 app.get('/run_cat_scraper', function(request, response) {
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
     if (!error) {
@@ -184,8 +201,6 @@ app.get('/run_dog_scraper', function(request, response) {
 });
 
 
-
-
 /*app.get('/image_search', function(request, response) {
   response.render('pages/imageSearch');
 });*/
@@ -201,7 +216,6 @@ app.get('/db', function (request, response) {
     });
   });
 });
-
 
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -361,6 +375,42 @@ app.get("/listPet", function (request, response) {
   });
 });
 
+app.get('/updatePetFav', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("UPDATE users SET petfav = petfav || "+request.query.petid+" WHERE userid = "+userid, function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send("success");   }
+      });
+    });
+  }
+});
+
+app.get('/listMyFavPet', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT * from pets where petid in (SELECT unnest(petfav) FROM users WHERE userid ="+userid+")", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
+
 app.get("/listMyAdopt", function (request, response) { 
   var sess = request.session;
   var loginUser=sess.loginUser;
@@ -389,6 +439,24 @@ app.get("/deleteMyAdopt", function (request, response) {
           { return response.send("success");   }
       });
     });
+});
+
+app.get("/deleFavPet", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("UPDATE users SET petfav = array_remove(petfav, "+request.query.petid+") WHERE userid="+userid, function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send("success");   }
+      });
+    });
+  }
 });
 
 app.post('/addSupply', function (request, response) { 
@@ -487,8 +555,6 @@ app.get("/listSellingSupply", function (request, response) {
   }
 });
 
-//chatroom
-var io = require('socket.io')(server);
 
 //JSON.stringify();
 var usocket = {},user = [];

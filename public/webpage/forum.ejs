@@ -6,12 +6,8 @@
         <div class="p-2" style="border-bottom: 1px solid lightgray;">
             <div class="mb-2" style="display:table; width:100%">
                 <div style="display:table-row; width:100%">
-                    <h6 class="card p-2 justify-content-between align-items-center" style="display:table-cell; text-align:center;width:80%">
-                            <span style="color: darkcyan;">Forum</span>
-                    </h6>
-                    <span class="tooltip-cust" style="display:table-cell;width:20%; text-align:right;">
-                        <button type="button" class="btn btn-light fas fa-plus" data-toggle="modal" data-target="#newForumPost"></button>
-                        <span class="tooltiptext">Create Post</span>
+                    <span class="tooltip-cust" style="display:table-cell;width:100%;">
+                        <button type="button" class="btn btn-outline-info" style="width:100%" data-toggle="modal" data-target="#newForumPost">Create New Post</button>
                     </span>
                 </div>
             </div>
@@ -235,6 +231,10 @@
                 success: function (mes) {
                     $('#newForumPost').modal('hide');
                     console.log(mes);
+                    $("#list-forum-select").removeClass("view-active");
+                    $("#list-forum-select").addClass("view-unactive");
+                    $("#list-forum-content").removeClass("view-unactive");
+                    $("#list-forum-content").addClass("view-active");
                     $("#list-forum-topic li").removeClass("content-active");
                     if(current_position){
                     $("#list-forum-topic").prepend("\
