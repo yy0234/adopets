@@ -383,7 +383,7 @@
 					data: {
 					},
 					success: function (result) {
-						var userid=result[0].loginUser;
+						var userid=result.loginUser;
 						for (var i=0;i<mes.length;i++){
 							if (mes[i].senderid==userid){
 								$('.msg_container_base').append("\
