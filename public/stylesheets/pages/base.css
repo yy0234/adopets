@@ -55,7 +55,7 @@ nav{
   max-height:300px;
   overflow-x:hidden;
 }
-.chat-window .top-bar {
+.top-bar {
   background: #666;
   color: white;
   padding: 10px;
