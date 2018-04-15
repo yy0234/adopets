@@ -38,31 +38,6 @@ var pg_client = new pg.Client(process.env.DATABASE_URL);
 pg_client.connect();
 var query = pg_client.query('LISTEN addedrecord');
 
-io.sockets.on('connection', function (socket) {
-    socket.emit('connected', { connected: true });
-
-    socket.on('ready for data', function (data) {
-      socket.emit('ready', { connected: true });
-        pg_client.on('notification', function(title) {
-            socket.emit('update',{ message: title });
-        });
-    });
-});
-
-
-/*app.get('/notify', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client) {
-    if (err) {
-        console.log("Error connecting to database: " + err);
-    } else {
-        client.on('notification', function(msg) {
-            console.log("DATABASE NOTIFY: ", msg.payload);
-        });
-    }
-  });
-});*/
-
-
 app.use(session({
   name: 'Adopets Web',
   secret: 'Adopets Web',
@@ -71,6 +46,17 @@ app.use(session({
       maxAge: 60 * 1000 * 60
   }
 }));
+
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('connected', { connected: true });
+
+    socket.on('ready for data', function (data) {
+        pg_client.on('notification', function(title) {
+            socket.emit('update',{ message: title });
+        });
+    });
+});
 
 app.get('/', function(request, response) {
   var sess = request.session;
