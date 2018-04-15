@@ -328,7 +328,8 @@
 		$('#petBreeds').multiselect('rebuild');
 	});
 
-	function updatePetFav(){
+	function updatePetFav(pointer){
+		console.log("run");
 		$.ajax({
 			url: "/updatePetFav",
 			type: "GET",
