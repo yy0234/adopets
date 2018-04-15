@@ -479,6 +479,25 @@ app.get("/sendChat", function (request, response) {
   }
 });
 
+app.get("/listChat", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE senderid IN ("+request.query.target+","+userid+") OR receiverid IN ("+request.query.target+","+userid+")", function(err, result) {
+         done();
+         if (err)
+          { console.error(err); return response.send("Error " + err); }
+         else{ 
+           return response.send(result.rows);
+          }
+        });
+    });
+  }
+});
+
 app.post('/addSupply', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO petsupply(supplyid,name,description,price,type,postdate,lastupdate,status,remark,supplyurl,providerid,quantity,pettype) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)'; 

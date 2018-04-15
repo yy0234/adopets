@@ -139,7 +139,7 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;display:none;">
+		<div class="row chat-window col-sm-5 col-md-5 col-lg-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;display:none;">
 			<div class="col-xs-12 col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading top-bar">
@@ -369,6 +369,21 @@
 	function contactProvider(){
 		$( "#chat_window_1" ).css('display','block');
 		$('.panel-title').html($("#modal_petProvider").html());
+		$('.msg_container_base').html();
+		$.ajax({
+			url: "/listChat",
+			type: "GET",
+			data: {
+				target: "'"+$('.panel-title').html()+"'",
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+
 	}
 
 	function sendChat(){
