@@ -147,6 +147,18 @@
 <!--Your own script-->
 <script src="/socket.io/socket.io.js"></script>
 <script>
+
+	WEB_SOCKET_SWF_LOCATION = '/stylesheets/WebSocketMain.swf';
+	var socket = io.connect();
+    socket.on('connected', function (data) {
+		socket.emit('ready for data', {});
+		console.log("ready");
+    });
+    socket.on('update', function (data) {
+        console.log(data.message.payload);
+	});
+	
+
 	var adoption_search_query="";
 	var adopton_query_age=null;
 	var adoption_post_id=null;
@@ -276,16 +288,6 @@
 		}
 		form.addClass('was-validated');
 	}
-
-
-    //WEB_SOCKET_SWF_LOCATION = 'inc/WebSocketMain.swf';
-    var socket = io.connect();
-    socket.on('connected', function (data) {
-        socket.emit('ready for data', {});
-    });
-    socket.on('update', function (data) {
-        console.log(data.message.payload);
-    });
 
 
 </script>
