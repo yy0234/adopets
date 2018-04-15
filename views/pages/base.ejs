@@ -148,15 +148,22 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
 
-	WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
+	/*WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
 	var socket = io.connect();
     socket.on('connected', function (data) {
 		socket.emit('ready for data', {});
 		console.log("ready");
     });
     socket.on('update', function (data) {
+		console.log("update");
         console.log(data.message.payload);
-	});
+	});*/
+	function sendSql(sql, values, cbk) {
+    socket.emit('sql', { sql: sql, values : values});
+    socket.on('sql', function(data){
+        console.log(data);
+		});
+	}
 	
 
 	var adoption_search_query="";
