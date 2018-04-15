@@ -148,7 +148,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
 
-	WEB_SOCKET_SWF_LOCATION = '/stylesheets/WebSocketMain.swf';
+	WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
 	var socket = io.connect();
     socket.on('connected', function (data) {
 		socket.emit('ready for data', {});
