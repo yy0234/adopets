@@ -30,7 +30,7 @@ nav{
 
 /*chatroom*/
 
-.chatroom .col-md-2, .chatroom .col-md-10{
+.chat-window .col-md-2, .chat-window .col-md-10{
     padding:0;
 }
 .panel{
@@ -90,7 +90,7 @@ nav{
     overflow: hidden;
     display: flex;
 }
-.chatroom img {
+.chat-window img {
     display: block;
     width: 100%;
 }
