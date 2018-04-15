@@ -33,7 +33,7 @@ nav{
 .chatroom .col-md-2, .chatroom .col-md-10{
     padding:0;
 }
-.panel{
+.chatroom .panel{
     margin-bottom: 0px;
 }
 .chat-window{
@@ -55,7 +55,7 @@ nav{
   max-height:300px;
   overflow-x:hidden;
 }
-.top-bar {
+.chatroom .top-bar {
   background: #666;
   color: white;
   padding: 10px;
@@ -90,11 +90,11 @@ nav{
     overflow: hidden;
     display: flex;
 }
-img {
+.chatroom img {
     display: block;
     width: 100%;
 }
-.avatar {
+.chatroom .avatar {
     position: relative;
 }
 .base_receive > .avatar:after {
