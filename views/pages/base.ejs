@@ -369,7 +369,7 @@
 	function contactProvider(){
 		$( "#chat_window_1" ).css('display','block');
 		$('.panel-title').html($("#modal_petProvider").html());
-		$('.msg_container_base').html();
+		$('.msg_container_base').html("");
 		$.ajax({
 			url: "/listChat",
 			type: "GET",
@@ -377,7 +377,41 @@
 				target: "'"+$('.panel-title').html()+"'",
 			},
 			success: function (mes) {
-				console.log(mes);
+				$.ajax({
+					url: "/getlogined",
+					type: "GET",
+					data: {
+					},
+					success: function (result) {
+						var userid=result.loginUser;
+						for (var i=0;i<mes.length;i++){
+							if (mes[i].senderid==userid){
+								$('.msg_container_base').append("\
+									<div class='row msg_container base_sent'>\
+										<div class='col-md-10 col-xs-10'>\
+											<div class='messages msg_sent'>\
+												<p>"+mes[i].content+"</p>\
+											</div>\
+										</div>\
+									</div>");
+							}
+						else {
+							$('.msg_container_base').append("\
+									<div class='row msg_container base_receive'>\
+										<div class='col-md-10 col-xs-10'>\
+											<div class='messages msg_receive'>\
+												<p>"+mes[i].content+"</p>\
+											</div>\
+										</div>\
+									</div>");
+						}
+						}
+						
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
 			},
 			error: function (err) {
 				console.log(err);
