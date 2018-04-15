@@ -36,13 +36,16 @@ var io = require('socket.io')(server);
 
 var pg_client = new pg.Client(process.env.DATABASE_URL);
 pg_client.connect();
+var query = pg_client.query('LISTEN addedrecord');
 
 io.sockets.on('connection', function (socket) {
-    socket.on('sql', function (data) {
-        var query = pg_client.query(data.sql, data.values);
-        query.on('row', function(row) {
-          socket.emit('sql', row);
-      });
+    socket.emit('connected', { connected: true });
+
+    socket.on('ready for data', function (data) {
+      socket.emit('ready', { connected: true });
+        pg_client.on('notification', function(mes) {
+            socket.emit('update');
+        });
     });
 });
 
