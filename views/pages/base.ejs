@@ -146,7 +146,6 @@
 						<div>
 							<span class="panel-title">username</span>
 							<span style="right:20px;position:absolute;">
-								<a href="#"><span id="minim_chat_window" class="fas fa-minus icon_minim"></span></a>
 								<a href="#"><span class="fas fa-times icon_close" data-id="chat_window_1"></span></a>
 							</span>
 						</div>
@@ -368,6 +367,10 @@
 		}
 		form.addClass('was-validated');
 	}
+
+	$(document).on('click', '.icon_close', function (e) {
+		$( "#chat_window_1" ).css('display','none');
+	});
 
 
 </script>
