@@ -110,6 +110,20 @@
 	</div>
 
 <script>
+
+			function getUserName(){
+			return $.ajax({
+					url: "/getlogined",
+					type: "GET",
+					success: function (info) {
+						return info.loginUser;
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+			}
+
 	var newImage = document.createElement('img');
 	function encodeImageFileAsURL(callback) {
 		var filesSelected = document.getElementById("image").files;
@@ -125,7 +139,9 @@
 	function updateDatabase(){
 		var description = $('#description').val() || "";
         var remark = $('#remark').val() || "";
-        var supplyid = Math.floor(Math.random() * 99999999);
+		var supplyid = Math.floor(Math.random() * 99999999);
+		var providerid = getUserName();
+		alert(providerid);
     //supplyurl:newImage.outerHTML,
     //supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
 		$.ajax({
