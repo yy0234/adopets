@@ -110,8 +110,9 @@
 	</div>
 
 <script>
+	var providerid;
 
-			function getUserName(){
+	function getUserName(){
 			providerid = $.ajax({
 					url: "/getlogined",
 					type: "GET",
@@ -122,7 +123,7 @@
 						console.log(err);
 					}
 				});
-			}
+	}
 
 	var newImage = document.createElement('img');
 	function encodeImageFileAsURL(callback) {
@@ -140,8 +141,6 @@
 		var description = $('#description').val() || "";
         var remark = $('#remark').val() || "";
 		var supplyid = Math.floor(Math.random() * 99999999);
-		var providerid;
-		getUserName();
 		alert(providerid);
     //supplyurl:newImage.outerHTML,
     //supplyurl:"https://images-na.ssl-images-amazon.com/images/I/41IhCsP5WaL._SL500_AC_SS350_.jpg",
@@ -179,6 +178,7 @@
 	}
 	(function() {
 		'use strict';
+		getUserName();
 		window.addEventListener('load', function() {
 		// Fetch all the forms we want to apply custom Bootstrap validation styles to
 		var forms = document.getElementsByClassName('needs-validation');
