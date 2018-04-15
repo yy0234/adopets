@@ -299,15 +299,9 @@ function list_delete(task,name){
 															<span class=\"delete-btn\"></span>\
 															<i class=\"fas fa-trash-alt\"></i>\
 												</div>\
-												<div>\
-													<h6 class=\"my-0\">" + item[i].name + "</h6>\
-												</div>\
-												<div>\
-													<span class=\"text-muted\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
-												</div>\
-												<div>\
-													<input type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
-												</div>\
+												<h6 class=\"my-0 mr-auto\">" + item[i].name + "</h6>\
+												<span class=\"text-muted\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
+												<input type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
 											</li>")
 							};
 							$("#cart_detail").append("\
