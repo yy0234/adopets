@@ -39,7 +39,7 @@ nav{
 .chat-window{
     bottom:0;
     position:fixed;
-    float:right;
+    right: 0;
     margin-left:10px;
 }
 .chat-window > div > .panel{
@@ -69,7 +69,7 @@ nav{
 .msg_sent{
     padding-bottom:20px !important;
     margin-right:0;
-    background:#3097D1;
+    background:#3097D1 !important;
     color:white;
 }
 .messages {
