@@ -531,7 +531,7 @@ app.get("/listChatPerson", function (request, response) {
   if (isLogined==true){
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query("SELECT receiverid,max(senttime) FROM (select receiverid,senttime from message where receiverid="+userid+" or senderid="+userid+" union select senderid, senttime from message where receiverid ="+userid+" or senderid="+userid+") as filter group by receiverid", function(err, result) {
+      client.query("SELECT receiverid,max(senttime) FROM (select receiverid,senttime from message where receiverid="+userid+" or senderid="+userid+" union select senderid, senttime from message where receiverid ="+userid+" or senderid="+userid+") as filter group by receiverid order by max DESC", function(err, result) {
          done();
          if (err)
           { console.error(err); return response.send("Error " + err); }
