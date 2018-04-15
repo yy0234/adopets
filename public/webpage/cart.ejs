@@ -294,14 +294,20 @@ function list_delete(task,name){
 											total = parseFloat(total)+parseFloat(item[i].price.substring(1,item[i].price.length));
 											counter++;
 											$("#cart_detail").append("\
-											<li class=\"list-group-item d-flex justify-content-between lh-condensed\">\
-												<div class=\"buttons\" onclick=\"list_delete('delete','"+item[i].name+"')\">\
+											<li class=\"list-group-item row lh-condensed\">\
+												<div class=\"buttons col-md-1\" onclick=\"list_delete('delete','"+item[i].name+"')\">\
 															<span class=\"delete-btn\"></span>\
 															<i class=\"fas fa-trash-alt\"></i>\
 												</div>\
-												<h6 class=\"my-0\">" + item[i].name + "</h6>\
-												<span class=\"text-muted\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
-												<input type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
+												<div class=\"col-md-7\">\
+													<h6 class=\"my-0\">" + item[i].name + "</h6>\
+												</div>\
+												<div class=\"col-md-2\">\
+													<span class=\"text-muted\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
+												</div>\
+												<div class=\"col-md-2\">\
+													<input type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
+												</div>\
 											</li>")
 							};
 							$("#cart_detail").append("\
