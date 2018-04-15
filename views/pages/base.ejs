@@ -139,7 +139,7 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;display:none;">
+		<div class="row chat-window col-sm-5 col-md-5 col-lg-3" id="chat_window_1" style="margin:0;padding:0;z-index:10000;display:none;">
 			<div class="col-xs-12 col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading top-bar">
@@ -201,17 +201,11 @@
 						</div>-->
 					</div>
 					<div class="panel-footer">
-						<!--<div class="input-group" style="padding: 10px;background: #f5f5f5;padding-bottom: 20px;">
+						<div class="input-group" style="padding: 10px;background: #f5f5f5;padding-bottom: 20px;">
 							<input id="btn-input" type="text" style="background:white;padding: 0 10px;font-size: 0.9rem;" class="form-control input-sm chat_input" placeholder="Write your message here..." />
 							<span class="input-group-btn">
 							<button class="btn btn-primary btn-sm" id="btn-chat" onclick="sendChat()">Send</button>
 							</span>
-						</div>-->
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Write your message here..." aria-label="Write your message here..." aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="button">Button</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -368,18 +362,19 @@
 		form.addClass('was-validated');
 	}
 
+	$('#petDetailModal').on('shown.bs.modal', function() {
+        $(document).off('focusin.modal');
+    });
+
 	function contactProvider(){
 		$( "#chat_window_1" ).css('display','block');
 		$('.panel-title').html($("#modal_petProvider").html());
-	}
-
-	function sendChat(){
+		$('.msg_container_base').html();
 		$.ajax({
-			url: "/sendChat",
+			url: "/listChat",
 			type: "GET",
 			data: {
-				receiverid="'"+$('.panel-title').html()+"'",
-				content="'"+"'"
+				target: "'"+$('.panel-title').html()+"'",
 			},
 			success: function (mes) {
 				console.log(mes);
@@ -388,6 +383,36 @@
 				console.log(err);
 			}
 		});
+
+	}
+
+	function sendChat(){
+		if ($.trim($('.chat_input').val())!=""){
+			var inputContent=$('.chat_input').val();
+			$.ajax({
+				url: "/sendChat",
+				type: "GET",
+				data: {
+					receiverid: $('.panel-title').html(),
+					content: $('.chat_input').val()
+				},
+				success: function (mes) {
+					console.log(mes);
+					$('.msg_container_base').append("\
+					<div class='row msg_container base_sent'>\
+							<div class='col-md-10 col-xs-10'>\
+								<div class='messages msg_sent'>\
+									<p>"+inputContent+"</p>\
+								</div>\
+							</div>\
+						</div>");
+						$('.chat_input').val("");
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
+		}
 	}
 
 	$(document).on('click', '.icon_close', function (e) {
