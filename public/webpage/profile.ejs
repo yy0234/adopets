@@ -768,6 +768,23 @@
 
 var supplyData;
 
+    function deleteSupply(supplyid,trash){
+        ($(trash).parents().parents())[2].remove();
+        $.ajax({
+			url: "/deleteSupply",
+			type: "POST",
+			data: {
+                supplyid:supplyid
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+    }
+
 function changeSupplyModal(elementNo){
 	var supplyData_element=supplyData.responseJSON[elementNo];
 	$("#modal_supplyId").html(supplyData_element.supplyid);
@@ -834,11 +851,7 @@ function pageSupply(pageNo){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\"></i>\
-														</div>\
-														<div class=\"heart\">\
-															<i class=\"far fa-heart\"></i>\
-															<i class=\"fas fa-heart\"></i>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+supplyData.responseJSON[i].supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
@@ -877,11 +890,7 @@ function pageSupply(pageNo){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\"></i>\
-														</div>\
-														<div class=\"heart\">\
-															<i class=\"far fa-heart\"></i>\
-															<i class=\"fas fa-heart\"></i>\
+                                                            <button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+supplyData.responseJSON[i].supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
@@ -937,11 +946,7 @@ supplyData = $.ajax({
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\"></i>\
-														</div>\
-														<div class=\"heart\">\
-															<i class=\"far fa-heart\"></i>\
-															<i class=\"fas fa-heart\"></i>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+mes[i].supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
@@ -988,11 +993,7 @@ supplyData = $.ajax({
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\"></i>\
-														</div>\
-														<div class=\"heart\">\
-															<i class=\"far fa-heart\"></i>\
-															<i class=\"fas fa-heart\"></i>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+element.supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
