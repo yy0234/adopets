@@ -378,8 +378,8 @@
 				url: "/sendChat",
 				type: "GET",
 				data: {
-					receiverid: "'"+$('.panel-title').html()+"'",
-					content: "'"+$('.chat_input').val()+"'"
+					receiverid: $('.panel-title').html(),
+					content: $('.chat_input').val()
 				},
 				success: function (mes) {
 					console.log(mes);

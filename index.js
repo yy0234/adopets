@@ -464,7 +464,7 @@ app.get("/sendChat", function (request, response) {
   var loginUser=sess.loginUser;
   var isLogined = !!loginUser;
   if (isLogined==true){
-    var userid="'"+loginUser+"'";
+    var userid=loginUser;
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       var sql = 'INSERT INTO message(senderid,receiverid,content) VALUES($1, $2, $3)'; 
       var sqlValue = [userid,request.query.receiverid,request.query.content]; 
