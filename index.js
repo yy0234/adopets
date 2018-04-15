@@ -149,6 +149,13 @@ app.get('/profile', function(request, response) {
   response.render('pages/base',{action:'../../public/webpage/profile.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
+app.get('/direct_message', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/dm.ejs',isLogined:isLogined,loginUser:loginUser||""});
+});
+
 app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
@@ -506,6 +513,25 @@ app.get("/getlastchat", function (request, response) {
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE  receiverid IN ("+userid+") order by messageid DESC limit 1", function(err, result) {
+         done();
+         if (err)
+          { console.error(err); return response.send("Error " + err); }
+         else{ 
+           return response.send(result.rows);
+          }
+        });
+    });
+  }
+});
+
+app.get("/listChatPerson", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT receiverid,max(senttime) FROM (select receiverid,senttime from message where receiverid="+userid+" or senderid="+userid+" union select senderid, senttime from message where receiverid ="+userid+" or senderid="+userid+") as filter group by receiverid", function(err, result) {
          done();
          if (err)
           { console.error(err); return response.send("Error " + err); }
