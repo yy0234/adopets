@@ -362,6 +362,10 @@
 		form.addClass('was-validated');
 	}
 
+	$('#petDetailModal').on('shown.bs.modal', function() {
+        $(document).off('focusin.modal');
+    });
+
 	function contactProvider(){
 		$( "#chat_window_1" ).css('display','block');
 		$('.panel-title').html($("#modal_petProvider").html());
