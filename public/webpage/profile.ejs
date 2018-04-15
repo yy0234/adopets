@@ -769,7 +769,7 @@
 var supplyData;
 
     function deleteSupply(supplyid,trash){
-        ($(trash).parents().parents().parents().parents())[2].remove();
+        ($(trash).parents().parents())[2].remove();
         $.ajax({
 			url: "/deleteSupply",
 			type: "POST",
