@@ -485,6 +485,21 @@ app.get("/listSupply", function (request, response) {
   });
 });
 
+
+app.post('/deleteSupply', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'delete from petsupply where supplyid = ($1)'; 
+	  var sqlValue = [request.body.supplyid]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { console.error(err); return response.end("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
+});
+
 app.post('/addCart', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	  var sql = 'INSERT INTO cart(itemurl,name,quantity,price,userid) VALUES($1, $2, $3, $4, $5)'; 
