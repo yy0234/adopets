@@ -851,7 +851,7 @@ function pageSupply(pageNo){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"delePet("+mes[i].supplyid+",this)\"></button>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"delePet("+supplyData.responseJSON[i].supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
@@ -890,7 +890,7 @@ function pageSupply(pageNo){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-                                                            <button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"delePet("+mes[i].supplyid+",this)\"></button>\
+                                                            <button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"delePet("+supplyData.responseJSON[i].supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
@@ -993,7 +993,7 @@ supplyData = $.ajax({
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"delePet("+mes[i].supplyid+",this)\"></button>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"delePet("+element.supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
