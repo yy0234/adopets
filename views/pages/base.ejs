@@ -228,7 +228,21 @@
 		socket.emit('ready for data', {});
     });
     socket.on('update', function (data) {
-        console.log(data.message.payload);
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (result) {
+				var userid=result.loginUser;
+				if (data.message.payload==userid){
+					$('.fa-comments').css("color","yellow");
+				}	
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
 	});
 	
 
