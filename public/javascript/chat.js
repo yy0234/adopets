@@ -29,21 +29,21 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 	socket.on('login', function (user) {
 		if(user.length>=1){
 			for(var i =0;i<user.length;i++){
-				incomeHtml(user[i],'/images/cat1.jpg');
+				incomeHtml(user[i],'/images/user_image.jpg');
 			}
 		}
 	});
 	// monitor new user join
 	socket.on('user joined', function (tname, index) {
-		incomeHtml(tname,'/images/cat1.jpg');
+		incomeHtml(tname,'/images/user_image.jpg');
 		console.log(tname+'join');
-		showNotice('/images/cat1.jpg',tname,"online");
+		showNotice('/images/user_image.jpg',tname,"online");
 	});
 	// receive message
 	socket.on('receive private message', function (data) {
 		$('#ding')[0].play();
 		if(data.addresser == data.recipient) return;
-		var head = '/images/cat1.jpg';
+		var head = '/images/user_image.jpg';
 		$('#'+hex_md5(data.addresser)+' .chat-msg').append('<li><img src="'+head+'"><span class="speak">'+data.body+'</span></li>');
 		if(document.hidden){
 			showNotice(head,data.addresser,data.body);
@@ -82,7 +82,7 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 		var recipient = $('.chat-active').attr('data-n');
 		var val = $('.chat-active input').val();
 		if(val == '') return;
-		sendMessage('/images/cat1.jpg',val);
+		sendMessage('/images/user_image.jpg',val);
 		//call
 		var req = {
 			'addresser':name,
@@ -100,7 +100,7 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 			var recipient = $('.chat-active').attr('data-n');
 			var val = $('.chat-active input').val();
 			if(val == '') return;
-			sendMessage('/images/cat1.jpg',val);
+			sendMessage('/images/user_image.jpg',val);
 			//call
 			var req = {
 				'addresser':name,
