@@ -1,0 +1,146 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/pages/dm.css"/>
+<div class="green-background"></div>
+<div class="wrap">
+        <section class="left">
+                <div class="profile">
+                        <span style="padding: 20px;"><%= loginUser %></span>
+                </div>
+                <div class="contact-list">
+                        <!--<div class='contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>
+                        <div class='contact new-message-contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>-->
+                </div>
+        </section>
+
+        <section class="right">
+                <div class="chat-head">
+                        <div class="chat-name">
+                            <h1 class="font-name" style="padding-left:20px;"></h1>
+                        </div>
+                </div>
+                <div class="wrap-chat">
+                        <div class="chat">
+                            <!--<div class='chat-bubble me'><div class='content'>text</div></div>
+                            <div class='chat-bubble you'><div class='content'>text</div></div>-->
+                        </div>
+                </div>
+                <div class="wrap-message">
+                        <div class="message" style="margin-left: 20px;">
+                                <input type="text" class="input-message" placeholder="Type Message...">
+                        </div>
+                        <button class="fas fa-paper-plane" aria-hidden="true" style="font-size: 25px;border: none;background: none;width: 70px;cursor:pointer" onclick="dmsendChat()"></button>
+                </div>
+        </section>
+</div>
+
+<script>
+    var contactPerson=[];
+    $(document).ready(function() {
+        $.ajax({
+            url: "/getlogined",
+            type: "GET",
+            data: {
+            },
+            success: function (result) {
+                var logined=result.isLogined;
+                console.log(logined);
+                if (logined==true){
+                    var userid=result.loginUser;
+                    $.ajax({
+                        url: "/listChatPerson",
+                        type: "GET",
+                        data: {
+                        },
+                        success: function (mes) {
+                           for (var i=0;i<mes.length;i++){
+                            if (mes[i].receiverid !=userid){
+                                $(".contact-list").append("\
+                                <div class='contact' style='cursor:pointer' onclick='listChat(\""+mes[i].receiverid+"\",this)'>\
+                                    <img src='/images/user_image.jpg' alt='profilpicture'>\
+                                    <div class='contact-preview'>\
+                                        <div class='contact-text'>\
+                                            <h1 class='font-name'>"+mes[i].receiverid+"</h1>\
+                                        </div>\
+                                    </div>\
+                                </div>");
+                                contactPerson.push("'"+mes[i].receiverid+"'");
+                            }
+                           }
+                           console.log(contactPerson);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    function listChat(target,pointer){
+        $(".contact-list>.contact").removeClass("active-contact");
+        $(pointer).removeClass("new-message-contact");
+        $(pointer).addClass("active-contact");
+        $('.chat-name > .font-name').html(target);
+        $('.chat').html("");
+        $.ajax({
+			url: "/listChat",
+			type: "GET",
+			data: {
+				target: "'"+target+"'",
+			},
+			success: function (mes) {
+				$.ajax({
+					url: "/getlogined",
+					type: "GET",
+					data: {
+					},
+					success: function (result) {
+						var userid=result.loginUser;
+						for (var i=0;i<mes.length;i++){
+							if (mes[i].senderid==userid){
+								$('.chat').append("<div class='chat-bubble me'><div class='content'>"+mes[i].content+"</div></div>");
+							}
+                            else {
+                                $('.chat').append("\<div class='chat-bubble you'><div class='content'>"+mes[i].content+"</div></div>");
+                            }
+						}
+						
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+			},
+			error: function (err) {
+				console.log(err);
+            }
+        })
+    }
+
+    function dmsendChat(){
+		if ($.trim($('.input-message').val())!=""||$('.chat-name > .font-name').html()==""){
+			var inputContent=$('.input-message').val();
+			$.ajax({
+				url: "/sendChat",
+				type: "GET",
+				data: {
+					receiverid: $('.chat-name > .font-name').html(),
+					content: $('.input-message').val()
+				},
+				success: function (mes) {
+					console.log(mes);
+					    $('.chat').append("<div class='chat-bubble me'><div class='content'>"+inputContent+"</div></div>");
+						$('.input-message').val("");
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
+		}
+	}
+
+</script>

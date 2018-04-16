@@ -47,11 +47,14 @@
 				<li class="nav-item">
 					<a class="nav-link" href="./forum">Forum</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./chatroom">Chatroom</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav login-item navbar-right">
 				<% if(isLogined){ %>
 					<li class="nav-item"><a class="nav-link" href="./cart"><span class="fas fa-shopping-cart"></span></a></li>
-					<li class="nav-item"><a class="nav-link" href="./chatroom"><span class="fas fa-comments"></span></a></li>
+					<li class="nav-item"><a class="nav-link" href="./direct_message"><span class="fas fa-comments"></span></a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><span class="fas fa-bell"></span></a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" style="cursor:pointer;margin-top: 5px;"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -228,7 +231,84 @@
 		socket.emit('ready for data', {});
     });
     socket.on('update', function (data) {
-        console.log(data.message.payload);
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (result) {
+				var userid=result.loginUser;
+				if (data.message.payload==userid){
+					$('.fa-comments').css("color","yellow");
+					if ($( "#chat_window_1" ).css('display')=='block'){
+						$.ajax({
+							url: "/getlastchat",
+							type: "GET",
+							data: {
+							},
+							success: function (mes) {
+								if (mes[0].senderid==$('.panel-title').html()){
+									$('.fa-comments').css("color","inherit");
+									$('.msg_container_base').append("\
+									<div class='row msg_container base_receive'>\
+										<div class='col-md-10 col-xs-10'>\
+											<div class='messages msg_receive'>\
+												<p>"+mes[0].content+"</p>\
+											</div>\
+										</div>\
+									</div>");
+								}
+							},
+							error: function (err) {
+								console.log(err);
+							}
+						});
+					}
+					else if ($(location).attr('pathname')=="/direct_message"){
+						$('.fa-comments').css("color","inherit");
+						$.ajax({
+							url: "/getlastchat",
+							type: "GET",
+							data: {
+							},
+							success: function (mes) {
+								if (mes[0].senderid==$('.chat-name > .font-name').html()){
+									$('.chat').append("\<div class='chat-bubble you'><div class='content'>"+mes[0].content+"</div></div>");
+								}
+								else if (!contactPerson.includes("'"+mes[0].senderid+"'")){
+									$(".contact-list").prepend("\
+									<div class='contact new-message-contact' style='cursor:pointer' onclick='listChat(\""+mes[0].senderid+"\",this)'>\
+										<img src='/images/user_image.jpg' alt='profilpicture'>\
+										<div class='contact-preview'>\
+											<div class='contact-text'>\
+												<h1 class='font-name'>"+mes[0].senderid+"</h1>\
+											</div>\
+										</div>\
+									</div>"); 
+									contactPerson.push("'"+mes[0].senderid+"'")
+								}
+								else{
+									for (var i=0;i<$(".contact-text>.font-name").length;i++){
+										if ($(".contact-text>.font-name")[i].innerHTML==mes[0].senderid){
+											var temp=(($(".contact-text>.font-name")[i]).closest('.contact'));
+											console.log(temp);
+											$(temp).addClass("new-message-contact");
+											break;
+										}
+									}
+								}
+							},
+							error: function (err) {
+								console.log(err);
+							}
+						});
+					}
+				}	
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
 	});
 	
 
@@ -289,7 +369,7 @@
 						$(".login-item").html("");
 						$(".login-item").append("\
 						<li class='nav-item'><a class='nav-link' href='./cart'><span class='fas fa-shopping-cart'></span></a></li>\
-						<li class='nav-item'><a class='nav-link' href='./chatroom'><span class='fas fa-comments'></span></a></li>\
+						<li class='nav-item'><a class='nav-link' href='./direct_message'><span class='fas fa-comments'></span></a></li>\
 						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
 						<li class='nav-item dropdown'>\
 						<a class='nav-link dropdown-toggle' style='cursor:pointer;margin-top: 5px;'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\
@@ -343,7 +423,7 @@
 						$(".login-item").html("");
 						$(".login-item").append("\
 						<li class='nav-item'><a class='nav-link' href='./cart'><span class='fas fa-shopping-cart'></span></a></li>\
-						<li class='nav-item'><a class='nav-link' href='./chatroom'><span class='fas fa-comments'></span></a></li>\
+						<li class='nav-item'><a class='nav-link' href='./direct_message'><span class='fas fa-comments'></span></a></li>\
 						<li class='nav-item'><a class='nav-link' href='#'><span class='fas fa-bell'></span></a></li>\
 						<li class='nav-item dropdown'>\
 								<a class='nav-link dropdown-toggle' style='cursor:pointer;margin-top: 5px;'  id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+username+"</a>\

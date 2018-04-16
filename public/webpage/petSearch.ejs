@@ -275,7 +275,7 @@ var petData;
 var current_page =1;
 var total_page=0;
 
-function updatePetFav(){
+function updatePetFav(pointer){
 	$.ajax({
 		url: "/updatePetFav",
 		type: "GET",

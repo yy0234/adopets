@@ -12,7 +12,10 @@
 
 .lh-condensed { line-height: 1.25; }
 
-.my-0 {
-    overflow: hidden;
-    text-overflow: ellipsis;
+.cart_data {
+  margin-right: 5px;
+}
+
+.cart_data, .quantity {
+  vertical-align: middle;
 }

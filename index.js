@@ -149,6 +149,13 @@ app.get('/profile', function(request, response) {
   response.render('pages/base',{action:'../../public/webpage/profile.ejs',isLogined:isLogined,loginUser:loginUser||""});
 });
 
+app.get('/direct_message', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  response.render('pages/base',{action:'../../public/webpage/dm.ejs',isLogined:isLogined,loginUser:loginUser||""});
+});
+
 app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
@@ -286,68 +293,83 @@ app.get("/listPostContent", function (request, response) {
 });
 
 app.post('/addNewPost', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject,postby,replynum'; 
-	  var sqlValue = [request.body.subject,request.body.category,request.body.postby,request.body.replynum]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { return response.send("Error " + err); }
-       else
-        { 
-          var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
-          var sqlValue2 =[request.body.content,result.rows[0].topicid,request.body.postby,request.body.replyprev];
-          client.query(sql2,sqlValue2,function(error,result2) {
-            done();
-            if (error)
-             { return response.send(error); }
-            else
-             { 
-              return response.send(result.rows);
-             }
-           });
-        }
-      });
-  });
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject,postby,replynum'; 
+      var sqlValue = [request.body.subject,request.body.category,loginUser,request.body.replynum]; 
+      client.query(sql,sqlValue,function(err,result) {
+        done();
+        if (err)
+          { return response.send("Error " + err); }
+        else
+          { 
+            var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
+            var sqlValue2 =[request.body.content,result.rows[0].topicid,loginUser,request.body.replyprev];
+            client.query(sql2,sqlValue2,function(error,result2) {
+              done();
+              if (error)
+              { return response.send(error); }
+              else
+              { 
+                return response.send(result.rows);
+              }
+            });
+          }
+        });
+    });
+  }
 });
 
 app.post('/addNewReply', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6) RETURNING content,postby,postdate,replyprecontent,postid'; 
-	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev,request.body.replyprevid,request.body.replyprecontent]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { return response.send("Error " + err); }
-       else
-        { 
-          var sql2="UPDATE topics set replynum=replynum+1,postdate=DEFAULT WHERE topicid='"+request.body.topic+"'";
-          client.query(sql2,function(error,result2) {
-            done();
-            if (error)
-             { return response.send(error); }
-            else
-             { 
-              return response.send(result.rows);
-             }
-           });
-        }
-      });
-  });
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6) RETURNING content,postby,postdate,replyprecontent,postid'; 
+      var sqlValue = [request.body.content,request.body.topic,loginUser,request.body.replyprev,request.body.replyprevid,request.body.replyprecontent]; 
+      client.query(sql,sqlValue,function(err,result) {
+        done();
+        if (err)
+          { return response.send("Error " + err); }
+        else
+          { 
+            var sql2="UPDATE topics set replynum=replynum+1,postdate=DEFAULT WHERE topicid='"+request.body.topic+"'";
+            client.query(sql2,function(error,result2) {
+              done();
+              if (error)
+              { return response.send(error); }
+              else
+              { 
+                return response.send(result.rows);
+              }
+            });
+          }
+        });
+    });
+  }
 });
 
 app.post('/addPets', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING petid'; 
-	  var sqlValue = [request.body.name,request.body.type,request.body.breed,request.body.gender,request.body.age,request.body.postdate,request.body.lastupdate,request.body.status,request.body.remark,request.body.peturl,request.body.providerid,request.body.description,request.body.neutered,request.body.size,request.body.coat]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { console.error(err); return response.end("Error " + err); }
-       else
-        { return response.send(result.rows); }
-      });
-  });
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING petid'; 
+      var sqlValue = [request.body.name,request.body.type,request.body.breed,request.body.gender,request.body.age,request.body.postdate,request.body.lastupdate,request.body.status,request.body.remark,request.body.peturl,loginUser,request.body.description,request.body.neutered,request.body.size,request.body.coat]; 
+      client.query(sql,sqlValue,function(err,result) {
+        done();
+        if (err)
+          { console.error(err); return response.end("Error " + err); }
+        else
+          { return response.send(result.rows); }
+        });
+    });
+  }
 });
 
 app.get("/listInterest", function (request, response) { 
@@ -486,7 +508,45 @@ app.get("/listChat", function (request, response) {
   if (isLogined==true){
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE senderid IN ("+request.query.target+","+userid+") AND receiverid IN ("+request.query.target+","+userid+") order by messageid DESC", function(err, result) {
+      client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE senderid IN ("+request.query.target+","+userid+") AND receiverid IN ("+request.query.target+","+userid+") order by messageid ASC", function(err, result) {
+         done();
+         if (err)
+          { console.error(err); return response.send("Error " + err); }
+         else{ 
+           return response.send(result.rows);
+          }
+        });
+    });
+  }
+});
+
+app.get("/getlastchat", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT messageid,senderid,receiverid,content FROM message WHERE  receiverid IN ("+userid+") order by messageid DESC limit 1", function(err, result) {
+         done();
+         if (err)
+          { console.error(err); return response.send("Error " + err); }
+         else{ 
+           return response.send(result.rows);
+          }
+        });
+    });
+  }
+});
+
+app.get("/listChatPerson", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT receiverid,max(senttime) FROM (select receiverid,senttime from message where receiverid="+userid+" or senderid="+userid+" union select senderid, senttime from message where receiverid ="+userid+" or senderid="+userid+") as filter group by receiverid order by max DESC", function(err, result) {
          done();
          if (err)
           { console.error(err); return response.send("Error " + err); }
