@@ -262,6 +262,7 @@
 						});
 					}
 					else if ($(location).attr('pathname')=="/direct_message"){
+						$('.fa-comments').css("color","inherit");
 						$.ajax({
 							url: "/getlastchat",
 							type: "GET",
@@ -273,7 +274,7 @@
 								}
 								else if (!contactPerson.includes("'"+mes[0].senderid+"'")){
 									$(".contact-list").prepend("\
-									<div class='contact' style='cursor:pointer' onclick='listChat(\""+mes[0].senderid+"\",this)'>\
+									<div class='contact new-message-contact' style='cursor:pointer' onclick='listChat(\""+mes[0].senderid+"\",this)'>\
 										<img src='/images/user_image.jpg' alt='profilpicture'>\
 										<div class='contact-preview'>\
 											<div class='contact-text'>\
@@ -282,6 +283,15 @@
 										</div>\
 									</div>"); 
 									contactPerson.push("'"+mes[0].senderid+"'")
+								}
+								else{
+									for (var i=0;i<$(".contact-text>.font-name").length;i++){
+										if ($(".contact-text>.font-name")[i].innerHTML=="'"+mes[0].senderid+"'"){
+											var temp=(($(".contact-text>.font-name")[i]).closest('.contact'));
+											$(temp).addClass("new-message-contact");
+											break;
+										}
+									}
 								}
 							},
 							error: function (err) {
