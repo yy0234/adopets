@@ -503,7 +503,7 @@ div.right_arrow {
     40% { opacity: 1; } 
   }
 
-  #success-alert {
+  #success-alert, #success-alert-2 {
       position: absolute;
       z-index: 10;
       width: 100%;
