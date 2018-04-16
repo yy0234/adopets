@@ -170,24 +170,9 @@
 						<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
 					</div>
 				-->
-					<div class="col-md-6" id="sort_dropdown">
-						<select id="dropdownlist" style="float: right;">
-							<option value="popular" selected="selected">&#xf06d; Popular</option>
-							<option value="newest">&#xf017; Newest</option>
-							<option value="price_asc">&#xf160; Price - Low to High</option>
-							<option value="price_desc">&#xf161; Price - High to Low</option>
-						</select>
-					</div>
-				</div>
+					<br class="sm">
 
-				<div class="sm">
-					<div id="items_count" style="margin: auto; width: 100%;">
-						<!--SERVER-->
-						<div><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
-					</div>
-					<br>
-					<br>
-					<div id="sort_dropdown" style="margin: auto; width: 100%;">
+					<div class="col-md-6" id="sort_dropdown">
 						<select id="dropdownlist" style="float: right;">
 							<option value="popular" selected="selected">&#xf06d; Popular</option>
 							<option value="newest">&#xf017; Newest</option>
@@ -495,7 +480,7 @@
 
 function listToggle(){
 	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down");
-	$(".filter").toggleClass("open");
+	$(".search_and_filter").toggleClass("open");
 };
 
 $("#dropdownlist").change(function(){
