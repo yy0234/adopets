@@ -44,7 +44,7 @@ div.shop {
     }
 
     .sm{
-        display: inline-block !important;
+        display: block !important;
     }
 }
 
