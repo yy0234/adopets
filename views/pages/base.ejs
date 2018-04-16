@@ -286,7 +286,7 @@
 								}
 								else{
 									for (var i=0;i<$(".contact-text>.font-name").length;i++){
-										if ($(".contact-text>.font-name")[i].innerHTML=="'"+mes[0].senderid+"'"){
+										if ($(".contact-text>.font-name")[i].innerHTML==mes[0].senderid){
 											var temp=(($(".contact-text>.font-name")[i]).closest('.contact'));
 											console.log(temp);
 											$(temp).addClass("new-message-contact");
