@@ -503,8 +503,14 @@ div.right_arrow {
     40% { opacity: 1; } 
   }
 
-  #success-alert, #success-alert-2 {
+  #success-alert {
       position: absolute;
       z-index: 10;
       width: 100%;
+  }
+  #success-alert-2 {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 20px;
   }
