@@ -212,6 +212,7 @@
 							}
 							else
 							{
+								addPurchase();
 								alert('Transaction successful. Thank you for your order!');
 							}
 							form.classList.add("was-validated");
@@ -338,5 +339,28 @@ function list_delete(task,name){
 					}
 				});
 		}
+
+function addPurchase(){
+	$.ajax({
+		url: "/getlogined",
+		type: "GET",
+		success: function (info) {
+			$.ajax({
+					url: "/addPurchaseSupply",
+					type: "GET",
+					success: function (info) {
+						buyid:info.loginUser;
+						name:name;
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+		},
+		error: function (err) {
+			console.log(err);
+		}
+	});
+}
 
 </script>
