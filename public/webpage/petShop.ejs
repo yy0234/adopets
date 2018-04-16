@@ -25,125 +25,130 @@
 				Product have added to your cart.
 			</div>
 		</div>
-		<div class="shop">
+		<div class="row shop">
 			<div class="col-md-2" id="left_container">
-				<h5 class="text-primary">Search</h5>
-				<div class="list-group-item list-group-item-action flex-column align-items-start">
-					<div class="input-group autocomplete">
-						<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
-						<span class="input-group-addon">
-							<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
-						</span>
+				<h5 class="text-primary sm" onclick="listToggle()"><span class="responsive_text">Search &amp; Filter</span><i id="chevron" class="fas fa-chevron-down" style="float:right"></i></h5>
+				<br>
+				
+				<div class="search_and_filter">
+					<h5 class="text-primary">Search</h5>
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="input-group autocomplete">
+							<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
+							<span class="input-group-addon">
+								<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
+							</span>
+						</div>
 					</div>
-				</div>
-				<br>
-				<br>
-				<h5 class="text-primary">Filter</h5>
-				<div class="filtering">
-					<form id="filter_form">
-						<div class="condition">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.condition #collapse_condition">CONDITION<i class="fa fa-plus"></i></button>
-							<div id="collapse_condition" class="collapse">
-								<label class="container">New
-									<input type="radio" id="new" name="radio"/>
-									<span class="checkmark"></span>
-								</label>
-								<label class="container">Used
-									<input type="radio" id="used" name="radio"/>
-									<span class="checkmark"></span>
-								</label>
+					<br>
+					<br>
+					<h5 class="text-primary">Filter</h5>
+					<div class="filtering">
+						<form id="filter_form">
+							<div class="condition">
+								<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.condition #collapse_condition">CONDITION<i class="fa fa-plus"></i></button>
+								<div id="collapse_condition" class="collapse">
+									<label class="container">New
+										<input type="radio" id="new" name="radio"/>
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">Used
+										<input type="radio" id="used" name="radio"/>
+										<span class="checkmark"></span>
+									</label>
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="price">
-							<button id="price" type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
-							<div id="collapse_price" class="collapse">
-								<br>
-								<div id="price_range"></div>
-								<br>
-								<div id="price_range_text">$<span id="min_price"></span> - $<span id="max_price"></span></div>
+							<br>
+							<div class="price">
+								<button id="price" type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
+								<div id="collapse_price" class="collapse">
+									<br>
+									<div id="price_range"></div>
+									<br>
+									<div id="price_range_text">$<span id="min_price"></span> - $<span id="max_price"></span></div>
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="pet_types">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
-							<div id="collapse_pet_types" class="collapse">
-								<label class="container">Dog
-									<input type="checkbox" id="dog" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Cat
-									<input type="checkbox" id="cat" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Bird
-									<input type="checkbox" id="bird" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Fish
-									<input type="checkbox" id="fish" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Reptile
-									<input type="checkbox" id="reptile" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Rodent
-									<input type="checkbox" id="rodent" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
+							<br>
+							<div class="pet_types">
+								<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
+								<div id="collapse_pet_types" class="collapse">
+									<label class="container">Dog
+										<input type="checkbox" id="dog" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Cat
+										<input type="checkbox" id="cat" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Bird
+										<input type="checkbox" id="bird" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Fish
+										<input type="checkbox" id="fish" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Reptile
+										<input type="checkbox" id="reptile" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Rodent
+										<input type="checkbox" id="rodent" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="category">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
-							<div id="collapse_category" class="collapse">
-								<label class="container">Food
-									<input type="checkbox" id="food" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Beds &amp; Cages
-									<input type="checkbox" id="beds_cages" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Feeding Utensils
-									<input type="checkbox" id="feeding_utensils" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Health Products
-									<input type="checkbox" id="health_products" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Collars, Leads &amp; Harness
-									<input type="checkbox" id="clhm" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Grooming
-									<input type="checkbox" id="grooming" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Fashion
-									<input type="checkbox" id="fashion" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Waste Management
-									<input type="checkbox" id="waste_management" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Toys
-									<input type="checkbox" id="toys" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Travelling Equipment
-									<input type="checkbox" id="travelling_equipment" name="category"/>
-									<span class="checkbox"></span>
-								</label>
+							<br>
+							<div class="category">
+								<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
+								<div id="collapse_category" class="collapse">
+									<label class="container">Food
+										<input type="checkbox" id="food" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Beds &amp; Cages
+										<input type="checkbox" id="beds_cages" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Feeding Utensils
+										<input type="checkbox" id="feeding_utensils" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Health Products
+										<input type="checkbox" id="health_products" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Collars, Leads &amp; Harness
+										<input type="checkbox" id="clhm" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Grooming
+										<input type="checkbox" id="grooming" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Fashion
+										<input type="checkbox" id="fashion" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Waste Management
+										<input type="checkbox" id="waste_management" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Toys
+										<input type="checkbox" id="toys" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Travelling Equipment
+										<input type="checkbox" id="travelling_equipment" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+								</div>
 							</div>
-						</div>
-						<br>
-						<input class="btn btn-success" type="button" value="Submit" onclick="spinner();findSupply()">
-						<input class="btn btn-danger" type="reset" value="Reset">
-					</form>
+							<br>
+							<input class="btn btn-success" type="button" value="Submit" onclick="spinner();findSupply()">
+							<input class="btn btn-danger" type="reset" value="Reset">
+						</form>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-10">
@@ -157,17 +162,19 @@
 						</a>
 					</div>
 					-->
-					<div class="col-md-6" id="items_count" style="float: left;">
+					<div class="col-md-6" id="items_count" style="text-align: center;">
 						<!--SERVER-->
-						<div><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
+						<div style="display: inline-block;"><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
 					</div>
 					<!--
 					<div class="col-md-2" id="display_size">
 						<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
 					</div>
 				-->
-					<div class="col-md-6" id="sort_dropdown" style="float: right;">
-						<select id="dropdownlist">
+					<br class="sm">
+
+					<div class="col-md-6" id="sort_dropdown" style="text-align: center;">
+						<select id="dropdownlist" style="display: inline-block;">
 							<option value="popular" selected="selected">&#xf06d; Popular</option>
 							<option value="newest">&#xf017; Newest</option>
 							<option value="price_asc">&#xf160; Price - Low to High</option>
@@ -175,11 +182,30 @@
 						</select>
 					</div>
 				</div>
+
+				<!--
+				<div class="sm">
+					<div id="items_count">
+						<div id="item_center" style="text-align: center;"><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
+					</div>
+					<br>
+					<br>
+					<div id="sort_dropdown">
+						<select id="dropdownlist" style="text-align: center;">
+							<option value="popular" selected="selected">&#xf06d; Popular</option>
+							<option value="newest">&#xf017; Newest</option>
+							<option value="price_asc">&#xf160; Price - Low to High</option>
+							<option value="price_desc">&#xf161; Price - High to Low</option>
+						</select>
+					</div>
+				</div>
+				-->
+
 				<br>
 				<div class="row">
 				
 		
-					<div class="col-md-10" >
+					<div class="col-md-12" >
 						<div class="row" id="product_display">
 							<!--<div class="card-deck">-->
 							<!--
@@ -471,6 +497,11 @@
 	var current_page =1;
 	var total_page=0;
 
+function listToggle(){
+	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down");
+	$(".search_and_filter").toggleClass("open");
+	$(".responsive_text").toggle();
+};
 
 $("#dropdownlist").change(function(){
 
@@ -516,9 +547,9 @@ $("#dropdownlist").change(function(){
 	else if (supplyData.responseJSON.length>12){
 		for (var i=0; i<12;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -565,9 +596,9 @@ $("#dropdownlist").change(function(){
 		document.getElementById("total_item_number").innerHTML = supplyData.responseJSON.length;
 		supplyData.responseJSON.forEach(function(element,index) {
 			$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -644,9 +675,9 @@ function callAjax(Query){
 			else if (mes.length>12){
 				for (var i=0; i<12;i++){
 					$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+mes[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+mes[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -698,9 +729,9 @@ function callAjax(Query){
 				document.getElementById("total_item_number").innerHTML = mes.length;
 				mes.forEach(function(element,index) {
 					$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -793,9 +824,9 @@ function pageSupply(pageNo){
 	if (supplyData.responseJSON.length>(page_no+12)){
 		for (var i=page_no;i<page_no+12;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -836,9 +867,9 @@ function pageSupply(pageNo){
 	else{
 		for (var i=page_no;i<supplyData.responseJSON.length;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -1053,9 +1084,9 @@ function addCart(userid){
 						else if (mes.length>12){
 							for (var i=0; i<12;i++){
 								$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+mes[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+mes[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -1104,9 +1135,9 @@ function addCart(userid){
 							document.getElementById("total_item_number").innerHTML = mes.length;
 							mes.forEach(function(element,index) {
 								$("#product_display").append("\
-										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\">\
 											<div class=\"card\">\
-												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
