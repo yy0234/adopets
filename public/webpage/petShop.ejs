@@ -1097,6 +1097,10 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
+		$("#navbarToggler .nav-item").removeClass("active");
+		$("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
+		$("#navbarToggler #base-supply").addClass("active");
+		$("#navbarToggler .dropdown-menu #base-search-supply").addClass("base-cut-active");
 		
 		supplyData= $.ajax({
 					url: "/listSupply",
