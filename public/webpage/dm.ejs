@@ -26,9 +26,9 @@
                 </div>
                 <div class="wrap-message">
                         <div class="message" style="margin-left: 20px;">
-                                <input type="text" class="input-message chat_input" placeholder="Type Message...">
+                                <input type="text" class="input-message" placeholder="Type Message...">
                         </div>
-                        <button class="fas fa-paper-plane" aria-hidden="true" style="font-size: 25px;border: none;background: none;width: 70px;" onclick="dmsendChat()"></button>
+                        <button class="fas fa-paper-plane" aria-hidden="true" style="font-size: 25px;border: none;background: none;width: 70px;cursor:pointer" onclick="dmsendChat()"></button>
                 </div>
         </section>
 </div>
@@ -116,19 +116,19 @@
     }
 
     function dmsendChat(){
-		if ($.trim($('.chat_input').val())!=""){
-			var inputContent=$('.chat_input').val();
+		if ($.trim($('.input-message').val())!=""||$('.chat-name > .font-name').html()==""){
+			var inputContent=$('.input-message').val();
 			$.ajax({
 				url: "/sendChat",
 				type: "GET",
 				data: {
 					receiverid: $('.chat-name > .font-name').html(),
-					content: $('.chat_input').val()
+					content: $('.input-message').val()
 				},
 				success: function (mes) {
 					console.log(mes);
 					    $('.chat').append("<div class='chat-bubble me'><div class='content'>"+inputContent+"</div></div>");
-						$('.chat_input').val("");
+						$('.input-message').val("");
 				},
 				error: function (err) {
 					console.log(err);
