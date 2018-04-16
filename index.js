@@ -712,7 +712,7 @@ app.get("/listSellSupply", function (request, response) {
   if (isLogined==true){
     var providerid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query("select * from purchase where name in ( select name from petsupply where providerid = '"+providerid+"') order by buytime desc", function(err, result) {
+      client.query("select * from purchase where name in ( select name from petsupply where providerid = "+providerid+") order by buytime desc", function(err, result) {
         done();
         if (err)
           { console.error(err); return response.send("Error " + err); }
