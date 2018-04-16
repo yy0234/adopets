@@ -36,13 +36,14 @@
 <script>
     //var contactPerson=[];
 
-    /*WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
+    WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
 	var socket = io.connect();
     socket.on('connected', function (data) {
 		socket.emit('ready for data', {});
     });
     socket.on('update', function (data) {
-		$.ajax({
+        console.log(data);
+		/*$.ajax({
 			url: "/getlogined",
 			type: "GET",
 			data: {
@@ -83,8 +84,8 @@
 			error: function (err) {
 				console.log(err);
 			}
-		});
-    });*/
+		});*/
+    });
     $(document).ready(function() {
         $.ajax({
             url: "/getlogined",
