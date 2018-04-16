@@ -509,9 +509,9 @@ $("#dropdownlist").change(function(){
 	else if (supplyData.responseJSON.length>12){
 		for (var i=0; i<12;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -558,9 +558,9 @@ $("#dropdownlist").change(function(){
 		document.getElementById("total_item_number").innerHTML = supplyData.responseJSON.length;
 		supplyData.responseJSON.forEach(function(element,index) {
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -637,9 +637,9 @@ function callAjax(Query){
 			else if (mes.length>12){
 				for (var i=0; i<12;i++){
 					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+mes[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -691,9 +691,9 @@ function callAjax(Query){
 				document.getElementById("total_item_number").innerHTML = mes.length;
 				mes.forEach(function(element,index) {
 					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -786,9 +786,9 @@ function pageSupply(pageNo){
 	if (supplyData.responseJSON.length>(page_no+12)){
 		for (var i=page_no;i<page_no+12;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -829,9 +829,9 @@ function pageSupply(pageNo){
 	else{
 		for (var i=page_no;i<supplyData.responseJSON.length;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -1046,9 +1046,9 @@ function addCart(userid){
 						else if (mes.length>12){
 							for (var i=0; i<12;i++){
 								$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+mes[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -1097,9 +1097,9 @@ function addCart(userid){
 							document.getElementById("total_item_number").innerHTML = mes.length;
 							mes.forEach(function(element,index) {
 								$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
