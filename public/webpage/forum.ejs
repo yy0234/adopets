@@ -424,6 +424,15 @@
     function listPostTitle(category,object){
         $(".category div").removeClass("active");
         $(object).addClass("active");
+        switch(category){
+            case 'General':$("#post-category>option")[0].selected=true;break;
+            case 'Health':$("#post-category>option")[1].selected=true;break;
+            case 'Training':$("#post-category>option")[2].selected=true;break;
+            case 'Behavior':$("#post-category>option")[3].selected=true;break;
+            case 'Grooming':$("#post-category>option")[4].selected=true;break;
+            case 'Toy':$("#post-category>option")[5].selected=true;break;
+        }
+        
         $.ajax({
             url: "/listPostTitle",
             type: "GET",
