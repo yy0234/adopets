@@ -27,7 +27,8 @@
                     <div class="panel-collapse collapse" id="collapseTC002A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
                         <div class="panel-body">
                             <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showTrade',this); showSell()">Sell</a>
-                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showTrade',this); showPurchase()">Purchase</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showHistory',this); showPurchase()">Purchase History</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Selling History</a>
                             <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
                         </div>
                     </div>
@@ -415,6 +416,22 @@
                     </a>\
                 </li>\
             </ul>")
+        }
+        else if (mode == 'showHistory')
+        {
+            $("#mode").append("\
+            <div class=\"row-custom\" style=\"display: flex;flex-wrap: wrap; text-align:center;\">\
+                <table id=\"HistoryTable\" class=\"table order-list\">\
+                    <thead>\
+                        <tr>\
+                            <th style=\"width:15%\">Date</th>\
+                            <th style=\"width:60%\">Name</th>\
+                            <th style=\"width:15%\">Total Price</th>\
+                            <th style=\"width:10%\">Quantity</th>\
+                        </tr>\
+                    </thead>\
+                </table>\
+            </div>")
         }
     }
 
@@ -1021,104 +1038,21 @@ supplyData = $.ajax({
 		type: "GET",
 		data: {
 		},
-		success: function (mes) {
-			$("#product_display").html("");
-			if (mes.length==0){
-				$("#product_display").html("<div style=\"text-align: center;margin: 0 auto;\">No record found</div>");
-				$("#pagination").css('display','none');	
-			}
-			else if (mes.length>12){
-				for (var i=0; i<12;i++){
-					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeSupplyModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
-											<div class=\"card\">\
-												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
-												<div class=\"details\">\
-													<a class=\"user\" href=\"\">\
-														<div class=\"user-photo\">\
-															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-														</div>\
-														<div class=\"username\">User</div>\
-													</a>\
-													<div class=\"heart_info\">\
-														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-													</div>\
-												</div>\
-												<div class=\"arrow\">\
-													<div class=\"left_arrow\">&#xf104;</div>\
-													<div class=\"right_arrow\">&#xf105;</div>\
-												</div>\
-												<div class=\"card-info\">\
-													<div class=\"product_info\">\
-														<a class=\"product_page\">\
-															<div class=\"product_title\">" + mes[i].name +"</div>\
-															<div class=\"item_price\">HKD" + mes[i].price + "</div>\
-															<div class=\"item_description\">" + mes[i].description +"</div>\
-														</a>\
-													</div>\
-													<div class=\"product_buttons\">\
-														<div class=\"shopping_cart\">\
-															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+mes[i].supplyid+",this)\"></button>\
-														</div>\
-													</div>\
-												</div>\
-											</div>\
-										</div>")
-				}
-				if (total_page!=0)
-					for (var i=1;i<=total_page;i++)
-						$("#page"+i).remove();
-				$("#pagination").css('display','flex');
-				total_page=Math.ceil(mes.length/12);
-				for (var i=total_page;i>0;i--)
-					$("<li class=\"page-item\"><a id=\"page"+i+"\" class=\"page-link\" onclick=\"pageSupply("+i+")\">"+i+"</a></li>").insertAfter("#previous");
-				$('#page'+current_page).css("background-color","gainsboro");
-			}
-			else{
-				mes.forEach(function(element,index) {
-					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeSupplyModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
-											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
-												<div class=\"details\">\
-													<a class=\"user\" href=\"\">\
-														<div class=\"user-photo\">\
-															<img class=\"user_image\" src=\"/images/user_image.jpg\"/>\
-														</div>\
-														<div class=\"username\">User</div>\
-													</a>\
-													<div class=\"heart_info\">\
-														<div class=\"heart_no\"><i class=\"fab fa-gratipay\"></i>" + 100 + "</div>\
-													</div>\
-												</div>\
-												<div class=\"arrow\">\
-													<div class=\"left_arrow\">&#xf104;</div>\
-													<div class=\"right_arrow\">&#xf105;</div>\
-												</div>\
-												<div class=\"card-info\">\
-													<div class=\"product_info\">\
-														<a class=\"product_page\">\
-															<div class=\"product_title\">" + element.name +"</div>\
-															<div class=\"item_price\">HKD" + element.price + "</div>\
-															<div class=\"item_description\">" + element.description +"</div>\
-														</a>\
-													</div>\
-													<div class=\"product_buttons\">\
-														<div class=\"shopping_cart\">\
-															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+element.supplyid+",this)\"></button>\
-														</div>\
-													</div>\
-												</div>\
-											</div>\
-										</div>")
-				});
-				if (total_page!=0)
-					for (var i=1;i<=total_page;i++)
-						$("#page"+i).remove();
-				$("#pagination").css('display','none');
-				total_page=0;
-			}
-            return mes;
+		success: function (data) {
+            var size = 0;
+            var table = document.getElementById("HistoryTable");
+			data.forEach(function(element,index) {             
+                var row = table.insertRow(size+1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(2);
+                cell1.innerHTML = element.buytime;
+                cell2.innerHTML = element.name;
+                cell3.innerHTML = element.price;
+                cell4.innerHTML = element.quantity;
+                size++;
+            });
 		},
 		error: function (err) {
 			return err;
