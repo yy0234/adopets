@@ -34,7 +34,7 @@
 </div>
 
 <script>
-    var contactPerson=[];
+    //var contactPerson=[];
 
     WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
 	var socket = io.connect();
@@ -60,7 +60,7 @@
                             if (mes[0].senderid==$('.chat-name > .font-name').html()){
                                 $('.chat').append("\<div class='chat-bubble you'><div class='content'>"+mes[0].content+"</div></div>");
                             }
-                            else if (!contactPerson.includes("'"+mes[0].senderid+"'")){
+                            /*else if (!contactPerson.includes("'"+mes[0].senderid+"'")){
                                 $(".contact-list").prepend("\
                                 <div class='contact' style='cursor:pointer' onclick='listChat(\""+mes[0].senderid+"\",this)'>\
                                     <img src='/images/user_image.jpg' alt='profilpicture'>\
@@ -71,7 +71,7 @@
                                     </div>\
                                 </div>"); 
                                 contactPerson.push("'"+mes[0].senderid+"'")
-                            }
+                            }*/
                         },
                         error: function (err) {
                             console.log(err);
