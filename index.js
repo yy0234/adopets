@@ -160,6 +160,9 @@ app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
+app.get('/toSupplySearch', function(request, response) {
+  response.send('../webpage/petShop.ejs');
+});
 
 app.get('/run_cat_scraper', function(request, response) {
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
