@@ -34,6 +34,52 @@
 </div>
 
 <script>
+    
+    WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
+	var socket = io.connect();
+    socket.on('connected', function (data) {
+		socket.emit('ready for data', {});
+    });
+    socket.on('update', function (data) {
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (result) {
+				var userid=result.loginUser;
+				if (data.message.payload==userid){
+					if ($( "#chat_window_1" ).css('display')=='block'){
+						$.ajax({
+							url: "/getlastchat",
+							type: "GET",
+							data: {
+							},
+							success: function (mes) {
+								if (mes[0].senderid==$('.panel-title').html()){
+									$('.fa-comments').css("color","inherit");
+									$('.msg_container_base').append("\
+									<div class='row msg_container base_receive'>\
+										<div class='col-md-10 col-xs-10'>\
+											<div class='messages msg_receive'>\
+												<p>"+mes[0].content+"</p>\
+											</div>\
+										</div>\
+									</div>");
+								}
+							},
+							error: function (err) {
+								console.log(err);
+							}
+						});
+					}
+				}	
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+	});
     $(document).ready(function() {
         $.ajax({
             url: "/getlogined",
