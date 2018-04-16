@@ -7,29 +7,111 @@
                         <span><%= loginUser %></span>
                 </div>
                 <div class="contact-list">
-                        <div class='contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>
-                        <div class='contact new-message-contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>
+                        <!--<div class='contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>
+                        <div class='contact new-message-contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>-->
                 </div>
         </section>
 
         <section class="right">
                 <div class="chat-head">
                         <div class="chat-name">
-                            <h1 class="font-name" style="padding-left:20px;">Username</h1>
+                            <h1 class="font-name" style="padding-left:20px;"></h1>
                         </div>
                 </div>
                 <div class="wrap-chat">
                         <div class="chat">
-                            <div class='chat-bubble me'><div class='content'>text</div></div>
-                            <div class='chat-bubble me'><div class='content'>text</div></div>
-                            <div class='chat-bubble you'><div class='content'>text</div></div>
+                            <!--<div class='chat-bubble me'><div class='content'>text</div></div>
+                            <div class='chat-bubble you'><div class='content'>text</div></div>-->
                         </div>
                 </div>
                 <div class="wrap-message">
                         <div class="message" style="margin-left: 20px;">
                                 <input type="text" class="input-message" placeholder="Type Message...">
                         </div>
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        <i class="fas fa-paper-plane" aria-hidden="true" style="font-size: 25px;"></i>
                 </div>
         </section>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "/getlogined",
+            type: "GET",
+            data: {
+            },
+            success: function (result) {
+                var logined=result.isLogined;
+                console.log(logined);
+                if (logined==true){
+                    var userid=result.loginUser;
+                    $.ajax({
+                        url: "/listChatPerson",
+                        type: "GET",
+                        data: {
+                        },
+                        success: function (mes) {
+                           for (var i=0;i<mes.length;i++){
+                            if (mes[i].receiverid !=userid){
+                                $(".contact-list").append("\
+                                <div class='contact' style='cursor:pointer' onclick='listChat("+mes[i].receiverid+",this)'>\
+                                    <img src='/images/user_image.jpg' alt='profilpicture'>\
+                                    <div class='contact-preview'>\
+                                        <div class='contact-text'>\
+                                            <h1 class='font-name'>"+mes[i].receiverid+"</h1>\
+                                        </div>\
+                                    </div>\
+                                </div>");
+                            }
+                           }
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    function listChat(target,pointer){
+        $('.chat-name > .font-name').html(target);
+        $.ajax({
+			url: "/listChat",
+			type: "GET",
+			data: {
+				target: "'"+target+"'",
+			},
+			success: function (mes) {
+				$.ajax({
+					url: "/getlogined",
+					type: "GET",
+					data: {
+					},
+					success: function (result) {
+						var userid=result.loginUser;
+						for (var i=0;i<mes.length;i++){
+							if (mes[i].senderid==userid){
+								$('.chat').append("<div class='chat-bubble me'><div class='content'>text</div></div>");
+							}
+                            else {
+                                $('.chat').append("\<div class='chat-bubble you'><div class='content'>text</div></div>");
+                            }
+						}
+						
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+			},
+			error: function (err) {
+				console.log(err);
+            }
+        })
+    }
+
+</script>
