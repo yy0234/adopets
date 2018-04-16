@@ -912,6 +912,19 @@ function pageSupply(pageNo){
 	$("#page"+current_page).css("background-color","gainsboro");
 }
 
+function checkPost(){
+	if (supply_post_id!=null){
+		for (var x=0;x<supplyData.length;x++){
+			if (supplyData[x].supplyid==supply_post_id){
+				changeModal(x);
+				$("#supplyDetailModal").modal();
+				supply_post_id=null;
+				break;
+			}
+		}
+	}
+}
+
 function findSupply(){
 	var searchQuery="";
 	var temp="";
