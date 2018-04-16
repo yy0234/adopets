@@ -3,6 +3,7 @@ div.shop {
     padding-right: 30px;
 }
 
+/*
 .filter_show_button {
     display: none;
 }
@@ -15,6 +16,7 @@ div.shop {
     pointer-events: auto;
     cursor: pointer;
 }
+*/
 
 span.item_number {
     font-weight:bold;
