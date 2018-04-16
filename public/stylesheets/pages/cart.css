@@ -15,3 +15,7 @@
 .cart_data {
   margin-right: 5px;
 }
+
+.cart_data, .quantity {
+  vertical-align: middle;
+}
