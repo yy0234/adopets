@@ -1,10 +1,8 @@
 // 默认没有名字
-var name;
+var name = false;
 var socket;
-var users = [];
-
-	initializeName();
-	//importUserInDb();
+// 要求写一个名字
+smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 	socket = io.connect();
 	$('h1').text(name);
 
@@ -228,3 +226,6 @@ var users = [];
 			}
 			});
 	}
+}, function() {
+    document.write('Refresh( click F5 ) to reconnect');
+});
