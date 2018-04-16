@@ -34,12 +34,6 @@ div.shop {
         height: 0px !important;
         overflow: hidden !important;
     }
-    /*
-    #item_center, #dropdownlist{
-        margin: auto;
-        float: initial;
-    }
-    */
 
     .search_and_filter.open{
         height: auto !important;
@@ -50,7 +44,7 @@ div.shop {
     }
 
     .sm{
-        display: inline-block !important;
+        display: block !important;
     }
 }
 

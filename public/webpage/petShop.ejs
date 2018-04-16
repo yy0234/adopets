@@ -27,7 +27,7 @@
 		</div>
 		<div class="row shop">
 			<div class="col-md-2" id="left_container">
-				<h5 class="text-primary sm" onclick="listToggle()"><i id="chevron" class="fas fa-chevron-down" style="float:right"></i></h5>
+				<h5 class="text-primary sm" onclick="listToggle()"><span class="responsive_text">Search &amp; Filter</span><i id="chevron" class="fas fa-chevron-down" style="float:right"></i></h5>
 				<br>
 				
 				<div class="search_and_filter">
@@ -162,9 +162,9 @@
 						</a>
 					</div>
 					-->
-					<div class="col-md-6" id="items_count">
+					<div class="col-md-6" id="items_count" style="text-align: center;">
 						<!--SERVER-->
-						<div id="item_center"><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
+						<div style="display: inline-block;"><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
 					</div>
 					<!--
 					<div class="col-md-2" id="display_size">
@@ -173,8 +173,8 @@
 				-->
 					<br class="sm">
 
-					<div class="col-md-6" id="sort_dropdown">
-						<select id="dropdownlist" style="float: right;">
+					<div class="col-md-6" id="sort_dropdown" style="text-align: center;">
+						<select id="dropdownlist" style="display: inline-block;">
 							<option value="popular" selected="selected">&#xf06d; Popular</option>
 							<option value="newest">&#xf017; Newest</option>
 							<option value="price_asc">&#xf160; Price - Low to High</option>
@@ -500,6 +500,7 @@
 function listToggle(){
 	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down");
 	$(".search_and_filter").toggleClass("open");
+	$(".responsive_text").toggle();
 };
 
 $("#dropdownlist").change(function(){
