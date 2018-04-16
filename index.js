@@ -160,6 +160,9 @@ app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
+app.get('/toSupplySearch', function(request, response) {
+  response.send('../webpage/petShop.ejs');
+});
 
 app.get('/run_cat_scraper', function(request, response) {
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
@@ -373,15 +376,18 @@ app.post('/addPets', function (request, response) {
 });
 
 app.get("/listInterest", function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	   client.query("SELECT * FROM pets WHERE status='open'"+request.query.query+" order by petid DESC limit 12", function(err, result) {
-       done();
-       if (err)
-        { console.error(err); return response.send("Error " + err); }
-       else
-        { return response.send(result.rows);   }
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("select * from pets where status='open' order by breed in (select breed from pets where petid in (select unnest(petfav) as petid from users where userid="+userid+")) DESC,type in (select type from pets where petid in (select unnest(petfav) as petid from users where userid="+userid+")) DESC,petid DESC limit 12", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
     });
-  });
 });
 
 
@@ -723,6 +729,56 @@ app.get("/listSellingSupply", function (request, response) {
   }
 });
 
+
+app.get("/listPurchaseSupply", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var buyid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT * FROM purchase WHERE buyid ="+buyid+" order by buytime desc", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
+
+app.post('/addPurchaseSupply', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO purchase(buyid,name,price,quantity,buytime) VALUES($1, $2, $3, $4, $5)'; 
+	  var sqlValue = [request.body.buyid,request.body.name,request.body.price,request.body.quantity,request.body.buytime]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { console.error(err); return response.end("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
+});
+
+app.get("/listSellSupply", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var providerid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("select * from purchase where name in ( select name from petsupply where providerid = "+providerid+") order by buytime desc", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
 
 //JSON.stringify();
 //var io = require('socket.io')(server);
