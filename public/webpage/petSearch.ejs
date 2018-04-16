@@ -12,9 +12,12 @@
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
 						<label for="order">Order by:</label>
 						<select class="custom-select d-block w-100" id="order" required>
-							<option value="date" selected>Post Date</option>
-							<option value="name">Name</option>
-							<option value="age">Age</option>
+							<option value="date" selected>Post Date (Descending)</option>
+							<option value="date_ASC" selected>Post Date (Ascending)</option>
+							<option value="name">Name (A-Z)</option>
+							<option value="name_DESC">Name (Z-A)</option>
+							<option value="age">Age (Young to Old)</option>
+							<option value="age_DESC">Age (Old to Young)</option>
 						</select>
 					</div>
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
@@ -322,6 +325,17 @@ $("#order").change(function(){
 			return 0;
 		});
 	}
+
+	else if ($("#order").val()=="name_DESC"){
+		petData.sort(function(a, b){
+			var x = a.name.toLowerCase();
+			var y = b.name.toLowerCase();
+			if (x < y) {return 1;}
+			if (x > y) {return -1;}
+			return 0;
+		});
+	}
+
 	else if ($("#order").val()=="age"){
 		petData.sort(function(a, b){
 			var x = parseInt(a.age.split(" ")[0]);
@@ -336,9 +350,29 @@ $("#order").change(function(){
 		});
 	}
 
+	else if ($("#order").val()=="age_DESC"){
+		petData.sort(function(a, b){
+			var x = parseInt(a.age.split(" ")[0]);
+			var y = parseInt(b.age.split(" ")[0]);
+			if (x < y) {return 1;}
+			if (x > y) {return -1;}
+			var a=parseInt(a.age.split(" ")[3]);
+			var b=parseInt(b.age.split(" ")[3]);
+			if (a < b) {return 1;}
+			if (a > b) {return -1;}
+			return 0;
+		});
+	}
+
 	else if ($("#order").val()=="date"){
 		petData.sort(function(a, b){
 			return -(parseInt(a.petid)-parseInt(b.petid));
+		});
+	}
+
+	else if ($("#order").val()=="date_ASC"){
+		petData.sort(function(a, b){
+			return (parseInt(a.petid)-parseInt(b.petid));
 		});
 	}
 
