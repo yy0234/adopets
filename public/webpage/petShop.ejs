@@ -816,24 +816,6 @@ function changeModal(elementNo){
 	$("#modal_supplyProvider").html(supplyData_element.providerid);
 	$("#modal_supplyQuantity").html(supplyData_element.quantity);
 	$("#modal_supplyPettype").html(supplyData_element.pettype);
-	$(".modal-content .modal-body.btn-danger")[0].disabled=false;
-	$(".modal-content .modal-body .btn-primary")[2].disabled=false;
-	$.ajax({
-		url: "/getlogined",
-		type: "GET",
-		data: {
-		},
-		success: function (mes) {
-			if (mes.isLogined==true){
-				if (mes.loginUser==petData_element.providerid){
-					$(".modal-content .modal-body .btn-primary")[2].disabled=true;
-				}
-			}
-		},
-		error: function (err) {
-			console.log(err);
-		}
-	});
 
 }
 
