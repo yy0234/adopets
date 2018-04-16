@@ -72,6 +72,11 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1bOumXTVe-xgDQNInDdk_V2xTPnFoie4&libraries=places" async defer></script>
 <script defer src = "https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script>
+$(document).ready(function() {
+  $("#navbarToggler .nav-item").removeClass("active");
+  $("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
+  $("#navbarToggler #base-service").addClass("active");
+}
 
 var map;
 var markers = [];

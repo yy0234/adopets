@@ -157,3 +157,9 @@ nav{
     left:0px;
     bottom:0;
 }
+
+.base-cut-active{
+    color: blue;
+    font-weight: bold;
+    background-color: ghostwhite;
+}

@@ -374,6 +374,9 @@
 	});
 
     $(document).ready(function() {
+		$("#navbarToggler .nav-item").removeClass("active");
+		$("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
+		$("#navbarToggler #base-home").addClass("active");
 
 		$('#searchTab a:first').tab('show');
         $('#petTypes').multiselect({

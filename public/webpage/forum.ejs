@@ -127,6 +127,10 @@
 
 <script>
     $(document).ready(function() {
+        $("#navbarToggler .nav-item").removeClass("active");
+		$("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
+        $("#navbarToggler #base-forum").addClass("active");
+        
         $.ajax({
             url: "/listPostTitle",
             type: "GET",
