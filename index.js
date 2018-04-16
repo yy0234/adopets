@@ -373,15 +373,18 @@ app.post('/addPets', function (request, response) {
 });
 
 app.get("/listInterest", function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	   client.query("SELECT * FROM pets WHERE status='open'"+request.query.query+" order by petid DESC limit 12", function(err, result) {
-       done();
-       if (err)
-        { console.error(err); return response.send("Error " + err); }
-       else
-        { return response.send(result.rows);   }
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("select * from pets where status='open' order by breed in (select breed from pets where petid in (select unnest(petfav) as petid from users where userid="+userid+")) DESC,type in (select type from pets where petid in (select unnest(petfav) as petid from users where userid="+userid+")) DESC,petid DESC limit 12", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
     });
-  });
 });
 
 
