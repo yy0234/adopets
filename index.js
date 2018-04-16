@@ -705,6 +705,23 @@ app.post('/addPurchaseSupply', function (request, response) {
   });
 });
 
+app.get("/listSellSupply", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var providerid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("select * from purchase where name in ( select name from petsupply where providerid = '"+providerid+"') order by buytime desc", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
 
 //JSON.stringify();
 //var io = require('socket.io')(server);
