@@ -355,13 +355,14 @@ function addPurchase(){
 			for (var i = 0; i < parseInt($("#cart_detail").children().length) - 1; i++){
 				var quantity = document.getElementById('quantity-'+i).value;
 				var price = parseFloat(document.getElementById('price-'+ i).innerHTML.substring(1, document.getElementById('price-'+ i).innerHTML.length));
+				var buyid = info.loginUser;
 				$.ajax({
 							url: "/addPurchaseSupply",
 							type: "POST",
 							dataType: 'json',
 							contentType: "application/json",
 							data: JSON.stringify({
-								buyid:info.loginUser,
+								buyid:buyid,
 								name:name,
 								price:price,
 								quantity:quantity,
