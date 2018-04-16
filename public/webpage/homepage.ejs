@@ -362,6 +362,24 @@
 		$("#modal_petProvider").html(petData_element.providerid);
 		$("#modal_petDescription").html(petData_element.description);
 		$("#modal_petRemark").html(petData_element.remark);
+		$(".btn-danger")[1].disabled=false;
+		$(".btn-primary")[4].disabled=false;
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (mes) {
+				if (mes.isLogined==true){
+					if (mes.loginUser==petData_element.providerid){
+						$(".btn-primary")[4].disabled=true;
+					}
+				}
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
 
 	}
 	$(document).scroll(function(){
