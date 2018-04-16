@@ -160,6 +160,9 @@ app.get('/toPetSearch', function(request, response) {
   response.send('../webpage/petSearch.ejs');
 });
 
+app.get('/toSupplySearch', function(request, response) {
+  response.send('../webpage/petShop.ejs');
+});
 
 app.get('/run_cat_scraper', function(request, response) {
   req("http://www.lap.org.hk/adoptcat.aspx", function (error,r, body) {
@@ -418,6 +421,24 @@ app.get('/updatePetFav', function(request, response) {
   }
 });
 
+app.get('/updateSupplyFav', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("UPDATE users SET supplyfav = supplyfav || "+request.query.supplyid+" WHERE userid = "+userid, function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send("success");   }
+      });
+    });
+  }
+});
+
 app.get('/listMyFavPet', function(request, response) {
   var sess = request.session;
   var loginUser=sess.loginUser;
@@ -426,6 +447,24 @@ app.get('/listMyFavPet', function(request, response) {
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       client.query("SELECT * from pets where petid in (SELECT unnest(petfav) FROM users WHERE userid ="+userid+")", function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send(result.rows);   }
+      });
+    });
+  }
+});
+
+app.get('/listMyFavSupply', function(request, response) {
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("SELECT * from petsupply where supplyid in (SELECT unnest(supplyfav) FROM users WHERE userid ="+userid+")", function(err, result) {
         done();
         if (err)
           { console.error(err); return response.send("Error " + err); }
@@ -474,6 +513,24 @@ app.get("/deleFavPet", function (request, response) {
     var userid="'"+loginUser+"'";
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       client.query("UPDATE users SET petfav = array_remove(petfav, "+request.query.petid+") WHERE userid="+userid, function(err, result) {
+        done();
+        if (err)
+          { console.error(err); return response.send("Error " + err); }
+        else
+          { return response.send("success");   }
+      });
+    });
+  }
+});
+
+app.get("/deleFavSupply", function (request, response) { 
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    var userid="'"+loginUser+"'";
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query("UPDATE users SET supplyfav = array_remove(supplyfav, "+request.query.supplyid+") WHERE userid="+userid, function(err, result) {
         done();
         if (err)
           { console.error(err); return response.send("Error " + err); }
@@ -563,7 +620,7 @@ app.get("/listChatPerson", function (request, response) {
 
 app.post('/addSupply', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO petsupply(supplyid,name,description,price,type,postdate,lastupdate,status,remark,supplyurl,providerid,quantity,pettype) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)'; 
+	  var sql = 'INSERT INTO petsupply(supplyid,name,description,price,type,postdate,lastupdate,status,remark,supplyurl,providerid,quantity,pettype) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING supplyid'; 
 	  var sqlValue = [request.body.supplyid, request.body.name, request.body.description, request.body.price, request.body.type, request.body.postdate, request.body.lastupdate, request.body.status, request.body.remark, request.body.supplyurl, request.body.providerid, request.body.quantity, request.body.pettype]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
