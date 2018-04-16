@@ -816,8 +816,8 @@ function changeModal(elementNo){
 	$("#modal_supplyProvider").html(supplyData_element.providerid);
 	$("#modal_supplyQuantity").html(supplyData_element.quantity);
 	$("#modal_supplyPettype").html(supplyData_element.pettype);
-	$(".btn-danger")[0].disabled=false;
-	$(".btn-primary")[4].disabled=false;
+	$(".modal-content .modal-body.btn-danger")[0].disabled=false;
+	$(".modal-content .modal-body .btn-primary")[2].disabled=false;
 	$.ajax({
 		url: "/getlogined",
 		type: "GET",
@@ -826,7 +826,7 @@ function changeModal(elementNo){
 		success: function (mes) {
 			if (mes.isLogined==true){
 				if (mes.loginUser==petData_element.providerid){
-					$(".btn-primary")[4].disabled=true;
+					$(".modal-content .modal-body .btn-primary")[2].disabled=true;
 				}
 			}
 		},
