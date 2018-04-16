@@ -975,14 +975,14 @@ function addCart(userid){
 }
 
 	$(document).ajaxComplete(function(){
-		$(".card").on({
+		$("document").on({
 			mouseenter: function(){
 				$(this).find(".details").animate({opacity: "1.0"});
 			}, 
 			mouseleave: function(){
 				$(this).find(".details").animate({opacity: "0.0"});
 			}
-		});
+		},".card");
 	});
 
 	$(function(){		
