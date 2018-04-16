@@ -686,25 +686,21 @@ app.get("/listPurchaseSupply", function (request, response) {
       });
     });
   }
-});
-
-app.get("/addPurchaseSupply", function (request, response) { 
-  var sess = request.session;
-  var loginUser=sess.loginUser;
-  var isLogined = !!loginUser;
-  if (isLogined==true){
-    var buyerid="'"+loginUser+"'";
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query("SELECT * FROM petsupply WHERE providerid ="+buyerid, function(err, result) {
-        done();
-        if (err)
-          { console.error(err); return response.send("Error " + err); }
-        else
-          { return response.send(result.rows);   }
-      });
-    });
-  }
 });*/
+
+app.post('/addPurchaseSupply', function (request, response) { 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+	  var sql = 'INSERT INTO purchase(buyid,name,price,quantity,buyTime) VALUES($1, $2, $3, $4, $5)'; 
+	  var sqlValue = [request.body.buyid,request.body.name,request.body.price,request.body.quantity,request.body.buytime]; 
+	  client.query(sql,sqlValue,function(err,result) {
+       done();
+       if (err)
+        { console.error(err); return response.end("Error " + err); }
+       else
+        { return response.send("success");   }
+      });
+  });
+});
 
 
 //JSON.stringify();
