@@ -307,7 +307,7 @@ app.post('/addNewPost', function (request, response) {
         else
           { 
             var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
-            var sqlValue2 =[request.body.content,result.rows[0].topicid,request.body.postby,request.body.replyprev];
+            var sqlValue2 =[request.body.content,result.rows[0].topicid,loginUser,request.body.replyprev];
             client.query(sql2,sqlValue2,function(error,result2) {
               done();
               if (error)
