@@ -7,7 +7,6 @@
 		<div class="row" style="margin: 0 auto;">
 			
 			<div class="col-lg-3">
-				<h5 class="my-3 text-info lg">Search</h5>
 				<h5 class="my-3 text-info sm" onclick="listToggle()">Search<i id="chevron" class="fas fa-chevron-down" style="float:right"></i></h5>
 				<div class="list-group filter">
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
@@ -19,6 +18,7 @@
 						</select>
 					</div>
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<label>Direct Search:</label>
 						<div class="input-group autocomplete">
 							<input type="text" id="auto_complete" class="form-control" placeholder="Search..."/>
 							<span class="input-group-addon">
@@ -27,7 +27,8 @@
 							</span>
 						</div>
 					</div>
-					<div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<label>Basic Search:</label>
 						<div>
 							<select id="petTypes" multiple="multiple">
 								<option value="bird">Birds</option>
