@@ -17,36 +17,17 @@
 
 	<div class="container-fluid">
 	<!--Your own content-->
-	<div class="shop">
-		<div class="row">
-			<div class="col-md-3" id="filter_button">
-				<a id="show_hide_button">
-					<span class="filter_hide_button"><span class="fa fa-caret-left"></span>Hide</span>
-					<span class="filter_show_button"><span class="fa fa-caret-right"></span>Show</span>
-					Filter
-				</a>
-			</div>
-			<div class="col-md-6" id="items_count">
-				<!--SERVER-->
-				<div><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
-			</div>
-			<!--
-			<div class="col-md-2" id="display_size">
-				<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
-			</div>
-		-->
-			<div class="col-md-3" id="sort_dropdown">
-				<select id="dropdownlist">
-					<option value="popular" selected="selected">&#xf06d; Popular</option>
-					<option value="newest">&#xf017; Newest</option>
-					<option value="price_asc">&#xf160; Price - Low to High</option>
-					<option value="price_desc">&#xf161; Price - High to Low</option>
-				</select>
+		<div class="row" style="margin-left:0;margin-right:0;">
+			<!-- Success message after add to cart -->
+			<div class="alert alert-success" id="success-alert" style="display:none;">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				<strong>Success! </strong>
+				Product have added to your cart.
 			</div>
 		</div>
-		<br>
-		<div class="row">
+		<div class="shop">
 			<div class="col-md-2" id="left_container">
+				<h5 class="text-primary">Search</h5>
 				<div class="list-group-item list-group-item-action flex-column align-items-start">
 					<div class="input-group autocomplete">
 						<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
@@ -57,6 +38,7 @@
 				</div>
 				<br>
 				<br>
+				<h5 class="text-primary">Filter</h5>
 				<div class="filtering">
 					<form id="filter_form">
 						<div class="condition">
@@ -164,60 +146,48 @@
 					</form>
 				</div>
 			</div>
-      
-				<div class="col-md-10" >
-					<div class="row" id="product_display">
-						<!--<div class="card-deck">-->
-						<!--
-								<div class="card">
-									<div class="thumbnail">
-										
-										<a href="" class="product_page">
-											<img class="product_image" src="/images/cat1.jpg"/>
-										</a>
-										<div class="details">
-											
-											<a class="user" href="">
-												<div class="user-photo">
-													<img class="user_image" src="/images/user_image.jpg"/>
-												</div>
-												<div class="username">User</div>
-											</a>
-											
-											<div class="heart_info">
-												<div class="heart_no"><i class="fab fa-gratipay"></i>100</div>
-											</div>
-										</div>
-										<div class="arrow">
-											<div class="left_arrow">&#xf104;</div>
-											<div class="right_arrow">&#xf105;</div>
-										</div>	
-									</div>
-									<div class="card-info">
-										<div class="product_info">
-											
-											<a href="" class="product_page">
-												<p class="product_title">Cat</p>
-												<p class="item_price">HKD$500</p>
-												<p class="item_description">100% new cat food</p>
-											</a>
-										</div>
-										<div class="product_buttons">
-											<div class="shopping_cart">
-												<i class="fa fa-cart-plus"></i>
-											</div>
-											<div class="heart">
-												<i class="far fa-heart"></i>
-												<i class="fas fa-heart"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card">
+			<div class="col-md-10">
+				<div class="row">
+					<!--
+					<div class="col-md-3" id="filter_button">
+						<a id="show_hide_button">
+							<span class="filter_hide_button"><span class="fa fa-caret-left"></span>Hide</span>
+							<span class="filter_show_button"><span class="fa fa-caret-right"></span>Show</span>
+							Filter
+						</a>
+					</div>
+					-->
+					<div class="col-md-6" id="items_count" style="float: left;">
+						<!--SERVER-->
+						<div><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
+					</div>
+					<!--
+					<div class="col-md-2" id="display_size">
+						<div>View:&nbsp;<a class="fa fa-th-large" id="less_icon"></a><a class="fa fa-th" id="more_icon"></a></div>
+					</div>
+				-->
+					<div class="col-md-6" id="sort_dropdown" style="float: right;">
+						<select id="dropdownlist">
+							<option value="popular" selected="selected">&#xf06d; Popular</option>
+							<option value="newest">&#xf017; Newest</option>
+							<option value="price_asc">&#xf160; Price - Low to High</option>
+							<option value="price_desc">&#xf161; Price - High to Low</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+				
+		
+					<div class="col-md-10" >
+						<div class="row" id="product_display">
+							<!--<div class="card-deck">-->
+							<!--
+									<div class="card">
 										<div class="thumbnail">
 											
 											<a href="" class="product_page">
-												<img class="product_image" src="/images/cat3.jpg"/>
+												<img class="product_image" src="/images/cat1.jpg"/>
 											</a>
 											<div class="details">
 												
@@ -257,187 +227,235 @@
 											</div>
 										</div>
 									</div>
-								
-								<div class="col-md-4 product_card">
-									<a class="product_image_link">
-										<div class="image_controller">
-											<div class="arrow">
-												<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
-												<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
-											</div>
-											<div class="product_grid_item">
-												<img class="product_image" src="/images/cat1.jpg"/>
-												<img class="product_image" src="/images/cat2.png"/>
-												<img class="product_image" src="/images/cat3.jpg"/>
-												<img class="product_image" src="/images/dog1.jpg"/>
-											</div>
-										</div>
-									</a>
-								</div>
-							-->
-							<!--</div> -->
-						</div>
-
-						<ul id="pagination" class="pagination justify-content-center" style="display:none">
-								<li id="previous" class="page-item">
-									<a class="page-link" aria-label="Previous" onclick="pageSupply(-2)">
-									<span aria-hidden="true">«</span>
-									<span class="sr-only">Previous</span>
-									</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" aria-label="Next" onclick="pageSupply(-1)">
-									<span aria-hidden="true">»</span>
-									<span class="sr-only">Next</span>
-									</a>
-								</li>
-						</ul>
-				
-					<div class="alert alert-success" id="success-alert">
-						<button type="button" class="close" data-dismiss="alert">x</button>
-						<strong>Success! </strong>
-						Product have added to your cart.
-					</div>
-
-					<!--supply detail-->
-				<div class="modal fade" id="supplyDetailModal" tabindex="-1" role="dialog" aria-labelledby="supplyDetailModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-lg" role="document">
-							<div class="modal-content">
-								<div class="modal-header" style="border-bottom:none;">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body" style="margin-bottom: 20px;">
-									<div class="row" style="margin-left:0;margin-right:0;">
-										<div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
-											<a id="modal_supplyImage"><img src="/images/cat3.jpg" /></a>
-											<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
-												<div class="col-md-12" style="margin-bottom:20px;">
-													<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+									<div class="card">
+											<div class="thumbnail">
+												
+												<a href="" class="product_page">
+													<img class="product_image" src="/images/cat3.jpg"/>
+												</a>
+												<div class="details">
+													
+													<a class="user" href="">
+														<div class="user-photo">
+															<img class="user_image" src="/images/user_image.jpg"/>
+														</div>
+														<div class="username">User</div>
+													</a>
+													
+													<div class="heart_info">
+														<div class="heart_no"><i class="fab fa-gratipay"></i>100</div>
+													</div>
 												</div>
-												<div class="col-md-12">
-													<button type="button" class="btn btn-primary" style="width:80%" onclick="loginToAddCart()">Add to Shopping Cart</button>
+												<div class="arrow">
+													<div class="left_arrow">&#xf104;</div>
+													<div class="right_arrow">&#xf105;</div>
+												</div>	
+											</div>
+											<div class="card-info">
+												<div class="product_info">
+													
+													<a href="" class="product_page">
+														<p class="product_title">Cat</p>
+														<p class="item_price">HKD$500</p>
+														<p class="item_description">100% new cat food</p>
+													</a>
+												</div>
+												<div class="product_buttons">
+													<div class="shopping_cart">
+														<i class="fa fa-cart-plus"></i>
+													</div>
+													<div class="heart">
+														<i class="far fa-heart"></i>
+														<i class="fas fa-heart"></i>
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-md-7 col-lg-8" id="scrollbar" style="margin-bottom:10px; max-height: 500px; overflow-y: auto;">
-											<div class="row" style="margin-left:0;margin-right:0;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
-												<div class="col-md-12 col-lg-6">
-													<div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
-														<div style="display:table-row;">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Supply ID
+									
+									<div class="col-md-4 product_card">
+										<a class="product_image_link">
+											<div class="image_controller">
+												<div class="arrow">
+													<div class="left_arrow" onclick="plusDiv(1)">&#xf104;</div>
+													<div class="right_arrow" onclick="plusDiv(-1)">&#xf105;</div>
+												</div>
+												<div class="product_grid_item">
+													<img class="product_image" src="/images/cat1.jpg"/>
+													<img class="product_image" src="/images/cat2.png"/>
+													<img class="product_image" src="/images/cat3.jpg"/>
+													<img class="product_image" src="/images/dog1.jpg"/>
+												</div>
+											</div>
+										</a>
+									</div>
+								-->
+								<!--</div> -->
+							</div>
+
+							<ul id="pagination" class="pagination justify-content-center" style="display:none">
+									<li id="previous" class="page-item">
+										<a class="page-link" aria-label="Previous" onclick="pageSupply(-2)">
+										<span aria-hidden="true">«</span>
+										<span class="sr-only">Previous</span>
+										</a>
+									</li>
+									<li class="page-item">
+										<a class="page-link" aria-label="Next" onclick="pageSupply(-1)">
+										<span aria-hidden="true">»</span>
+										<span class="sr-only">Next</span>
+										</a>
+									</li>
+							</ul>
+			</div>
+							
+
+						<!--supply detail-->
+					<div class="modal fade" id="supplyDetailModal" tabindex="-1" role="dialog" aria-labelledby="supplyDetailModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg" role="document">
+								<div class="modal-content">
+									<div class="modal-header" style="border-bottom:none;">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body" style="margin-bottom: 20px;">
+										<div class="row" style="margin-left:0;margin-right:0;">
+											<div class="col-md-5 col-lg-4" style="text-align:center;margin-top:10px;margin-bottom:10px;">
+												<a id="modal_supplyImage"><img src="/images/cat3.jpg" /></a>
+												<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
+													<div class="col-md-12" style="margin-bottom:20px;">
+														<button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+													</div>
+													<div class="col-md-12">
+														<button type="button" class="btn btn-primary" style="width:80%" onclick="loginToAddCart()">Add to Shopping Cart</button>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-7 col-lg-8" id="scrollbar" style="margin-bottom:10px; max-height: 500px; overflow-y: auto;">
+												<div class="row" style="margin-left:0;margin-right:0;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+													<div class="col-md-12 col-lg-6">
+														<div style="display:table;width:100%;line-height: 30px; margin-top: 10px;">
+															<div style="display:table-row;">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Supply ID
+																</div>
+																<div id="modal_supplyId" style="display:table-cell">
+																	001
+																</div>
 															</div>
-															<div id="modal_supplyId" style="display:table-cell">
-																001
+															<div style="display:table-row;">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Name
+																</div>
+																<div id="modal_supplyName" style="display:table-cell">
+																	Name
+																</div>
 															</div>
-														</div>
-														<div style="display:table-row;">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Name
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Type
+																</div>
+																<div id="modal_supplyType" style="display:table-cell">
+																	Type
+																</div>
 															</div>
-															<div id="modal_supplyName" style="display:table-cell">
-																Name
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Provider
+																</div>
+																<div id="modal_supplyProvider" style="display:table-cell">
+																	Provider
+																</div>
 															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Type
-															</div>
-															<div id="modal_supplyType" style="display:table-cell">
-																Type
-															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Provider
-															</div>
-															<div id="modal_supplyProvider" style="display:table-cell">
-																Provider
-															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Post date
-															</div>
-															<div id="modal_supplyPostDate" style="display:table-cell">
-																Post date
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Post date
+																</div>
+																<div id="modal_supplyPostDate" style="display:table-cell">
+																	Post date
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-md-12 col-lg-6">
-													<div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Condition
-															</div>
-															<div id="modal_supplyStatus" style="display:table-cell">
+													<div class="col-md-12 col-lg-6">
+														<div style="display:table; width:100%; line-height: 30px; margin-top: 10px;">
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
 																	Condition
+																</div>
+																<div id="modal_supplyStatus" style="display:table-cell">
+																		Condition
+																</div>
 															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Price
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Price
+																</div>
+																<div id="modal_supplyPrice" style="display:table-cell">
+																	Price
+																</div>
 															</div>
-															<div id="modal_supplyPrice" style="display:table-cell">
-																Price
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Pet type
+																</div>
+																<div id="modal_supplyPettype" style="display:table-cell">
+																	Pet type
+																</div>
 															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Pet type
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Quantity
+																</div>
+																<div id="modal_supplyQuantity" style="display:table-cell">
+																	Quantity
+																</div>
 															</div>
-															<div id="modal_supplyPettype" style="display:table-cell">
-																Pet type
-															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Quantity
-															</div>
-															<div id="modal_supplyQuantity" style="display:table-cell">
-																Quantity
-															</div>
-														</div>
-														<div style="display:table-row">
-															<div style="display:table-cell; font-weight:bold;width:40%">
-																Last Update
-															</div>
-															<div id="modal_supplyLastupdate" style="display:table-cell">
-																Last Update
+															<div style="display:table-row">
+																<div style="display:table-cell; font-weight:bold;width:40%">
+																	Last Update
+																</div>
+																<div id="modal_supplyLastupdate" style="display:table-cell">
+																	Last Update
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
+												<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
+													<div class="col-md-12" style="font-weight:bold;color:blue">
+														Description
+													</div>
+													<div id="modal_supplyDescription" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+														Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
+														
+														I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
+														
+														My estimated birthdate is 10/1/2015.
+													</div>
+												</div>
+												<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;padding-bottom: 20px;">
+													<div class="col-md-12" style="font-weight:bold;color:grey">
+														Remark
+													</div>
+													<div id="modal_supplyRemark" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
+														None
+													</div>
+												</div>
 											</div>
-											<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;border-bottom: 1px solid lightgray;padding-bottom: 20px;">
-												<div class="col-md-12" style="font-weight:bold;color:blue">
-													Description
-												</div>
-												<div id="modal_supplyDescription" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
-													Hi there, I’m Arthur! I’m a soft big short-haired black and white buddy cat.  Tragically my person died in a car accident and I was left in an empty house being fed by the realtor for some months. I’m so happy to be safe here at the shelter but I really want a home of my own with people to love me again.
-													
-													I’m a little on the shy side and like to hide under blankets until I feel safe. If you approach me though I love petting and I really enjoy being held as well. I like the company of other friendly cats and may be a good buddy to a gentle cat looking for a partner.
-													
-													My estimated birthdate is 10/1/2015.
-												</div>
-											</div>
-											<div class="row" style="margin-left:0;margin-right:0;margin-top: 20px;padding-bottom: 20px;">
-												<div class="col-md-12" style="font-weight:bold;color:grey">
-													Remark
-												</div>
-												<div id="modal_supplyRemark" class="col-md-12 modelpetDescription" style="line-height: 30px;white-space: pre-line;">
-													None
-												</div>
+										</div>
+										<div class="row" style="margin-left:0;margin-right:0;">
+											<!-- Success message after add to cart -->
+											<div class="alert alert-success" id="success-alert-2" style="display:none;">
+												<button type="button" class="close" data-dismiss="alert">x</button>
+												<strong>Success! </strong>
+												Product have added to your cart.
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 						
 					</div>
 				</div>
@@ -498,9 +516,9 @@ $("#dropdownlist").change(function(){
 	else if (supplyData.responseJSON.length>12){
 		for (var i=0; i<12;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -547,9 +565,9 @@ $("#dropdownlist").change(function(){
 		document.getElementById("total_item_number").innerHTML = supplyData.responseJSON.length;
 		supplyData.responseJSON.forEach(function(element,index) {
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -626,9 +644,9 @@ function callAjax(Query){
 			else if (mes.length>12){
 				for (var i=0; i<12;i++){
 					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+mes[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -680,9 +698,9 @@ function callAjax(Query){
 				document.getElementById("total_item_number").innerHTML = mes.length;
 				mes.forEach(function(element,index) {
 					$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -775,9 +793,9 @@ function pageSupply(pageNo){
 	if (supplyData.responseJSON.length>(page_no+12)){
 		for (var i=page_no;i<page_no+12;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -818,9 +836,9 @@ function pageSupply(pageNo){
 	else{
 		for (var i=page_no;i<supplyData.responseJSON.length;i++){
 			$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+i+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+supplyData.responseJSON[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+i+")\">"+supplyData.responseJSON[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -939,8 +957,19 @@ function loginToAddCart(){
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
-					if(info.isLogined)
+					if(info.isLogined){
 						addCart(info.loginUser);
+						$(document).on("click", ".fa-cart-plus", function(){
+							$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+								$("#success-alert").slideUp(500);
+							});   
+						});
+						$(document).on("click", ".btn-primary", function(){
+							$("#success-alert-2").fadeTo(2000, 500).slideUp(500, function(){
+								$("#success-alert-2").slideUp(500);
+							});   
+						});
+					}
 					else
 						alert("Please login to add your product.");
 				},
@@ -1009,13 +1038,6 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
-
-		$("#success-alert").hide();
-		$(".fa-cart-plus, .btn-primary").click(function showAlert() {
-			$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-				$("#success-alert").slideUp(500);
-			});   
-		});
 		
 		supplyData= $.ajax({
 					url: "/listSupply",
@@ -1031,9 +1053,9 @@ function addCart(userid){
 						else if (mes.length>12){
 							for (var i=0; i<12;i++){
 								$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+mes[i].supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+mes[i].supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -1082,9 +1104,9 @@ function addCart(userid){
 							document.getElementById("total_item_number").innerHTML = mes.length;
 							mes.forEach(function(element,index) {
 								$("#product_display").append("\
-										<div class=\"overlay\" onclick=\"changeModal("+index+")\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
+										<div class=\"overlay\" data-toggle=\"modal\" data-target=\"#supplyDetailModal\">\
 											<div class=\"card\">\
-												<a class=\"product_image\">"+element.supplyurl+"</a>\
+												<a class=\"product_image\" onclick=\"changeModal("+index+")\">"+element.supplyurl+"</a>\
 												<div class=\"details\">\
 													<a class=\"user\" href=\"\">\
 														<div class=\"user-photo\">\
@@ -1130,7 +1152,7 @@ function addCart(userid){
 					}
 				});
 
-
+		/*
 		$("#show_hide_button").click(function(){
 			$("#left_container").toggle();
 			$(".filter_hide_button").toggle();
@@ -1166,6 +1188,8 @@ function addCart(userid){
 		$("div.filtering button").click(function(){
 			$("i", this).toggleClass("fa fa-minus fa fa-plus")
 		});
+		
+		*/
 
 		var nonLinearStepSlider = document.getElementById('price_range');
 

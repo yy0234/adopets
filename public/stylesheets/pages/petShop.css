@@ -3,6 +3,7 @@ div.shop {
     padding-right: 30px;
 }
 
+/*
 .filter_show_button {
     display: none;
 }
@@ -15,6 +16,7 @@ div.shop {
     pointer-events: auto;
     cursor: pointer;
 }
+*/
 
 span.item_number {
     font-weight:bold;
@@ -501,4 +503,15 @@ div.right_arrow {
   @keyframes sk-circleFadeDelay {
     0%, 39%, 100% { opacity: 0; }
     40% { opacity: 1; } 
+  }
+
+  #success-alert {
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+  }
+  #success-alert-2 {
+      position: absolute;
+      left: 0;
+      width: 100%;
   }
