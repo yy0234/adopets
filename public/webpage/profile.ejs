@@ -27,8 +27,8 @@
                     <div class="panel-collapse collapse" id="collapseTC002A" style="border-right: 1px solid rgba(0,0,0,.125);border-left: 1px solid rgba(0,0,0,.125);">
                         <div class="panel-body">
                             <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showTrade',this); showSell()">Sell</a>
-                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showHistory',this); showPurchase()">Purchase History</a>
-                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Selling History</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showPurchaseHistory',this); showPurchaseHistory()">Purchase History</a>
+                            <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue;cursor:pointer;" onclick="switchMode('showSellHistory',this); showSellHistory()">Selling History</a>
                             <a class="list-group-item" style="padding-left: 40px;border:none;color:royalblue">Your Favorite</a>
                         </div>
                     </div>
@@ -417,7 +417,7 @@
                 </li>\
             </ul>")
         }
-        else if (mode == 'showHistory')
+        else if (mode == 'showPurchaseHistory')
         {
             $("#mode").append("\
             <div class=\"row-custom\" style=\"display: flex;flex-wrap: wrap; text-align:center;\">\
@@ -427,6 +427,23 @@
                             <th style=\"width:15%\">Date</th>\
                             <th style=\"width:60%\">Name</th>\
                             <th style=\"width:15%\">Total Price</th>\
+                            <th style=\"width:10%\">Quantity</th>\
+                        </tr>\
+                    </thead>\
+                </table>\
+            </div>")
+        }
+        else if (mode == 'showSellHistory')
+        {
+            $("#mode").append("\
+            <div class=\"row-custom\" style=\"display: flex;flex-wrap: wrap; text-align:center;\">\
+                <table id=\"HistoryTable\" class=\"table order-list\">\
+                    <thead>\
+                        <tr>\
+                            <th style=\"width:10%\">Date</th>\
+                            <th style=\"width:10%\">Purchaser</th>\
+                            <th style=\"width:60%\">Name</th>\
+                            <th style=\"width:10%\">Total Price</th>\
                             <th style=\"width:10%\">Quantity</th>\
                         </tr>\
                     </thead>\
@@ -1032,8 +1049,8 @@ supplyData = $.ajax({
 }
 
 
-function showPurchase(){
-supplyData = $.ajax({
+function showPurchaseHistory(){
+        $.ajax({
 		url: "/listPurchaseSupply",
 		type: "GET",
 		data: {
@@ -1061,5 +1078,35 @@ supplyData = $.ajax({
 	});
 }
 
+function showSellHistory(){
+        $.ajax({
+		url: "/listSellSupply",
+		type: "GET",
+		data: {
+		},
+		success: function (data) {
+            var size = 0;
+            var table = document.getElementById("HistoryTable");
+			data.forEach(function(element,index) {             
+                var row = table.insertRow(size+1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var d=new Date(element.buytime);
+                cell2.innerHTML = element.buyid;
+                cell2.innerHTML = d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
+                cell3.innerHTML = element.name;
+                cell4.innerHTML = element.price;
+                cell5.innerHTML = element.quantity;
+                size++;
+            });
+		},
+		error: function (err) {
+			return err;
+		}
+	});
+}
 
 </script>
