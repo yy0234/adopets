@@ -329,10 +329,8 @@ function list_delete(task,name){
 			var total = 0;
 			for (var i = 0; i < parseInt($("#cart_detail").children().length) - 1; i++){
 				total += parseFloat(document.getElementById('price-'+ i).innerHTML.substring(1, document.getElementById('price-'+ i).innerHTML.length));
-				console.log(total);
 			}
-			$("#total").val("$" + total.toFixed(2));
-			console.log($("#total").val());
+			document.getElementById("total").innerHTML = "$" + total.toFixed(2);
 		}
 
 		function autoFillUserName(){
