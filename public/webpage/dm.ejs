@@ -4,7 +4,7 @@
 <div class="wrap">
         <section class="left">
                 <div class="profile">
-                        <span><%= loginUser %></span>
+                        <span style="padding: 20px;"><%= loginUser %></span>
                 </div>
                 <div class="contact-list">
                         <!--<div class='contact' id='id'><img src='/images/user_image.jpg' alt='profilpicture'><div class='contact-preview'><div class='contact-text'><h1 class='font-name'>username</h1></div></div></div>
@@ -54,7 +54,7 @@
                            for (var i=0;i<mes.length;i++){
                             if (mes[i].receiverid !=userid){
                                 $(".contact-list").append("\
-                                <div class='contact' style='cursor:pointer' onclick='listChat("+mes[i].receiverid+",this)'>\
+                                <div class='contact' style='cursor:pointer' onclick='listChat('"+mes[i].receiverid+"',this)'>\
                                     <img src='/images/user_image.jpg' alt='profilpicture'>\
                                     <div class='contact-preview'>\
                                         <div class='contact-text'>\
