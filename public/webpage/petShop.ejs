@@ -27,127 +27,131 @@
 		</div>
 		<div class="row shop">
 			<div class="col-md-2" id="left_container">
-				<h5 class="text-primary">Search</h5>
-				<div class="list-group-item list-group-item-action flex-column align-items-start">
-					<div class="input-group autocomplete">
-						<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
-						<span class="input-group-addon">
-							<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
-						</span>
+				<h5 class="text-primary lg">Search</h5>
+				<h5 class="text-primary sm" onclick="listToggle()">Search<i id="chevron" class="fas fa-chevron-down" style="float:right"></i></h5>
+				
+				<div class="search_and_filter">
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="input-group autocomplete">
+							<input type="text" id="search" class="form-control" placeholder="Search..." name="search"/>
+							<span class="input-group-addon">
+								<i class="fas fa-search" style="cursor:pointer;" onclick="spinner();searchByKey()"></i>
+							</span>
+						</div>
 					</div>
-				</div>
-				<br>
-				<br>
-				<h5 class="text-primary">Filter</h5>
-				<div class="filtering">
-					<form id="filter_form">
-						<div class="condition">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.condition #collapse_condition">CONDITION<i class="fa fa-plus"></i></button>
-							<div id="collapse_condition" class="collapse">
-								<label class="container">New
-									<input type="radio" id="new" name="radio"/>
-									<span class="checkmark"></span>
-								</label>
-								<label class="container">Used
-									<input type="radio" id="used" name="radio"/>
-									<span class="checkmark"></span>
-								</label>
+					<br>
+					<br>
+					<h5 class="text-primary">Filter</h5>
+					<div class="filtering">
+						<form id="filter_form">
+							<div class="condition">
+								<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.condition #collapse_condition">CONDITION<i class="fa fa-plus"></i></button>
+								<div id="collapse_condition" class="collapse">
+									<label class="container">New
+										<input type="radio" id="new" name="radio"/>
+										<span class="checkmark"></span>
+									</label>
+									<label class="container">Used
+										<input type="radio" id="used" name="radio"/>
+										<span class="checkmark"></span>
+									</label>
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="price">
-							<button id="price" type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
-							<div id="collapse_price" class="collapse">
-								<br>
-								<div id="price_range"></div>
-								<br>
-								<div id="price_range_text">$<span id="min_price"></span> - $<span id="max_price"></span></div>
+							<br>
+							<div class="price">
+								<button id="price" type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.price #collapse_price">PRICE<i class="fa fa-plus"></i></button>
+								<div id="collapse_price" class="collapse">
+									<br>
+									<div id="price_range"></div>
+									<br>
+									<div id="price_range_text">$<span id="min_price"></span> - $<span id="max_price"></span></div>
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="pet_types">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
-							<div id="collapse_pet_types" class="collapse">
-								<label class="container">Dog
-									<input type="checkbox" id="dog" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Cat
-									<input type="checkbox" id="cat" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Bird
-									<input type="checkbox" id="bird" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Fish
-									<input type="checkbox" id="fish" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Reptile
-									<input type="checkbox" id="reptile" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Rodent
-									<input type="checkbox" id="rodent" name="pet_types"/>
-									<span class="checkbox"></span>
-								</label>
+							<br>
+							<div class="pet_types">
+								<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.pet_types #collapse_pet_types">PET TYPES<i class="fa fa-plus"></i></button>
+								<div id="collapse_pet_types" class="collapse">
+									<label class="container">Dog
+										<input type="checkbox" id="dog" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Cat
+										<input type="checkbox" id="cat" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Bird
+										<input type="checkbox" id="bird" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Fish
+										<input type="checkbox" id="fish" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Reptile
+										<input type="checkbox" id="reptile" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Rodent
+										<input type="checkbox" id="rodent" name="pet_types"/>
+										<span class="checkbox"></span>
+									</label>
+								</div>
 							</div>
-						</div>
-						<br>
-						<div class="category">
-							<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
-							<div id="collapse_category" class="collapse">
-								<label class="container">Food
-									<input type="checkbox" id="food" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Beds &amp; Cages
-									<input type="checkbox" id="beds_cages" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Feeding Utensils
-									<input type="checkbox" id="feeding_utensils" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Health Products
-									<input type="checkbox" id="health_products" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Collars, Leads &amp; Harness
-									<input type="checkbox" id="clhm" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Grooming
-									<input type="checkbox" id="grooming" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Fashion
-									<input type="checkbox" id="fashion" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Waste Management
-									<input type="checkbox" id="waste_management" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Toys
-									<input type="checkbox" id="toys" name="category"/>
-									<span class="checkbox"></span>
-								</label>
-								<label class="container">Travelling Equipment
-									<input type="checkbox" id="travelling_equipment" name="category"/>
-									<span class="checkbox"></span>
-								</label>
+							<br>
+							<div class="category">
+								<button type="button" class="btn btn-light btn-block collapsed" data-toggle="collapse" data-target="div.category #collapse_category">CATEGORY<i class="fa fa-plus"></i></button>
+								<div id="collapse_category" class="collapse">
+									<label class="container">Food
+										<input type="checkbox" id="food" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Beds &amp; Cages
+										<input type="checkbox" id="beds_cages" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Feeding Utensils
+										<input type="checkbox" id="feeding_utensils" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Health Products
+										<input type="checkbox" id="health_products" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Collars, Leads &amp; Harness
+										<input type="checkbox" id="clhm" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Grooming
+										<input type="checkbox" id="grooming" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Fashion
+										<input type="checkbox" id="fashion" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Waste Management
+										<input type="checkbox" id="waste_management" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Toys
+										<input type="checkbox" id="toys" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+									<label class="container">Travelling Equipment
+										<input type="checkbox" id="travelling_equipment" name="category"/>
+										<span class="checkbox"></span>
+									</label>
+								</div>
 							</div>
-						</div>
-						<br>
-						<input class="btn btn-success" type="button" value="Submit" onclick="spinner();findSupply()">
-						<input class="btn btn-danger" type="reset" value="Reset">
-					</form>
+							<br>
+							<input class="btn btn-success" type="button" value="Submit" onclick="spinner();findSupply()">
+							<input class="btn btn-danger" type="reset" value="Reset">
+						</form>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-10">
-				<div class="row">
+				<div class="row lg">
 					<!--
 					<div class="col-md-3" id="filter_button">
 						<a id="show_hide_button">
@@ -175,6 +179,24 @@
 						</select>
 					</div>
 				</div>
+
+				<div class="sm">
+					<div id="items_count" style="margin: auto; width: 100%;">
+						<!--SERVER-->
+						<div><span class="item_number" id="first_item_number"> </span>&nbsp;-&nbsp;<span class="item_number" id="last_item_number"> </span>&nbsp;of&nbsp;<span class="item_number" id="total_item_number"> </span>&nbsp;items</div>
+					</div>
+					<br>
+					<br>
+					<div id="sort_dropdown" style="margin: auto; width: 100%;">
+						<select id="dropdownlist" style="float: right;">
+							<option value="popular" selected="selected">&#xf06d; Popular</option>
+							<option value="newest">&#xf017; Newest</option>
+							<option value="price_asc">&#xf160; Price - Low to High</option>
+							<option value="price_desc">&#xf161; Price - High to Low</option>
+						</select>
+					</div>
+				</div>
+
 				<br>
 				<div class="row">
 				
@@ -471,6 +493,10 @@
 	var current_page =1;
 	var total_page=0;
 
+function listToggle(){
+	$("#chevron").toggleClass("fa-chevron-up fa-chevron-down");
+	$(".filter").toggleClass("open");
+};
 
 $("#dropdownlist").change(function(){
 
