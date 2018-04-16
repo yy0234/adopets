@@ -35,7 +35,7 @@ div.shop {
         overflow: hidden !important;
     }
 
-    #items_count, #sort_dropdown{
+    #item_center, #dropdownlist{
         margin: auto;
     }
 
