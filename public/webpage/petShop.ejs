@@ -975,11 +975,13 @@ function addCart(userid){
 }
 
 	$(document).ajaxComplete(function(){
-		$(".card").hover(function() {
-			$(this).find(".details").animate({opacity: "1.0"});
-		}, function(){
-			$(this).find(".details").animate({opacity: "0.0"});
-		});
+		$(".card").on({
+			mouseenter: function(){
+				$(this).find(".details").animate({opacity: "1.0"});
+			}, 
+			mouseleave: function(){
+				$(this).find(".details").animate({opacity: "0.0"});
+			}
 	})
 
 	$(function(){		
