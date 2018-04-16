@@ -300,7 +300,7 @@ function list_delete(task,name){
 															<span class=\"delete-btn\"></span>\
 															<i class=\"fas fa-trash-alt\"></i>\
 												</div>\
-												<h6 class=\"my-0 mr-auto cart_data\">" + item[i].name + "</h6>\
+												<h6 class=\"my-0 mr-auto cart_data\" id=\"name-"+i+"\" >" + item[i].name + "</h6>\
 												<span class=\"text-muted cart_data\" id=\"price-"+i+"\" >" + item[i].price + "</span>\
 												<input class=\"quantity\" type=\"number\" id=\"quantity-"+i+"\" onchange=\"qtyChange('"+item[i].price+"',"+i+")\" style=\"width: 2em; height: 2em;\" min=\"1\" max=\"99\" step=\"1\" value=\"1\">\
 											</li>")
@@ -356,6 +356,8 @@ function addPurchase(){
 				var quantity = document.getElementById('quantity-'+i).value;
 				var price = parseFloat(document.getElementById('price-'+ i).innerHTML.substring(1, document.getElementById('price-'+ i).innerHTML.length));
 				var buyid = info.loginUser;
+				var name = document.getElementById('name-'+ i).innerHTML;
+	
 				$.ajax({
 							url: "/addPurchaseSupply",
 							type: "POST",
@@ -366,7 +368,7 @@ function addPurchase(){
 								name:name,
 								price:price,
 								quantity:quantity,
-								buyTime: new Date(),
+								buytime: new Date(),
 							}),
 							complete: function complete() {
 							},

@@ -690,7 +690,7 @@ app.get("/listPurchaseSupply", function (request, response) {
 
 app.post('/addPurchaseSupply', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO purchase(buyid,name,price,quantity,buyTime) VALUES($1, $2, $3, $4, $5)'; 
+	  var sql = 'INSERT INTO purchase(buyid,name,price,quantity,buytime) VALUES($1, $2, $3, $4, $5)'; 
 	  var sqlValue = [request.body.buyid,request.body.name,request.body.price,request.body.quantity,request.body.buytime]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
