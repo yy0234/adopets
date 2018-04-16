@@ -1058,7 +1058,7 @@ function showPurchaseHistory(){
 		success: function (data) {
             var size = 0;
             var table = document.getElementById("HistoryTable");
-			data.forEach(function(element,index) {             
+			data.forEach(function(element,index) {
                 var row = table.insertRow(size+1);
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
@@ -1087,7 +1087,7 @@ function showSellHistory(){
 		success: function (data) {
             var size = 0;
             var table = document.getElementById("HistoryTable");
-			data.forEach(function(element,index) {             
+			data.forEach(function(element,index) {
                 var row = table.insertRow(size+1);
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
