@@ -81,7 +81,7 @@
     });
 
     function listChat(target,pointer){
-        $(this).removeClass("new-message-contact");
+        $(pointer).removeClass("new-message-contact");
         $('.chat-name > .font-name').html(target);
         $('.chat').html("");
         $.ajax({
