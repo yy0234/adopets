@@ -306,8 +306,8 @@ function list_delete(task,name){
 							};
 							$("#cart_detail").append("\
 									<li class=\"list-group-item d-flex justify-content-between\">\
-									<span>Total (HKD)</span>\
-									<strong id=\"total\">$"+ total.toFixed(2) +"</strong>\
+										<span>Total (HKD)</span>\
+										<strong id=\"total\">$"+ total.toFixed(2) +"</strong>\
 									</li>");
 							$('#numberOfItem').text(counter);
 							}
@@ -327,8 +327,8 @@ function list_delete(task,name){
 			document.getElementById('total').innerHTML = '$' + total.toFixed(2);
 			*/
 			var total = 0;
-			console.log($("#cart_detail").children().length);
-			for (var i = 0; i < (parseInt($("#cart_detail").children().length) - 1); i++){
+			console.log($("#cart_detail").children().length - 1);
+			for (var i = 0; i < parseInt($("#cart_detail").children().length) - 1; i++){
 				console.log(document.getElementById('price-'+ i));
 				total += document.getElementById('price-'+ i).innerHTML.substring(1, document.getElementById('price-'+ i).innerHTML.length) ;
 			}
