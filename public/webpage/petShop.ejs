@@ -17,7 +17,7 @@
 
 	<div class="container-fluid">
 	<!--Your own content-->
-	<div class="row" style="margin-left:0;margin-right:0;">
+	<div class="row" style="margin-left:0;margin-right:0;display:none;">
 		<!-- Success message after add to cart -->
 		<div class="alert alert-success" id="success-alert">
 			<button type="button" class="close" data-dismiss="alert">x</button>
@@ -1019,8 +1019,6 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
-
-		$("#success-alert").hide();
 		
 		supplyData= $.ajax({
 					url: "/listSupply",
