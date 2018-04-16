@@ -81,7 +81,9 @@
     });
 
     function listChat(target,pointer){
+        $(".contact-list>.contact").removeClass("active-contact");
         $(pointer).removeClass("new-message-contact");
+        $(pointer).addClass("active-contact");
         $('.chat-name > .font-name').html(target);
         $('.chat').html("");
         $.ajax({
