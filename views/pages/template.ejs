@@ -19,6 +19,56 @@
 <% include ../partials/script.ejs %>
 
 <!--Your own script-->
+WEB_SOCKET_SWF_LOCATION = '/javascript/WebSocketMain.swf';
+var socket = io.connect();
+socket.on('connected', function (data) {
+	socket.emit('ready for data', {});
+});
+socket.on('update', function (data) {
+	console.log(data);
+	/*$.ajax({
+		url: "/getlogined",
+		type: "GET",
+		data: {
+		},
+		success: function (result) {
+			var userid=result.loginUser;
+			if (data.message.payload==userid){
+
+				$.ajax({
+					url: "/getlastchat",
+					type: "GET",
+					data: {
+					},
+					success: function (mes) {
+						if (mes[0].senderid==$('.chat-name > .font-name').html()){
+							$('.chat').append("\<div class='chat-bubble you'><div class='content'>"+mes[0].content+"</div></div>");
+						}
+						else if (!contactPerson.includes("'"+mes[0].senderid+"'")){
+							$(".contact-list").prepend("\
+							<div class='contact' style='cursor:pointer' onclick='listChat(\""+mes[0].senderid+"\",this)'>\
+								<img src='/images/user_image.jpg' alt='profilpicture'>\
+								<div class='contact-preview'>\
+									<div class='contact-text'>\
+										<h1 class='font-name'>"+mes[0].senderid+"</h1>\
+									</div>\
+								</div>\
+							</div>"); 
+							contactPerson.push("'"+mes[0].senderid+"'")
+						}
+					},
+					error: function (err) {
+						console.log(err);
+					}
+				});
+				
+			}	
+		},
+		error: function (err) {
+			console.log(err);
+		}
+	});*/
+});
 
 </body>
 </html>
