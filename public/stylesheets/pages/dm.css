@@ -228,7 +228,7 @@ i {
 .chat {
     background-color: #f8f9fa;
     width: 100%;
-    padding: 0px 10%;
+    padding: 0px 5%;
     padding-top: 7px;
     overflow-y: auto;
 }
@@ -289,13 +289,13 @@ i {
 
 .you {
     background: #ffffff;
-    margin: 0px auto 10px 0px;
+    margin: 20px auto 20px 0px;
 }
 
 .me {
     background: #3097D1;
     color:white;
-    margin: 0px 0px 10px auto;
+    margin: 20px 0px 20px auto;
 }
 
 .your-mouth {
@@ -319,7 +319,7 @@ i {
 }
 
 .content {
-    margin: 0.5em 0;
+    margin: 0.5em 10px;
     line-height: 120%;
     font-size: 0.9em;
 }
