@@ -327,7 +327,9 @@ function list_delete(task,name){
 			document.getElementById('total').innerHTML = '$' + total.toFixed(2);
 			*/
 			var total = 0;
+			console.log($("#cart_detail").children().length);
 			for (var i = 0; i < $("#cart_detail").children().length; i++){
+				console.log(document.getElementById('price-'+ i));
 				total += document.getElementById('price-'+ i).innerHTML.substring(1, document.getElementById('price-'+ i).innerHTML.length) ;
 			}
 			$("#total").val("$" + total.toFixed(2));
