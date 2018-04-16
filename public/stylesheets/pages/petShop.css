@@ -22,7 +22,7 @@ div.shop {
 }
 
 .lg{
-    display:block;
+    display: inline-block;
 }
 
 .sm{
@@ -33,6 +33,10 @@ div.shop {
     .search_and_filter{
         height: 0px !important;
         overflow: hidden !important;
+    }
+
+    #items_count, #sort_dropdown{
+        margin: auto;
     }
 
     .search_and_filter.open{
