@@ -34,6 +34,7 @@
 </div>
 
 <script>
+    var contactPerson=[];
     $(document).ready(function() {
         $.ajax({
             url: "/getlogined",
@@ -62,8 +63,10 @@
                                         </div>\
                                     </div>\
                                 </div>");
+                                contactPerson.push("'"+mes[i].receiverid+"'");
                             }
                            }
+                           console.log(contactPerson);
                         },
                         error: function (err) {
                             console.log(err);
@@ -78,6 +81,9 @@
     });
 
     function listChat(target,pointer){
+        $(".contact-list>.contact").removeClass("active-contact");
+        $(pointer).removeClass("new-message-contact");
+        $(pointer).addClass("active-contact");
         $('.chat-name > .font-name').html(target);
         $('.chat').html("");
         $.ajax({

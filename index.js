@@ -293,68 +293,83 @@ app.get("/listPostContent", function (request, response) {
 });
 
 app.post('/addNewPost', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject,postby,replynum'; 
-	  var sqlValue = [request.body.subject,request.body.category,request.body.postby,request.body.replynum]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { return response.send("Error " + err); }
-       else
-        { 
-          var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
-          var sqlValue2 =[request.body.content,result.rows[0].topicid,request.body.postby,request.body.replyprev];
-          client.query(sql2,sqlValue2,function(error,result2) {
-            done();
-            if (error)
-             { return response.send(error); }
-            else
-             { 
-              return response.send(result.rows);
-             }
-           });
-        }
-      });
-  });
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      var sql = 'INSERT INTO topics(subject,category,postby,replynum) VALUES($1, $2, $3, $4) RETURNING topicid,subject,postby,replynum'; 
+      var sqlValue = [request.body.subject,request.body.category,loginUser,request.body.replynum]; 
+      client.query(sql,sqlValue,function(err,result) {
+        done();
+        if (err)
+          { return response.send("Error " + err); }
+        else
+          { 
+            var sql2='INSERT INTO posts(content,topic,postby,replyprev) VALUES($1, $2, $3, $4)';
+            var sqlValue2 =[request.body.content,result.rows[0].topicid,loginUser,request.body.replyprev];
+            client.query(sql2,sqlValue2,function(error,result2) {
+              done();
+              if (error)
+              { return response.send(error); }
+              else
+              { 
+                return response.send(result.rows);
+              }
+            });
+          }
+        });
+    });
+  }
 });
 
 app.post('/addNewReply', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6) RETURNING content,postby,postdate,replyprecontent,postid'; 
-	  var sqlValue = [request.body.content,request.body.topic,request.body.postby,request.body.replyprev,request.body.replyprevid,request.body.replyprecontent]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { return response.send("Error " + err); }
-       else
-        { 
-          var sql2="UPDATE topics set replynum=replynum+1,postdate=DEFAULT WHERE topicid='"+request.body.topic+"'";
-          client.query(sql2,function(error,result2) {
-            done();
-            if (error)
-             { return response.send(error); }
-            else
-             { 
-              return response.send(result.rows);
-             }
-           });
-        }
-      });
-  });
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      var sql = 'INSERT INTO posts(content,topic,postby,replyprev,replyprevid,replyprecontent) VALUES($1, $2, $3, $4, $5, $6) RETURNING content,postby,postdate,replyprecontent,postid'; 
+      var sqlValue = [request.body.content,request.body.topic,loginUser,request.body.replyprev,request.body.replyprevid,request.body.replyprecontent]; 
+      client.query(sql,sqlValue,function(err,result) {
+        done();
+        if (err)
+          { return response.send("Error " + err); }
+        else
+          { 
+            var sql2="UPDATE topics set replynum=replynum+1,postdate=DEFAULT WHERE topicid='"+request.body.topic+"'";
+            client.query(sql2,function(error,result2) {
+              done();
+              if (error)
+              { return response.send(error); }
+              else
+              { 
+                return response.send(result.rows);
+              }
+            });
+          }
+        });
+    });
+  }
 });
 
 app.post('/addPets', function (request, response) { 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING petid'; 
-	  var sqlValue = [request.body.name,request.body.type,request.body.breed,request.body.gender,request.body.age,request.body.postdate,request.body.lastupdate,request.body.status,request.body.remark,request.body.peturl,request.body.providerid,request.body.description,request.body.neutered,request.body.size,request.body.coat]; 
-	  client.query(sql,sqlValue,function(err,result) {
-       done();
-       if (err)
-        { console.error(err); return response.end("Error " + err); }
-       else
-        { return response.send(result.rows); }
-      });
-  });
+  var sess = request.session;
+  var loginUser=sess.loginUser;
+  var isLogined = !!loginUser;
+  if (isLogined==true){
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      var sql = 'INSERT INTO pets(name,type,breed,gender,age,postdate,lastupdate,status,remark,peturl,providerid,description,neutered,size,coat) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING petid'; 
+      var sqlValue = [request.body.name,request.body.type,request.body.breed,request.body.gender,request.body.age,request.body.postdate,request.body.lastupdate,request.body.status,request.body.remark,request.body.peturl,loginUser,request.body.description,request.body.neutered,request.body.size,request.body.coat]; 
+      client.query(sql,sqlValue,function(err,result) {
+        done();
+        if (err)
+          { console.error(err); return response.end("Error " + err); }
+        else
+          { return response.send(result.rows); }
+        });
+    });
+  }
 });
 
 app.get("/listInterest", function (request, response) { 
