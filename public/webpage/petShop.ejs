@@ -942,8 +942,14 @@ function loginToAddCart(){
 				url: "/getlogined",
 				type: "GET",
 				success: function (info) {
-					if(info.isLogined)
+					if(info.isLogined){
 						addCart(info.loginUser);
+						$(document).on("click", ".fa-cart-plus, .btn-primary", function(){
+							$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+								$("#success-alert").slideUp(500);
+							});   
+						});
+					}
 					else
 						alert("Please login to add your product.");
 				},
@@ -991,12 +997,6 @@ function addCart(userid){
 				$(this).find(".details").animate({opacity: "0.0"});
 			}
 		}, ".card");
-
-		$(document).on("click", ".fa-cart-plus, .btn-primary", function(){
-			$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-				$("#success-alert").slideUp(500);
-			});   
-		});
 	});
 
 	$(function(){		
