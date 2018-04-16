@@ -390,11 +390,12 @@ body::-webkit-scrollbar-thumb, .contact-list::-webkit-scrollbar-thumb, .chat::-w
     .wrap {
         margin-bottom: 2vh;
         margin-top: 25px;
-        height: calc(98vh - 25px);
+        height: calc(90vh - 50px);
     }
 }
 
 @media (max-width: 600px) {
     .wrap {
-        height: calc(100vh - 0.4em);
+        height: calc(90vh - 0.6em);
     }
+}
