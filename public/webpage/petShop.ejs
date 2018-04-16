@@ -292,7 +292,12 @@
 									</a>
 								</li>
 						</ul>
-
+				
+					<div class="alert alert-success" id="success-alert">
+						<button type="button" class="close" data-dismiss="alert">x</button>
+						<strong>Success! </strong>
+						Product have added to your cart.
+					</div>
 
 					<!--supply detail-->
 				<div class="modal fade" id="supplyDetailModal" tabindex="-1" role="dialog" aria-labelledby="supplyDetailModalLabel" aria-hidden="true">
@@ -1005,6 +1010,13 @@ function addCart(userid){
 -		}
 -		*/
 
+		$("#success-alert").hide();
+		$(".fa-cart-plus, .btn-primary").click(function showAlert() {
+			$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+				$("#success-alert").slideUp(500);
+			});   
+		});
+		
 		supplyData= $.ajax({
 					url: "/listSupply",
 					type: "GET",
