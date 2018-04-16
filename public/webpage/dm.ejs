@@ -26,9 +26,9 @@
                 </div>
                 <div class="wrap-message">
                         <div class="message" style="margin-left: 20px;">
-                                <input type="text" class="input-message" placeholder="Type Message...">
+                                <input type="text" class="input-message chat_input" placeholder="Type Message...">
                         </div>
-                        <i class="fas fa-paper-plane" aria-hidden="true" style="font-size: 25px;"></i>
+                        <i class="fas fa-paper-plane" aria-hidden="true" style="font-size: 25px;" onclick="dmsendChat()"></i>
                 </div>
         </section>
 </div>
@@ -79,6 +79,7 @@
 
     function listChat(target,pointer){
         $('.chat-name > .font-name').html(target);
+        $('.chat').html("");
         $.ajax({
 			url: "/listChat",
 			type: "GET",
@@ -95,10 +96,10 @@
 						var userid=result.loginUser;
 						for (var i=0;i<mes.length;i++){
 							if (mes[i].senderid==userid){
-								$('.chat').append("<div class='chat-bubble me'><div class='content'>text</div></div>");
+								$('.chat').append("<div class='chat-bubble me'><div class='content'>"+mes[i].content+"</div></div>");
 							}
                             else {
-                                $('.chat').append("\<div class='chat-bubble you'><div class='content'>text</div></div>");
+                                $('.chat').append("\<div class='chat-bubble you'><div class='content'>"+mes[i].content+"</div></div>");
                             }
 						}
 						
@@ -113,5 +114,27 @@
             }
         })
     }
+
+    function dmsendChat(){
+		if ($.trim($('.chat_input').val())!=""){
+			var inputContent=$('.chat_input').val();
+			$.ajax({
+				url: "/sendChat",
+				type: "GET",
+				data: {
+					receiverid: $('.chat-name > .font-name').html(),
+					content: $('.chat_input').val()
+				},
+				success: function (mes) {
+					console.log(mes);
+					    $('.chat').append("<div class='chat-bubble me'><div class='content'>"+inputContent+"</div></div>");
+						$('.chat_input').val("");
+				},
+				error: function (err) {
+					console.log(err);
+				}
+			});
+		}
+	}
 
 </script>
