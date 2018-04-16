@@ -226,8 +226,7 @@ i {
 }
 
 .chat {
-    background-color: #e5ddd5;
-    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/background.png);
+    background-color: #f8f9fa;
     width: 100%;
     padding: 0px 10%;
     padding-top: 7px;
@@ -294,7 +293,8 @@ i {
 }
 
 .me {
-    background: #dcf8c6;
+    background: #3097D1;
+    color:white;
     margin: 0px 0px 10px auto;
 }
 
