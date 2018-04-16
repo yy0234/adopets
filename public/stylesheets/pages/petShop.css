@@ -37,6 +37,7 @@ div.shop {
 
     #item_center, #dropdownlist{
         margin: auto;
+        float: none;
     }
 
     .search_and_filter.open{
