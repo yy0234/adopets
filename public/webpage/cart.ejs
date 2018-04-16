@@ -330,7 +330,7 @@ function list_delete(task,name){
 			for (i = 0; i < $("#cart_detail").children().length; i++){
 				total += $("#price-" + i).innerHTML.substring(1, $("#price" + i).length) ;
 			}
-			$("$total").val("$" + total.toFixed(2));
+			$("#total").val("$" + total.toFixed(2));
 		}
 
 		function autoFillUserName(){
