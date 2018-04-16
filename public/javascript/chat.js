@@ -1,12 +1,12 @@
-// 默认没有名字
+// default no name
 var name = false;
 var socket;
-// 要求写一个名字
+// request a name
 smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 	socket = io.connect();
 	$('h1').text(name);
 
-	// 正在连接
+	// connecting
 	socket.on('connecting', function () {
 		console.log('connecting');
 	});
@@ -25,39 +25,39 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 		});
 	});*/
 
-	// 第一次登陆接收其它成员信息
+	// receive others online
 	socket.on('login', function (user) {
 		if(user.length>=1){
 			for(var i =0;i<user.length;i++){
-				incomeHtml(user[i],'/images/cat1.jpg');
+				incomeHtml(user[i],'/images/user_image.jpg');
 			}
 		}
 	});
-	// 监听中途的成员加入
+	// monitor new user join
 	socket.on('user joined', function (tname, index) {
-		incomeHtml(tname,'/images/cat1.jpg');
+		incomeHtml(tname,'/images/user_image.jpg');
 		console.log(tname+'join');
-		showNotice('/images/cat1.jpg',tname,"online");
+		showNotice('/images/user_image.jpg',tname,"online");
 	});
-	// 接收私聊信息
+	// receive message
 	socket.on('receive private message', function (data) {
 		$('#ding')[0].play();
 		if(data.addresser == data.recipient) return;
-		var head = '/images/cat1.jpg';
+		var head = '/images/user_image.jpg';
 		$('#'+hex_md5(data.addresser)+' .chat-msg').append('<li><img src="'+head+'"><span class="speak">'+data.body+'</span></li>');
 		if(document.hidden){
 			showNotice(head,data.addresser,data.body);
 		}
 		scrollToBottom(hex_md5(data.addresser));
 	});
-	// 监听中途的成员离开
+	// monitor user leave
 	socket.on('user left', function (data) {
 		console.log(data+'leave');
 		$('#'+hex_md5(data)).remove();
 		$('#li'+hex_md5(data)).remove();
 	});
 
-	// 连接失败
+	// connect fail
 	socket.on('disconnect', function () {
 		$('.outline').css('display','block');
 		$('#session').children().remove();
@@ -65,14 +65,14 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 		console.log('you have been disconnected');
 	});
 
-	// 重连
+	// reconnect
 	socket.on('reconnect', function () {
 		console.log('you have been reconnected');
 		$('.outline').css('display','none');
-		//继续用原来的name todo
+		//reuse the name
 	});
 
-	// 监听重连错误 会多次尝试
+	// try more reconnect
 	socket.on('reconnect_error', function () {
 		console.log('attempt to reconnect has failed');
 	});
@@ -82,7 +82,7 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 		var recipient = $('.chat-active').attr('data-n');
 		var val = $('.chat-active input').val();
 		if(val == '') return;
-		sendMessage('/images/cat1.jpg',val);
+		sendMessage('/images/user_image.jpg',val);
 		//call
 		var req = {
 			'addresser':name,
@@ -100,7 +100,7 @@ smalltalk.prompt('Welcome', 'What is your name?', '').then(function(name) {
 			var recipient = $('.chat-active').attr('data-n');
 			var val = $('.chat-active input').val();
 			if(val == '') return;
-			sendMessage('/images/cat1.jpg',val);
+			sendMessage('/images/user_image.jpg',val);
 			//call
 			var req = {
 				'addresser':name,
