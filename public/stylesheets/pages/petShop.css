@@ -17,6 +17,9 @@ div.shop {
     cursor: pointer;
 }
 */
+.search_and_filter{
+    height: auto;
+}
 
 .lg{
     display:block;
@@ -26,7 +29,7 @@ div.shop {
     display:none;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 750px) {
     .search_and_filter{
         height: 0px !important;
         overflow: hidden !important;
