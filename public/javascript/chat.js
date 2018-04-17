@@ -125,7 +125,7 @@ HiChat.prototype = {
             docFragment = document.createDocumentFragment();
         for (var i = 69; i > 0; i--) {
             var emojiItem = document.createElement('img');
-            emojiItem.src = '../content/emoji/' + i + '.gif';
+            emojiItem.src = '../images/emoji/' + i + '.gif';
             emojiItem.title = i;
             docFragment.appendChild(emojiItem);
         };
@@ -161,7 +161,7 @@ HiChat.prototype = {
             if (emojiIndex > totalEmojiNum) {
                 result = result.replace(match[0], '[X]');
             } else {
-                result = result.replace(match[0], '<img class="emoji" src="../emoji/' + emojiIndex + '.gif" />');//todo:fix this in chrome it will cause a new request for the image
+                result = result.replace(match[0], '<img class="emoji" src="../images/emoji/' + emojiIndex + '.gif" />');//todo:fix this in chrome it will cause a new request for the image
             };
         };
         return result;
