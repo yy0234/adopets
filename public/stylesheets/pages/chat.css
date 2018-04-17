@@ -40,7 +40,7 @@
 }
 #historyMsg:after {
     content: "";
-    background-image: url("images/adopets.png");
+    background-image: url(images/adopets.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
