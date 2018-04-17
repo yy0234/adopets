@@ -542,7 +542,7 @@
 			},
 			success: function (mes) {
 				if (mes.isLogined==true){
-					callback;
+					callback();
 				}
 				else{
 					$('#signInModal').modal('show');
