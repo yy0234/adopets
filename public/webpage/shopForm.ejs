@@ -234,7 +234,23 @@
 			}
 			else if (form.checkValidity() === true){
 				encodeImageFileAsURL( function(){
-					updateDatabase();
+					$.ajax({
+						url: "/getlogined",
+						type: "GET",
+						data: {
+						},
+						success: function (mes) {
+							if (mes.isLogined==true){
+								updateDatabase();
+							}
+							else{
+								$('#signInModal').modal('show');
+							}
+						},
+						error: function (err) {
+							console.log(err);
+						}
+					});
 				});
 				event.preventDefault();
 			}
