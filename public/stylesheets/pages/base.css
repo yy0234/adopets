@@ -213,3 +213,12 @@ nav{
     color: #fff;
     top: 5px;
 }
+
+.mdb-color.lighten-3 {
+    background-color: #929fba!important;
+}
+
+footer.page-footer {
+    bottom: 0;
+    color: #fff;
+}
