@@ -525,6 +525,24 @@
         $("#modal_petProvider").html(favPetData_element.providerid);
         $("#modal_petDescription").html(favPetData_element.description);
         $("#modal_petRemark").html(favPetData_element.remark);
+        $(".btn-danger")[0].disabled=false;
+		$(".btn-primary")[3].disabled=false;
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (mes) {
+				if (mes.isLogined==true){
+					if (mes.loginUser==petData_element.providerid){
+						$(".btn-primary")[3].disabled=true;
+					}
+				}
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
     }
 
     function changeModal(elementNo){
@@ -545,6 +563,24 @@
         $("#modal_petProvider").html(petData_element.providerid);
         $("#modal_petDescription").html(petData_element.description);
         $("#modal_petRemark").html(petData_element.remark);
+        $(".btn-danger")[0].disabled=false;
+		$(".btn-primary")[3].disabled=false;
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (mes) {
+				if (mes.isLogined==true){
+					if (mes.loginUser==petData_element.providerid){
+						$(".btn-primary")[3].disabled=true;
+					}
+				}
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
 
     }
 
