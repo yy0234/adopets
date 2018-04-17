@@ -93,10 +93,10 @@
                             <a id="modal_petImage"><img src="/images/cat3.jpg" /></a>
                             <div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
                                 <div class="col-md-12" style="margin-bottom:20px;">
-                                    <button type="button" class="btn btn-danger" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+                                    <button type="button" class="btn btn-danger" onclick="this.disabled=true;updatePetFav(this)" style="width:80%"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button type="button" class="btn btn-primary" style="width:80%">Contact Provider</button>
+                                    <button type="button" class="btn btn-primary" onclick="contactProvider()" style="width:80%">Contact Provider</button>
                                 </div>
                             </div>
                         </div>
@@ -456,6 +456,22 @@
     var current_page =1;
     var total_page=0;
     var favPetData;
+
+    function updatePetFav(pointer){
+		$.ajax({
+			url: "/updatePetFav",
+			type: "GET",
+			data: {
+				petid:"'{"+$("#modal_petId").html()+"}'"
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+	}
     
     function delePet(petid,trash){
         ($(trash).parents().parents())[2].remove();
