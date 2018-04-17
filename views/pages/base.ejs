@@ -534,6 +534,25 @@
 		$( "#chat_window_1" ).css('display','none');
 	});
 
+	function checklogin(callback){
+		$.ajax({
+			url: "/getlogined",
+			type: "GET",
+			data: {
+			},
+			success: function (mes) {
+				if (mes.isLogined==true){
+					callback;
+				}
+				else{
+					$('#signInModal').modal('show');
+				}
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+	}
 
 </script>
 </body>
