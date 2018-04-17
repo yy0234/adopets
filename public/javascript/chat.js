@@ -10,12 +10,12 @@ HiChat.prototype = {
         var that = this;
         this.socket = io.connect();
         this.socket.on('connect', function() {
-            document.getElementById('info').textContent = 'get yourself a nickname :)';
+            document.getElementById('info').textContent = 'Get yourself a nickname :)';
             document.getElementById('nickWrapper').style.display = 'block';
             document.getElementById('nicknameInput').focus();
         });
         this.socket.on('nickExisted', function() {
-            document.getElementById('info').textContent = '!nickname is taken, choose another pls';
+            document.getElementById('info').textContent = 'Nickname is taken! Choose another please';
         });
         this.socket.on('loginSuccess', function() {
             document.title = 'hichat | ' + document.getElementById('nicknameInput').value;
@@ -24,9 +24,9 @@ HiChat.prototype = {
         });
         this.socket.on('error', function(err) {
             if (document.getElementById('loginWrapper').style.display == 'none') {
-                document.getElementById('status').textContent = '!fail to connect :(';
+                document.getElementById('status').textContent = 'Fail to connect :(';
             } else {
-                document.getElementById('info').textContent = '!fail to connect :(';
+                document.getElementById('info').textContent = 'Fail to connect :(';
             }
         });
         this.socket.on('system', function(nickName, userCount, type) {
