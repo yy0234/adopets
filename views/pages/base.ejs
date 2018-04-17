@@ -215,6 +215,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
 	<section id="dynamic" class="main-content">
 		<%- include(action) %>
 	</section>
@@ -553,6 +554,19 @@
 			}
 		});
 	}
+
+	$(window).scroll(function() {
+		if ($(this).scrollTop() >= 50) {  
+			$('#return-to-top').fadeIn(200); 
+		} else {
+			$('#return-to-top').fadeOut(200); 
+		}
+	});
+	$('#return-to-top').click(function() { 
+		$('body,html').animate({
+			scrollTop : 0  
+		}, 500);
+	});
 
 </script>
 </body>
