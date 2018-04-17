@@ -85,7 +85,8 @@
     position: absolute;
     background-color: #aaa;
     box-shadow: 0 0 10px #555;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 #emojiWrapper img {
     margin: 2px;
