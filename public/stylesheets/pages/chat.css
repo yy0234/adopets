@@ -34,7 +34,7 @@
 #historyMsg {
     position: relative;
     height: 400px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.534);
     overflow: auto;
     padding: 2px;
     background-image: url("/images/adopets.png");
