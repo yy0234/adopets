@@ -1,27 +1,40 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.css"/>
 <link rel="stylesheet" type="text/css" href="/stylesheets/pages/chat.css"/>
-<link rel="stylesheet" type="text/css" href="/stylesheets/smalltalk.min.css"/>
 
 <div class="container-fluid">
     <!--Your own content-->
-    <div id="app" class="app">
-        <div id="linkman" class="linkman">
-            <div class="main">
-                <div class="header"><h4>Chatroom</h4></div>
-                <br>
-                <div class="body">
-                    <ul id="session"></ul>
-                </div>
+    <div class="wrapper">
+        <div class="banner">
+            <h1>HiChat :)</h1>
+            <span id="status"></span>
+        </div>
+        <div id="historyMsg">
+        </div>
+        <div class="controls" >
+            <div class="items">
+                <input id="colorStyle" type="color" placeHolder='#000' title="font color" />
+                <input id="emoji" type="button" value="emoji" title="emoji" />
+                <label for="sendImage" class="imageLable">
+                    <input type="button" value="image"  />
+                    <input id="sendImage" type="file" value="image"/>
+                </label>
+                <input id="clearBtn" type="button" value="clear" title="clear screen" />
+            </div>
+            <textarea id="messageInput" placeHolder="enter to send"></textarea>
+            <input id="sendBtn" type="button" value="SEND">
+            <div id="emojiWrapper">
             </div>
         </div>
-        <div id="chat"> </div>
     </div>
-    <audio id="ding" src="/images/ding.mp3"> not support audio </audio>
-    <div id="emoji" class="shadow move"><span>😂</span><span>😀</span><span>😭</span><span>😹</span><span>🙏</span><span>😬</span><span>😁</span><span>😃</span><span>😄</span><span>😅</span><span>😆</span><span>😇</span><span>😉</span><span>😊</span><span>🙂</span><span>🙃</span><span>😋</span><span>😌</span><span>😍</span><span>😘</span><span>😗</span><span>😙</span><span>😚</span><span>😜</span><span>😝</span><span>😛</span><span>🤑</span><span>🤓</span><span>😎</span><span>🤗</span><span>😏</span><span>😶</span><span>😐</span><span>😑</span><span>😒</span><span>🙄</span><span>🤔</span><span>😳</span><span>😞</span><span>😟</span><span>😠</span><span>😡</span><span>😔</span><span>😕</span><span>🙁</span><span>😣</span><span>😖</span><span>😫</span><span>😩</span><span>😤</span><span>😮</span><span>😨</span><span>😰</span><span>😯</span><span>😦</span><span>😧</span><span>😢</span><span>😥</span><span>😪</span><span>😵</span><span>😲</span><span>🤐</span><span>😷</span><span>🤒</span><span>🤕</span><span>😴</span><span>💤</span><span>🙌</span><span>👏</span><span>👋</span><span>👊</span><span>👌</span><span>💪</span><span>👍</span><span>👆</span><span>👇</span><span>👈</span><span>👉</span><span>🖕</span><span>🤘</span><span>🖖</span><span>💩</span><span>😈</span><span>👿</span><span>👹</span><span>👺</span><span>💀</span><span>👻</span><span>👽</span><span>🤖</span><span>😺</span><span>😸</span><span>😻</span><span>😼</span><span>😽</span><span>🙀</span><span>😿</span><span>😾</span><span>💅</span><span>👄</span><span>👅</span><span>👂</span><span>👃</span><span>👁</span><span>👀</span><span>👤</span><span>🗣</span><span>👶</span><span>👦</span><span>👧</span><span>👨</span><span>👩</span><span>👱</span><span>👴</span><span>👵</span><span>👲</span><span>👳</span><span>👮</span><span>👷</span><span>💂</span></div>
+    <div id="loginWrapper">
+        <p id="info">connecting to server...</p>
+        <div id="nickWrapper">
+            <input type="text" placeHolder="nickname" id="nicknameInput" />
+            <input type="button" value="OK" id="loginBtn" />
+        </div>
+    </div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/javascript/md5.js"></script>
-<script src="/javascript/smalltalk.min.js"></script>
 <script src="/javascript/chat.js"></script>
 

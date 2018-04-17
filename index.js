@@ -780,39 +780,39 @@ app.get("/listSellSupply", function (request, response) {
   }
 });
 
-//JSON.stringify();
-//var io = require('socket.io')(server);
-var usocket = {},user = [];
 
-io.on('connection', (socket) => {
 
-	socket.on('new user', (username) => {
-		if(!(username in usocket)) {
-			socket.username = username;
-			usocket[username] = socket;
-			user.push(username);
-			socket.emit('login',user);
-			socket.broadcast.emit('user joined',username,(user.length-1));
-			console.log(user);
-		}
-	})
+var users = [];
 
-	socket.on('send private message', function(res){
-		console.log(res);
-		if(res.recipient in usocket) {
-			usocket[res.recipient].emit('receive private message', res);
-		}
-	});
-
-	socket.on('disconnect', function(){
-		if(socket.username in usocket){
-			delete(usocket[socket.username]);
-			user.splice(user.indexOf(socket.username), 1);
-		}
-		console.log(user);
-		socket.broadcast.emit('user left',socket.username)
-	})
-
+io.sockets.on('connection', function(socket) {
+  //new user login
+  socket.on('login', function(nickname) {
+      if (users.indexOf(nickname) > -1) {
+          socket.emit('nickExisted');
+      } else {
+          //socket.userIndex = users.length;
+          socket.nickname = nickname;
+          users.push(nickname);
+          socket.emit('loginSuccess');
+          io.sockets.emit('system', nickname, users.length, 'login');
+      };
+  });
+  //user leaves
+  socket.on('disconnect', function() {
+      if (socket.nickname != null) {
+          //users.splice(socket.userIndex, 1);
+          users.splice(users.indexOf(socket.nickname), 1);
+          socket.broadcast.emit('system', socket.nickname, users.length, 'logout');
+      }
+  });
+  //new message get
+  socket.on('postMsg', function(msg, color) {
+      socket.broadcast.emit('newMsg', socket.nickname, msg, color);
+  });
+  //new image get
+  socket.on('img', function(imgData, color) {
+      socket.broadcast.emit('newImg', socket.nickname, imgData, color);
+  });
 });
 
 /*app.get('*', function(request, response) {
