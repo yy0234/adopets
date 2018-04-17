@@ -541,6 +541,9 @@
 			data: {
 			},
 			success: function (mes) {
+				console.log(mes);
+				console.log(mes.isLogined==true);
+				console.log(mes.isLogined==false);
 				if (mes.isLogined==true){
 					callback;
 				}
