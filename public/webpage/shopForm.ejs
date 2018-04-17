@@ -219,6 +219,10 @@
 	(function() {
 		'use strict';
 		window.addEventListener('load', function() {
+		$("#navbarToggler .nav-item").removeClass("active");
+		$("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
+		$("#navbarToggler #base-supply").addClass("active");
+		$("#navbarToggler .dropdown-menu #base-post-supply").addClass("base-cut-active");
 		// Fetch all the forms we want to apply custom Bootstrap validation styles to
 		var forms = document.getElementsByClassName('needs-validation');
 		// Loop over them and prevent submission

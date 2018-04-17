@@ -140,10 +140,10 @@
 										<a id="modal_petImage"><img src="/images/cat3.jpg" /></a>
 										<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
 											<div class="col-md-12" style="margin-bottom:20px;">
-												<button type="button" class="btn btn-danger" style="width:80%" onclick="updatePetFav(this)"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+												<button type="button" class="btn btn-danger" style="width:80%" onclick="checklogin(function(){updatePetFav(this)})"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 											</div>
 											<div class="col-md-12">
-												<button type="button" class="btn btn-primary" style="width:80%" onclick="contactProvider()">Contact Provider</button>
+												<button type="button" class="btn btn-primary" style="width:80%" onclick="checklogin(function(){contactProvider()})">Contact Provider</button>
 											</div>
 										</div>
 									</div>
@@ -280,6 +280,7 @@ var current_page =1;
 var total_page=0;
 
 function updatePetFav(pointer){
+	$(".btn-danger")[0].disabled=true;
 	$.ajax({
 		url: "/updatePetFav",
 		type: "GET",
@@ -854,7 +855,24 @@ function changeModal(elementNo){
 	$("#modal_petProvider").html(petData_element.providerid);
 	$("#modal_petDescription").html(petData_element.description);
 	$("#modal_petRemark").html(petData_element.remark);
-
+	$(".btn-danger")[0].disabled=false;
+	$(".btn-primary")[4].disabled=false;
+	$.ajax({
+		url: "/getlogined",
+		type: "GET",
+		data: {
+		},
+		success: function (mes) {
+			if (mes.isLogined==true){
+				if (mes.loginUser==petData_element.providerid){
+					$(".btn-primary")[4].disabled=true;
+				}
+			}
+		},
+		error: function (err) {
+			console.log(err);
+		}
+	});
 }
 
 function pagePet(pageNo){

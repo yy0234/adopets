@@ -24,6 +24,11 @@
 				<strong>Success! </strong>
 				Product have added to your cart.
 			</div>
+			<div class="alert alert-danger" id="danger-alert" style="display:none;">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				<strong>Error! </strong>
+				Please try again later.
+			</div>
 		</div>
 		<div class="row shop">
 			<div class="col-md-2" id="left_container">
@@ -349,10 +354,10 @@
 												<a id="modal_supplyImage"><img src="/images/cat3.jpg" /></a>
 												<div class="row" style="margin-left:0;margin-right:0;margin-top:40px">
 													<div class="col-md-12" style="margin-bottom:20px;">
-														<button type="button" class="btn btn-danger" style="width:80%" onclick="updateSupplyFav(this)"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
+														<button type="button" class="btn btn-danger" style="width:80%" onclick="checklogin(function(){updateSupplyFav(this);})"><i class="far fa-heart" style="color:white; margin-right:5px;"></i>Add to Favorites</button>
 													</div>
 													<div class="col-md-12">
-														<button type="button" class="btn btn-primary" style="width:80%" onclick="loginToAddCart()">Add to Shopping Cart</button>
+														<button type="button" class="btn btn-primary" style="width:80%" onclick="checklogin(function(){loginToAddCart();})">Add to Shopping Cart</button>
 													</div>
 												</div>
 											</div>
@@ -476,6 +481,11 @@
 												<strong>Success! </strong>
 												Product have added to your cart.
 											</div>
+											<div class="alert alert-danger" id="danger-alert-2" style="display:none;">
+												<button type="button" class="close" data-dismiss="alert">x</button>
+												<strong>Error! </strong>
+												Please try again later.
+											</div>
 										</div>
 									</div>
 								</div>
@@ -590,9 +600,9 @@ $("#dropdownlist").change(function(){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -639,9 +649,9 @@ $("#dropdownlist").change(function(){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -718,9 +728,9 @@ function callAjax(Query){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -772,9 +782,9 @@ function callAjax(Query){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -867,9 +877,9 @@ function pageSupply(pageNo){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -910,9 +920,9 @@ function pageSupply(pageNo){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -1034,6 +1044,16 @@ function loginToAddCart(){
 				},
 				error: function (err) {
 					console.log(err);
+					$(document).on("click", ".fa-cart-plus", function(){
+						$("#danger-alert").fadeTo(2000, 500).slideUp(500, function(){
+							$("#danger-alert").slideUp(500);
+						});   
+					});
+					$(document).on("click", ".btn-primary", function(){
+						$("#danger-alert-2").fadeTo(2000, 500).slideUp(500, function(){
+							$("#danger-alert-2").slideUp(500);
+						});   
+					});
 				}
 		});
 }
@@ -1097,6 +1117,10 @@ function addCart(userid){
 -			images[slideIndex-1].style.display = "block";
 -		}
 -		*/
+		$("#navbarToggler .nav-item").removeClass("active");
+		$("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
+		$("#navbarToggler #base-supply").addClass("active");
+		$("#navbarToggler .dropdown-menu #base-search-supply").addClass("base-cut-active");
 		
 		supplyData= $.ajax({
 					url: "/listSupply",
@@ -1140,9 +1164,9 @@ function addCart(userid){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
@@ -1191,9 +1215,9 @@ function addCart(userid){
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<i class=\"fa fa-cart-plus\" onclick=\"loginToAddCart()\"></i>\
+															<i class=\"fa fa-cart-plus\" onclick=\"checklogin(function(){loginToAddCart();})\"></i>\
 														</div>\
-														<div class=\"heart\" onclick=\"updateSupplyFav(this)\">\
+														<div class=\"heart\" onclick=\"checklogin(function(){updateSupplyFav(this);})\">\
 															<i class=\"far fa-heart\"></i>\
 															<i class=\"fas fa-heart\"></i>\
 														</div>\
