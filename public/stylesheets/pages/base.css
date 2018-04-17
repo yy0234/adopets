@@ -163,3 +163,7 @@ nav{
     font-weight: bold;
     background-color: ghostwhite;
 }
+
+#signUpModal{
+    z-index:10000;
+}
