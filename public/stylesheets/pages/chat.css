@@ -19,7 +19,7 @@
     display: none;
 }
 .banner {
-    height: 80px;
+    height: 75px;
     width: 100%;
 }
 .banner p {
@@ -44,7 +44,7 @@
     color: #ddd;
 }
 .items {
-    display: inline;
+    height: 30px;
 }
 #colorStyle {
     width: 50px;
