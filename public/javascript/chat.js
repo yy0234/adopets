@@ -18,7 +18,7 @@ HiChat.prototype = {
             document.getElementById('info').textContent = 'Nickname is taken! Choose another please';
         });
         this.socket.on('loginSuccess', function() {
-            document.title = 'hichat | ' + document.getElementById('nicknameInput').value;
+            document.title = 'Adopets Web';
             document.getElementById('loginWrapper').style.display = 'none';
             document.getElementById('messageInput').focus();
         });
@@ -112,12 +112,14 @@ HiChat.prototype = {
     },
     _displayNewMsg: function(user, msg, color) {
         var container = document.getElementById('historyMsg'),
-            msgToDisplay = document.createElement('p'),
+            msgToDisplay = document.createElement('div'),
             date = new Date().toTimeString().substr(0, 8),
             //determine whether the msg contains emoji
             msg = this._showEmoji(msg);
         msgToDisplay.style.color = color || '#000';
-        msgToDisplay.innerHTML = '<strong>' + user + '</strong>' + '<span class="timespan">(' + date + '): </span>' + msg;
+        msgToDisplay.style.display = "flex";
+        msgToDisplay.style.alignItems = "center";
+        msgToDisplay.innerHTML = '<strong style="order: 1">' + user + '</strong>' + '<span class="timespan" style="order: 2">(' + date + ') :</span>' + '<span style="order: 3"> ' + msg + '</span>';
         container.appendChild(msgToDisplay);
         container.scrollTop = container.scrollHeight;
     },

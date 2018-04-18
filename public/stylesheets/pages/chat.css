@@ -48,6 +48,8 @@
 }
 .timespan {
     color: #fff;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 .items {
     height: 30px;
@@ -57,6 +59,7 @@
 .imageLable {
     position: relative;
 }
+
 #sendImage {
     position: absolute;
     width: 52px;
