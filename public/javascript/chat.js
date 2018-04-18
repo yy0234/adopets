@@ -112,7 +112,7 @@ HiChat.prototype = {
     },
     _displayNewMsg: function(user, msg, color) {
         var container = document.getElementById('historyMsg'),
-            msgToDisplay = document.createElement('p'),
+            msgToDisplay = document.createElement('div'),
             date = new Date().toTimeString().substr(0, 8),
             //determine whether the msg contains emoji
             msg = this._showEmoji(msg);
