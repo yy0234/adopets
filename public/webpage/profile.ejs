@@ -507,6 +507,23 @@
 		});
     }
 
+    function deleteFavSupply(supplyid,trash){
+        ($(trash).parents().parents())[2].remove();
+        $.ajax({
+			url: "/deleFavSupply",
+			type: "GET",
+			data: {
+                petid:petid
+			},
+			success: function (mes) {
+				console.log(mes);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
+    }
+
     function changePetFavModal(elementNo){
         var favPetData_element=favPetData[elementNo];
         $("#modal_petImage").html(favPetData_element.peturl);
@@ -706,7 +723,7 @@
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+mes[i].supplyid+",this)\"></button>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteFavSupply("+mes[i].supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
@@ -753,7 +770,7 @@
 													</div>\
 													<div class=\"product_buttons\">\
 														<div class=\"shopping_cart\">\
-															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteSupply("+element.supplyid+",this)\"></button>\
+															<button type=\"button\" class=\"fas fa-trash-alt\" onclick=\"deleteFavSupply("+element.supplyid+",this)\"></button>\
 														</div>\
 													</div>\
 												</div>\
