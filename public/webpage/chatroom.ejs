@@ -40,10 +40,14 @@
         $("#navbarToggler #base-chatroom").addClass("active");
 
         $(document).on("change", "#nicknameInput", function(){
-            if(!$.trim($("#nicknameInput").val()))
+            if(!$.trim($("#nicknameInput").val())){
+                console.log("no");
                 $("#loginBtn").css({"opacity": "0.7"});
-            else
+            }
+            else{
+                console.log("yes");
                 $("#loginBtn").css({"opacity": "1.0"});
+            }
         });
 
         $(document).on("change", "#messageInput", function(){
