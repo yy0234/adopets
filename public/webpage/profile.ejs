@@ -513,7 +513,7 @@
 			url: "/deleFavSupply",
 			type: "GET",
 			data: {
-                petid:petid
+                supplyid:supplyid
 			},
 			success: function (mes) {
 				console.log(mes);
@@ -681,7 +681,7 @@
     }
 
     function listSupplyFav(){
-        $.ajax({
+        supplyData=$.ajax({
 		url: "/listMyFavSupply",
 		type: "GET",
 		data: {
