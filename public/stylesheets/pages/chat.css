@@ -48,6 +48,8 @@
 }
 .timespan {
     color: #fff;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .items {
     height: 30px;

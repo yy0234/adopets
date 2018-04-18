@@ -119,7 +119,7 @@ HiChat.prototype = {
         msgToDisplay.style.color = color || '#000';
         msgToDisplay.style.display = "flex";
         msgToDisplay.style.alignItems = "center";
-        msgToDisplay.innerHTML = '<strong style="order: 1">' + user + '</strong>' + '<span class="timespan" style="order: 2"> (' + date + ') : </span>' + '<span style="order: 3">  ' + msg + '</span>';
+        msgToDisplay.innerHTML = '<strong style="order: 1">' + user + '</strong>' + '<span class="timespan" style="order: 2">(' + date + ') :</span>' + '<span style="order: 3"> ' + msg + '</span>';
         container.appendChild(msgToDisplay);
         container.scrollTop = container.scrollHeight;
     },
