@@ -16,7 +16,7 @@
                 <input id="emoji" class="btn btn-primary" type="button" value="Emoji" title="emoji" />
                 <input id="clearBtn" class="btn btn-danger" type="button" value="Clear" title="clear screen" />
             </div>
-            <textarea id="messageInput" placeHolder="enter to send"></textarea>
+            <textarea id="messageInput" placeHolder="enter to send" onchange="messageChange()"></textarea>
             <input id="sendBtn" class="btn btn-success" type="button" value="SEND">
             <div id="emojiWrapper">
             </div>
@@ -25,7 +25,7 @@
     <div id="loginWrapper">
         <p id="info">connecting to server...</p>
         <div id="nickWrapper">
-            <input type="text" placeHolder="Nickname" id="nicknameInput" />
+            <input type="text" placeHolder="Nickname" id="nicknameInput" onchange="nicknameChange()"/>
             <input type="button" class="btn btn-success" value="Enter" id="loginBtn" />
         </div>
     </div>
@@ -39,23 +39,21 @@
         $("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
         $("#navbarToggler #base-chatroom").addClass("active");
     });
-    $(document).on("change", "#nicknameInput", function(){
+    function nicknameChange(){
         if(!$.trim($("#nicknameInput").val())){
-            console.log("no");
             $("#loginBtn").css({"opacity": "0.7"});
         }
         else{
-            console.log("yes");
             $("#loginBtn").css({"opacity": "1.0"});
         }
-    });
+    }
 
-    $(document).on("change", "#messageInput", function(){
+    function messageChange(){
         if(!$.trim($("#messageInput").val()))
             $("#sendBtn").css({"opacity": "0.7"});
         else
             $("#sendBtn").css({"opacity": "1.0"});
-    })
+    }
 </script>
 
 
