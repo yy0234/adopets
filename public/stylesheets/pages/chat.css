@@ -60,10 +60,6 @@
     position: relative;
 }
 
-#loginBtn {
-    opacity: 0.5;
-}
-
 #sendImage {
     position: absolute;
     width: 52px;
@@ -83,7 +79,6 @@
     width: 25%;
     height: 75px;
     float: right;
-    opacity: 0.5;
 }
 #emojiWrapper {
     display: none;
