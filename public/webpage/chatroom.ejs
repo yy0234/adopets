@@ -38,25 +38,24 @@
         $("#navbarToggler .nav-item").removeClass("active");
         $("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
         $("#navbarToggler #base-chatroom").addClass("active");
-
-        $(document).on("change", "#nicknameInput", function(){
-            if(!$.trim($("#nicknameInput").val())){
-                console.log("no");
-                $("#loginBtn").css({"opacity": "0.7"});
-            }
-            else{
-                console.log("yes");
-                $("#loginBtn").css({"opacity": "1.0"});
-            }
-        });
-
-        $(document).on("change", "#messageInput", function(){
-            if(!$.trim($("#messageInput").val()))
-                $("#sendBtn").css({"opacity": "0.7"});
-            else
-                $("#sendBtn").css({"opacity": "1.0"});
-        })
     });
+    $(document).on("change", "#nicknameInput", function(){
+        if(!$.trim($("#nicknameInput").val())){
+            console.log("no");
+            $("#loginBtn").css({"opacity": "0.7"});
+        }
+        else{
+            console.log("yes");
+            $("#loginBtn").css({"opacity": "1.0"});
+        }
+    });
+
+    $(document).on("change", "#messageInput", function(){
+        if(!$.trim($("#messageInput").val()))
+            $("#sendBtn").css({"opacity": "0.7"});
+        else
+            $("#sendBtn").css({"opacity": "1.0"});
+    })
 </script>
 
 
