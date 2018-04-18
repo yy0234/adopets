@@ -40,17 +40,17 @@
         $("#navbarToggler #base-chatroom").addClass("active");
 
         $(document).on("change", "#nicknameInput", function(){
-            if($("#nicknameInput").val().trim() != "")
-                $("#loginBtn").css({"opacity": "1.0"});
-            else
+            if(!$.trim($("#nicknameInput").val()))
                 $("#loginBtn").css({"opacity": "0.7"});
+            else
+                $("#loginBtn").css({"opacity": "1.0"});
         });
 
         $(document).on("change", "#messageInput", function(){
-            if($("#messageInput").val().trim() != "")
-                $("#sendBtn").css({"opacity": "1.0"});
-            else
+            if(!$.trim($("#messageInput").val()))
                 $("#sendBtn").css({"opacity": "0.7"});
+            else
+                $("#sendBtn").css({"opacity": "1.0"});
         })
     });
 </script>

@@ -61,7 +61,7 @@
 }
 
 #loginBtn {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 #sendImage {
@@ -83,7 +83,7 @@
     width: 25%;
     height: 75px;
     float: right;
-    opacity: 0.0;
+    opacity: 0.5;
 }
 #emojiWrapper {
     display: none;
