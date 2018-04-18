@@ -39,14 +39,14 @@
         $("#navbarToggler .dropdown-menu .dropdown-item").removeClass("base-cut-active");
         $("#navbarToggler #base-chatroom").addClass("active");
 
-        $("#nicknameInput").on("change", function(){
+        $(document).on("change", "#nicknameInput", function(){
             if($("#nicknameInput").val().trim() != "")
                 $("#loginBtn").css("opacity: 1.0;");
             else
                 $("#loginBtn").css("opacity: 0.7;");
         });
 
-        $("#messageInput").on("change", function(){
+        $(document).on("change", "#messageInput", function(){
             if($("#messageInput").val().trim() != "")
                 $("#sendBtn").css("opacity: 1.0;");
             else
