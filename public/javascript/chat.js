@@ -117,6 +117,8 @@ HiChat.prototype = {
             //determine whether the msg contains emoji
             msg = this._showEmoji(msg);
         msgToDisplay.style.color = color || '#000';
+        msgToDisplay.style.display = "flex";
+        msgToDisplay.style.alignItems = "center";
         msgToDisplay.innerHTML = '<strong>' + user + '</strong>' + '<span class="timespan">(' + date + '): </span>' + msg;
         container.appendChild(msgToDisplay);
         container.scrollTop = container.scrollHeight;
