@@ -157,6 +157,7 @@
     });
 
     $('#newReply').on('show.bs.modal', function (event) {
+        console.log(event);
         var button = $(event.relatedTarget);
         var data_title= button.data('title');
         var data_replyId= button.data('replyid'); 
@@ -167,6 +168,7 @@
     })
 
     $('#newReplyPrev').on('show.bs.modal', function (event) {
+        console.log(event);
         console.log($(event.relatedTarget).parents(".post-content"));
         var button = $(event.relatedTarget);
         var data_title= button.data('title'); 
