@@ -43,7 +43,7 @@ app.use(session({
   secret: 'Adopets Web',
   store: new FileStore(),
   cookie: {
-      maxAge: 60 * 1000 * 60
+      maxAge: 60 * 1000 * 600
   }
 }));
 
@@ -229,14 +229,16 @@ app.get('/db', function (request, response) {
 
 app.get('/regist', function (request, response) { 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  var sql = 'INSERT INTO users(userid,lastname,firstname,email,telnum,address,birthday,havepet,typeofpet,userurl,password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'; 
+	  var sql = 'INSERT INTO users(userid,lastname,firstname,email,telnum,address,birthday,havepet,typeofpet,userurl,password) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING userid'; 
 	  var sqlValue = [request.query.userid,"","",request.query.email,000,"",new Date(0),false,"","",request.query.password]; 
 	  client.query(sql,sqlValue,function(err,result) {
        done();
        if (err)
         { console.error(err); return response.send("Error " + err); }
        else
-        { return response.send("success");   }
+        { request.session.loginUser=result.rows[0].userid;
+          return response.send("success");  
+         }
       });
   });
 });
