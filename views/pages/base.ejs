@@ -93,6 +93,9 @@
 					
 						<div class="form-label-group">
 							<input type="password" id="register_password" class="form-control" placeholder="Password" required>
+							<div class="password-invalid-feedback" style="display:none">
+								Password must be at least 6 characters long
+							</div>
 						</div>
 
 						<div class="form-label-group">
@@ -457,14 +460,21 @@
 		var form = $(".form-signup");
 		var username=$("#register_username").val();
 
-		if (form[0].checkValidity() === false) {
-			event.preventDefault()
-			event.stopPropagation()
+		if (form[0].checkValidity() === false||$("#register_password").val().length<6) {
+			event.preventDefault();
+			event.stopPropagation();
+			if ($("#register_password").val().length<6)
+				$(".password-invalid-feedback").css("display","block");
+			else{
+				$(".password-invalid-feedback").css("display","none");
+			}
+
 		}
 		else if (form[0].checkValidity() === true){
 			var register_email = $("#register_email").val();
 			var register_username = $("#register_username").val();
 			var register_password = $("#register_password").val();
+			$(".password-invalid-feedback").css("display","none");
 	
 			$.ajax({
 				url: "/regist",
